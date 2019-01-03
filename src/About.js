@@ -3,7 +3,7 @@ import React from 'react';
 const YearsOfExperience = () => <span>{new Date().getFullYear() - 2008}</span>;
 
 export default () => <div>
-  <h2>About me</h2>
+  <h2>Hi! My name is James.</h2>
   <p>
     Thank you for visiting my humble blog.
     I'm a web developer with main focus on <span class="hashtag">Ruby</span> (with or without <span class="hashtag">Rails</span>),{' '}
@@ -15,6 +15,8 @@ export default () => <div>
     <em style={{backgroundColor: 'yellow'}}>I'm happy to help you with your project. I charge $60 per hour. Just shoot me an email on <a href="mailto:contracts@101ideas.cz">contracts@101ideas.cz</a> and let me know what are you working on!</em>
   </p>
 
+  <h3>Why should you hire me?</h3>
+  {/* OSS */}
   <p>
     In my <YearsOfExperience /> years of experience I worked for some big companies, quite a few medium-sized ones, but mostly I work for small start-ups.
   </p>
