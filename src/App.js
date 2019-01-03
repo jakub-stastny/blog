@@ -11,6 +11,7 @@ const AppRouter = () => (
     <div>
       <nav>
         <h1>
+          {/* The activeClassName is not really safe or modular CSS compatible. */}
           <NavLink to="/" activeClassName="selected-link">Blog</NavLink>
         </h1>
 
@@ -20,14 +21,15 @@ const AppRouter = () => (
         </ul>
       </nav>
 
-      <footer>
-      </footer>
-
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/about" component={About} />
         <Route component={NoMatch} />
       </Switch>
+
+      <footer>
+        &copy; {new Date().getFullYear()} James C Russell
+      </footer>
     </div>
   </Router>
 )
