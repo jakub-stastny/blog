@@ -8,27 +8,35 @@ import NoMatch from './Errors';
 
 const AppRouter = () => (
   <Router>
-    <div>
-      <nav>
+    <div style={{marginTop: '-20px'}}>
+      <div class="content">
+      <header>
         <h1>
           {/* The activeClassName is not really safe or modular CSS compatible. */}
-          <NavLink to="/" activeClassName="selected-link">Blog</NavLink>
+          <NavLink to="/" activeClassName="selected-link">James C Russell's blog</NavLink>
         </h1>
+        <p>
+          Web development, Ruby, React.js, learning languages and life.
+        </p>
+      </header>
 
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-        </ul>
-      </nav>
-
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/about" component={About} />
-        <Route component={NoMatch} />
-      </Switch>
+      <main>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={About} />
+          <Route component={NoMatch} />
+        </Switch>
+      </main>
+      </div>
 
       <footer>
-        &copy; {new Date().getFullYear()} James C Russell
+        <nav>
+          <ul>
+            <li><NavLink to="/" activeClassName="selected-link">Posts</NavLink></li>
+            <li><NavLink to="/about" activeClassName="selected-link">About me</NavLink></li>
+            <li><a href="https://twitter.com/botanicus" target="_blank">@botanicus</a></li>
+          </ul>
+        </nav>
       </footer>
     </div>
   </Router>

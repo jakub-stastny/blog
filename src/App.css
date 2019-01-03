@@ -1,11 +1,56 @@
+/* Sticky footer: https://css-tricks.com/couple-takes-sticky-footer */
+footer {
+  height: 50px;
+  padding-top: 25px;
+  text-align: center;
+  background-color: BlanchedAlmond;
+}
+
 /* If a link is selected, style it as normal text. */
 .selected-link {
   color: inherit;
   text-decoration: inherit;
 }
 
-footer {
-  padding: 50px 0 60px 0;
+header {
+  padding: 20px 0;
   text-align: center;
   background-color: BlanchedAlmond;
+}
+
+footer nav ul {
+  margin: inherit;
+  padding: inherit;
+}
+
+footer nav ul li {
+  display: inline;
+}
+
+footer nav ul li + li::before {
+  content: " | ";
+}
+
+.content {
+  min-height: calc(100vh - 100px); /* Sticky footer. */
+}
+
+main {
+  width: 80%;
+  overflow: auto;
+  margin: 0 auto;
+}
+
+header p {
+  font-style: italic;
+}
+
+
+
+.hashtag:before {
+  content: '#';
+}
+
+.hashtag {
+  color: blue;
 }
