@@ -1,0 +1,26 @@
+/* https://codepen.io/miroot/pen/wiKAp */
+.cr {
+  width: 200px;
+  padding: 16px;
+  position: absolute;
+  text-align: center;
+  color: #f0f0f0;
+}
+
+/* Positions */
+.cr-top    { top: 25px; }
+.cr-right  { right: -50px; }
+
+/* Rotations */
+.cr-top.cr-left,
+.cr-bottom.cr-right {
+  transform: rotate(-45deg);
+}
+
+.cr-top.cr-right,
+.cr-bottom.cr-left {
+  transform: rotate(45deg);
+}
+
+/* Colours */
+.cr-red { background-color: #e43; }

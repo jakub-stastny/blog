@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styles from './App.module.css';
 
 import Link from './Link';
+import Ribbon from './Ribbon';
+import Email from './Email';
 
 import About from './About';
 import Home from './Home';
@@ -12,7 +14,9 @@ import NoMatch from './Errors';
 
 const AppRouter = () => (
   <Router>
-    <div style={{marginTop: '-20px'}}>
+    <div>
+      <Ribbon>Hire me <Email /></Ribbon>
+
       <div className={styles.content}>
       <header>
         <h1>
