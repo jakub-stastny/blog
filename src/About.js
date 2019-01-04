@@ -32,7 +32,6 @@ export default () => <div>
   </p>
 
   Healthcare UK, US
-  Mexico City Timezone
 
   <h3>How do I work?</h3>
   <p>
@@ -44,4 +43,9 @@ export default () => <div>
     I don't enjoy them and I don't like too many fixed points in my schedule. I'll get the job done on time,
     but I want to choose my hours.
   </p>
+
+  <h3>In a nutshell</h3>
+  <ul>
+    <li>My timezone: Mexico City</li>
+  </ul>
 </div>

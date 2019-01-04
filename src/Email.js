@@ -1,3 +1,7 @@
 import React from 'react';
 
-export default ({children}) => <a href="mailto:contracts@101ideas.cz">{children || 'contracts@101ideas.cz'}</a>
+// subject, body as a query string.
+// Not everyone has mailto: associated.
+
+const email = 'contracts@101ideas.cz';
+export default ({subject, children}) => <a href={`mailto:${email}?subject=${subject}`}>{children || email}</a>
