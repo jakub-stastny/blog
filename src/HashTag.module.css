@@ -1,0 +1,7 @@
+.hashtag:before {
+  content: '#';
+}
+
+.hashtag {
+  color: blue;
+}

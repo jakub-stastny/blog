@@ -1,19 +1,20 @@
 import React from 'react';
-
-const YearsOfExperience = () => <span>{new Date().getFullYear() - 2008}</span>;
+import HashTag from './HashTag';
+import YearsOfExperience from './YearsOfExperience';
+import Highlight from './Highlight';
 
 export default () => <div>
   <h2>Hi! My name is James.</h2>
   <p>
     Thank you for visiting my humble blog.
-    I'm a web developer with main focus on <span className="hashtag">Ruby</span> (with or without <span className="hashtag">Rails</span>),{' '}
-    <span className="hashtag">JavaScript</span> (these days mainly <span className="hashtag">React.js</span>) and <span className="hashtag">Docker</span>.
+    I'm a web developer with main focus on <HashTag>Ruby</HashTag> (with or without <HashTag>Rails</HashTag>),{' '}
+    <HashTag>JavaScript</HashTag> (these days mainly <HashTag>React.js</HashTag>) and <HashTag>Docker</HashTag>.
     This is what I've been doing for the past <YearsOfExperience /> years and what I genuinely enjoy doing.
   </p>
 
-  <p>
-    <em style={{backgroundColor: 'yellow'}}>I'm happy to help you with your project. I charge $60 per hour. Just shoot me an email on <a href="mailto:contracts@101ideas.cz">contracts@101ideas.cz</a> and let me know what are you working on!</em>
-  </p>
+  <Highlight>
+    I'm happy to help you with your project. I charge $60 per hour. Just shoot me an email on <a href="mailto:contracts@101ideas.cz">contracts@101ideas.cz</a> and let me know what are you working on!
+  </Highlight>
 
   <h3>Why should you hire me?</h3>
   {/* OSS */}

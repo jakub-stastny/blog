@@ -6,12 +6,6 @@ footer {
   background-color: BlanchedAlmond;
 }
 
-/* If a link is selected, style it as normal text. */
-.selected-link {
-  color: inherit;
-  text-decoration: inherit;
-}
-
 header {
   padding: 20px 0;
   text-align: center;
@@ -43,14 +37,4 @@ main {
 
 header p {
   font-style: italic;
-}
-
-
-
-.hashtag:before {
-  content: '#';
-}
-
-.hashtag {
-  color: blue;
 }
