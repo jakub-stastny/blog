@@ -6,8 +6,8 @@ export default () => <div>
   <h2>Hi! My name is James.</h2>
   <p>
     Thank you for visiting my humble blog.
-    I'm a web developer with main focus on <span class="hashtag">Ruby</span> (with or without <span class="hashtag">Rails</span>),{' '}
-    <span class="hashtag">JavaScript</span> (these days mainly <span class="hashtag">React.js</span>) and <span class="hashtag">Docker</span>.
+    I'm a web developer with main focus on <span className="hashtag">Ruby</span> (with or without <span className="hashtag">Rails</span>),{' '}
+    <span className="hashtag">JavaScript</span> (these days mainly <span className="hashtag">React.js</span>) and <span className="hashtag">Docker</span>.
     This is what I've been doing for the past <YearsOfExperience /> years and what I genuinely enjoy doing.
   </p>
 

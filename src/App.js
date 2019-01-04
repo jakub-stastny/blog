@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, NavLink } from 'react-router-dom';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
+import styles from './App.css';
 
 import About from './About';
 import Home from './Home';
@@ -9,7 +9,7 @@ import NoMatch from './Errors';
 const AppRouter = () => (
   <Router>
     <div style={{marginTop: '-20px'}}>
-      <div class="content">
+      <div styleName="content">
       <header>
         <h1>
           {/* The activeClassName is not really safe or modular CSS compatible. */}
@@ -17,6 +17,7 @@ const AppRouter = () => (
         </h1>
         <p>
           Web development, Ruby, React.js, learning languages and life.
+          {console.log(styles.content)}
         </p>
       </header>
 
@@ -34,7 +35,7 @@ const AppRouter = () => (
           <ul>
             <li><NavLink to="/" activeClassName="selected-link">Posts</NavLink></li>
             <li><NavLink to="/about" activeClassName="selected-link">About me</NavLink></li>
-            <li><a href="https://twitter.com/botanicus" target="_blank">@botanicus</a></li>
+            <li><a href="https://twitter.com/botanicus" target="_blank" rel="noopener noreferrer">@botanicus</a></li>
           </ul>
         </nav>
       </footer>
