@@ -1,5 +1,5 @@
 task :build do
-  sh "bundle exec blog-generator.rb generate blog-api"
+  sh "bundle exec blog-generator.rb generate content"
 end
 
 task default: :build
