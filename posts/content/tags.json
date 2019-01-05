@@ -1,3 +1,22 @@
 [
-
+  {
+    "title": "zen",
+    "slug": "zen",
+    "path": "/tags/zen"
+  },
+  {
+    "title": "mindfulness",
+    "slug": "mindfulness",
+    "path": "/tags/mindfulness"
+  },
+  {
+    "title": "sanity",
+    "slug": "sanity",
+    "path": "/tags/sanity"
+  },
+  {
+    "title": "focus",
+    "slug": "focus",
+    "path": "/tags/focus"
+  }
 ]
