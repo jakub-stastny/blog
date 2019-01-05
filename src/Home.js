@@ -1,32 +1,39 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import PostPreview from './PostPreview';
+import Spinner from './Spinner';
 
-const posts = [
-  {
-    title: "Hello world",
-    excerpt: "Lorem ipsum.",
-    body: "Lorem ipsum."
+export default class Home extends Component {
+  state = {posts: [], isLoading: true}
+
+  componentDidMount() {
+    fetch('http://45.33.3.67:8080/content/posts.json')
+    // We get the API response and receive data in JSON format...
+    .then(response => response.json())
+    // ...then we update the users state
+    .then(data =>
+      this.setState({
+        posts: data,
+        isLoading: false,
+      })
+    )
+    // Catch any errors we hit and update the app
+    .catch(error => this.setState({error, isLoading: false}));
   }
-]
 
-class Post extends Component {
   render() {
-    const { post } = this.props;
+    const { posts, isLoading, error } = this.state;
 
-    return (
-      <article>
-        <h1>{post.title}</h1>
-        <p>{post.excerpt}</p>
+    if (!isLoading && posts && posts.length) {
+      return posts.map((post) => <PostPreview post={post} />);
+    }
 
-        <footer>
-          {/* Small pic of me. */}
-          <Link to="/about">About the author</Link>.
-        </footer>
-      </article>
-    );
+    // TODO: Center these to the centre of the page.
+    if (isLoading) {
+      return <Spinner />;
+    } else if (error) {
+      return <h1>Error</h1>;
+    } else {
+      return <div>There are no posts yet.</div>;
+    }
   }
 }
-
-export default () => <div>
-    {posts.map((post) => <Post post={post} />)}
-  </div>;
