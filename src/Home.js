@@ -6,7 +6,8 @@ export default class Home extends Component {
   state = {posts: [], isLoading: true}
 
   componentDidMount() {
-    fetch('/content/posts.json')
+    // fetch('/content/posts.json')
+    fetch('http://45.33.3.67:8080/content/posts.json')
     // We get the API response and receive data in JSON format...
     .then(response => response.json())
     // ...then we update the users state
@@ -24,7 +25,7 @@ export default class Home extends Component {
     const { posts, isLoading, error } = this.state;
 
     if (!isLoading && posts && posts.length) {
-      return posts.map((post) => <PostPreview post={post} />);
+      return posts.map((post) => <PostPreview key={post.slug} {...post} />);
     }
 
     // TODO: Center these to the centre of the page.
