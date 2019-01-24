@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PostPreview from './PostPreview';
 import Spinner from './Spinner';
 

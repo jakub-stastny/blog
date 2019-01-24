@@ -28,22 +28,22 @@ const AppRouter = () => (
       <Ribbon>Hire me <Email subject="Hey! I'm looking for a Ruby/JS dev! Are you available?"><FontAwesomeIcon icon={faEnvelope} color="DodgerBlue" /></Email></Ribbon>
 
       <div className={styles.content}>
-      <header className={styles.main}>
-        <h1>
-          <Link to="/">James C Russell's blog</Link>
-        </h1>
-        <p>
-          Web development, Ruby, React.js, learning languages and life.
-        </p>
-      </header>
+        <header className={styles.main}>
+          <h1>
+            <Link to="/">James C Russell's blog</Link>
+          </h1>
+          <p>
+            Web development, Ruby, React.js, learning languages and life.
+          </p>
+        </header>
 
-      <main>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route component={NoMatch} />
-        </Switch>
-      </main>
+        <main>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" component={About} />
+            <Route component={NoMatch} />
+          </Switch>
+        </main>
       </div>
 
       <footer className={styles.main}>
