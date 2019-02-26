@@ -6,12 +6,14 @@ GEM
     mini_portile2 (2.4.0)
     nokogiri (1.9.1)
       mini_portile2 (~> 2.4.0)
+    rack (2.0.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   blog-generator
+  rack
 
 BUNDLED WITH
-   1.16.6
+   1.17.2

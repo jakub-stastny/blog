@@ -8,7 +8,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     // fetch('/content/posts.json')
-    fetch('http://45.33.3.67:8080/content/posts.json')
+    fetch('http://178.128.146.248:4001/content/posts.json')
     // We get the API response and receive data in JSON format...
     .then(response => response.json())
     // ...then we update the users state
