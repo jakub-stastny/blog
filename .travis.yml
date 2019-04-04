@@ -1,8 +1,15 @@
 language: node_js
 
+services:
+  - docker
+
 before_script:
   - yarn
 
 script:
   - yarn build
   - docker build -t botanicus/blog
+
+deploy:
+  - echo "$DOCKER_PASSWORD" | docker login -u botanicus --password-stdin
+  - docker push botanicus/blog
