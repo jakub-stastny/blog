@@ -1,6 +1,8 @@
 language: node_js
 
-script:
+before_script:
   - yarn
+
+script:
   - yarn build
   - docker build -t botanicus/blog
