@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+//import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PostPreview from './PostPreview';
 import Spinner from './Spinner';
 
@@ -8,7 +8,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     // fetch('/content/posts.json')
-    fetch('http://178.128.146.248:4001/content/posts.json')
+    fetch('https://raw.githubusercontent.com/botanicus/data.blog/content/content/posts.json')
     // We get the API response and receive data in JSON format...
     .then(response => response.json())
     // ...then we update the users state
