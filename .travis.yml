@@ -5,6 +5,8 @@ node_js:
 services:
   - docker
 
+cache: yarn
+
 before_script:
   - yarn
 
