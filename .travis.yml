@@ -11,5 +11,6 @@ script:
   - docker build -t botanicus/blog
 
 deploy:
-  - echo "$DOCKER_PASSWORD" | docker login -u botanicus --password-stdin
-  - docker push botanicus/blog
+  script:
+    - echo "$DOCKER_PASSWORD" | docker login -u botanicus --password-stdin
+    - docker push botanicus/blog
