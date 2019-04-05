@@ -17,3 +17,4 @@ script:
 deploy:
   provider: script
   script: echo "$DOCKER_PASSWORD" | docker login -u botanicus --password-stdin && docker push botanicus/blog
+  branch: master
