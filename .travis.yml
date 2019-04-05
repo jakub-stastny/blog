@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "8"
+  - "11"
 
 services:
   - docker
@@ -15,6 +15,7 @@ script:
   - docker build . -t botanicus/blog
 
 deploy:
+  provider: script
   script:
     - echo "$DOCKER_PASSWORD" | docker login -u botanicus --password-stdin
     - docker push botanicus/blog
