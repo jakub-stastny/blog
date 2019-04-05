@@ -7,14 +7,11 @@ services:
 
 cache: yarn
 
-before_script:
-  - yarn
-
 script:
   - yarn build
 
 deploy:
   provider: script
   # script: echo "$DOCKER_PASSWORD" | docker login -u botanicus --password-stdin && docker push botanicus/blog
-  script: echo "$HEROKU_PASSWORD" | docker login -u botanicus --password-stdin registry.heroku.com && heroku container:login && heroku container:push web && heroku container:release web
+  script: echo "$HEROKU_PASSWORD" | docker login -u botanicus --password-stdin registry.heroku.com && heroku container:push web -a botanicus-me && heroku container:release web -a botanicus-me
   branch: master
