@@ -1,6 +1,7 @@
-# Runs on 8080.
-FROM nginx:alpine
+FROM node:alpine
 
-COPY nginx.conf /etc/nginx/nginx.conf.template
-COPY build /usr/share/nginx/html/build
-CMD /bin/sh -c "envsubst < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && cat /etc/nginx/nginx.conf && exec nginx-debug -g 'daemon off;'"
+COPY server.js /app/server.js
+COPY build /app/build
+WORKDIR /app/build
+
+CMD node --harmony --experimental-modules /app/server.js
