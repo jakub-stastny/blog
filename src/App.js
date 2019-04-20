@@ -6,6 +6,7 @@ import Link from './Link';
 import Ribbon from './Ribbon';
 import Email from './Email';
 import Post from './Post';
+import Tag from './Tag';
 
 import About from './About';
 import Home from './Home';
@@ -48,6 +49,7 @@ const AppRouter = () => (
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/posts/:slug" component={Post} />
+            <Route path="/tags/:slug" component={Tag} />
             <Route component={NoMatch} />
           </Switch>
         </main>
