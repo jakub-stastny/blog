@@ -17,5 +17,5 @@ script:
 deploy:
   provider: script
   # script: echo "$DOCKER_PASSWORD" | docker login -u botanicus --password-stdin && docker push botanicus/blog
-  script: echo "$HEROKU_PASSWORD" | docker login -u botanicus --password-stdin registry.heroku.com && heroku container:push web -a botanicus-me && heroku container:release web -a botanicus-me
+  script: echo "$HEROKU_AUTH_TOKEN" | docker login -u botanicus --password-stdin registry.heroku.com && docker push registry.heroku.com/botanicus-me/web #heroku container:push web -a botanicus-me && heroku container:release web -a botanicus-me
   branch: master
