@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
+
 import { Link } from 'react-router-dom';
 import TagList from './TagList'
 
@@ -30,8 +32,10 @@ export default class Post extends Component {
     return (
       <article>
         <h1>{post.title}</h1>
-        <p className={styles.excerpt} dangerouslySetInnerHTML={{__html: post.excerpt}} />
+        {/* Update every 30 seconds. */}
+        <Moment date={new Date(post.published_at)} fromNow interval={30000} className={styles.date} />
         <TagList tags={post.tags} />
+        <p className={styles.excerpt} dangerouslySetInnerHTML={{__html: post.excerpt}} />
         <div dangerouslySetInnerHTML={{ __html: post.body}} />
 
         <footer>
