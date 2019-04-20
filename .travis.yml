@@ -12,6 +12,7 @@ services:
 cache: yarn
 
 script:
+  - docker build . -t registry.heroku.com/botanicus-me/web
   - yarn build
 
 deploy:
