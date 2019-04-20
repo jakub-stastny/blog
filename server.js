@@ -27,7 +27,7 @@ function serveFile(response, path, uri) {
   fs.readFile(path, (err, data) => {
     const mimeType = mimeTypes[path.split('.').pop()] || 'text/plain'
     console.log("~ " + uri + " -> " + path + " served as " + mimeType)
-    response.writeHead(200, { "Content-Type": mimeType })
+    response.writeHead(200, {"Content-Type": mimeType})
     response.write(data)
     response.end()
   })

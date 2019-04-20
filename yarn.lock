@@ -8048,6 +8048,11 @@ react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
+react-obfuscate@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/react-obfuscate/-/react-obfuscate-3.5.0.tgz#4d473eaa65b01f2d949deaf22cc48a141cf47f40"
+  integrity sha512-hQbo8qHgWN6ORJ5TTwaVusu/x0GPiObozjcPXD1CnLKu2FyIXlrRtwQc0iJevXREAx7onpNNtvYWf1jVJy6nzA==
+
 react-router-dom@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
