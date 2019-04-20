@@ -7,7 +7,6 @@ export default class Home extends Component {
   state = {posts: [], isLoading: true}
 
   componentDidMount() {
-    // fetch('/content/posts.json')
     fetch('https://raw.githubusercontent.com/botanicus/data.blog/content/content/posts.json')
     // We get the API response and receive data in JSON format...
     .then(response => response.json())

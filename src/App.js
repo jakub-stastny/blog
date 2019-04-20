@@ -5,11 +5,14 @@ import styles from './App.module.css';
 import Link from './Link';
 import Ribbon from './Ribbon';
 import Email from './Email';
+import Post from './Post';
 
 import About from './About';
 import Home from './Home';
 import NoMatch from './Errors';
 
+import config from './config';
+import GoogleAnalytics from 'react-router-ga';
 
 /* https://fontawesome.com/how-to-use/on-the-web/using-with/react */
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -22,9 +25,12 @@ library.add(faEnvelope, faTwitter, faGithub);
 
 // const ensure = (value) => value || throw("Undefined")
 
+console.log(config)
+
 const AppRouter = () => (
   <Router>
-    <div>
+    {/* The ID has to be empty in development. Google Analytics detect localhost, but not a remote IP. */}
+    <GoogleAnalytics id={config.googleAnalyticsTrackingId} debug={config.isProduction}>
       <Ribbon>Hire me <Email subject="Hey! I'm looking for a Ruby/JS dev! Are you available?"><FontAwesomeIcon icon={faEnvelope} color="DodgerBlue" /></Email></Ribbon>
 
       <div className={styles.content}>
@@ -41,6 +47,7 @@ const AppRouter = () => (
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
+            <Route path="/posts/:slug" component={Post} />
             <Route component={NoMatch} />
           </Switch>
         </main>
@@ -56,7 +63,7 @@ const AppRouter = () => (
           </ul>
         </nav>
       </footer>
-    </div>
+    </GoogleAnalytics>
   </Router>
 )
 
