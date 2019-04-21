@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 //import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PostPreview from './PostPreview';
 import Spinner from './Spinner';
@@ -25,6 +25,7 @@ export default class Home extends Component {
     const { posts, isLoading, error } = this.state;
 
     if (!isLoading && posts && posts.length) {
+      // Ah! No need to wrap!
       return posts.map((post) => <PostPreview key={post.slug} {...post} />);
     }
 
@@ -34,7 +35,7 @@ export default class Home extends Component {
     } else if (error) {
       return <h1>Error</h1>;
     } else {
-      return <div>There are no posts yet.</div>;
+      return <Fragment>There are no posts yet.</Fragment>;
     }
   }
 }

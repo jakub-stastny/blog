@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
-const Tag = ({title, path}) => <span>
+const Tag = ({title, path}) => <Fragment>
   <a href={path}>{title}</a>
-</span>
+</Fragment>
 
 export default class TagList extends Component {
   renderTags(tags) {
@@ -14,6 +14,6 @@ export default class TagList extends Component {
     const { tags } = this.props
     if (!tags) return null
 
-    return <div>{this.renderTags(tags)}</div>
+    return this.renderTags(tags)
   }
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Moment from 'react-moment';
 
 const styles = {} // FIXME
@@ -38,11 +38,11 @@ export default class Tag extends Component {
     if (this.state.isLoading) return null
     console.log(tag)
     console.log(posts)
-    return <div>
+    return <Fragment>
       <h1>{tag.title}</h1>
       <ul>
         {posts.map((post) => <Post {...post} />)}
       </ul>
-    </div>
+    </Fragment>
   }
 }

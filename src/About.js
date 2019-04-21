@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { SelfLinkingEmail } from './Email'
 import HashTag from './HashTag';
 import YearsOfExperience from './YearsOfExperience';
 import Highlight from './Highlight';
 
-export default () => <div>
+export default () => <Fragment>
   <h2>Hi! My name is James.</h2>
   <p>
     Thank you for visiting my humble blog.
@@ -49,4 +49,4 @@ export default () => <div>
   <ul>
     <li>My timezone: Mexico City</li>
   </ul>
-</div>
+</Fragment>
