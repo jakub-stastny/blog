@@ -40,6 +40,7 @@ task default: :build
 
 task 'travis:build' do
   sh "yarn build"
+  sh "heroku container:login"
   sh "heroku container:push web -a botanicus-me"
 end
 
