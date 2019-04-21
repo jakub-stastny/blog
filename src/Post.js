@@ -7,7 +7,7 @@ import TagList from './TagList'
 import styles from './Post.module.css';
 
 export default class Post extends Component {
-  state = {post: [], isLoading: true}
+  state = {post: {}, isLoading: true}
 
   componentDidMount() {
     const slug = this.props.match.params.slug
