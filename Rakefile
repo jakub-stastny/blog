@@ -38,6 +38,11 @@ end
 task build: ['npm:build', 'content:build', 'docker:build']
 task default: :build
 
+task 'travis:build' do
+  sh "yarn build"
+  sh "heroku container:push web -a botanicus-me"
+end
+
 task 'travis:deploy' do
   File.open(File.join(ENV.fetch('HOME'), '.netrc'), 'w') do |file|
     file.puts <<~EOF
@@ -50,5 +55,5 @@ task 'travis:deploy' do
     EOF
   end
 
-  sh "heroku container:push web -a botanicus-me && heroku container:release web -a botanicus-me"
+  sh "heroku container:release web -a botanicus-me"
 end
