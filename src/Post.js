@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 
 import { Link } from 'react-router-dom';
 import TagList from './TagList'
+import Discussion from './Discussion'
 
 import styles from './Post.module.css';
 
@@ -42,6 +43,8 @@ export default class Post extends Component {
           {/* Small pic of me. */}
           <Link to="/about">About the author</Link>.
         </footer>
+
+        <Discussion url={post.url} identifier={post.slug} title={post.title} />
       </article>
     );
   }
