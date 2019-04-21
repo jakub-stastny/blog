@@ -48,10 +48,10 @@ task 'travis:deploy' do
     file.puts <<~EOF
       machine api.heroku.com
         login #{ENV.fetch('HEROKU_EMAIL')}
-        password #{ENV.fetch('HEROKU_AUTH_TOKEN')}
+        password #{ENV.fetch('HEROKU_API_KEY')}
       machine git.heroku.com
         login #{ENV.fetch('HEROKU_EMAIL')}
-        password #{ENV.fetch('HEROKU_AUTH_TOKEN')}
+        password #{ENV.fetch('HEROKU_API_KEY')}
     EOF
   end
 
