@@ -37,3 +37,18 @@ end
 
 task build: ['npm:build', 'content:build', 'docker:build']
 task default: :build
+
+task 'travis:deploy' do
+  File.open(File.join(ENV.fetch('HOME'), '.netrc'), 'w') do |file|
+    file.puts <<~EOF
+      machine api.heroku.com
+        login #{ENV.fetch('HEROKU_EMAIL')}
+        password #{ENV.fetch('HEROKU_AUTH_TOKEN')}
+      machine git.heroku.com
+        login #{ENV.fetch('HEROKU_EMAIL')}
+        password #{ENV.fetch('HEROKU_AUTH_TOKEN')}
+    EOF
+  end
+
+  sh "heroku container:push web -a botanicus-me && heroku container:release web -a botanicus-me"
+end
