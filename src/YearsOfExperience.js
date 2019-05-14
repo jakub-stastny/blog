@@ -1,5 +1,5 @@
 import React from 'react';
+import config from './config';
 
-const startYear = 2008;
 const year = new Date().getFullYear()
-export default () => <abbr title={`From ${startYear} on`}>{year - startYear}</abbr>
+export default () => <abbr title={`From ${config.startYear} on`}>{year - config.startYear}</abbr>
