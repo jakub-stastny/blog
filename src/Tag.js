@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import Moment from 'react-moment'
-import FetchError from './FetchError'
+import { FetchError } from './Errors'
 import postStyles from './Post.module.css'
 
 function Post({ title, path, published_at }) {

@@ -10,7 +10,7 @@ import Tag from './Tag'
 
 import About from './About'
 import Home from './Home'
-import NoMatch from './Errors'
+import { RoutingError } from './Errors'
 
 import config from './config'
 import GoogleAnalytics from 'react-router-ga'
@@ -50,7 +50,7 @@ const AppRouter = () => (
             <Route path="/about" component={About} />
             <Route path="/posts/:slug" component={Post} />
             <Route path="/tags/:slug" component={Tag} />
-            <Route component={NoMatch} />
+            <Route component={RoutingError} />
           </Switch>
         </main>
       </div>
