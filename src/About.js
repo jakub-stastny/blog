@@ -3,6 +3,7 @@ import { SelfLinkingEmail } from './Email'
 import HashTag from './HashTag';
 import YearsOfExperience from './YearsOfExperience';
 import Highlight from './Highlight';
+import config from './config';
 
 export default () => <Fragment>
   <h2>Hi! My name is James.</h2>
@@ -14,7 +15,7 @@ export default () => <Fragment>
   </p>
 
   <Highlight>
-    I'm happy to help you with your project. I charge $60 per hour. Just shoot me an email on <SelfLinkingEmail /> and let me know what are you working on!
+    I'm happy to help you with your project. I charge ${config.rate} per hour. Just shoot me an email on <SelfLinkingEmail /> and let me know what are you working on!
   </Highlight>
 
   <h3>Why should you hire me?</h3>
