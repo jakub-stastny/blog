@@ -1,13 +1,13 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import Moment from 'react-moment'
-
-const styles = {} // FIXME
+import FetchError from './FetchError'
+import postStyles from './Post.module.css'
 
 function Post({ title, path, published_at }) {
   return <li>
     <a href={path}>{title}</a>{' '}
     {/* Update every 30 seconds. */}
-    <Moment date={new Date(published_at)} fromNow interval={30000} className={styles.date} />
+    <Moment date={new Date(published_at)} fromNow interval={30000} className={postStyles.date} />
   </li>
 }
 
@@ -16,7 +16,7 @@ export default function Tag({ match }) {
   const [data, setData] = useState({})
   const [error, setError] = useState(null)
 
-  function componentDidMount() {
+  useEffect(() => {
     const slug = match.params.slug
     fetch(`https://raw.githubusercontent.com/botanicus/data.blog/content/content/tags/${slug}.json`)
     // We get the API response and receive data in JSON format...
@@ -31,12 +31,11 @@ export default function Tag({ match }) {
       setIsLoading(false)
       setError(error)
     })
-  }
+  })
 
   const { tag, posts } = data
   if (isLoading) return null
-  console.log(tag)
-  console.log(posts)
+  if (error) return <FetchError error={error} />
   return <Fragment>
     <h1>{tag.title}</h1>
     <ul>
