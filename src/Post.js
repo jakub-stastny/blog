@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import Moment from 'react-moment';
+import React, { Component } from 'react'
+import Moment from 'react-moment'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import TagList from './TagList'
 import Discussion from './Discussion'
 
-import styles from './Post.module.css';
+import styles from './Post.module.css'
 
 export default class Post extends Component {
   state = {post: {}, isLoading: true}
@@ -23,11 +23,11 @@ export default class Post extends Component {
       })
     )
     // Catch any errors we hit and update the app
-    .catch(error => this.setState({error, isLoading: false}));
+    .catch(error => this.setState({error, isLoading: false}))
   }
 
   render() {
-    const { post } = this.state;
+    const { post } = this.state
     console.log(post)
 
     return (
@@ -46,6 +46,6 @@ export default class Post extends Component {
 
         <Discussion url={post.url} identifier={post.slug} title={post.title} />
       </article>
-    );
+    )
   }
 }

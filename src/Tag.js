@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from 'react';
-import Moment from 'react-moment';
+import React, { Fragment, useState } from 'react'
+import Moment from 'react-moment'
 
 const styles = {} // FIXME
 
@@ -30,7 +30,7 @@ export default function Tag({ match }) {
     .catch(error => {
       setIsLoading(false)
       setError(error)
-    });
+    })
   }
 
   const { tag, posts } = data

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from 'react'
 
 // TODO: Use h1, but put it into some <article or what is being used for this and tweak the styles so it isn't that big.
 // ["title", "tags", "digest", "published_at", "slug", "excerpt", "path", "links"]

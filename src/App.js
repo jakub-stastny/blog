@@ -1,27 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import styles from './App.module.css';
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import styles from './App.module.css'
 
-import Link from './Link';
-import Ribbon from './Ribbon';
-import Email from './Email';
-import Post from './Post';
-import Tag from './Tag';
+import Link from './Link'
+import Ribbon from './Ribbon'
+import Email from './Email'
+import Post from './Post'
+import Tag from './Tag'
 
-import About from './About';
-import Home from './Home';
-import NoMatch from './Errors';
+import About from './About'
+import Home from './Home'
+import NoMatch from './Errors'
 
-import config from './config';
-import GoogleAnalytics from 'react-router-ga';
+import config from './config'
+import GoogleAnalytics from 'react-router-ga'
 
 /* https://fontawesome.com/how-to-use/on-the-web/using-with/react */
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faEnvelope, faTwitter, faGithub);
+library.add(faEnvelope, faTwitter, faGithub)
 
 
 // const ensure = (value) => value || throw("Undefined")
@@ -69,4 +69,4 @@ const AppRouter = () => (
   </Router>
 )
 
-export default AppRouter;
+export default AppRouter

@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from 'react'
 import { SelfLinkingEmail } from './Email'
-import HashTag from './HashTag';
-import YearsOfExperience from './YearsOfExperience';
-import Highlight from './Highlight';
-import config from './config';
+import HashTag from './HashTag'
+import YearsOfExperience from './YearsOfExperience'
+import Highlight from './Highlight'
+import config from './config'
 
 export default () => <Fragment>
   <h2>Hi! My name is James.</h2>
