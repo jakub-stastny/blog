@@ -11,7 +11,7 @@ const Tag = ({title, path}) => <Fragment>
 //       .reduce((prev, curr) => [prev, ' ', curr])
 //   }
 // }
-export default ({tags = []}) => {
+export default function TagList ({ tags = [] }) {
   return tags
     .map((tag) => <Tag key={tag.slug} title={tag.title} path={tag.path} />)
     .reduce((prev, curr) => [prev, ' ', curr])

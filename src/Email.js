@@ -6,6 +6,8 @@ import config from './config'
 // Not everyone has mailto: associated.
 
 const SelfLinkingEmail = ({subject})  => <Obfuscate email={config.contactEmail} />
-export {SelfLinkingEmail}
+export { SelfLinkingEmail }
 
-export default ({subject, children}) => <Obfuscate email={config.contactEmail} headers={{subject}}>{children}</Obfuscate>
+export default function Email ({ subject, children }) {
+  return <Obfuscate email={config.contactEmail} headers={{subject}}>{children}</Obfuscate>
+}

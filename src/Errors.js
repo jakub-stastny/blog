@@ -1,3 +1,6 @@
+// TODO: Move FetchError in here.
 import React from 'react'
 
-export default () => <h2>No match for <code>{window.location.pathname}</code></h2>
+export default function RoutingError () {
+  return <h2>No match for <code>{window.location.pathname}</code></h2>
+}

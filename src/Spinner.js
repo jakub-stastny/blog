@@ -5,7 +5,9 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faSpinner)
 
-export default () => <Fragment>
-  <FontAwesomeIcon icon={faSpinner} spin={true} />{' '}
-  Loading ...
-</Fragment>
+export default function Spinner () {
+  return <Fragment>
+    <FontAwesomeIcon icon={faSpinner} spin={true} />{' '}
+    Loading ...
+  </Fragment>
+}
