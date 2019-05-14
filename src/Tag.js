@@ -33,9 +33,11 @@ export default function Tag({ match }) {
     })
   })
 
-  const { tag, posts } = data
   if (isLoading) return null
   if (error) return <FetchError error={error} />
+
+  const { tag, posts } = data
+
   return <Fragment>
     <h1>{tag.title}</h1>
     <ul>
