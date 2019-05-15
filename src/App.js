@@ -12,7 +12,7 @@ import About from './About'
 import Home from './Home'
 import { RoutingError } from './Errors'
 
-import config from './config'
+import { isProduction, googleAnalyticsTrackingId } from './config'
 import GoogleAnalytics from 'react-router-ga'
 
 /* https://fontawesome.com/how-to-use/on-the-web/using-with/react */
@@ -26,12 +26,10 @@ library.add(faEnvelope, faTwitter, faGithub)
 
 // const ensure = (value) => value || throw("Undefined")
 
-console.log(config)
-
 const AppRouter = () => (
   <Router>
     {/* The ID has to be empty in development. Google Analytics detect localhost, but not a remote IP. */}
-    <GoogleAnalytics id={config.googleAnalyticsTrackingId} debug={config.isProduction}>
+    <GoogleAnalytics id={googleAnalyticsTrackingId} debug={isProduction}>
       <Ribbon>Hire me <Email subject="Hey! I'm looking for a Ruby/JS dev! Are you available?"><FontAwesomeIcon icon={faEnvelope} color="DodgerBlue" /></Email></Ribbon>
 
       <div className={styles.content}>

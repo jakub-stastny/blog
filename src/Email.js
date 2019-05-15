@@ -1,13 +1,14 @@
 import React from 'react'
 import Obfuscate from 'react-obfuscate'
-import config from './config'
+import { contactEmail } from './config'
 
 // subject, body as a query string.
 // Not everyone has mailto: associated.
 
-const SelfLinkingEmail = ({subject})  => <Obfuscate email={config.contactEmail} />
-export { SelfLinkingEmail }
+export function SelfLinkingEmail ({ subject }) {
+  return <Obfuscate email={contactEmail} />
+}
 
 export default function Email ({ subject, children }) {
-  return <Obfuscate email={config.contactEmail} headers={{subject}}>{children}</Obfuscate>
+  return <Obfuscate email={contactEmail} headers={{subject}}>{children}</Obfuscate>
 }
