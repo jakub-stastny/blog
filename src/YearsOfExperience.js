@@ -1,8 +1,8 @@
 import React from 'react'
 import config from './config'
 
-const year = new Date().getFullYear()
+const currentYear = new Date().getFullYear()
 
 export default function YearsOfExperience () {
-  return <abbr title={`From ${config.startYear} on`}>{year - config.startYear}</abbr>
+  return <abbr title={`From ${config.startYear} on`}>{currentYear - config.startYear}</abbr>
 }
