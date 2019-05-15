@@ -5,8 +5,10 @@ import YearsOfExperience from '../YearsOfExperience/YearsOfExperience'
 import Highlight from '../Highlight/Highlight'
 import { rate } from '../config'
 
+import TagList from '../TagList/TagList'
 export default function About () {
   return <Fragment>
+    <TagList tags={[{slug: 'xyz', title: 'XYZ', path: '/xyz'}]} />
     <h2>Hi! My name is James.</h2>
     <p>
       Thank you for visiting my humble blog.
