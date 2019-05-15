@@ -1,5 +1,5 @@
 import React from 'react'
-import { startYear } from './config'
+import { startYear } from '../config'
 
 const currentYear = new Date().getFullYear()
 

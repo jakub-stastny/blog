@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Moment from 'react-moment'
-import { FetchError } from './Errors'
+import { FetchError } from '../Errors/Errors'
 
 import { Link } from 'react-router-dom'
-import TagList from './TagList'
-import Discussion from './Discussion'
+import TagList from '../TagList/TagList'
+import Discussion from '../Discussion/Discussion'
 
 import styles from './Post.module.css'
 

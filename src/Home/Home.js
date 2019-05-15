@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 //import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import PostPreview from './PostPreview'
-import Spinner from './Spinner'
+import PostPreview from '../PostPreview/PostPreview'
+import Spinner from '../Spinner/Spinner'
 
 export default class Home extends Component {
   state = {posts: [], isLoading: true}

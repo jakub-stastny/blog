@@ -1,7 +1,7 @@
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
-import YearsOfExperience from './YearsOfExperience'
-import { startYear } from './config'
+import YearsOfExperience from '../YearsOfExperience/YearsOfExperience'
+import { startYear } from '../config'
 
 it('requires startYear to be present in the config', () => {
   expect(startYear).toEqual(2008)

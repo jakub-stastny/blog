@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import Moment from 'react-moment'
-import { FetchError } from './Errors'
-import postStyles from './Post.module.css'
+import { FetchError } from '../Errors/Errors'
+import postStyles from '../Post/Post.module.css'
 
 function Post({ title, path, published_at }) {
   return <li>

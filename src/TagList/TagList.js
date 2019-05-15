@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-const Tag = ({title, path}) => <Fragment>
+const Tag = ({ title, path }) => <Fragment>
   <a href={path}>{title}</a>
 </Fragment>
 

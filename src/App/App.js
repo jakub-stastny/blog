@@ -1,18 +1,18 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import styles from './App.module.css'
+import styles from '../App/App.module.css'
 
-import Link from './Link'
-import Ribbon from './Ribbon'
-import Email from './Email'
-import Post from './Post'
-import Tag from './Tag'
+import Link from '../Link/Link'
+import Ribbon from '../Ribbon/Ribbon'
+import Email from '../Email/Email'
+import Post from '../Post/Post'
+import Tag from '../Tag/Tag'
 
-import About from './About'
-import Home from './Home'
-import { RoutingError } from './Errors'
+import About from '../About/About'
+import Home from '../Home/Home'
+import { RoutingError } from '../Errors/Errors'
 
-import { isProduction, googleAnalyticsTrackingId } from './config'
+import { isProduction, googleAnalyticsTrackingId } from '../config'
 import GoogleAnalytics from 'react-router-ga'
 
 /* https://fontawesome.com/how-to-use/on-the-web/using-with/react */
