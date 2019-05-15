@@ -27,3 +27,7 @@ it('renders a list of tags with links to the tag pages', () => {
   expect(list[5].props.href).toEqual('/tags/español')
   expect(list[5].children).toEqual(['Español'])
 })
+
+it('renders nothing if no tags are provided', () => {
+  expect(TestRenderer.create(<TagList />).toJSON()).toBe(null)
+})

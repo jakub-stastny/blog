@@ -23,11 +23,8 @@ import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faEnvelope, faTwitter, faGithub)
 
-
-// const ensure = (value) => value || throw("Undefined")
-
-const AppRouter = () => (
-  <Router>
+export default function AppRouter () {
+  return <Router>
     {/* The ID has to be empty in development. Google Analytics detect localhost, but not a remote IP. */}
     <GoogleAnalytics id={googleAnalyticsTrackingId} debug={isProduction}>
       <Ribbon>Hire me <Email subject="Hey! I'm looking for a Ruby/JS dev! Are you available?"><FontAwesomeIcon icon={faEnvelope} color="DodgerBlue" /></Email></Ribbon>
@@ -65,6 +62,4 @@ const AppRouter = () => (
       </footer>
     </GoogleAnalytics>
   </Router>
-)
-
-export default AppRouter
+}

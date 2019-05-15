@@ -3,3 +3,4 @@ export function assert(condition, message) {
     throw message || "Assertion failed"
   }
 }
+// const ensure = (value) => value || throw("Undefined")

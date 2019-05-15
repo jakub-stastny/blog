@@ -1,3 +1,14 @@
+/* TODO: Use it like so:
+
+<MyErrorBoundary>
+  <Suspense fallback={<Spinner />}>
+    ...
+  </Suspense>
+</MyErrorBoundary>
+
+See https://reactjs.org/docs/code-splitting.html
+*/
+
 import React, { Fragment } from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
