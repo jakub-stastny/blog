@@ -7,13 +7,13 @@ import { assert } from '../utils'
 // Not everyone has mailto: associated.
 
 export function SelfLinkingEmail ({ subject }) {
-  assert(subject, 'Subject is required')
+  // assert(subject, 'Subject is required')
   assert(contactEmail, 'Contact email is required to be in the config')
   return <Obfuscate email={contactEmail} />
 }
 
 export default function Email ({ subject, children }) {
-  assert(subject, 'Subject is required')
+  // assert(subject, 'Subject is required')
   assert(children, 'Children are required')
   assert(contactEmail, 'Contact email is required to be in the config')
   return <Obfuscate email={contactEmail} headers={{ subject }}>{children}</Obfuscate>
