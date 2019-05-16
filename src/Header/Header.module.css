@@ -1,0 +1,21 @@
+header.main {
+  padding: 20px 0;
+  text-align: center;
+  background-color: BlanchedAlmond;
+}
+
+header.main .gravatar {
+  vertical-align: middle;
+  border-radius: 25px;
+  margin-left: 12px;
+  margin-right: 20px;
+}
+
+header.main .text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+header.main p {
+  font-style: italic;
+}

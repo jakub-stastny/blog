@@ -1,17 +1,3 @@
-header.main {
-  padding: 20px 0;
-  text-align: center;
-  background-color: BlanchedAlmond;
-
-  .gravatar {
-    vertical-align: middle;
-  }
-}
-
-header.main p {
-  font-style: italic;
-}
-
 main {
   width: 80%;
   overflow: auto;
@@ -19,27 +5,7 @@ main {
 }
 
 /* Sticky footer: https://css-tricks.com/couple-takes-sticky-footer */
-footer.main {
-  height: 50px;
-  padding-top: 25px;
-  text-align: center;
-  background-color: BlanchedAlmond;
-}
-
-footer nav ul {
-  margin: inherit;
-  padding: inherit;
-}
-
-footer nav ul li {
-  display: inline;
-}
-
-footer nav ul li + li::before {
-  content: " | ";
-}
-
+/* The rest is in Footer.module.css */
 .content {
   min-height: calc(100vh - 100px); /* Sticky footer. */
 }
-
