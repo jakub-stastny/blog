@@ -8,7 +8,7 @@ import { gravatarEmail } from '../config'
 export default function Header () {
   return  <header className={styles.main}>
     <Gravatar email={gravatarEmail} size={100} className={assert(styles.gravatar)} alt="&lt;gravatar&gt;" />
-    <div class={assert(styles.text)}>
+    <div className={assert(styles.text)}>
       <h1>
         <Link to="/">James C Russell's blog</Link>
       </h1>

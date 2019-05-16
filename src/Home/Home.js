@@ -1,8 +1,10 @@
 /* TODO: tests. */
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 //import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PostPreview from '../PostPreview/PostPreview'
 import Spinner from '../Spinner/Spinner'
+import styles from './Home.module.css'
+import { assert } from '../utils'
 
 export default function Home () {
   const [isLoading, setIsLoading] = useState(true)
@@ -36,6 +38,6 @@ export default function Home () {
   } else if (error) {
     return <h1>Error</h1>
   } else {
-    return <Fragment>There are no posts yet.</Fragment>
+    return <div className={assert(styles.empty)}>There are no posts yet.</div>
   }
 }
