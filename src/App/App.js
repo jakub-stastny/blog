@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styles from '../App/App.module.css'
 
 import Link from '../Link/Link'
-import Ribbon from '../Ribbon/Ribbon'
-import Email from '../Email/Email'
+// import Ribbon from '../Ribbon/Ribbon'
 import Post from '../Post/Post'
 import Tag from '../Tag/Tag'
 
@@ -12,7 +11,10 @@ import About from '../About/About'
 import Home from '../Home/Home'
 import { RoutingError } from '../Errors/Errors'
 
-import { isProduction, googleAnalyticsTrackingId } from '../config'
+import Gravatar from 'react-gravatar'
+import { assert } from '../utils'
+
+import { isProduction, gravatarEmail, googleAnalyticsTrackingId } from '../config'
 import GoogleAnalytics from 'react-router-ga'
 
 /* https://fontawesome.com/how-to-use/on-the-web/using-with/react */
@@ -23,14 +25,16 @@ import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faEnvelope, faTwitter, faGithub)
 
+console.log(gravatarEmail)
 export default function AppRouter () {
   return <Router>
     {/* The ID has to be empty in development. Google Analytics detect localhost, but not a remote IP. */}
     <GoogleAnalytics id={googleAnalyticsTrackingId} debug={isProduction}>
-      <Ribbon>Hire me <Email subject="Hey! I'm looking for a Ruby/JS dev! Are you available?"><FontAwesomeIcon icon={faEnvelope} color="DodgerBlue" /></Email></Ribbon>
+      {/*<Ribbon>Hire me <Email subject="Hey! I'm looking for a Ruby/JS dev! Are you available?"><FontAwesomeIcon icon={faEnvelope} color="DodgerBlue" /></Email></Ribbon>*/}
 
       <div className={styles.content}>
         <header className={styles.main}>
+          <Gravatar email={gravatarEmail} size={100} className={assert(styles.gravatar)} />
           <h1>
             <Link to="/">James C Russell's blog</Link>
           </h1>
