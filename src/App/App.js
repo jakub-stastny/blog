@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styles from '../App/App.module.css'
 
-import Link from '../Link/Link'
 // import Ribbon from '../Ribbon/Ribbon'
 import Post from '../Post/Post'
 import Tag from '../Tag/Tag'
@@ -31,7 +30,7 @@ export default function AppRouter () {
     <GoogleAnalytics id={googleAnalyticsTrackingId} debug={isProduction}>
       {/*<Ribbon>Hire me <Email subject="Hey! I'm looking for a Ruby/JS dev! Are you available?"><FontAwesomeIcon icon={faEnvelope} color="DodgerBlue" /></Email></Ribbon>*/}
 
-      <div className={styles.content}>
+      <div className={assert(styles.content)}>
         <Header />
 
         <main>

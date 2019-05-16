@@ -3,6 +3,7 @@ import { SelfLinkingEmail } from '../Email/Email'
 import HashTag from '../HashTag/HashTag'
 import YearsOfExperience from '../YearsOfExperience/YearsOfExperience'
 import Highlight from '../Highlight/Highlight'
+import Abbr from '../Abbr/Abbr'
 import { rate } from '../config'
 
 export default function About () {
@@ -38,7 +39,7 @@ export default function About () {
 
     <h3>How do I work?</h3>
     <p>
-      Just as about any remotely working freelancer, my main work tools are Slack, e-mail and an <abbr title="Mainly Jira, sometimes GitHub or GitLab issues, Pivotal Tracker, Trello and whatnot.">issue tracker</abbr>.
+      Just as about any remotely working freelancer, my main work tools are Slack, e-mail and an <Abbr title="Mainly Jira, sometimes GitHub or GitLab issues, Pivotal Tracker, Trello and whatnot.">issue tracker</Abbr>.
     </p>
 
     <p>
