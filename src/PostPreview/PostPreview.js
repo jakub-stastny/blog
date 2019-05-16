@@ -11,8 +11,6 @@ export default function PostPreview ({ path, title, excerpt }) {
 
   return <Fragment>
     <h2><a href={path}>{title}</a></h2>
-    <p>
-      {excerpt}
-    </p>
+    <p>{excerpt}</p>
   </Fragment>
 }
