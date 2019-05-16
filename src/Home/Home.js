@@ -5,7 +5,6 @@ import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import styles from './Home.module.css'
 import { assert } from '../utils'
 
-/* FIXME: The whole fetchdata thing keeps rerendering. Add a log statement and fix it. */
 function PostList ({ posts }) {
   if (posts.length) {
     return posts.map((post) => <PostPreview key={post.slug} {...post} />)

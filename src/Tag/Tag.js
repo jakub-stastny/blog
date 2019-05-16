@@ -1,9 +1,12 @@
 /* TODO: tests. */
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment }  from 'react'
 import Moment from 'react-moment'
-import { FetchError } from '../Errors/Errors'
+import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
+import { assert } from '../utils'
 import postStyles from '../Post/Post.module.css'
+import homeStyles from '../Home/Home.module.css'
 
+/* TODO: This probably should be PostPreview. */
 function Post({ title, path, published_at }) {
   return <li>
     <a href={path}>{title}</a>{' '}
@@ -12,37 +15,34 @@ function Post({ title, path, published_at }) {
   </li>
 }
 
-export default function Tag({ match }) {
-  const [isLoading, setIsLoading] = useState(true)
-  const [data, setData] = useState({})
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    const slug = match.params.slug
-    fetch(`https://raw.githubusercontent.com/botanicus/data.blog/content/content/tags/${slug}.json`)
-    // We get the API response and receive data in JSON format...
-    .then(response => response.json())
-    // ...then we update the users state
-    .then(data => {
-      setIsLoading(false)
-      setData(data)
-    })
-    // Catch any errors we hit and update the app
-    .catch(error => {
-      setIsLoading(false)
-      setError(error)
-    })
-  })
-
-  if (isLoading) return null
-  if (error) return <FetchError error={error} />
-
-  const { tag, posts } = data
-
+function TagPreview ({ slug, title, posts }) {
   return <Fragment>
-    <h1>{tag.title}</h1>
+    <h1>{title}</h1>
     <ul>
       {posts.map((post) => <Post {...post} />)}
     </ul>
   </Fragment>
+}
+
+function TagList ({ data }) {
+  const { tag, posts } = data
+
+  if (posts.length) {
+    return posts.map((tag) => <TagPreview key={tag.slug} {...tag} />)
+  } else {
+    // TODO: This keeps repeating, extract it out.
+    // Actually ... this shouldn't ever happen, the generator wouldn't generate it.
+    return <div className={assert(homeStyles.empty)}>There are no posts for this tag yet.</div>
+  }
+}
+
+export default function Tag ({ match }) {
+  const slug = match.params.slug
+  const [isLoading, data, error] = useFetchedData(
+    `https://raw.githubusercontent.com/botanicus/data.blog/content/content/tags/${slug}.json`, {}
+  )
+
+  return <FetchedData isLoading={isLoading} error={error}>
+    <TagList data={data} />
+  </FetchedData>
 }
