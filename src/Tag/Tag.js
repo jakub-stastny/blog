@@ -39,7 +39,7 @@ function TagList ({ data }) {
 export default function Tag ({ match }) {
   const slug = match.params.slug
   const [isLoading, data, error] = useFetchedData(
-    `https://raw.githubusercontent.com/botanicus/data.blog/content/content/tags/${slug}.json`, {}
+    `https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags/${slug}.json`, {}
   )
 
   return <FetchedData isLoading={isLoading} error={error}>

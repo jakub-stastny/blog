@@ -12,7 +12,7 @@ import styles from './Post.module.css'
 export default function Post ({ match }) {
   const slug = this.props.match.params.slug
   const [isLoading, post, error] = useFetchedData(
-    `https://raw.githubusercontent.com/botanicus/data.blog/content/content/posts/${slug}.json`, {}
+    `https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts/${slug}.json`, {}
   )
 
   return <FetchedData isLoading={isLoading} error={error}>

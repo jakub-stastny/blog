@@ -15,7 +15,7 @@ function PostList ({ posts }) {
 
 export default function Home () {
   const [isLoading, posts, error] = useFetchedData(
-    'https://raw.githubusercontent.com/botanicus/data.blog/content/content/posts.json', []
+    'https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts.json', []
   )
 
   return <FetchedData isLoading={isLoading} error={error}>
