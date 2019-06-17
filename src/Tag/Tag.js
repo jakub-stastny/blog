@@ -7,11 +7,11 @@ import postStyles from '../Post/Post.module.css'
 import homeStyles from '../Home/Home.module.css'
 
 /* TODO: This probably should be PostPreview. */
-function Post({ title, path, published_at }) {
+function Post({ title, path, date }) {
   return <li>
     <a href={path}>{title}</a>{' '}
     {/* Update every 30 seconds. */}
-    <Moment date={new Date(published_at)} fromNow interval={30000} className={postStyles.date} />
+    <Moment date={new Date(date)} fromNow interval={30000} className={postStyles.date} />
   </li>
 }
 
@@ -25,10 +25,9 @@ function TagPreview ({ slug, title, posts }) {
 }
 
 function TagList ({ data }) {
-  const { tag, posts } = data
-
-  if (posts.length) {
-    return posts.map((tag) => <TagPreview key={tag.slug} {...tag} />)
+  if (data.posts.length) {
+    console.log(data)
+    // return data.posts.map((post) => <TagPreview key={data.slug} {...data} />)
   } else {
     // TODO: This keeps repeating, extract it out.
     // Actually ... this shouldn't ever happen, the generator wouldn't generate it.

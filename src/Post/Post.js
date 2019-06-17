@@ -19,7 +19,7 @@ export default function Post ({ match }) {
     <article>
       <h1>{post.title}</h1>
       {/* Update every 30 seconds. */}
-      <Moment date={new Date(post.published_at)} fromNow interval={30000} className={assert(styles.date)} />
+      <Moment date={new Date(post.date)} fromNow interval={30000} className={assert(styles.date)} />
       <TagList tags={post.tags} />
       <p className={styles.excerpt} dangerouslySetInnerHTML={{__html: post.excerpt}} />
       <div dangerouslySetInnerHTML={{ __html: post.body}} />
