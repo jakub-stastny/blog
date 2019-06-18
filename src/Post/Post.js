@@ -11,7 +11,7 @@ import showdown from 'showdown'
 import styles from './Post.module.css'
 
 function markdownToHTML (markdownText) {
-  const converter = new showdown.Converter({metadata: true})
+  const converter = new showdown.Converter()
   return converter.makeHtml(markdownText)
 }
 
@@ -21,21 +21,23 @@ export default function Post ({ match }) {
     `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/${slug}.json`, {}
   )
 
-  return <FetchedData isLoading={isLoading} error={error}>
-    <article>
-      <h1>{post.title}</h1>
-      {/* Update every 30 seconds. */}
-      <Moment date={new Date(post.date)} fromNow interval={30000} className={assert(styles.date)} />
-      <TagList tags={post.tags} />
-      <p className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
-      <div dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} />
+  return (
+    <FetchedData isLoading={isLoading} error={error}>
+      <article>
+        <h1>{post.title}</h1>
+        {/* Update every 30 seconds. */}
+        <Moment date={new Date(post.date)} fromNow interval={30000} className={assert(styles.date)} />
+        <TagList tags={post.tags} />
+        <p className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
+        <div dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} />
 
-      <footer>
-        {/* TODO: gravatar. */}
-        <Link to="/about">About the author</Link>.
-      </footer>
+        <footer>
+          {/* TODO: gravatar. */}
+          <Link to="/about">About the author</Link>.
+        </footer>
 
-      <Discussion url={post.url} identifier={post.slug} title={post.title} />
-    </article>
-  </FetchedData>
+        <Discussion url={post.url} identifier={post.slug} title={post.title} />
+      </article>
+    </FetchedData>
+  )
 }

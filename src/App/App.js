@@ -26,8 +26,8 @@ import GoogleAnalytics from 'react-router-ga'
 
 // library.add(faEnvelope)
 
-export default function AppRouter () {
-  return <Router>
+export default () => (
+  <Router>
     {/* The ID has to be empty in development. Google Analytics detect localhost, but not a remote IP. */}
     <GoogleAnalytics id={googleAnalyticsTrackingId} debug={isProduction}>
       {/*<Ribbon>Hire me <Email subject="Hey! I'm looking for a Ruby/JS dev! Are you available?"><FontAwesomeIcon icon={faEnvelope} color="DodgerBlue" /></Email></Ribbon>*/}
@@ -50,4 +50,4 @@ export default function AppRouter () {
       <Footer />
     </GoogleAnalytics>
   </Router>
-}
+)
