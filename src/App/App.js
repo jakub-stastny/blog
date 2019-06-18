@@ -40,8 +40,8 @@ export default function AppRouter () {
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/posts/:slug" component={Post} />
-            <Route path="/tags" component={TagsPage} />
             <Route path="/tags/:slug" component={Tag} />
+            <Route path="/tags" component={TagsPage} />
             <Route component={RoutingError} />
           </Switch>
         </main>

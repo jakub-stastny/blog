@@ -7,32 +7,31 @@ import postStyles from '../Post/Post.module.css'
 import homeStyles from '../Home/Home.module.css'
 
 /* TODO: This probably should be PostPreview. */
-function Post({ title, path, date }) {
+function Post({ title, slug, date }) {
   return <li>
-    <a href={path}>{title}</a>{' '}
+    <a href={`/posts/${slug}`}>{title}</a>{' '}
     {/* Update every 30 seconds. */}
     <Moment date={new Date(date)} fromNow interval={30000} className={postStyles.date} />
   </li>
 }
 
-function TagPreview ({ slug, title, posts }) {
-  return <Fragment>
-    <h1>{title}</h1>
-    <ul>
-      {posts.map((post) => <Post {...post} />)}
+function TagListContent ({ posts = [] }) {
+  if (posts.length) {
+    return <ul>
+      {posts.map((post) => <Post key={post.slug} {...post} />)}
     </ul>
-  </Fragment>
-}
-
-function TagList ({ data }) {
-  if (data.posts.length) {
-    console.log(data)
-    // return data.posts.map((post) => <TagPreview key={data.slug} {...data} />)
   } else {
     // TODO: This keeps repeating, extract it out.
     // Actually ... this shouldn't ever happen, the generator wouldn't generate it.
     return <div className={assert(homeStyles.empty)}>There are no posts for this tag yet.</div>
   }
+}
+
+function TagList ({ name, posts }) {
+  return <Fragment>
+    <h1>{name}</h1>
+    <TagListContent posts={posts} />
+  </Fragment>
 }
 
 export default function Tag ({ match }) {
@@ -42,6 +41,6 @@ export default function Tag ({ match }) {
   )
 
   return <FetchedData isLoading={isLoading} error={error}>
-    <TagList data={data} />
+    <TagList {...data} />
   </FetchedData>
 }
