@@ -10,9 +10,9 @@ import { assert } from '../utils'
 import styles from './Post.module.css'
 
 export default function Post ({ match }) {
-  const slug = this.props.match.params.slug
+  const slug = match.params.slug
   const [isLoading, post, error] = useFetchedData(
-    `https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts/${slug}.json`, {}
+    `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/${slug}.json`, {}
   )
 
   return <FetchedData isLoading={isLoading} error={error}>
