@@ -6,8 +6,14 @@ import TagList from '../TagList/TagList'
 import Discussion from '../Discussion/Discussion'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import { assert } from '../utils'
+import showdown from 'showdown'
 
 import styles from './Post.module.css'
+
+function markdownToHTML (markdownText) {
+  const converter = new showdown.Converter({metadata: true})
+  return converter.makeHtml(markdownText)
+}
 
 export default function Post ({ match }) {
   const slug = match.params.slug
@@ -21,8 +27,8 @@ export default function Post ({ match }) {
       {/* Update every 30 seconds. */}
       <Moment date={new Date(post.date)} fromNow interval={30000} className={assert(styles.date)} />
       <TagList tags={post.tags} />
-      <p className={styles.excerpt} dangerouslySetInnerHTML={{__html: post.excerpt}} />
-      <div dangerouslySetInnerHTML={{ __html: post.body}} />
+      <p className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
+      <div dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} />
 
       <footer>
         {/* TODO: gravatar. */}

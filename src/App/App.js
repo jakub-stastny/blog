@@ -5,6 +5,8 @@ import styles from '../App/App.module.css'
 // import Ribbon from '../Ribbon/Ribbon'
 import Post from '../Post/Post'
 import Tag from '../Tag/Tag'
+import TagsPage from '../TagsPage/TagsPage'
+// TODO: Use the Page suffix generally.
 
 import About from '../About/About'
 import Home from '../Home/Home'
@@ -38,6 +40,7 @@ export default function AppRouter () {
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/posts/:slug" component={Post} />
+            <Route path="/tags" component={TagsPage} />
             <Route path="/tags/:slug" component={Tag} />
             <Route component={RoutingError} />
           </Switch>
