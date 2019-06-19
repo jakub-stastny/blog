@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
-import styles from '../PostPage/PostPage.module.css'
+import styles from '../PostPreview/PostPreview.module.css'
 
 // NOTE: This fn doesn't have .name.
 // TODO: Use h1, but put it into some <article or what is being used for this and tweak the styles so it isn't that big.
