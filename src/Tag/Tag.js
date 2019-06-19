@@ -13,7 +13,7 @@ const PostPreview = ({ title, slug, date }) => (
 )
 
 // There are always some posts in the loaded state, otherwise the JSON tag file would never get compiled.
-const PostPreviewList = ({ posts }) => (
+const PostPreviewList = ({ posts = [] }) => (
   <ul>
     {posts.map((post) => <PostPreview key={post.slug} {...post} />)}
   </ul>

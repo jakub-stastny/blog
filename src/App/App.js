@@ -6,6 +6,7 @@ import styles from '../App/App.module.css'
 import Post from '../Post/Post'
 import Tag from '../Tag/Tag'
 import TagsPage from '../TagsPage/TagsPage'
+import NowPage from '../NowPage/NowPage'
 // TODO: Use the Page suffix generally.
 
 import About from '../About/About'
@@ -42,6 +43,7 @@ export default () => (
             <Route path="/posts/:slug" component={Post} />
             <Route path="/tags/:slug" component={Tag} />
             <Route path="/tags" component={TagsPage} />
+            <Route path="/now" component={NowPage} />
             <Route component={RoutingError} />
           </Switch>
         </main>
