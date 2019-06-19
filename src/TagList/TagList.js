@@ -1,13 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import Join from '../Join/Join'
 
-const Tag = ({ name, path }) => (
-  <Fragment>
-    <a href={path}>{name}</a>
-  </Fragment>
-)
-
-export default ({ tags = [] }) => (
-  tags
-    .map((tag) => <Tag key={tag.slug} name={tag.name} path={`/tags/${tag.slug}`} />)
-    .reduce((prev, curr) => [prev, ' ', curr], [])
+export default ({ tags }) => (
+  <Join items={tags}>
+    {({ slug, name }) => (
+      <a href={`/tags/${slug}`}>{name}</a>
+    )}
+  </Join>
 )
