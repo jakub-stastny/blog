@@ -10,7 +10,7 @@ export default function Header () {
     <Gravatar email={gravatarEmail} size={100} className={assert(styles.gravatar)} alt="&lt;gravatar&gt;" />
     <div className={assert(styles.text)}>
       <h1>
-        <Link to="/">James C Russell's blog</Link>
+        <Link to="/">James C Russell</Link>
       </h1>
       <p>
         Web development, Ruby, React.js, learning languages and life.

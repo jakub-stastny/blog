@@ -8,6 +8,6 @@ const Tag = ({ name, path }) => (
 
 export default ({ tags = [] }) => (
   tags
-    .map((tag) => <Tag key={tag.slug} name={tag.name} path={tag.path} />)
+    .map((tag) => <Tag key={tag.slug} name={tag.name} path={`/tags/${tag.slug}`} />)
     .reduce((prev, curr) => [prev, ' ', curr], [])
 )

@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import TagList from '../TagList/TagList'
 import Discussion from '../Discussion/Discussion'
-import PublishedDate from '../PublishedDate/PublishedDate'
+import PostStatusLine from '../PostStatusLine/PostStatusLine'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import { assert } from '../utils'
 import showdown from 'showdown'
@@ -25,8 +25,7 @@ export default function Post ({ match }) {
     <FetchedData isLoading={isLoading} error={error}>
       <article>
         <h1>{post.title}</h1>
-        <PublishedDate date={post.date} />
-        <TagList tags={post.tags} />
+        <PostStatusLine date={post.date} tags={post.tags} />
         <p className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
         <div dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} />
 

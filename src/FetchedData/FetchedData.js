@@ -19,13 +19,15 @@ export function useFetchedData (url, defaultFetchedDataValue) {
     .then(response => response.json())
     // ...then we update the users state
     .then(data => {
-      setIsLoading(false)
+      // The order is important! Otherwise we will do two renders of the inner component of FetchedData,
+      // calling it first time with undefined as data, most likely causing errors.
       setFetchedData(data)
+      setIsLoading(false)
     })
     // Catch any errors we hit and update the app
     .catch(error => {
-      setIsLoading(false)
       setError(error)
+      setIsLoading(false)
     })
 
     setWasFired(true) ////
