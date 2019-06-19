@@ -2,11 +2,14 @@
 import React, { Fragment }  from 'react'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import PublishedDate from '../PublishedDate/PublishedDate'
+import styles from './TagPage.module.css'
 
 const PostPreview = ({ title, slug, date }) => (
   <li>
     <a href={`/posts/${slug}`}>{title}</a>{' '}
-    <PublishedDate date={date} />
+    <span className={styles.date}>
+      <PublishedDate date={date} />
+    </span>
   </li>
 )
 
@@ -19,7 +22,7 @@ const PostPreviewList = ({ posts = [] }) => (
 
 const TagList = ({ name, posts }) => (
   <Fragment>
-    <h1>{name}</h1>
+    <h1>Posts tagged <span className={styles.emphasis}>{name}</span></h1>
     <PostPreviewList posts={posts} />
   </Fragment>
 )
