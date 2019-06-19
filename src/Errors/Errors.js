@@ -8,6 +8,6 @@ export const FetchError = (error) => (
   </div>
 )
 
-export const RoutingError = () => (
+export const RoutingErrorPage = () => (
   <h2>No match for <code>{window.location.pathname}</code></h2>
 )

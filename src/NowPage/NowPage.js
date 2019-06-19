@@ -1,6 +1,6 @@
 import React from 'react'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
-import Post from '../Post/Post'
+import PostPage from '../PostPage/PostPage'
 
 /*
   Render latest post tagged with 'now'.
@@ -19,7 +19,7 @@ export default function NowPage () {
   // FIXME: The code inside FetchedData looks wrong, why is it evaluated before we've got data?
   return (
     <FetchedData isLoading={isLoading} error={error}>
-      { data && data.posts ? <Post match={{params: {slug: getLastUpdatePostSlug(data)}}} /> : <div /> }
+      { data && data.posts ? <PostPage match={{params: {slug: getLastUpdatePostSlug(data)}}} /> : <div /> }
     </FetchedData>
   )
 }

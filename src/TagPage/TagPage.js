@@ -1,14 +1,12 @@
 /* TODO: tests. */
 import React, { Fragment }  from 'react'
-import Moment from 'react-moment'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
-import postStyles from '../Post/Post.module.css'
+import PublishedDate from '../PublishedDate/PublishedDate'
 
-/* Update timestamp every 30 seconds. */
 const PostPreview = ({ title, slug, date }) => (
   <li>
     <a href={`/posts/${slug}`}>{title}</a>{' '}
-    <Moment date={new Date(date)} fromNow interval={30000} className={postStyles.date} />
+    <PublishedDate date={date} />
   </li>
 )
 

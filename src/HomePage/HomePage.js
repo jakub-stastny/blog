@@ -2,7 +2,7 @@
 import React from 'react'
 import PostPreview from '../PostPreview/PostPreview'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
-import styles from './Home.module.css'
+import styles from './HomePage.module.css'
 import { assert } from '../utils'
 
 const PostPreviewList = ({ posts }) => (

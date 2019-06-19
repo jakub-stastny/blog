@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react'
 
-const Tag = ({ title, path }) => (
+const Tag = ({ name, path }) => (
   <Fragment>
-    <a href={path}>{title}</a>
+    <a href={path}>{name}</a>
   </Fragment>
 )
 
 export default ({ tags = [] }) => (
   tags
-    .map((tag) => <Tag key={tag.slug} title={tag.title} path={tag.path} />)
+    .map((tag) => <Tag key={tag.slug} name={tag.name} path={tag.path} />)
     .reduce((prev, curr) => [prev, ' ', curr], [])
 )

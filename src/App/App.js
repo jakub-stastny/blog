@@ -3,17 +3,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styles from '../App/App.module.css'
 
 // import Ribbon from '../Ribbon/Ribbon'
-import Post from '../Post/Post'
-import Tag from '../Tag/Tag'
+import PostPage from '../PostPage/PostPage'
+import TagPage from '../TagPage/TagPage'
 import TagsPage from '../TagsPage/TagsPage'
 import NowPage from '../NowPage/NowPage'
-// TODO: Use the Page suffix generally.
+import AboutPage from '../AboutPage/AboutPage'
+import HomePage from '../HomePage/HomePage'
+import { RoutingErrorPage } from '../Errors/Errors'
 
-import About from '../About/About'
-import Home from '../Home/Home'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
-import { RoutingError } from '../Errors/Errors'
 
 import { assert } from '../utils'
 
@@ -38,13 +37,13 @@ export default () => (
 
         <main>
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/posts/:slug" component={Post} />
-            <Route path="/tags/:slug" component={Tag} />
+            <Route path="/" exact component={HomePage} />
+            <Route path="/about" component={AboutPage} />
+            <Route path="/posts/:slug" component={PostPage} />
+            <Route path="/tags/:slug" component={TagPage} />
             <Route path="/tags" component={TagsPage} />
             <Route path="/now" component={NowPage} />
-            <Route component={RoutingError} />
+            <Route component={RoutingErrorPage} />
           </Switch>
         </main>
       </div>

@@ -1,7 +1,7 @@
 /* TODO: tests. */
 import React from 'react'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
-import styles from '../Home/Home.module.css'
+import styles from '../HomePage/HomePage.module.css'
 import { assert } from '../utils'
 import { Link } from 'react-router-dom'
 
