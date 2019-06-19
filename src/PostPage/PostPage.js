@@ -1,11 +1,9 @@
 /* TODO: tests. */
 import React from 'react'
 import { Link } from 'react-router-dom'
-import TagList from '../TagList/TagList'
 import Discussion from '../Discussion/Discussion'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
-import { assert } from '../utils'
 import showdown from 'showdown'
 
 import styles from './PostPage.module.css'
