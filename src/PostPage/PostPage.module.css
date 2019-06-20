@@ -8,3 +8,21 @@
   border-radius: 12px;
   border: solid;
 }
+
+.post h1, h2, h3, h4, h5, h6 {
+  color: darkred;
+}
+
+.post ul {
+  list-style: none; /* Remove default bullets */
+  padding-left: 20px;
+}
+
+.post ul li::before {
+  content: "\2713";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: green; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}

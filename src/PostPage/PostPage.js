@@ -26,7 +26,7 @@ export default function Post ({ match }) {
         <PostStatusLine date={post.date} tags={post.tags} />
         {/* We wrap it in div, as the excerpt is already wrapped in <p> due to the markdown conversion. */}
         <div className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
-        <div dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} />
+        <div className={styles.post} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} />
 
         <footer>
           {/* TODO: gravatar. */}
