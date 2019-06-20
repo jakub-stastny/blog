@@ -7,6 +7,7 @@ import Abbr from '../Abbr/Abbr'
 import { rate } from '../config'
 import { Link } from 'react-router-dom'
 
+// My visionary projects, pupu etc.
 export default function About () {
   return (
     <Fragment>

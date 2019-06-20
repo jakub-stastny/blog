@@ -15,7 +15,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 registerFont(faArrowRight)
 
 function markdownToHTML (markdownText) {
-  const converter = new showdown.Converter()
+  const converter = new showdown.Converter({emoji: true})
   return converter.makeHtml(markdownText)
 }
 
