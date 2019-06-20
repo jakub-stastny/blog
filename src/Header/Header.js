@@ -20,7 +20,7 @@ export default () => (
       </h1>
 
       <p>
-        Web development, Ruby, React.js, languages and life.
+        On programming, Ruby, React.js, languages and&nbsp;life.
       </p>
     </div>
   </header>

@@ -1,15 +1,23 @@
 .mainTitle {
   color: indigo;
+  margin-left: 15px; /* The border-radius shifts text in the excerpt and about the author to the right, let's fix it. */
+}
+
+.statusLine {
+  margin-left: 15px; /* The border-radius shifts text in the excerpt and about the author to the right, let's fix it. */
 }
 
 .excerpt p {
   font-style: italic;
-  /* top right bottom lef*/
-  margin: 20px 0;
+  /* top right bottom left */
+  margin: 20px 20px 25px 0;
   padding: 7px 15px 10px 15px;
   background-color: lightblue;
-  border-radius: 12px;
-  border: solid;
+  border-radius: 20px;
+}
+
+.post {
+  margin-left: 15px; /* The border-radius shifts text in the excerpt and about the author to the right, let's fix it. */
 }
 
 .post h1, h2, h3, h4, h5, h6 {
@@ -30,13 +38,18 @@
   margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
 
-.post footer {
-  background-color: DarkOliveGreen;
+.footer {
+  background-color: darkseagreen;
+  padding: 7px 15px 10px 15px;
+  margin: 25px 0 50px 0;
+  font-style: italic;
+  border-radius: 20px;
 }
 
 /* Classes used within the markdown. */
 .post .hashtag {
   color: gray;
+  text-decoration: underline;
 }
 
 /* .post .hashtag::before { */

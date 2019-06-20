@@ -1,5 +1,5 @@
 .header {
-  height: 100px;
+  height: 110px;
   padding: 20px 0;
   text-align: center;
   background-color: BlanchedAlmond;
@@ -10,6 +10,8 @@
 }
 
 .textSection {
+  padding: 0 12px;
+  line-height: 1.5em;
 }
 
 .textSection p {

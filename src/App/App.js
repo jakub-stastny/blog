@@ -19,13 +19,6 @@ import { assert } from '../utils'
 import { isProduction, googleAnalyticsTrackingId } from '../config'
 import GoogleAnalytics from 'react-router-ga'
 
-/* https://fontawesome.com/how-to-use/on-the-web/using-with/react */
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-
-// library.add(faEnvelope)
-
 export default () => (
   <Router>
     {/* The ID has to be empty in development. Google Analytics detect localhost, but not a remote IP. */}
