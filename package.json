@@ -19,6 +19,7 @@
     "react-router-ga": "^1.2.0",
     "react-scripts": "2.1.2",
     "react-test-renderer": "^16.8.6",
+    "react-tippy": "^1.2.3",
     "showdown": "^1.9.0"
   },
   "scripts": {

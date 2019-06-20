@@ -50,6 +50,11 @@
   margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
 
+.post abbr {
+  text-decoration: none;
+  border-bottom: 2px dotted green;
+}
+
 .footer {
   background-color: darkseagreen;
   padding: 7px 15px 10px 15px;

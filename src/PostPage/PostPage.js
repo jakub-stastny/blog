@@ -1,18 +1,25 @@
 /* TODO: tests. */
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import Discussion from '../Discussion/Discussion'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import showdown from 'showdown'
 import Gravatar from '../Gravatar/Gravatar'
+import { Tooltip } from 'react-tippy'
 
 import styles from './PostPage.module.css'
+import 'react-tippy/dist/tippy.css'
 
 import { registerFont, FontAwesomeIcon } from '../FontAwesome/FontAwesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 registerFont(faArrowRight)
+
+const TouchFriendlyAbbr = ({ text, tooltipText }) => (
+  <Tooltip title={tooltipText} position="bottom" trigger="click">{text} <b style={{color: 'green'}}>(?)</b></Tooltip>
+)
 
 function markdownToHTML (markdownText) {
   const converter = new showdown.Converter({emoji: true})
@@ -25,6 +32,16 @@ export default function Post ({ match }) {
     `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/${slug}.json`, {}
   )
 
+  const bodyRef = useRef(null)
+
+  useEffect(() => {
+    const bodyElement = bodyRef.current
+    if (!bodyElement) return
+    Array.from(bodyElement.querySelectorAll('abbr[title]')).forEach((abbr) => {
+      ReactDOM.render(<TouchFriendlyAbbr text={abbr.innerText} tooltipText={abbr.title} />, abbr)
+    })
+  })
+
   return (
     <FetchedData isLoading={isLoading} error={error}>
       <article>
@@ -35,7 +52,7 @@ export default function Post ({ match }) {
 
         {/* We wrap it in div, as the excerpt is already wrapped in <p> due to the markdown conversion. */}
         <div className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
-        <div className={styles.post} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} />
+        <div className={styles.post} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} />
 
         <footer className={styles.footer}>
           {/*<Gravatar />*/}
