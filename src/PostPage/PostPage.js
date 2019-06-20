@@ -1,5 +1,5 @@
 /* TODO: tests. */
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Discussion from '../Discussion/Discussion'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
@@ -24,7 +24,8 @@ export default function Post ({ match }) {
       <article>
         <h1>{post.title}</h1>
         <PostStatusLine date={post.date} tags={post.tags} />
-        <p className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
+        {/* We wrap it in div, as the excerpt is already wrapped in <p> due to the markdown conversion. */}
+        <div className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
         <div dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} />
 
         <footer>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 const getDivider = (currentItemIndex, array) => {
   const itemsLeft = array.length - currentItemIndex - 1

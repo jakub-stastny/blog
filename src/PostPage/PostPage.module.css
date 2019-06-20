@@ -1,3 +1,10 @@
 .excerpt {
   font-style: italic;
+  /* top and bottom */
+  margin: 20px 0;
+  /* left and right */
+  padding: 0 15px;
+  background-color: lightgreen;
+  border-radius: 12px;
+  border: solid;
 }
