@@ -1,21 +1,17 @@
-header.main {
+.header {
+  height: 100px;
   padding: 20px 0;
   text-align: center;
   background-color: BlanchedAlmond;
 }
 
-header.main .gravatar {
-  vertical-align: middle;
-  border-radius: 25px;
-  margin-left: 12px;
-  margin-right: 20px;
+/* TODO: does this solution work on mobile? */
+.gravatarSection {
 }
 
-header.main .text {
-  display: inline-block;
-  vertical-align: middle;
+.textSection {
 }
 
-header.main p {
+.textSection p {
   font-style: italic;
 }

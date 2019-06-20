@@ -1,10 +1,13 @@
-.excerpt {
+.mainTitle {
+  color: indigo;
+}
+
+.excerpt p {
   font-style: italic;
-  /* top and bottom */
+  /* top right bottom lef*/
   margin: 20px 0;
-  /* left and right */
-  padding: 0 15px;
-  background-color: lightgreen;
+  padding: 7px 15px 10px 15px;
+  background-color: lightblue;
   border-radius: 12px;
   border: solid;
 }
@@ -26,3 +29,16 @@
   width: 1em; /* Also needed for space (tweak if needed) */
   margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
+
+.post footer {
+  background-color: DarkOliveGreen;
+}
+
+/* Classes used within the markdown. */
+.post .hashtag {
+  color: gray;
+}
+
+/* .post .hashtag::before { */
+/*   content: "#"; */
+/* } */
