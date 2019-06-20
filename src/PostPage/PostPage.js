@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import Discussion from '../Discussion/Discussion'
+import HashTag from '../HashTag/HashTag'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import showdown from 'showdown'
@@ -39,6 +40,10 @@ export default function Post ({ match }) {
     if (!bodyElement) return
     Array.from(bodyElement.querySelectorAll('abbr[title]')).forEach((abbr) => {
       ReactDOM.render(<TouchFriendlyAbbr text={abbr.innerText} tooltipText={abbr.title} />, abbr)
+    })
+
+    Array.from(bodyElement.querySelectorAll('i.hashtag')).forEach((i) => {
+      ReactDOM.render(<HashTag>{i.innerText}</HashTag>, i)
     })
   })
 
