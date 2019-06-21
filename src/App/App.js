@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 import styles from '../App/App.module.css'
 
 // import Ribbon from '../Ribbon/Ribbon'
@@ -29,15 +30,17 @@ export default () => (
         <Header />
 
         <main>
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/about" component={AboutPage} />
-            <Route path="/posts/:slug" component={PostPage} />
-            <Route path="/tags/:slug" component={TagPage} />
-            <Route path="/tags" component={TagsPage} />
-            <Route path="/now" component={NowPage} />
-            <Route component={RoutingErrorPage} />
-          </Switch>
+          <ScrollToTop>
+            <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/about" component={AboutPage} />
+              <Route path="/posts/:slug" component={PostPage} />
+              <Route path="/tags/:slug" component={TagPage} />
+              <Route path="/tags" component={TagsPage} />
+              <Route path="/now" component={NowPage} />
+              <Route component={RoutingErrorPage} />
+            </Switch>
+          </ScrollToTop>
         </main>
       </div>
 
