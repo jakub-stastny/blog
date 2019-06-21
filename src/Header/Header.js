@@ -1,5 +1,5 @@
 import React from 'react'
-import Gravatar from '../Gravatar/Gravatar'
+// import Gravatar from '../Gravatar/Gravatar'
 import { assert } from '../utils'
 import styles from '../Header/Header.module.css'
 import Link from '../Link/Link'

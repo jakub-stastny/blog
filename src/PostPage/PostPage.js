@@ -7,7 +7,7 @@ import HashTag from '../HashTag/HashTag'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import showdown from 'showdown'
-import Gravatar from '../Gravatar/Gravatar'
+// import Gravatar from '../Gravatar/Gravatar'
 import { Tooltip } from 'react-tippy'
 
 import styles from './PostPage.module.css'
