@@ -41,7 +41,14 @@ export function useFetchedData (url, defaultFetchedDataValue) {
   return [isLoading, fetchedData, error]
 }
 
-export default function FetchedData ({ isLoading, error, children }) {
+const DefaultErrorReporter = ({ error }) => (
+  <Fragment>
+    <h1>{error.name}</h1>
+    <p>{error.message}</p>
+  </Fragment>
+)
+
+export default function FetchedData ({ isLoading, error, errorReporter, children }) {
   assert(children, 'Children are required')
 
   // TODO: Center these to the centre of the page.
@@ -52,10 +59,7 @@ export default function FetchedData ({ isLoading, error, children }) {
     // TODO:
     // import { FetchError } from '../Errors/Errors'
     // if (error) return <FetchError error={error} />
-    return <Fragment>
-      <h1>{error.name}</h1>
-      <p>{error.message}</p>
-    </Fragment>
+    return errorReporter || <DefaultErrorReporter error={error} />
   } else {
     return children
   }

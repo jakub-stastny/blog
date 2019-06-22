@@ -6,6 +6,7 @@ import Discussion from '../Discussion/Discussion'
 import HashTag from '../HashTag/HashTag'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
+import { FetchError } from '../Errors/Errors'
 import showdown from 'showdown'
 // import Gravatar from '../Gravatar/Gravatar'
 import { Tooltip } from 'react-tippy'
@@ -47,8 +48,10 @@ export default function Post ({ match }) {
     })
   })
 
+  const errorComponent = <FetchError error={error} />
+
   return (
-    <FetchedData isLoading={isLoading} error={error}>
+    <FetchedData isLoading={isLoading} error={error} errorReporter={errorComponent}>
       <article>
         <h1 className={styles.mainTitle}>{post.title}</h1>
         <div className={styles.statusLine}>
