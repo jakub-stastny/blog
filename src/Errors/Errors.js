@@ -5,6 +5,7 @@ import styles from './Errors.module.css'
 export const FetchError = (error) => (
   <div className={styles.wrapper}>
     <h1>Data cannot be fetched</h1>
+    <a href={window.location.pathname}>Refresh the page</a>
   </div>
 )
 

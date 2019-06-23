@@ -14,7 +14,10 @@ export function useFetchedData (url, defaultFetchedDataValue) {
   useEffect(() => {
     if (wasFired) return ////
     console.log(`~ Fetching ${url}`)
-    fetch(url)
+    // Adding ?random to disable server-side caching.
+    // When GH times out with HTTP 503, this response
+    // gets cached and plain refresh doesn't help.
+    fetch(`${url}?${Math.floor(Math.random() * 10000)}`)
     .then(response => {
       if (response.ok) {
         // The order is important! Otherwise we will do two renders of the inner component of FetchedData,
@@ -25,14 +28,14 @@ export function useFetchedData (url, defaultFetchedDataValue) {
         })
       } else {
         console.log(response)
-        setError(response)
+        setError(response) /* Error is response in this case. */
         setIsLoading(false)
       }
     })
     // Catch any errors we hit and update the app
     .catch(error => {
       console.log(error)
-      setError(error)
+      setError(error) /* Error is an exception instance in this case. */
       setIsLoading(false)
     })
 

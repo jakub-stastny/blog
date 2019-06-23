@@ -1,4 +1,5 @@
 .wrapper {
   border: solid;
   border-color: red;
+  padding: 20px;
 }
