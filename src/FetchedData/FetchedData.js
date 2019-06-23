@@ -15,18 +15,23 @@ export function useFetchedData (url, defaultFetchedDataValue) {
     if (wasFired) return ////
     console.log(`~ Fetching ${url}`)
     fetch(url)
-    // We get the API response and receive data in JSON format...
-    // or technically, raw.githubusercontent.com returns text/plain.
-    .then(response => response.ok ? response.json() : response)
-    // ...then we update the users state
-    .then(data => {
-      // The order is important! Otherwise we will do two renders of the inner component of FetchedData,
-      // calling it first time with undefined as data, most likely causing errors.
-      setFetchedData(data)
-      setIsLoading(false)
+    .then(response => {
+      if (response.ok) {
+        // The order is important! Otherwise we will do two renders of the inner component of FetchedData,
+        // calling it first time with undefined as data, most likely causing errors.
+        response.json().then(data => {
+          setFetchedData(data)
+          setIsLoading(false)
+        })
+      } else {
+        console.log(response)
+        setError(response)
+        setIsLoading(false)
+      }
     })
     // Catch any errors we hit and update the app
     .catch(error => {
+      console.log(error)
       setError(error)
       setIsLoading(false)
     })
