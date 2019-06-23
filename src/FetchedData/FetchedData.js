@@ -16,7 +16,8 @@ export function useFetchedData (url, defaultFetchedDataValue) {
     console.log(`~ Fetching ${url}`)
     fetch(url)
     // We get the API response and receive data in JSON format...
-    .then(response => response.json())
+    // or technically, raw.githubusercontent.com returns text/plain.
+    .then(response => response.ok ? response.json() : response)
     // ...then we update the users state
     .then(data => {
       // The order is important! Otherwise we will do two renders of the inner component of FetchedData,
