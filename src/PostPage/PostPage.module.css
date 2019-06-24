@@ -56,10 +56,28 @@
 }
 
 .footer {
+  margin: 25px 0;
+}
+
+.about {
   background-color: darkseagreen;
   padding: 7px 15px 10px 15px;
-  margin: 25px 0 50px 0;
   font-style: italic;
+  border-radius: default-border-radius;
+  margin: 20px 0;
+  min-height: 110px; /* 100 is the gravatar size */
+}
+
+.newsletter {
+  background-color: lightblue;
+  padding: 7px 15px 10px 15px;
+  border-radius: default-border-radius;
+  margin: 20px 0;
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
   border-radius: default-border-radius;
 }
 
