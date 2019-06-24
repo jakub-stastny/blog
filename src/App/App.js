@@ -8,6 +8,7 @@ import PostPage from '../PostPage/PostPage'
 import TagPage from '../TagPage/TagPage'
 import TagsPage from '../TagsPage/TagsPage'
 import NowPage from '../NowPage/NowPage'
+import SubscribePage from '../SubscribePage/SubscribePage'
 import AboutPage from '../AboutPage/AboutPage'
 import HomePage from '../HomePage/HomePage'
 import { RoutingErrorPage } from '../Errors/Errors'
@@ -38,6 +39,7 @@ export default () => (
               <Route path="/tags/:slug" component={TagPage} />
               <Route path="/tags" component={TagsPage} />
               <Route path="/now" component={NowPage} />
+              <Route path="/subscribe" component={SubscribePage} />
               <Route component={RoutingErrorPage} />
             </Switch>
           </ScrollToTop>
