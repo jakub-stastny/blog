@@ -20,7 +20,7 @@ function _request(url, fn, resolve, reject, run = 1) {
   // The first is to warm up the cache.
   const timeoutSec = run === 1 ? run : 10
   const timeoutId = setTimeout(() => {
-    console.log(`~ Restarting the request after ${timeoutSec}s timeout.`)
+    console.log(`~ Run ${run}: restarting the request after ${timeoutSec}s timeout.`)
     controller.abort()
     _request(url, fn, resolve, reject, run + 1)
   }, timeoutSec * 1000)
