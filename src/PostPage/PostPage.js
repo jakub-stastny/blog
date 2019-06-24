@@ -65,15 +65,23 @@ export default function Post ({ match }) {
 
         <footer className={styles.footer}>
           <div className={styles.newsletter}>
-            Did you like the post? Sign up for my newsletter and I'll send you a <em>monthly</em> email with the most popular posts of the month.
+            <p>
+              Did you like the post? Sign up for my newsletter and I'll send you a <em>monthly</em> email with the most popular posts of the month.
+            </p>
+
             <NewsletterSignUpForm />
           </div>
 
           <div className={styles.about}>
             <Gravatar className={styles.gravatar} />
-            Hi, my name is James. I'm a <HashTag>Ruby</HashTag>, <HashTag>Ruby on Rails</HashTag>, <HashTag>JavaScript</HashTag> and <HashTag>React.js</HashTag> developer available for freelance work.<br /><br />
-            <FontAwesomeIcon icon={faArrowRight} color="darkgreen" />{' '}
-            You can find out more about me on the <Link to="/about">about page</Link>.
+            <p>
+              Hi, my name is James. I'm a <HashTag>Ruby</HashTag>, <HashTag>Ruby on Rails</HashTag>, <HashTag>JavaScript</HashTag> and <HashTag>React.js</HashTag> developer available for freelance work.
+            </p>
+
+            <p>
+              <FontAwesomeIcon icon={faArrowRight} color="darkgreen" />{' '}
+              You can find out more about me on the <Link to="/about">about page</Link>.
+            </p>
           </div>
         </footer>
 
