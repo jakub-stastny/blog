@@ -4,6 +4,8 @@ This is the front-end behind my blog [botanicus.me](http://botanicus.me).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Note to self: _In order not to influence Google Analytics, use the dev server IP rather than the production domain._
+
 ## Available Scripts
 
 In the project directory, you can run:
