@@ -6,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Note to self: _In order not to influence Google Analytics, use the dev server IP rather than the production domain._
 
+Implementation note: GitLab raw has CORS in place, cannot be used.
+
 ## Available Scripts
 
 In the project directory, you can run:
