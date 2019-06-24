@@ -10,7 +10,7 @@ function request (url, fn) {
 }
 
 function _request(url, fn, resolve, reject, run = 1) {
-  if (run > 4) {
+  if (run > 5) {
     return reject({name: 'TimeOut'})
   }
 
