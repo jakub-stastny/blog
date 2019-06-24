@@ -94,6 +94,7 @@ export default () => (
     </Highlight>
 
     <div className={styles.fixBorderRadius}>
+      {/*
       <h2>How do I work?</h2>
       <p>
         Just as about any remotely working freelancer, my main work tools are Slack, e-mail and an <Abbr title="Mainly Jira, sometimes GitHub or GitLab issues, Pivotal Tracker, Trello and whatnot.">issue tracker</Abbr>.
@@ -111,6 +112,7 @@ export default () => (
         It's a setup many creative people have found working for them and there is a good reason for it:
         the brain can either get on with the
       </p>
+      */}
 
       <h2>In a nutshell</h2>
       <dl className={styles.list}>
