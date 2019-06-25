@@ -47,6 +47,13 @@ export default function Post ({ match }) {
     Array.from(bodyElement.querySelectorAll('i.hashtag')).forEach((i) => {
       ReactDOM.render(<HashTag>{i.innerText}</HashTag>, i)
     })
+
+    Array.from(bodyElement.querySelectorAll(`img[src^="${slug}/"]`)).forEach((img) => {
+      // img.src will print the whole URL, which is incorrect at this case, as it's assuming the frontend to be the root.
+      console.log(img, img.getAttribute('src'))
+      const path = img.getAttribute('src')
+      img.src = `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${path}`
+    })
   })
 
   const errorComponent = <FetchError error={error} />

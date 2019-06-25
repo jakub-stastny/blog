@@ -101,6 +101,20 @@
   text-decoration: underline;
 }
 
+.post img {
+  width: 100%;
+  display: block;
+  border: solid black 1px;
+}
+
+/* The override has to be below. */
+@media only screen and (min-width: 600px) {
+  .post img {
+    width: 75%;
+    margin: 50px auto;
+  }
+}
+
 /* .post .hashtag::before { */
 /*   content: "#"; */
 /* } */
