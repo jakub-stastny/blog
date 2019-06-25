@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import Email from '../Email/Email'
+import { TwitterFollowButton } from 'react-twitter-embed'
 
 import { registerFont, FontAwesomeIcon } from '../FontAwesome/FontAwesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
@@ -26,6 +27,8 @@ export default () => (
     <p>
       I post links to new posts on <a href="https://twitter.com/botanicus" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitter} color="#00aced" /> Twitter</a>.
     </p>
+
+    <TwitterFollowButton screenName="botanicus" />
 
     <h2>RSS feed</h2>
     <p>

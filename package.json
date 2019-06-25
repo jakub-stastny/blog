@@ -21,6 +21,7 @@
     "react-scripts": "2.1.2",
     "react-test-renderer": "^16.8.6",
     "react-tippy": "^1.2.3",
+    "react-twitter-embed": "^2.0.8",
     "showdown": "^1.9.0"
   },
   "scripts": {

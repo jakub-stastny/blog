@@ -15,6 +15,7 @@ import { RoutingErrorPage } from '../Errors/Errors'
 
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import RightColumn from '../RightColumn/RightColumn'
 
 import { assert } from '../utils'
 
@@ -31,18 +32,24 @@ export default () => (
         <Header />
 
         <main>
-          <ScrollToTop>
-            <Switch>
-              <Route path="/" exact component={HomePage} />
-              <Route path="/about" component={AboutPage} />
-              <Route path="/posts/:slug" component={PostPage} />
-              <Route path="/tags/:slug" component={TagPage} />
-              <Route path="/tags" component={TagsPage} />
-              <Route path="/now" component={NowPage} />
-              <Route path="/subscribe" component={SubscribePage} />
-              <Route component={RoutingErrorPage} />
-            </Switch>
-          </ScrollToTop>
+          <div className={styles.mainColumn}>
+            <ScrollToTop>
+              <Switch>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/about" component={AboutPage} />
+                <Route path="/posts/:slug" component={PostPage} />
+                <Route path="/tags/:slug" component={TagPage} />
+                <Route path="/tags" component={TagsPage} />
+                <Route path="/now" component={NowPage} />
+                <Route path="/subscribe" component={SubscribePage} />
+                <Route component={RoutingErrorPage} />
+              </Switch>
+            </ScrollToTop>
+          </div>
+
+          <div className={styles.rightColumn}>
+            <RightColumn />
+          </div>
         </main>
       </div>
 
