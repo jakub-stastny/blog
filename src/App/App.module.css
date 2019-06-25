@@ -1,34 +1,40 @@
-main {
-  width: 82%;
-  overflow: auto;
-  margin: 0 auto;
-}
-
 /* Sticky footer: https://css-tricks.com/couple-takes-sticky-footer */
 /* The rest is in Footer.module.css */
 .content {
   min-height: calc(100vh - 100px); /* Sticky footer. */
 }
 
+/* Desktop and tablet. */
 @media only screen and (min-width: 600px) {
   main {
     display: table;
   }
 
   .mainColumn {
-    width: 80%;
+    padding-left: 10vw;
+    padding-right: 5vw;
+    width: 75%;
     display: table-cell;
   }
 
+  /* FIXME: doesn't work on the subscribe page. */
   .rightColumn {
-    max-height: 100vh; /* 1 screen height */
-    width: 20%;
-    background-color: BlanchedAlmond;
+    height: calc(100vh - 100px - 110px); /* 1 screen height without the footer and header. TODO: don't hardcode the header like this */
+    overflow: hidden;
+    width: 25%;
+    /* background-color: lightblue; */
     display: table-cell;
   }
 }
 
+/* Mobile. */
 @media only screen and (max-width: 600px) {
+  main {
+    width: 82%;
+    overflow: auto;
+    margin: 0 auto;
+  }
+
   .rightColumn {
     display: none;
   }
