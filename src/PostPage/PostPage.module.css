@@ -75,6 +75,20 @@
   margin: 20px 0;
 }
 
+.newsletter form {
+  text-align: center;
+}
+
+.newsletter button {
+  font-size: 14px;
+}
+
+.newsletter input {
+  font-size: 14px;
+  height: 25px;
+  width: 220px;
+}
+
 .gravatar {
   float: left;
   margin-right: 10px;

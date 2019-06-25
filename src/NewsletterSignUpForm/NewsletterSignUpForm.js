@@ -5,7 +5,7 @@ import { mailchimpURL } from '../config'
 const fields = [
   {
     name: 'EMAIL',
-    placeholder: 'Email',
+    placeholder: 'your@email.com',
     type: 'email',
     required: true
   }
