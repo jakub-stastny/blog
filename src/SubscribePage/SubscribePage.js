@@ -10,9 +10,10 @@ registerFont(faTwitter)
 export default () => (
   <Fragment>
     <h1>Ways to stay in touch</h1>
+
     <h2>Monthly newsletter</h2>
     <p>
-      This is a monthly selection of the best posts.
+      This is a monthly selection of the best posts. <em>I also post stuff that I don't post on the blog.</em>
     </p>
 
     <NewsletterSignUpForm />
