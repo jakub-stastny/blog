@@ -21,7 +21,7 @@ export default () => (
       <h1 className={styles.mainTitle}>Hi! My name is James.</h1>
       <p>
         Thank you for visiting my humble blog.
-        I'm a web developer with main focus on <HashTag>Ruby</HashTag> (with or without <HashTag>Rails</HashTag>),{' '}
+        I'm an independent web developer with main focus on <HashTag>Ruby</HashTag> (with or without <HashTag>Rails</HashTag>),{' '}
         <HashTag>JavaScript</HashTag> (these days mainly <HashTag>React.js</HashTag>) and <HashTag>Docker</HashTag>.
         This is what I've been doing for the past <YearsOfExperience /> years and what I genuinely enjoy doing.
       </p>
@@ -96,7 +96,7 @@ export default () => (
     <div className={styles.fixBorderRadius}>
       <h2>How do I work?</h2>
       <p>
-        Just as about any remotely working freelancer, my main work tools are Slack, e-mail and an <Abbr title="Mainly Jira, sometimes GitHub or GitLab issues, Pivotal Tracker, Trello and whatnot.">issue tracker</Abbr>.
+        Just as about any remotely working independent developer, my main work tools are Slack, e-mail and an <Abbr title="Mainly Jira, sometimes GitHub or GitLab issues, Pivotal Tracker, Trello and whatnot.">issue tracker</Abbr>.
       </p>
 
       <p>
