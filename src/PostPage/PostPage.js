@@ -40,6 +40,9 @@ export default function Post ({ match }) {
   useEffect(() => {
     const bodyElement = bodyRef.current
     if (!bodyElement) return
+
+    console.log('~ Processing post body.')
+
     Array.from(bodyElement.querySelectorAll('abbr[title]')).forEach((abbr) => {
       ReactDOM.render(<TouchFriendlyAbbr text={abbr.innerText} tooltipText={abbr.title} />, abbr)
     })

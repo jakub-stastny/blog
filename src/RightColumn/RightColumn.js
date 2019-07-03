@@ -1,5 +1,5 @@
 import React from 'react'
-import { TwitterTimelineEmbed, TwitterTweetEmbed, TwitterShareButton } from 'react-twitter-embed'
+// import { TwitterTimelineEmbed, TwitterTweetEmbed, TwitterShareButton } from 'react-twitter-embed'
 
 // https://twitter.com/botanicus/timelines/1143628612630958080
 export default () => (
