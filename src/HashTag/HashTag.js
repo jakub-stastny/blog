@@ -1,8 +1,6 @@
-import React from 'react'
-import { assert } from '../utils'
+import React, { memo } from 'react'
 import styles from './HashTag.module.css'
 
-export default function HashTag ({ children }) {
-  assert(children, 'HashTag requires children')
-  return <span className={styles.hashtag}>{children}</span>
-}
+export default memo(({ children }) => (
+  <span className={styles.hashtag}>{children}</span>
+))

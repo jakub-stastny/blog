@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const getDivider = (currentItemIndex, array) => {
   const itemsLeft = array.length - currentItemIndex - 1
@@ -7,11 +7,11 @@ const getDivider = (currentItemIndex, array) => {
   return ', '
 }
 
-export default ({ items, children }) => (
+export default memo(({ items, children }) => (
   items.map((item, index) => (
     <span key={index}>
       {children(item)}
       {getDivider(index, items)}
     </span>
   ))
-)
+))

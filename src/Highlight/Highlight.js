@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './Highlight.module.css'
 
-export default ({ children }) => (
+export default memo(({ children }) => (
   <div className={styles.highlight}>{children}</div>
-)
+))

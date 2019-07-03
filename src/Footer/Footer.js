@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Link from '../Link/Link'
 import styles from './Footer.module.css'
 
@@ -7,8 +7,8 @@ import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 registerFont(faTwitter, faGithub)
 
-export default function Footer () {
-  return <footer className={styles.main}>
+export default memo(() => (
+  <footer className={styles.main}>
     <nav>
       <ul>
         <li><Link to="/">Posts</Link></li>
@@ -19,4 +19,4 @@ export default function Footer () {
       </ul>
     </nav>
   </footer>
-}
+))

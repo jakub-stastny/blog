@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { memo, Fragment } from 'react'
 import TagList from '../TagList/TagList'
 import styles from '../PostStatusLine/PostStatusLine.module.css'
 import PublishedDate from '../PublishedDate/PublishedDate'
@@ -13,9 +13,9 @@ const TagsPart = ({ tags }) => (
   tags.length ? <InlineTagList tags={tags} /> : null
 )
 
-export default ({ date, tags }) => (
+export default memo(({ date, tags }) => (
   <div className={styles.line}>
     Published <PublishedDate date={date} />
     <TagsPart tags={tags} />.
   </div>
-)
+))

@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 // import Gravatar from '../Gravatar/Gravatar'
 import { assert } from '../utils'
 import styles from '../Header/Header.module.css'
 import Link from '../Link/Link'
 
-export default () => (
+export default memo(() => (
   <header className={styles.header}>
     {/*
     <div className={styles.gravatarSection}>
@@ -24,4 +24,4 @@ export default () => (
       </p>
     </div>
   </header>
-)
+))
