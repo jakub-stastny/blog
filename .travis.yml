@@ -16,7 +16,7 @@ deploy:
   script: rake travis:deploy
   branch: master
 
-  notifications:
+notifications:
   email: no
 
   # https://docs.travis-ci.com/user/notifications/#configuring-pushover-notifications
