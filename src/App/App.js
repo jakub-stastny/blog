@@ -4,6 +4,7 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop'
 import styles from '../App/App.module.css'
 
 // import Ribbon from '../Ribbon/Ribbon'
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 import PostPage from '../PostPage/PostPage'
 import TagPage from '../TagPage/TagPage'
 import TagsPage from '../TagsPage/TagsPage'
@@ -29,31 +30,39 @@ export default () => (
       {/*<Ribbon>Hire me <Email subject="Hey! I'm looking for a Ruby/JS dev! Are you available?"><FontAwesomeIcon icon={faEnvelope} color="DodgerBlue" /></Email></Ribbon>*/}
 
       <div className={assert(styles.content)}>
-        <Header />
+        <ErrorBoundary>
+          <Header />
+        </ErrorBoundary>
 
         <main>
           <div className={styles.mainColumn}>
-            <ScrollToTop>
-              <Switch>
-                <Route path="/" exact component={HomePage} />
-                <Route path="/about" component={AboutPage} />
-                <Route path="/posts/:slug" component={PostPage} />
-                <Route path="/tags/:slug" component={TagPage} />
-                <Route path="/tags" component={TagsPage} />
-                <Route path="/now" component={NowPage} />
-                <Route path="/subscribe" component={SubscribePage} />
-                <Route component={RoutingErrorPage} />
-              </Switch>
-            </ScrollToTop>
+            <ErrorBoundary>
+              <ScrollToTop>
+                <Switch>
+                  <Route path="/" exact component={HomePage} />
+                  <Route path="/about" component={AboutPage} />
+                  <Route path="/posts/:slug" component={PostPage} />
+                  <Route path="/tags/:slug" component={TagPage} />
+                  <Route path="/tags" component={TagsPage} />
+                  <Route path="/now" component={NowPage} />
+                  <Route path="/subscribe" component={SubscribePage} />
+                  <Route component={RoutingErrorPage} />
+                </Switch>
+              </ScrollToTop>
+            </ErrorBoundary>
           </div>
 
           <div className={styles.rightColumn}>
-            <RightColumn />
+            <ErrorBoundary>
+              <RightColumn />
+            </ErrorBoundary>
           </div>
         </main>
       </div>
 
-      <Footer />
+      <ErrorBoundary>
+        <Footer />
+      </ErrorBoundary>
     </GoogleAnalytics>
   </Router>
 )
