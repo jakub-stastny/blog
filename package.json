@@ -11,6 +11,7 @@
     "disqus-react": "^1.0.5",
     "moment": "^2.24.0",
     "react": "^16.7.0",
+    "react-detect-offline": "^2.4.0",
     "react-dom": "^16.7.0",
     "react-gravatar": "^2.6.3",
     "react-mailchimp-form": "^1.0.1",

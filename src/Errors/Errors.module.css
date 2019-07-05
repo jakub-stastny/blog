@@ -3,3 +3,7 @@
   border-color: red;
   padding: 20px;
 }
+
+.offline {
+  border: solid red;
+}
