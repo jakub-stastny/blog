@@ -39,7 +39,7 @@ export default () => (
             <ErrorBoundary>
               <ScrollToTop>
                 <Switch>
-                  <Route exact path="/" exact component={HomePage} />
+                  <Route exact path="/" component={HomePage} />
                   <Route exact path="/about" component={AboutPage} />
                   <Route path="/posts/:slug" component={PostPage} />
                   <Route path="/tags/:slug" component={TagPage} />
