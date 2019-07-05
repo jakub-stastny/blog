@@ -11,6 +11,7 @@ import TagsPage from '../TagsPage/TagsPage'
 import NowPage from '../NowPage/NowPage'
 import SubscribePage from '../SubscribePage/SubscribePage'
 import AboutPage from '../AboutPage/AboutPage'
+import MyServicesPage from '../MyServicesPage/MyServicesPage'
 import CurriculumVitaePage from '../CurriculumVitaePage/CurriculumVitaePage'
 import HomePage from '../HomePage/HomePage'
 import { RoutingErrorPage } from '../Errors/Errors'
@@ -42,6 +43,7 @@ export default () => (
                 <Switch>
                   <Route exact path="/" component={HomePage} />
                   <Route exact path="/about" component={AboutPage} />
+                  <Route exact path="/my-services" component={MyServicesPage} />
                   <Route exact path="/curriculum-vitae" component={CurriculumVitaePage} />
                   <Route exact path="/now" component={NowPage} />
                   <Route exact path="/subscribe" component={SubscribePage} />
