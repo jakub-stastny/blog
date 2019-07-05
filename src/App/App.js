@@ -11,6 +11,7 @@ import TagsPage from '../TagsPage/TagsPage'
 import NowPage from '../NowPage/NowPage'
 import SubscribePage from '../SubscribePage/SubscribePage'
 import AboutPage from '../AboutPage/AboutPage'
+import CurriculumVitaePage from '../CurriculumVitaePage/CurriculumVitaePage'
 import HomePage from '../HomePage/HomePage'
 import { RoutingErrorPage } from '../Errors/Errors'
 
@@ -41,11 +42,12 @@ export default () => (
                 <Switch>
                   <Route exact path="/" component={HomePage} />
                   <Route exact path="/about" component={AboutPage} />
+                  <Route exact path="/curriculum-vitae" component={CurriculumVitaePage} />
+                  <Route exact path="/now" component={NowPage} />
+                  <Route exact path="/subscribe" component={SubscribePage} />
                   <Route path="/posts/:slug" component={PostPage} />
                   <Route path="/tags/:slug" component={TagPage} />
                   <Route exact path="/tags" component={TagsPage} />
-                  <Route exact path="/now" component={NowPage} />
-                  <Route exact path="/subscribe" component={SubscribePage} />
                   <Route component={RoutingErrorPage} />
                 </Switch>
               </ScrollToTop>
