@@ -3,6 +3,18 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ScrollToTop from '../ScrollToTop/ScrollToTop'
 import styles from '../App/App.module.css'
 
+import {
+  homePagePath,
+  aboutPagePath,
+  myServicesPagePath,
+  curriculumVitaePagePath,
+  nowPagePath,
+  subscribePagePath,
+  getPostPagePath,
+  getTagPagePath,
+  tagsPagePath
+} from '../routes'
+
 // import Ribbon from '../Ribbon/Ribbon'
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 import PostPage from '../PostPage/PostPage'
@@ -41,15 +53,15 @@ export default () => (
             <ErrorBoundary>
               <ScrollToTop>
                 <Switch>
-                  <Route exact path="/" component={HomePage} />
-                  <Route exact path="/about" component={AboutPage} />
-                  <Route exact path="/my-services" component={MyServicesPage} />
-                  <Route exact path="/curriculum-vitae" component={CurriculumVitaePage} />
-                  <Route exact path="/now" component={NowPage} />
-                  <Route exact path="/subscribe" component={SubscribePage} />
-                  <Route path="/posts/:slug" component={PostPage} />
-                  <Route path="/tags/:slug" component={TagPage} />
-                  <Route exact path="/tags" component={TagsPage} />
+                  <Route exact path={homePagePath} component={HomePage} />
+                  <Route exact path={aboutPagePath} component={AboutPage} />
+                  <Route exact path={myServicesPagePath} component={MyServicesPage} />
+                  <Route exact path={curriculumVitaePagePath} component={CurriculumVitaePage} />
+                  <Route exact path={nowPagePath} component={NowPage} />
+                  <Route exact path={subscribePagePath} component={SubscribePage} />
+                  <Route path={getPostPagePath(':slug')} component={PostPage} />
+                  <Route path={getTagPagePath(':slug')} component={TagPage} />
+                  <Route exact path={tagsPagePath} component={TagsPage} />
                   <Route component={RoutingErrorPage} />
                 </Switch>
               </ScrollToTop>

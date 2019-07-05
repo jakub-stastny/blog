@@ -1,12 +1,12 @@
-/* TODO: tests. */
 import React, { Fragment }  from 'react'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import PublishedDate from '../PublishedDate/PublishedDate'
+import { getPostPagePath } from '../routes'
 import styles from './TagPage.module.css'
 
 const PostPreview = ({ title, slug, date }) => (
   <li>
-    <a href={`/posts/${slug}`}>{title}</a>{' '}
+    <a href={getPostPagePath(slug)}>{title}</a>{' '}
     <span className={styles.date}>
       <PublishedDate date={date} />
     </span>
