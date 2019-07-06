@@ -3,18 +3,25 @@ import TestRenderer from 'react-test-renderer'
 import PostPreview from './PostPreview'
 
 it('renders a preview of given post', () => {
-  const testRenderer = TestRenderer.create(<PostPreview path="/posts/hello-world" title="Hello world!" excerpt="Lorem ipsum ..." />)
-  const list = testRenderer.toJSON()
+  const component = <PostPreview path="/posts/hello-world" slug="hello-world" title="Hello world!" excerpt="Lorem ipsum ..." />
+  const testRenderer = TestRenderer.create(component)
+  const object = testRenderer.toJSON()
 
-  expect(list[0].type).toEqual('h2')
-  // FIXME: This doesn't work.
-  // expect(list[0].children).toEqual([<a href="/posts/hello-world">Hello world!</a>])
-  expect(list[1].type).toEqual('p')
-  expect(list[1].children).toEqual(['Lorem ipsum ...'])
-})
+  expect(object.type).toEqual('article')
 
-it('fails if no children are provided', () => {
-  expect(() => TestRenderer.create(<PostPreview />)).toThrow('Path is required')
-  expect(() => TestRenderer.create(<PostPreview path="/posts/test" />)).toThrow('Title is required')
-  expect(() => TestRenderer.create(<PostPreview path="/posts/test" title="Test" />)).toThrow('Excerpt is required')
+  const heading = object.children[0]
+  expect(heading.type).toEqual('h1')
+  expect(heading.props.className).toEqual('title')
+  expect(heading.children.length).toEqual(1)
+
+  const anchor = heading.children[0]
+  expect(anchor.type).toEqual('a')
+  expect(anchor.children.join('')).toEqual("Hello world! 🇬🇧")
+
+  const statusLine = object.children[1]
+  expect(statusLine.type).toEqual('div')
+  expect(statusLine.props.className).toEqual('line')
+
+  const excerpt = object.children[2]
+  expect(excerpt.type).toEqual('p')
 })

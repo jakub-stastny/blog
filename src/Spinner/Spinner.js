@@ -9,12 +9,12 @@
 See https://reactjs.org/docs/code-splitting.html
 */
 
-import React, { memo, Fragment } from 'react'
+import React, { Fragment, memo } from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { registerFont, FontAwesomeIcon } from '../FontAwesome/FontAwesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faSpinner)
+registerFont(faSpinner)
 
 export default memo(() => (
   <Fragment>

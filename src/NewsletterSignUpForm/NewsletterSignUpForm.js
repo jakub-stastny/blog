@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Mailchimp from 'react-mailchimp-form'
 import { mailchimpURL } from '../config'
 
@@ -11,6 +11,6 @@ const fields = [
   }
 ]
 
-export default () => (
+export default memo(() => (
   <Mailchimp action={mailchimpURL} fields={fields} />
-)
+))

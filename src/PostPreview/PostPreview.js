@@ -1,14 +1,17 @@
-import React, { memo, Fragment } from 'react'
+import React, { memo } from 'react'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 import { getPostPagePath } from '../routes'
-import styles from './PostPreview.module.css'
+import { title as titleClassName } from './PostPreview.module.css'
+import { assert } from '../utils'
+
+assert(titleClassName, 'titleClassName is expected to be defined')
 
 const lang = '🇬🇧'
 
 export default memo(({ slug, title, date, tags, excerpt }) => (
-  <Fragment>
-    <h2 className={styles.title}><a href={getPostPagePath(slug)}>{title} {lang}</a></h2>
+  <article>
+    <h1 className={titleClassName}><a href={getPostPagePath(slug)}>{title} {lang}</a></h1>
     <PostStatusLine date={date} tags={tags} />
     <p>{excerpt}</p>
-  </Fragment>
+  </article>
 ))

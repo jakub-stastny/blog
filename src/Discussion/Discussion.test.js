@@ -6,7 +6,6 @@ import Discussion from './Discussion'
 it('renders a <div> tag with id disqus_thread', () => {
   const testRenderer = TestRenderer.create(<Discussion>Lorem ipsum</Discussion>)
   const object = testRenderer.toJSON()
-  console.log(object)
 
   expect(object.type).toEqual('div')
   expect(object.props.id).toEqual('disqus_thread')
