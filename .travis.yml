@@ -9,6 +9,7 @@ services:
 cache: yarn
 
 script:
+  - yarn test src/*/*.test.js
   - rake travis:build
 
 deploy:
