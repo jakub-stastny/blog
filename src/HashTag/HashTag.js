@@ -1,6 +1,9 @@
 import React, { memo } from 'react'
-import styles from './HashTag.module.css'
+import { hashtag as hashtagClassName } from './HashTag.module.css'
+import { assert } from '../utils'
+
+assert(hashtagClassName, 'hashtagClassName is expected to be defined')
 
 export default memo(({ children }) => (
-  <span className={styles.hashtag}>{children}</span>
+  <span className={hashtagClassName}>{children}</span>
 ))
