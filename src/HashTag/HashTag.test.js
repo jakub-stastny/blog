@@ -10,8 +10,3 @@ it('renders a <span> tag with class hashtag and children inside', () => {
   expect(object.props.className).toEqual('hashtag')
   expect(object.children).toEqual(['React.js'])
 })
-
-it('fails if no children are provided', () => {
-  expect(() => TestRenderer.create(<HashTag />)).toThrow('HashTag requires children')
-})
-
