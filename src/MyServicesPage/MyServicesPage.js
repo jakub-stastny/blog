@@ -6,6 +6,7 @@ import Highlight from '../Highlight/Highlight'
 import Abbr from '../Abbr/Abbr'
 import ShowCurrentTimeZone from '../ShowCurrentTimeZone/ShowCurrentTimeZone'
 import { rate } from '../config'
+import { nowPagePath } from '../routes'
 import { Link } from 'react-router-dom'
 
 import styles from './MyServicesPage.module.css'
@@ -84,7 +85,7 @@ export default () => (
     <Highlight>
       <h2>What am I up to now?</h2>
       <p>
-        If you are curious about what I'm working on now, don't hesitate to <Link to="/now">check my latest status update</Link>, updated monthly.
+        If you are curious about what I'm working on now, don't hesitate to <Link to={nowPagePath}>check my latest status update</Link>, updated monthly.
       </p>
     </Highlight>
 

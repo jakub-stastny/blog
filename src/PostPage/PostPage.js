@@ -11,6 +11,7 @@ import { FetchError } from '../Errors/Errors'
 import showdown from 'showdown'
 import Gravatar from '../Gravatar/Gravatar'
 import { Tooltip } from 'react-tippy'
+import { aboutPagePath } from '../routes'
 
 import styles from './PostPage.module.css'
 import 'react-tippy/dist/tippy.css'
@@ -90,7 +91,7 @@ export default function Post ({ match }) {
 
             <p>
               <FontAwesomeIcon icon={faArrowRight} color="darkgreen" />{' '}
-              You can find out more about me on the <Link to="/about">about page</Link>.
+              You can find out more about me on the <Link to={aboutPagePath}>about page</Link>.
             </p>
           </div>
         </footer>

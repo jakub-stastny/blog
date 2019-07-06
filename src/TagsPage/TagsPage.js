@@ -4,10 +4,11 @@ import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import styles from '../HomePage/HomePage.module.css'
 import { assert } from '../utils'
 import { Link } from 'react-router-dom'
+import { getTagPagePath } from '../routes'
 
 const TagPreview = ({ slug, name }) => (
   <ul>
-    <li><Link to={`/tags/${slug}`}>{name}</Link></li>
+    <li><Link to={getTagPagePath(slug)}>{name}</Link></li>
   </ul>
 )
 

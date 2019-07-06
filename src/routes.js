@@ -1,6 +1,7 @@
 import { assert } from './utils'
 
 export const homePagePath = '/'
+export const postsPagePath = homePagePath
 export const aboutPagePath = '/about'
 export const myServicesPagePath = '/my-services'
 export const curriculumVitaePagePath = '/curriculum-vitae'
