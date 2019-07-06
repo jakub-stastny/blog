@@ -10,7 +10,3 @@ it('renders a <div> tag with class highlight and children inside', () => {
   expect(object.props.className).toEqual('highlight')
   expect(object.children).toEqual(['Lorem ipsum'])
 })
-
-it('fails if no children are provided', () => {
-  expect(() => TestRenderer.create(<Highlight />)).toThrow('Highlight requires children')
-})

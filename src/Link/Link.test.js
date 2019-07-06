@@ -17,8 +17,3 @@ import Link from './Link'
 //
 //   TODO: Test if it's the current page and if not.
 // })
-
-it('fails if no children are provided', () => {
-  expect(() => TestRenderer.create(<Link />)).toThrow('To is required')
-  expect(() => TestRenderer.create(<Link to="/posts/test" />)).toThrow('Children are required')
-})

@@ -1,8 +1,10 @@
-import React, { memo } from 'react'
+/* TODO: import the tooltip code from src/PostPage/PostPage.js */
 
-/* TODO: Currently this doesn't do anything useful. */
-/* The intended purpose of this is to have an <abbr /> alternative
- * that works on mobile. It's supposed to show a JS tooltip. */
+import React, { memo } from 'react'
+// import { hashtag as hashtagClassName } from './HashTag.module.css'
+// import { assert } from '../utils'
+
+// assert(hashtagClassName, 'hashtagClassName is expected to be defined')
 
 export default memo(({ title, children }) => (
   <abbr title={title}>{children}</abbr>
