@@ -1,3 +1,4 @@
+// TODO: should this use memo?
 import React from 'react'
 import Moment from 'react-moment'
 

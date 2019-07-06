@@ -1,19 +1,23 @@
 import React from 'react'
+import { MemoryRouter as Router } from 'react-router-dom'
 import TestRenderer from 'react-test-renderer'
 import Link from './Link'
 
-/* FIXME: I don't know how to test it, I'm getting:
- * Invariant Violation: You should not use <Route> or withRouter() outside a <Router>
- */
+it('renders a link without the active class if we are not on the route', () => {
+  const testRenderer = TestRenderer.create(<Router><Link to="/lorem/ipsum">Lorem ipsum</Link></Router>)
+  const object = testRenderer.toJSON()
 
-// it('renders a <div> tag with class highlight and children inside', () => {
-//   const testRenderer = TestRenderer.create(<Link to="/lorem/ipsum">Lorem ipsum</Link>)
-//   const object = testRenderer.toJSON()
+  expect(object.type).toEqual('a')
+  expect(object.props.className).toEqual(undefined)
+  expect(object.children).toEqual(['Lorem ipsum'])
+})
 
-//   return <NavLink to={to} activeClassName={styles.selected}>{children}</NavLink>
-//   expect(object.type).toEqual('a')
-//   expect(object.props.className).toEqual('selected')
-//   expect(object.children).toEqual(['Lorem ipsum'])
-//
-//   TODO: Test if it's the current page and if not.
-// })
+it('renders a link with the active class if we are on the route', () => {
+  const testRenderer = TestRenderer.create(<Router><Link to="/lorem/ipsum">Lorem ipsum</Link></Router>)
+  const object = testRenderer.toJSON()
+
+  // TODO
+  // expect(object.type).toEqual('a')
+  // expect(object.props.className).toEqual(undefined)
+  // expect(object.children).toEqual(['Lorem ipsum'])
+})
