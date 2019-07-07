@@ -13,7 +13,7 @@ const TagPreview = ({ slug, name }) => (
 )
 
 const TagPreviewList = ({ tags }) => (
-  tags.map((tag) => <TagPreview key={tag.slug} {...tag} />)
+  tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)
 )
 
 const NoTagsPlaceholder = () => (
