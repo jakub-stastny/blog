@@ -18,7 +18,6 @@ import {
 import { SuspenseSpinner } from '../Spinner/Spinner'
 
 // import Ribbon from '../Ribbon/Ribbon'
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 import PostPage from '../PostPage/PostPage'
 import TagPage from '../TagPage/TagPage'
 import NowPage from '../NowPage/NowPage'
@@ -26,7 +25,7 @@ import SubscribePage from '../SubscribePage/SubscribePage'
 import AboutPage from '../AboutPage/AboutPage'
 import MyServicesPage from '../MyServicesPage/MyServicesPage'
 import HomePage from '../HomePage/HomePage'
-import { RoutingErrorPage } from '../Errors/Errors'
+import ErrorBoundary, { RoutingErrorPage } from '../Errors/Errors'
 
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
