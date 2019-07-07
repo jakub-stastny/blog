@@ -33,7 +33,7 @@ function markdownToHTML (markdownText) {
 export default function Post ({ match }) {
   const slug = match.params.slug
   const [isLoading, post, error] = useFetchedData(
-    `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/${slug}.json`, {}
+    `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/post.json`, {}
   )
 
   const bodyRef = useRef(null)
