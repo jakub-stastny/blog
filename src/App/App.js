@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ScrollToTop from '../ScrollToTop/ScrollToTop'
 import styles from '../App/App.module.css'
@@ -15,16 +15,16 @@ import {
   tagsPagePath
 } from '../routes'
 
+import { SuspenseSpinner } from '../Spinner/Spinner'
+
 // import Ribbon from '../Ribbon/Ribbon'
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 import PostPage from '../PostPage/PostPage'
 import TagPage from '../TagPage/TagPage'
-import TagsPage from '../TagsPage/TagsPage'
 import NowPage from '../NowPage/NowPage'
 import SubscribePage from '../SubscribePage/SubscribePage'
 import AboutPage from '../AboutPage/AboutPage'
 import MyServicesPage from '../MyServicesPage/MyServicesPage'
-import CurriculumVitaePage from '../CurriculumVitaePage/CurriculumVitaePage'
 import HomePage from '../HomePage/HomePage'
 import { RoutingErrorPage } from '../Errors/Errors'
 
@@ -36,6 +36,10 @@ import { assert } from '../utils'
 
 import { isProduction, googleAnalyticsTrackingId } from '../config'
 import GoogleAnalytics from 'react-router-ga'
+
+/* Lazy-loading */
+const TagsPage = lazy(() => import(/* webpackChunkName: "TagsPage" */ '../TagsPage/TagsPage'))
+const CurriculumVitaePage = lazy(() => import(/* webpackChunkName: "CurriculumVitaePage" */ '../CurriculumVitaePage/CurriculumVitaePage'))
 
 export default () => (
   <Router>
@@ -56,12 +60,12 @@ export default () => (
                   <Route exact path={homePagePath} component={HomePage} />
                   <Route exact path={aboutPagePath} component={AboutPage} />
                   <Route exact path={myServicesPagePath} component={MyServicesPage} />
-                  <Route exact path={curriculumVitaePagePath} component={CurriculumVitaePage} />
+                  <Route exact path={curriculumVitaePagePath} render={() => <SuspenseSpinner><CurriculumVitaePage /></SuspenseSpinner>} />
                   <Route exact path={nowPagePath} component={NowPage} />
                   <Route exact path={subscribePagePath} component={SubscribePage} />
                   <Route path={getPostPagePath(':slug')} component={PostPage} />
                   <Route path={getTagPagePath(':slug')} component={TagPage} />
-                  <Route exact path={tagsPagePath} component={TagsPage} />
+                  <Route exact path={tagsPagePath} render={() => <SuspenseSpinner><TagsPage /></SuspenseSpinner>} />
                   <Route component={RoutingErrorPage} />
                 </Switch>
               </ScrollToTop>
