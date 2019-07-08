@@ -6,10 +6,19 @@ node_js:
 services:
   - docker
 
-cache: yarn
+addons:
+  apt:
+    packages:
+      - libgconf-2-4 # Cypress
+
+cache:
+  yarn: true
+  directories:
+    - ~/.cache # Cache the Cypress binary.
 
 script:
   - yarn test src/*/*.test.js
+  - yarn cypress
   - rake travis:build
 
 deploy:
