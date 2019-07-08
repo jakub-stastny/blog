@@ -18,7 +18,7 @@ cache:
 
 script:
   - yarn test src/*/*.test.js
-  - yarn cypress
+  - yarn start & wait-on http://localhost:3000 && yarn cypress
   - rake travis:build
 
 deploy:
