@@ -94,6 +94,10 @@ export default function Post ({ match }) {
               You can find out more about me on the <Link to={aboutPagePath}>about page</Link>.
             </p>
           </div>
+
+          <p className={styles.license}>
+            This post has been <a href="/posts/releasing-copyright">uncopyrighted</a>. You can do anything you want with it.
+          </p>
         </footer>
 
         <Discussion url={post.url} identifier={post.slug} title={post.title} />

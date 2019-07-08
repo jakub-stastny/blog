@@ -107,12 +107,21 @@
   border: solid black 1px;
 }
 
+.post blockquote {
+  margin: inherit;
+  font-style: italic;
+}
+
 /* The override has to be below. */
 @media only screen and (min-width: 600px) {
   .post img {
     width: 75%;
     margin: 50px auto;
   }
+}
+
+.license {
+  font-style: italic;
 }
 
 /* .post .hashtag::before { */
