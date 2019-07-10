@@ -98,6 +98,11 @@ export default function Post ({ match }) {
           <p className={styles.license}>
             This post has been <a href="/posts/releasing-copyright">uncopyrighted</a>. You can do anything you want with it.
           </p>
+
+          <p className={styles.license}>
+            It is also OSS and if you see any typos or information that you believe incorrect, you can just
+            <a href="/posts/how-to-submit-a-pull-request-to-my-posts">submit a pull request</a>.
+          </p>
         </footer>
 
         <Discussion url={post.url} identifier={post.slug} title={post.title} />
