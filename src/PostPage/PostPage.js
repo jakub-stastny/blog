@@ -10,6 +10,7 @@ import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import { FetchError } from '../Errors/Errors'
 import showdown from 'showdown'
 import Gravatar from '../Gravatar/Gravatar'
+import ConversationPrompt from '../ConversationPrompt/ConversationPrompt'
 import { Tooltip } from 'react-tippy'
 import { aboutPagePath } from '../routes'
 
@@ -85,9 +86,7 @@ export default function Post ({ match }) {
 
           <div className={styles.about}>
             <Gravatar className={styles.gravatar} />
-            <p>
-              Hi, my name is James. I'm a <HashTag>Ruby</HashTag>, <HashTag>Ruby on Rails</HashTag>, <HashTag>JavaScript</HashTag> and <HashTag>React.js</HashTag> developer available for freelance work.
-            </p>
+            <ConversationPrompt tagNames={post.tags && post.tags.map(tag => tag.name)} />
 
             <p>
               <FontAwesomeIcon icon={faArrowRight} color="darkgreen" />{' '}
@@ -100,7 +99,7 @@ export default function Post ({ match }) {
           </p>
 
           <p className={styles.license}>
-            It is also OSS and if you see any typos or information that you believe incorrect, you can just
+            It is also OSS and if you see any typos or information that you believe incorrect, you can just{' '}
             <a href="/posts/how-to-submit-a-pull-request-to-my-posts">submit a pull request</a>.
           </p>
         </footer>
