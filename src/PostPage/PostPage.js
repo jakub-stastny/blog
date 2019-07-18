@@ -8,11 +8,11 @@ import HashTag from '../HashTag/HashTag'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import { FetchError } from '../Errors/Errors'
-import showdown from 'showdown'
 import Gravatar from '../Gravatar/Gravatar'
 import ConversationPrompt from '../ConversationPrompt/ConversationPrompt'
 import { Tooltip } from 'react-tippy'
 import { aboutPagePath } from '../routes'
+import { markdownToHTML } from '../utils'
 
 import styles from './PostPage.module.css'
 import 'react-tippy/dist/tippy.css'
@@ -25,11 +25,6 @@ registerFont(faArrowRight)
 const TouchFriendlyAbbr = ({ text, tooltipText }) => (
   <Tooltip title={tooltipText} position="bottom" trigger="click">{text} <b style={{color: 'green'}}>(?)</b></Tooltip>
 )
-
-function markdownToHTML (markdownText) {
-  const converter = new showdown.Converter({emoji: true})
-  return converter.makeHtml(markdownText)
-}
 
 export default function Post ({ match }) {
   const slug = match.params.slug
