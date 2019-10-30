@@ -1,5 +1,6 @@
 NAME = 'botanicus/blog'
 
+desc "Deploy to Heroku"
 task :deploy do
   sh "heroku container:push web -a botanicus-me"
   sh "heroku container:release web -a botanicus-me"
@@ -7,6 +8,7 @@ end
 
 desc "Build a docker image"
 task 'docker:build' do
+  sh "yarn build"
   sh "docker build . -t #{NAME}"
 end
 
