@@ -8,7 +8,7 @@ import PostPage from '../PostPage/PostPage'
 */
 
 const getLastUpdatePostSlug = (data) => (
-  (data && data.posts) ? data.posts.slice(-1)[0].slug : ''
+  (data && data.posts) ? data.posts[0].slug : ''
 )
 
 export default function NowPage () {
