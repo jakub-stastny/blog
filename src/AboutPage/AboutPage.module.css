@@ -1,28 +1,3 @@
 .mainTitle {
   color: indigo;
 }
-
-.reason::before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 1900;
-  content: "\2713 ";
-  color: green;
-}
-
-.list dt {
-  font-weight: bold;
-  display: inline;
-}
-
-.list dt::after {
-  content: ": ";
-}
-
-.list dd {
-  display: inline;
-  margin-left: 0;
-}
-
-.fixBorderRadius {
-  margin-left: 12px;
-}

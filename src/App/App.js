@@ -6,8 +6,6 @@ import styles from '../App/App.module.css'
 import {
   homePagePath,
   aboutPagePath,
-  myServicesPagePath,
-  curriculumVitaePagePath,
   nowPagePath,
   subscribePagePath,
   getPostPagePath,
@@ -23,7 +21,6 @@ import TagPage from '../TagPage/TagPage'
 import NowPage from '../NowPage/NowPage'
 import SubscribePage from '../SubscribePage/SubscribePage'
 import AboutPage from '../AboutPage/AboutPage'
-import MyServicesPage from '../MyServicesPage/MyServicesPage'
 import HomePage from '../HomePage/HomePage'
 import ErrorBoundary, { RoutingErrorPage } from '../Errors/Errors'
 
@@ -38,7 +35,6 @@ import GoogleAnalytics from 'react-router-ga'
 
 /* Lazy-loading */
 const TagsPage = lazy(() => import(/* webpackChunkName: "TagsPage" */ '../TagsPage/TagsPage'))
-const CurriculumVitaePage = lazy(() => import(/* webpackChunkName: "CurriculumVitaePage" */ '../CurriculumVitaePage/CurriculumVitaePage'))
 
 export default () => (
   <Router>
@@ -58,8 +54,6 @@ export default () => (
                 <Switch>
                   <Route exact path={homePagePath} component={HomePage} />
                   <Route exact path={aboutPagePath} component={AboutPage} />
-                  <Route exact path={myServicesPagePath} component={MyServicesPage} />
-                  <Route exact path={curriculumVitaePagePath} render={() => <SuspenseSpinner><CurriculumVitaePage /></SuspenseSpinner>} />
                   <Route exact path={nowPagePath} component={NowPage} />
                   <Route exact path={subscribePagePath} component={SubscribePage} />
                   <Route path={getPostPagePath(':slug')} component={PostPage} />
