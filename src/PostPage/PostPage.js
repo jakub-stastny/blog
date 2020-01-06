@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-import Discussion from '../Discussion/Discussion'
+import Email from '../Email/Email'
 import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import HashTag from '../HashTag/HashTag'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
@@ -89,6 +89,10 @@ export default function Post ({ match }) {
             </p>
           </div>
 
+          <p className={styles.discussion}>
+            At the moment I don't support discussions. If you have any comments, please contact me directly on <Email />.
+          </p>
+
           <p className={styles.license}>
             This post has been <a href="/posts/releasing-copyright">uncopyrighted</a>. You can do anything you want with it.
           </p>
@@ -98,8 +102,6 @@ export default function Post ({ match }) {
             <a href="/posts/how-to-submit-a-pull-request-to-my-posts">submit a pull request</a>.
           </p>
         </footer>
-
-        <Discussion url={post.url} identifier={post.slug} title={post.title} />
       </article>
     </FetchedData>
   )
