@@ -16,15 +16,6 @@
     width: 75%;
     display: table-cell;
   }
-
-  /* FIXME: doesn't work on the subscribe page. */
-  .rightColumn {
-    height: calc(100vh - 100px - 110px); /* 1 screen height without the footer and header. TODO: don't hardcode the header like this */
-    overflow: hidden;
-    width: 25%;
-    /* background-color: lightblue; */
-    display: table-cell;
-  }
 }
 
 /* Mobile. */
@@ -33,9 +24,5 @@
     width: 82%;
     overflow: auto;
     margin: 0 auto;
-  }
-
-  .rightColumn {
-    display: none;
   }
 }
