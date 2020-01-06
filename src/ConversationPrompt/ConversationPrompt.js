@@ -11,7 +11,7 @@ const prompts = {
   ),
   default: (
     <p>
-      Hi, my name is James. I'm a <HashTag>Ruby</HashTag>, <HashTag>Ruby on Rails</HashTag>, <HashTag>JavaScript</HashTag> and <HashTag>React.js</HashTag> developer available for freelance work.
+      Hi, my name is Jakub. I'm a <HashTag>Ruby</HashTag>, <HashTag>Ruby on Rails</HashTag>, <HashTag>JavaScript</HashTag> and <HashTag>React.js</HashTag> developer available for freelance work.
     </p>
   )
 }

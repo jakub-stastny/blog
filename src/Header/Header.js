@@ -16,7 +16,7 @@ export default memo(() => (
 
     <div className={assert(styles.textSection)}>
       <h1>
-        <Link to="/">James C Russell</Link>
+        <Link to="/">Jakub Šťastný</Link>
       </h1>
 
       <p>

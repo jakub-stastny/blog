@@ -6,7 +6,7 @@
 // import Email, { SelfLinkingEmail } from './Email'
 
 // it('renders a <div> tag with class highlight and children inside', () => {
-//   const testRenderer = TestRenderer.create(<Email subject="Hello James">Lorem ipsum</Email>)
+//   const testRenderer = TestRenderer.create(<Email subject="Hello Jakub">Lorem ipsum</Email>)
 //   const object = testRenderer.toJSON()
 
 //   console.log(object)
