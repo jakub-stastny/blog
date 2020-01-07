@@ -1,5 +1,7 @@
 # About
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b942583c-60d2-45f0-a368-f15fc67e3fe2/deploy-status)](https://app.netlify.com/sites/determined-heyrovsky-fe0628/deploys)
+
 This is the front-end behind my blog [botanicus.me](http://botanicus.me).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
