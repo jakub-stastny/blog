@@ -2,7 +2,7 @@ import React, { useEffect, memo } from 'react'
 import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import Email from '../Email/Email'
 
-export default memo(() => {
+export default memo(function SubscribePage () {
   useEffect(() => {
     document.title = "Subscribe to Jakub's newsletter"
   })

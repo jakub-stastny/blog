@@ -1,5 +1,5 @@
 /* TODO: tests. */
-import React, { useEffect } from 'react'
+import React, { useEffect, memo } from 'react'
 import PostPreview from '../PostPreview/PostPreview'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import styles from './HomePage.module.css'
@@ -17,7 +17,7 @@ const PostList = ({ posts }) => (
   posts.length ? <PostPreviewList posts={posts} /> : <NoPostsPlaceholder />
 )
 
-export default function Home () {
+export default memo(function HomePage () {
   const [isLoading, posts, error] = useFetchedData(
     'https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts.json', []
   )
@@ -31,4 +31,4 @@ export default function Home () {
       <PostList posts={posts} />
     </FetchedData>
   )
-}
+})

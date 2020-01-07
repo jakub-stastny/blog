@@ -6,7 +6,7 @@ import Email from '../Email/Email'
 
 import styles from './AboutPage.module.css'
 
-export default memo(() => {
+export default memo(function AboutPage () {
   useEffect(() => {
     document.title = "About Jakub's blog"
   })
@@ -15,13 +15,13 @@ export default memo(() => {
     <>
       <h1 className={styles.mainTitle}>Hi! My name is Jakub.</h1>
       <p>
-        If you want to contact me, please don't hesitate to drop me an email to <Email />.
+        If you want to get in touch, please don't hesitate to drop me an email to <Email />.
       </p>
 
       <Highlight>
         <h2>What am I up to now?</h2>
         <p>
-          If you are curious about what I'm working on now, I regularly update my <Link to={nowPagePath}>latest status update</Link>.
+          If you are curious about what I'm working on now, I regularly update <Link to={nowPagePath}>my status update</Link>.
         </p>
       </Highlight>
     </>

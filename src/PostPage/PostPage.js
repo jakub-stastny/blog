@@ -1,5 +1,5 @@
 /* TODO: tests. */
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, memo } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import Email from '../Email/Email'
@@ -26,7 +26,7 @@ const TouchFriendlyAbbr = ({ text, tooltipText }) => (
   <Tooltip title={tooltipText} position="bottom" trigger="click">{text} <b style={{color: 'green'}}>(?)</b></Tooltip>
 )
 
-export default function Post ({ match }) {
+export default memo(function Post ({ match }) {
   const slug = match.params.slug
   const [isLoading, post, error] = useFetchedData(
     `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/post.json`, {}
@@ -109,4 +109,4 @@ export default function Post ({ match }) {
       </article>
     </FetchedData>
   )
-}
+})
