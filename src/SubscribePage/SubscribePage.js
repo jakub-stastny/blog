@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React  from 'react'
 import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import Email from '../Email/Email'
 
 export default () => (
-  <Fragment>
+  <>
     <h1>Ways to stay in touch</h1>
 
     <h2>Monthly newsletter</h2>
@@ -22,5 +22,5 @@ export default () => (
     <p>
       At the moment I don't have RSS feed(s). If you'd like to have it, please <Email subject="RSS on your blog">let me know</Email>.
     </p>
-  </Fragment>
+  </>
 )

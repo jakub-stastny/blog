@@ -9,7 +9,7 @@
 See https://reactjs.org/docs/code-splitting.html
 */
 
-import React, { Fragment, Suspense, memo } from 'react'
+import React, { Suspense, memo } from 'react'
 import { registerFont, FontAwesomeIcon } from '../FontAwesome/FontAwesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
@@ -22,10 +22,10 @@ export const SuspenseSpinner = memo(({ children }) => (
 ))
 
 const Spinner = memo(() => (
-  <Fragment>
+  <>
     <FontAwesomeIcon icon={faSpinner} spin={true} />{' '}
     Loading ...
-  </Fragment>
+  </>
 ))
 
 export default Spinner

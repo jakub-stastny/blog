@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Spinner from '../Spinner/Spinner'
 import { assert } from '../utils'
 
@@ -89,10 +89,10 @@ export function useFetchedData (url, defaultFetchedDataValue) {
 }
 
 const DefaultErrorReporter = ({ error }) => (
-  <Fragment>
+  <>
     <h1>{error.name}</h1>
     <p>{error.message}</p>
-  </Fragment>
+  </>
 )
 
 export default function FetchedData ({ isLoading, error, errorReporter, children }) {

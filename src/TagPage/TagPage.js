@@ -1,4 +1,4 @@
-import React, { Fragment }  from 'react'
+import React  from 'react'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import PublishedDate from '../PublishedDate/PublishedDate'
 import { getPostPagePath } from '../routes'
@@ -21,10 +21,10 @@ const PostPreviewList = ({ posts = [] }) => (
 )
 
 const TagList = ({ name, posts }) => (
-  <Fragment>
+  <>
     <h1>Posts tagged <span className={styles.emphasis}>{name}</span></h1>
     <PostPreviewList posts={posts} />
-  </Fragment>
+  </>
 )
 
 export default function Tag ({ match }) {
