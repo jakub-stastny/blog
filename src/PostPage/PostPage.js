@@ -56,6 +56,10 @@ export default function Post ({ match }) {
     })
   })
 
+  useEffect(() => {
+    if (post.title) document.title = post.title
+  })
+
   const errorComponent = <FetchError error={error} />
 
   return (
