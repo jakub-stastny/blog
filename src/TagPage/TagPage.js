@@ -1,5 +1,5 @@
 import React, { useEffect, useContext }  from 'react'
-import { A } from 'hookrouter'
+import { useTitle, A } from 'hookrouter'
 import StateContext from '../state'
 import PublishedDate from '../PublishedDate/PublishedDate'
 import { getPostPagePath } from '../routes'
@@ -32,9 +32,7 @@ export default function Tag ({ slug }) {
   const state = useContext(StateContext)
   const tag = state.helpers.getTag(slug)
 
-  useEffect(() => {
-    document.title = tag ? `Tag ${tag.name}` : "Loading ..."
-  }, [tag])
+  useTitle(tag ? `Tag ${tag.name}` : "Loading ...")
 
   useEffect(() => {
     state.helpers.fetchTag(slug)

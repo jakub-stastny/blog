@@ -1,4 +1,5 @@
 import React, { useEffect, memo } from 'react'
+import { useTitle } from 'hookrouter'
 import Highlight from '../Highlight/Highlight'
 import { nowPagePath } from '../routes'
 import Link from '../Link/Link'
@@ -7,9 +8,7 @@ import Email from '../Email/Email'
 import styles from './AboutPage.module.css'
 
 export default memo(function AboutPage () {
-  useEffect(() => {
-    document.title = "About Jakub's blog"
-  })
+  useTitle("About Jakub's blog")
 
   return (
     <>

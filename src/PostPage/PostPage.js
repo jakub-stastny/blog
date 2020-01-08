@@ -2,8 +2,7 @@
 import React, { useEffect, useContext, useState, useRef, memo } from 'react'
 import ReactDOM from 'react-dom'
 import StateContext from '../state'
-import { A } from 'hookrouter'
-import Link from '../Link/Link'
+import { useTitle, A } from 'hookrouter'
 import Email from '../Email/Email'
 import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import HashTag from '../HashTag/HashTag'
@@ -62,7 +61,7 @@ export default memo(function Post ({ slug }) {
     })
   }, [post])
 
-  useEffect(() => { document.title = post ? post.title : "Loading ..." })
+  useTitle(post ? post.title : "Loading ...")
 
   // const errorComponent = <FetchError error={error} />
 
@@ -96,7 +95,7 @@ export default memo(function Post ({ slug }) {
 
             <p>
               <FontAwesomeIcon icon={faArrowRight} color="darkgreen" />{' '}
-              You can find out more about me on the <Link to={aboutPagePath}>about page</Link>.
+              You can find out more about me on the <A href={aboutPagePath}>about page</A>.
             </p>
           </div>
 
