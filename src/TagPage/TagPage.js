@@ -1,4 +1,5 @@
 import React  from 'react'
+import { A } from 'hookrouter'
 import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import PublishedDate from '../PublishedDate/PublishedDate'
 import { getPostPagePath } from '../routes'
@@ -6,7 +7,7 @@ import styles from './TagPage.module.css'
 
 const PostPreview = ({ title, slug, date }) => (
   <li>
-    <a href={getPostPagePath(slug)}>{title}</a>{' '}
+    <A href={getPostPagePath(slug)}>{title}</A>{' '}
     <span className={styles.date}>
       <PublishedDate date={date} />
     </span>
@@ -27,8 +28,7 @@ const TagList = ({ name, posts }) => (
   </>
 )
 
-export default function Tag ({ match }) {
-  const slug = match.params.slug
+export default function Tag ({ slug }) {
   const [isLoading, data, error] = useFetchedData(
     `https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags/${slug}.json`, {}
   )

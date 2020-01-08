@@ -1,7 +1,7 @@
 import React, { useEffect, memo } from 'react'
 import Highlight from '../Highlight/Highlight'
 import { nowPagePath } from '../routes'
-import { Link } from 'react-router-dom'
+import Link from '../Link/Link'
 import Email from '../Email/Email'
 
 import styles from './AboutPage.module.css'

@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import { A } from 'hookrouter'
 import Join from '../Join/Join'
 import { getTagPagePath } from '../routes'
 
@@ -6,7 +7,7 @@ import { getTagPagePath } from '../routes'
 export default memo(({ tags = [] }) => (
   <Join items={tags}>
     {({ slug, name }) => (
-      <a href={getTagPagePath(slug)}>{name.replace(/ /g, "\u00a0")}</a>
+      <A href={getTagPagePath(slug)}>{name.replace(/ /g, "\u00a0")}</A>
     )}
   </Join>
 ))

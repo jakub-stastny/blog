@@ -1,7 +1,8 @@
 /* TODO: tests. */
 import React, { useEffect, useRef, memo } from 'react'
 import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
+import { A } from 'hookrouter'
+import Link from '../Link/Link'
 import Email from '../Email/Email'
 import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import HashTag from '../HashTag/HashTag'
@@ -26,8 +27,7 @@ const TouchFriendlyAbbr = ({ text, tooltipText }) => (
   <Tooltip title={tooltipText} position="bottom" trigger="click">{text} <b style={{color: 'green'}}>(?)</b></Tooltip>
 )
 
-export default memo(function Post ({ match }) {
-  const slug = match.params.slug
+export default memo(function Post ({ slug }) {
   const [isLoading, post, error] = useFetchedData(
     `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/post.json`, {}
   )
@@ -98,12 +98,12 @@ export default memo(function Post ({ match }) {
           </p>
 
           <p className={styles.license}>
-            This post has been <a href="/posts/releasing-copyright">uncopyrighted</a>. You can do anything you want with it.
+            This post has been <A href="/posts/releasing-copyright">uncopyrighted</A>. You can do anything you want with it.
           </p>
 
           <p className={styles.license}>
             It is also OSS and if you see any typos or information that you believe incorrect, you can just{' '}
-            <a href="/posts/how-to-submit-a-pull-request-to-my-posts">submit a pull request</a>.
+            <A href="/posts/how-to-submit-a-pull-request-to-my-posts">submit a pull request</A>.
           </p>
         </footer>
       </article>
