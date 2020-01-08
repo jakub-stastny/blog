@@ -1,7 +1,8 @@
 /* TODO: tests. */
-import React, { useEffect, memo } from 'react'
+import React, { useEffect, useContext, memo } from 'react'
 import PostPreview from '../PostPreview/PostPreview'
-import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
+// import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
+import StateContext from '../state'
 import styles from './HomePage.module.css'
 import { assert } from '../utils'
 
@@ -18,17 +19,15 @@ const PostList = ({ posts }) => (
 )
 
 export default memo(function HomePage () {
-  const [isLoading, posts, error] = useFetchedData(
-    'https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts.json', []
-  )
+  const state = useContext(StateContext)
 
-  useEffect(() => {
-    document.title = "Jakub's blog"
-  })
+  useEffect(() => { document.title = "Jakub's blog" }, [])
 
-  return (
-    <FetchedData isLoading={isLoading} error={error}>
-      <PostList posts={posts} />
-    </FetchedData>
-  )
+  // TODO: Suspense
+  return state.postsFetched ? <PostList posts={state.posts} /> : null
+  // return (
+  //   <FetchedData isLoading={isLoading} error={error}>
+  //     <PostList posts={state.posts} />
+  //   </FetchedData>
+  // )
 })

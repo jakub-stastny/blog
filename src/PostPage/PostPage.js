@@ -1,16 +1,18 @@
 /* TODO: tests. */
-import React, { useEffect, useRef, memo } from 'react'
+import React, { useEffect, useContext, useState, useRef, memo } from 'react'
 import ReactDOM from 'react-dom'
+import StateContext from '../state'
 import { A } from 'hookrouter'
 import Link from '../Link/Link'
 import Email from '../Email/Email'
 import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import HashTag from '../HashTag/HashTag'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
-import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
+// import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
 import { FetchError } from '../Errors/Errors'
 import Gravatar from '../Gravatar/Gravatar'
 import ConversationPrompt from '../ConversationPrompt/ConversationPrompt'
+import Spinner from '../Spinner/Spinner'
 import { Tooltip } from 'react-tippy'
 import { aboutPagePath } from '../routes'
 import { markdownToHTML } from '../utils'
@@ -28,11 +30,15 @@ const TouchFriendlyAbbr = ({ text, tooltipText }) => (
 )
 
 export default memo(function Post ({ slug }) {
-  const [isLoading, post, error] = useFetchedData(
-    `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/post.json`, {}
-  )
+  const state = useContext(StateContext)
+  const post = state.helpers.getPost(slug)
+  // const [isLoading, post, error] = useFetchedData(
+  //   `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/post.json`, {}
+  // )
 
   const bodyRef = useRef(null)
+
+  useEffect(() => { post && post.body || state.helpers.fetchPost(slug) }, [])
 
   useEffect(() => {
     const bodyElement = bodyRef.current
@@ -54,16 +60,16 @@ export default memo(function Post ({ slug }) {
       const path = img.getAttribute('src')
       img.src = `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${path}`
     })
-  })
+  }, [post])
 
-  useEffect(() => {
-    document.title = post.title ? post.title : "Loading ..."
-  })
+  useEffect(() => { document.title = post ? post.title : "Loading ..." })
 
-  const errorComponent = <FetchError error={error} />
+  // const errorComponent = <FetchError error={error} />
+
+  if (!post) return <Spinner />
 
   return (
-    <FetchedData isLoading={isLoading} error={error} errorReporter={errorComponent}>
+    // <FetchedData isLoading={isLoading} error={error} errorReporter={errorComponent}>
       <article>
         <h1 className={styles.mainTitle}>{post.title}</h1>
         <div className={styles.statusLine}>
@@ -72,7 +78,8 @@ export default memo(function Post ({ slug }) {
 
         {/* We wrap it in div, as the excerpt is already wrapped in <p> due to the markdown conversion. */}
         <div className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
-        <div className={styles.post} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} />
+        {/* TODO: Use suspense */}
+        {post.body ? <div className={styles.post} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} /> : <Spinner />}
 
         <footer className={styles.footer}>
           <div className={styles.newsletter}>
@@ -107,6 +114,6 @@ export default memo(function Post ({ slug }) {
           </p>
         </footer>
       </article>
-    </FetchedData>
+    // </FetchedData>
   )
 })

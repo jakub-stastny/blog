@@ -10,6 +10,8 @@ import ErrorBoundary, { RoutingErrorPage } from '../Errors/Errors'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
+import { StateContextProvider } from '../state'
+
 import { assert } from '../utils'
 
 import ReactGA from 'react-ga'
@@ -27,7 +29,7 @@ export default function App () {
   }, [window.location.pathname])
 
   return (
-    <>
+    <StateContextProvider>
       <div className={assert(styles.content)}>
         <ErrorBoundary>
           <Header />
@@ -43,6 +45,6 @@ export default function App () {
       <ErrorBoundary>
         <Footer />
       </ErrorBoundary>
-    </>
+    </StateContextProvider>
   )
 }

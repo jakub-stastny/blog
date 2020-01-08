@@ -27,7 +27,7 @@ export const RoutingErrorPage = () => (
 )
 
 const ErrorScreen = () => (
-  <div class={wrapperClassName}>
+  <div className={wrapperClassName}>
     <h1>Something went wrong</h1>
   </div>
 )

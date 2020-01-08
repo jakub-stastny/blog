@@ -1,6 +1,6 @@
-import React  from 'react'
+import React, { useEffect, useContext }  from 'react'
 import { A } from 'hookrouter'
-import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
+import StateContext from '../state'
 import PublishedDate from '../PublishedDate/PublishedDate'
 import { getPostPagePath } from '../routes'
 import styles from './TagPage.module.css'
@@ -29,13 +29,19 @@ const TagList = ({ name, posts }) => (
 )
 
 export default function Tag ({ slug }) {
-  const [isLoading, data, error] = useFetchedData(
-    `https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags/${slug}.json`, {}
-  )
+  const state = useContext(StateContext)
+  const tag = state.helpers.getTag(slug)
 
+  useEffect(() => {
+    document.title = tag ? `Tag ${tag.name}` : "Loading ..."
+  }, [tag])
+
+  useEffect(() => {
+    state.helpers.fetchTag(slug)
+  }, [])
+
+  /* TODO: suspense */
   return (
-    <FetchedData isLoading={isLoading} error={error}>
-      <TagList {...data} />
-    </FetchedData>
+    <TagList {...tag} />
   )
 }
