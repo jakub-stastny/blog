@@ -8,6 +8,6 @@ export function assert (condition, message) {
 }
 
 export function markdownToHTML (markdownText) {
-  const converter = new showdown.Converter({emoji: true})
+  const converter = new showdown.Converter({emoji: true, strikethrough: true})
   return converter.makeHtml(markdownText)
 }
