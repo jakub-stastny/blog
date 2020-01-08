@@ -57,7 +57,7 @@ export default memo(function Post ({ match }) {
   })
 
   useEffect(() => {
-    if (post.title) document.title = post.title
+    document.title = post.title ? post.title : "Loading ..."
   })
 
   const errorComponent = <FetchError error={error} />
