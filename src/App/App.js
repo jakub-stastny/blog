@@ -35,7 +35,7 @@ export default function App () {
 
         <main className={styles.mainColumn}>
           <ErrorBoundary>
-            {currentRoute}
+            {currentRoute || <RoutingErrorPage />}
           </ErrorBoundary>
         </main>
       </div>
