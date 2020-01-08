@@ -58,7 +58,7 @@ export function StateContextProvider ({ children }) {
   }
 
   return (
-    <StateContext.Provider value={{posts, postsFetched, tags, tagsFetched, helpers}}>
+    <StateContext.Provider value={{posts, postsFetched, tags, tagsFetched, helpers, currentPath: window.location.pathname}}>
       {children}
     </StateContext.Provider>
   )

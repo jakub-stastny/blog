@@ -1,11 +1,13 @@
-import React, { memo } from 'react'
+import React, { useContext, memo } from 'react'
+import StateContext from '../state'
 import { A } from 'hookrouter'
-import { selected as selectedClassName } from './Link.module.css'
-import { assert } from '../utils'
 
-assert(selectedClassName, 'selectedClassName is expected to be defined')
+export default memo(({ current, to, children }) => {
+  const state = useContext(StateContext)
 
-export default memo(({ to, children }) => (
-  // <NavLink to={to} activeClassName={selectedClassName}>{children}</NavLink>
-  <A href={to}>{children}</A>
-))
+  if (state.currentPath === to) {
+    return <A style={{color: 'inherit', textDecoration: 'inherit', cursor: 'inherit'}} href={to}>{children}</A>
+  } else {
+    return <A href={to}>{children}</A>
+  }
+})

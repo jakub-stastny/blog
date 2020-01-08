@@ -1,5 +1,0 @@
-/* If a link is selected, style it as normal text. */
-.selected {
-  color: inherit;
-  text-decoration: inherit;
-}
