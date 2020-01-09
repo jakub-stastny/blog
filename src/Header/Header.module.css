@@ -3,17 +3,9 @@
   padding: 20px 0;
   text-align: center;
   background-color: BlanchedAlmond;
-}
-
-/* TODO: does this solution work on mobile? */
-.gravatarSection {
-}
-
-.textSection {
-  padding: 0 12px;
   line-height: 1.5em;
 }
 
-.textSection p {
+.header p {
   font-style: italic;
 }

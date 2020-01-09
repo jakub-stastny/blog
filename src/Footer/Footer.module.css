@@ -1,4 +1,5 @@
 /* Sticky footer: https://css-tricks.com/couple-takes-sticky-footer */
+/* Note that we're setting min-height of .content in App.module.css in order for this to work. */
 footer.main {
   height: 50px;
   padding-top: 25px;
@@ -18,10 +19,3 @@ footer nav ul li {
 footer nav ul li + li::before {
   content: " | ";
 }
-
-/* This is in App.module.css */
-/* TODO: Find something that can be isolated. */
-/* .content { */
-/*   min-height: calc(100vh - 100px); /1* Sticky footer. *1/ */
-/* } */
-

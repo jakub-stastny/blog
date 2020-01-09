@@ -33,7 +33,7 @@ export default memo(function SubscribePage () {
       </p>
 
       <p>
-        I believe in personal contact and longer form posts, which require some attention, and have a message that's worth the time – not mindless blabbering of how many pints one might have drunk in Old Ponny's last night.
+        I believe in personal contact and longer form posts, which require some attention, and have a message that's worth the time – not mindless blabbering of how many pints one might have downed in Old Ponny's last night.
       </p>
     </>
   )
