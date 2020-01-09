@@ -34,10 +34,12 @@ export default memo(function SubscribePage () {
         </Highlight>
       </AdBlockDetect>
 
-      <NewsletterSignUpForm />
+      <div className={assert(styles.form)}>
+        <NewsletterSignUpForm />
+      </div>
 
-      <div style={{marginTop: 35}}>
-        <ToggleHideContent prompt="Show more options">
+      <div style={{marginTop: 25}}>
+        <ToggleHideContent prompt="Looking for more options?">
           <div className={assert(styles.disabled)}>
             <h2>Notification about every post by email</h2>
             <p>
@@ -55,7 +57,7 @@ export default memo(function SubscribePage () {
             </p>
 
             <p>
-              I believe in personal contact and longer form posts, which require some attention, and have a message that's worth the time – not mindless blabbering of how many pints one might have downed in Old Ponny's last night.
+              I believe in personal contact and longer form posts, which require some attention, and have a message that's worth the time – not mindless blabbering about how many pints one might have downed in Old Ponny's last night.
             </p>
           </div>
         </ToggleHideContent>

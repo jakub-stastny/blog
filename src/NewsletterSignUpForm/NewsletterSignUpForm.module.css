@@ -1,0 +1,31 @@
+.box {
+  text-align: center;
+}
+
+.box form {
+  display: inline-block;
+}
+
+.box form input {
+  padding: 3px;
+  font-size: 18px;
+}
+
+.box form button {
+  margin-left: 5px;
+  padding: 3px;
+  font-size: 18px;
+}
+
+.arrow {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  display: inline-block;
+}
+
+.here {
+  font-weight: strong;
+  color: green;
+  font-size: 18px;
+}
