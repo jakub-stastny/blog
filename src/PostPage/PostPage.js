@@ -1,4 +1,3 @@
-/* TODO: tests. */
 import React, { useEffect, useContext, useRef, memo } from 'react'
 import ReactDOM from 'react-dom'
 import StateContext from '../state'

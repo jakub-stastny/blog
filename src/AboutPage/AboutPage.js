@@ -2,10 +2,14 @@ import React, { useContext, memo } from 'react'
 import { A, useTitle } from 'hookrouter'
 import Highlight from '../Highlight/Highlight'
 import StateContext from '../state'
-import { nowPagePath } from '../routes'
+import { nowPagePath, getPostPagePath } from '../routes'
 import Email from '../Email/Email'
 
 import styles from './AboutPage.module.css'
+
+const LastStatusUpdateLink = ({ post }) => (
+  post ? <A href={getPostPagePath(post.slug)}>{post.title}</A> : <A href={nowPagePath}>latest status update</A>
+)
 
 export default memo(function AboutPage () {
   useTitle("About Jakub's blog")
@@ -23,7 +27,7 @@ export default memo(function AboutPage () {
       <Highlight title="What I'm up to now?">
         <p>
           If you are curious about what I'm working on now, I regularly write a status update. Here's the last one:{' '}
-          <A href={nowPagePath}>{lastStatusUpdate ? lastStatusUpdate.title : 'latest status update'}</A>.
+          <LastStatusUpdateLink post={lastStatusUpdate} />.
         </p>
       </Highlight>
     </>
