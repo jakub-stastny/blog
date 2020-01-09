@@ -2,6 +2,7 @@ import React, { useEffect, useContext }  from 'react'
 import { useTitle, A } from 'hookrouter'
 import StateContext from '../state'
 import PublishedDate from '../PublishedDate/PublishedDate'
+import Spinner from '../Spinner/Spinner'
 import { getPostPagePath } from '../routes'
 import styles from './TagPage.module.css'
 
@@ -37,8 +38,7 @@ export default function Tag ({ slug }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { state.helpers.fetchTag(slug) }, [])
 
-  /* TODO: suspense */
   return (
-    <TagList {...tag} />
+    tag ? <TagList {...tag} /> : <Spinner title="the tag data" />
   )
 }

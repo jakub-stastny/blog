@@ -57,11 +57,11 @@ export default memo(function Post ({ slug }) {
     })
   }, [post, slug])
 
-  useTitle(post ? post.title : "Loading ...")
+  useTitle(post ? post.title : "Loading the post ...")
 
   // const errorComponent = <FetchError error={error} />
 
-  if (!post) return <Spinner />
+  if (!post) return <Spinner title="the post" />
 
   return (
     // <FetchedData isLoading={isLoading} error={error} errorReporter={errorComponent}>
@@ -73,8 +73,12 @@ export default memo(function Post ({ slug }) {
 
         {/* We wrap it in div, as the excerpt is already wrapped in <p> due to the markdown conversion. */}
         <div className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
-        {/* TODO: Use suspense */}
-        {post.body ? <div className={styles.post} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} /> : <Spinner />}
+
+        {post.body ?
+          <div className={styles.post} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} />
+            :
+          <Spinner title="the post" />
+        }
 
         <footer className={styles.footer}>
           <div className={styles.newsletter}>

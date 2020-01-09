@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import { useTitle } from 'hookrouter'
 import StateContext from '../state'
 import PostPage from '../PostPage/PostPage'
+import Spinner from '../Spinner/Spinner'
 
 /*
   Render latest post tagged with 'now'.
@@ -9,14 +10,14 @@ import PostPage from '../PostPage/PostPage'
 */
 
 export default function NowPage () {
-  useTitle("Fetching the latest update ...")
-
   const state = useContext(StateContext)
+  const lastStatusUpdate = state.lastStatusUpdate
 
-  useEffect(() => { state.lastStatusUpdate || state.helpers.getLatestStatusUpdate() })
+  useEffect(() => { lastStatusUpdate || state.helpers.getLatestStatusUpdate() })
 
-  // TODO: use suspense
+  useTitle(lastStatusUpdate ? lastStatusUpdate.title : "Fetching the latest update ...")
+
   return (
-    state.lastStatusUpdate ? <PostPage slug={state.lastStatusUpdate.slug} /> : null
+    state.lastStatusUpdate ? <PostPage slug={lastStatusUpdate.slug} /> : <Spinner title="latest status update" />
   )
 }
