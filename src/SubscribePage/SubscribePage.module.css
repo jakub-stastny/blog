@@ -1,0 +1,12 @@
+.disabled h2 {
+  color: darkgrey;
+}
+
+.disabled p {
+  color: darkgrey;
+  font-style: italic;
+}
+
+.disabled a {
+  color: lightsteelblue;
+}
