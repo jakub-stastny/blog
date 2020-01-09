@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import StateContext from '../state'
 import { useTitle, A } from 'hookrouter'
 import Email from '../Email/Email'
-import { SimpleSignUpForm as NewsletterSignUpForm } from '../NewsletterSignUpForm/NewsletterSignUpForm'
+import AdBlockDetect from '../AdBlockDetect/AdBlockDetect'
+import NewsletterSignUpForm, { NewsletterSignUpLink } from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import HashTag from '../HashTag/HashTag'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 // import { FetchError } from '../Errors/Errors'
@@ -74,17 +75,25 @@ export default memo(function Post ({ slug }) {
       }
 
       <footer className={styles.footer}>
-        <div className={styles.newsletter}>
-          <p>
-            Did you like the post? Sign up for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
-          </p>
-
-          <NewsletterSignUpForm />
-        </div>
-
         <div className={styles.about}>
           <Gravatar className={styles.gravatar} />
           <ConversationPrompt tagNames={post.tags && post.tags.map(tag => tag.name)} />
+        </div>
+
+        <div className={styles.newsletter}>
+          <AdBlockDetect>
+            <p>
+              Did you like the post? <NewsletterSignUpLink>Sign up</NewsletterSignUpLink> for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
+            </p>
+          </AdBlockDetect>
+
+          <AdBlockDetect value={false}>
+            <p>
+              Did you like the post? Sign up for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
+            </p>
+
+            <NewsletterSignUpForm />
+          </AdBlockDetect>
         </div>
 
         <p className={styles.license}>

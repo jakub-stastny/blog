@@ -1,7 +1,9 @@
 import React, { memo } from 'react'
 import { A, useTitle } from 'hookrouter'
-import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
+import NewsletterSignUpForm, { NewsletterSignUpLink } from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import Email from '../Email/Email'
+import AdBlockDetect from '../AdBlockDetect/AdBlockDetect'
+import Highlight from '../Highlight/Highlight'
 
 export default memo(function SubscribePage () {
   useTitle("Subscribe to Jakub's newsletter")
@@ -14,6 +16,20 @@ export default memo(function SubscribePage () {
       <p>
         This is a quarterly selection of the best posts. <em>I also occasionally write stuff that I don't post on the blog.</em>
       </p>
+
+      <AdBlockDetect>
+        <Highlight title="Ad blocker" style={{background: 'mistyrose', marginBottom: 15}}>
+          <p>
+            Your ad blocker is enabled. This in some cases <em>might prevent submission of this form</em> (
+            <a href="https://github.com/gndx/react-mailchimp-form/issues/11" target="_blank" rel="noopener noreferrer">gndx/react-mailchimp-form#11</a>
+            ).
+          </p>
+
+          <p>
+            If this happens to you, please <NewsletterSignUpLink>subscribe directly here</NewsletterSignUpLink>.
+          </p>
+        </Highlight>
+      </AdBlockDetect>
 
       <NewsletterSignUpForm />
 
