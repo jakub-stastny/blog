@@ -1,14 +1,17 @@
-import React, { memo } from 'react'
-import { useTitle } from 'hookrouter'
+import React, { useContext, memo } from 'react'
+import { A, useTitle } from 'hookrouter'
 import Highlight from '../Highlight/Highlight'
+import StateContext from '../state'
 import { nowPagePath } from '../routes'
-import Link from '../Link/Link'
 import Email from '../Email/Email'
 
 import styles from './AboutPage.module.css'
 
 export default memo(function AboutPage () {
   useTitle("About Jakub's blog")
+
+  const state = useContext(StateContext)
+  const lastStatusUpdate = state.posts.find(post => post.tags.map(tag => tag.name).includes('now'))
 
   return (
     <>
@@ -20,7 +23,8 @@ export default memo(function AboutPage () {
       <Highlight>
         <h2>What am I up to now?</h2>
         <p>
-          If you are curious about what I'm working on now, I regularly update <Link to={nowPagePath}>my status update</Link>.
+          If you are curious about what I'm working on now, I regularly write a status update. Here's the last one:{' '}
+          <A href={nowPagePath}>{lastStatusUpdate ? lastStatusUpdate.title : 'latest status update'}</A>.
         </p>
       </Highlight>
     </>
