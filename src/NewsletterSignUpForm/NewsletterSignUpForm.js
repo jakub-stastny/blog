@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import AdBlockDetect from 'react-ad-block-detect'
+import AdBlockDetect from '../AdBlockDetect/AdBlockDetect'
 import Mailchimp from 'react-mailchimp-form'
 import Highlight from '../Highlight/Highlight'
 import { mailchimpURL } from '../config'
@@ -12,6 +12,20 @@ const fields = [
     required: true
   }
 ]
+
+export const SimpleSignUpForm = memo(() => (
+  <>
+    <AdBlockDetect>
+      <p>
+        Please <a href={mailchimpURL} target="_blank" rel="noopener noreferrer">subscribe directly here</a>.
+      </p>
+    </AdBlockDetect>
+
+    <AdBlockDetect value={false}>
+      <Mailchimp action={mailchimpURL} fields={fields} />
+    </AdBlockDetect>
+  </>
+))
 
 export default memo(() => (
   <>
