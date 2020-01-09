@@ -11,6 +11,7 @@
     "hookrouter": "^1.2.3",
     "moment": "^2.24",
     "react": "^16.12",
+    "react-ad-block-detect": "^1.0.1",
     "react-detect-offline": "^2.4",
     "react-dom": "^16.12",
     "react-ga": "^2.7.0",

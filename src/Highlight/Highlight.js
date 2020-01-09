@@ -4,6 +4,6 @@ import { assert } from '../utils'
 
 assert(highlightClassName, 'highlightClassName is expected to be defined')
 
-export default memo(({ children }) => (
-  <div className={highlightClassName}>{children}</div>
+export default memo(({ style = {}, children }) => (
+  <div className={highlightClassName} style={style}>{children}</div>
 ))
