@@ -1,19 +1,10 @@
 import React, { memo } from 'react'
-// import Gravatar from '../Gravatar/Gravatar'
 import { assert } from '../utils'
 import styles from '../Header/Header.module.css'
 import { UnhighlightedLink } from '../Link/Link'
 
 export default memo(() => (
   <header className={styles.header}>
-    {/*
-    <div className={styles.gravatarSection}>
-      <Link to="/">
-        <Gravatar />
-      </Link>
-    </div>
-    */}
-
     <div className={assert(styles.textSection)}>
       <h1>
         <UnhighlightedLink to="/">Jakub Šťastný</UnhighlightedLink>

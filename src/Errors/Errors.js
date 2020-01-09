@@ -23,7 +23,7 @@ export const FetchError = (error) => (
 )
 
 export const RoutingErrorPage = () => (
-  <h2>No match for <code>{window.location.pathname}</code></h2>
+  <h1>No match for <code>{window.location.pathname}</code></h1>
 )
 
 const ErrorScreen = () => (
