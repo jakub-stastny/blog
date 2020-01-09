@@ -12,12 +12,12 @@ describe('Visiting the home page', () => {
   })
 
   it('Sets the page title', () => {
-    cy.title().should('include', "James' blog")
+    cy.title().should('include', "Jakub's blog")
   })
 
   it('Shows the header', () => {
     cy.get('header').
-      should('contain', 'James C Russell')
+      should('contain', 'Jakub Šťastný')
   })
 
   it('Shows the footer', () => {
