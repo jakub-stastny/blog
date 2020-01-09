@@ -1,5 +1,5 @@
 /* TODO: tests. */
-import React, { useEffect, useContext, useState, useRef, memo } from 'react'
+import React, { useEffect, useContext, useRef, memo } from 'react'
 import ReactDOM from 'react-dom'
 import StateContext from '../state'
 import { useTitle, A } from 'hookrouter'
@@ -7,8 +7,7 @@ import Email from '../Email/Email'
 import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import HashTag from '../HashTag/HashTag'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
-// import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
-import { FetchError } from '../Errors/Errors'
+// import { FetchError } from '../Errors/Errors'
 import Gravatar from '../Gravatar/Gravatar'
 import ConversationPrompt from '../ConversationPrompt/ConversationPrompt'
 import Spinner from '../Spinner/Spinner'
@@ -31,13 +30,11 @@ const TouchFriendlyAbbr = ({ text, tooltipText }) => (
 export default memo(function Post ({ slug }) {
   const state = useContext(StateContext)
   const post = state.helpers.getPost(slug)
-  // const [isLoading, post, error] = useFetchedData(
-  //   `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/post.json`, {}
-  // )
 
   const bodyRef = useRef(null)
 
-  useEffect(() => { post && post.body || state.helpers.fetchPost(slug) }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { (post && post.body) || state.helpers.fetchPost(slug) }, [])
 
   useEffect(() => {
     const bodyElement = bodyRef.current
@@ -59,7 +56,7 @@ export default memo(function Post ({ slug }) {
       const path = img.getAttribute('src')
       img.src = `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${path}`
     })
-  }, [post])
+  }, [post, slug])
 
   useTitle(post ? post.title : "Loading ...")
 

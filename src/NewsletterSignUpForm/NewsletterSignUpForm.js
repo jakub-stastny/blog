@@ -19,12 +19,12 @@ export default memo(() => (
       <Highlight style={{background: 'indianred', marginBottom: 15}}>
         <p>
           Your ad blocker is enabled. This in some cases <em>might prevent submission of this form</em> (
-          <a href="https://github.com/gndx/react-mailchimp-form/issues/11">gndx/react-mailchimp-form#11</a>
+          <a href="https://github.com/gndx/react-mailchimp-form/issues/11" target="_blank" rel="noopener noreferrer">gndx/react-mailchimp-form#11</a>
           ).
         </p>
 
         <p>
-          If this happens to you, please <a href={mailchimpURL}>subscribe directly here</a>.
+          If this happens to you, please <a href={mailchimpURL} target="_blank" rel="noopener noreferrer">subscribe directly here</a>.
         </p>
       </Highlight>
     </AdBlockDetect>

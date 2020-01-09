@@ -60,6 +60,7 @@ export function useFetchedData (url, defaultFetchedDataValue) {
   // as componentDidMount, we're all good.
   const [wasFired, setWasFired] = useState(false) ////
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (wasFired) return ////
 

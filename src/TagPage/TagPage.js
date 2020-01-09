@@ -34,9 +34,8 @@ export default function Tag ({ slug }) {
 
   useTitle(tag ? `Tag ${tag.name}` : "Loading ...")
 
-  useEffect(() => {
-    state.helpers.fetchTag(slug)
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { state.helpers.fetchTag(slug) }, [])
 
   /* TODO: suspense */
   return (

@@ -26,7 +26,7 @@ export default function App () {
 
   useEffect(() => {
     if (isProduction) ReactGA.pageview(window.location.pathname)
-  }, [window.location.pathname])
+  })
 
   return (
     <StateContextProvider>

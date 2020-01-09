@@ -1,5 +1,5 @@
 /* TODO: tests. */
-import React, { useEffect, useContext, memo } from 'react'
+import React, { useContext, memo } from 'react'
 import { useTitle } from 'hookrouter'
 import PostPreview from '../PostPreview/PostPreview'
 import StateContext from '../state'

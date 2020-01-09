@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from 'react'
+import React, { memo } from 'react'
 import { useTitle } from 'hookrouter'
 import Highlight from '../Highlight/Highlight'
 import { nowPagePath } from '../routes'

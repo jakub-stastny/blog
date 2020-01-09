@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from 'react'
+import React, { memo } from 'react'
 import { useTitle } from 'hookrouter'
 import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import Email from '../Email/Email'
@@ -10,9 +10,9 @@ export default memo(function SubscribePage () {
     <>
       <h1>Ways to stay in touch</h1>
 
-      <h2>Monthly newsletter</h2>
+      <h2>Quarterly newsletter</h2>
       <p>
-        This is a monthly selection of the best posts. <em>I also post stuff that I don't post on the blog.</em>
+        This is a quarterly selection of the best posts. <em>I also occasionally write stuff that I don't post on the blog.</em>
       </p>
 
       <NewsletterSignUpForm />
