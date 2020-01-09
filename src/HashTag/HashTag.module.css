@@ -5,3 +5,7 @@
 .hashtag {
   color: blue;
 }
+
+.hashtag a:visited {
+  color: blue;
+}

@@ -1,9 +1,11 @@
 import React, { memo } from 'react'
-import { hashtag as hashtagClassName } from './HashTag.module.css'
+import { A } from 'hookrouter'
+import { getTagPagePath } from '../routes'
+import styles from './HashTag.module.css'
 import { assert } from '../utils'
 
-assert(hashtagClassName, 'hashtagClassName is expected to be defined')
-
-export default memo(({ children }) => (
-  <span className={hashtagClassName}>{children}</span>
+export default memo(({ link, children }) => (
+  <span className={assert(styles.hashtag)}>
+    {link ? <A href={getTagPagePath(children)}>{children}</A> : children}
+  </span>
 ))

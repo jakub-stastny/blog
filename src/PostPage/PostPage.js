@@ -82,7 +82,7 @@ export default memo(function Post ({ slug }) {
       <footer className={styles.footer}>
         <div className={styles.newsletter}>
           <p>
-            Did you like the post? Sign up for my newsletter and I'll send you a <em>monthly</em> email with the most popular posts of the month.
+            Did you like the post? Sign up for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
           </p>
 
           <NewsletterSignUpForm />
@@ -97,10 +97,6 @@ export default memo(function Post ({ slug }) {
             You can find out more about me on the <A href={aboutPagePath}>about page</A>.
           </p>
         </div>
-
-        <p className={styles.discussion}>
-          At the moment I don't support discussions. If you have any comments, please contact me directly on <Email />.
-        </p>
 
         <p className={styles.license}>
           This post has been <A href="/posts/releasing-copyright">uncopyrighted</A>. You can do anything you want with it.
