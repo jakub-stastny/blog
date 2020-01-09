@@ -3,7 +3,7 @@ import StateContext from '../state'
 import { A } from 'hookrouter'
 
 export default memo(({ current, to, children }) => {
-  const state = useContext(StateContext)
+  const state = useContext(StateContext) || {} // The deafult is for the test to work.
 
   if (state.currentPath === to) {
     return <A style={{color: 'inherit', textDecoration: 'inherit', cursor: 'inherit'}} href={to}>{children}</A>
