@@ -1,0 +1,7 @@
+.compact > p {
+  margin: 6px;
+}
+
+.compact > p:first-child {
+  margin-top: 0;
+}

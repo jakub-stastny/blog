@@ -11,16 +11,10 @@ import Gravatar from '../Gravatar/Gravatar'
 import ConversationPrompt from '../ConversationPrompt/ConversationPrompt'
 import Spinner from '../Spinner/Spinner'
 import { Tooltip } from 'react-tippy'
-import { aboutPagePath } from '../routes'
 import { markdownToHTML } from '../utils'
 
 import styles from './PostPage.module.css'
 import 'react-tippy/dist/tippy.css'
-
-import { registerFont, FontAwesomeIcon } from '../FontAwesome/FontAwesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-
-registerFont(faArrowRight)
 
 const TouchFriendlyAbbr = ({ text, tooltipText }) => (
   <Tooltip title={tooltipText} position="bottom" trigger="click">{text} <b style={{color: 'green'}}>(?)</b></Tooltip>
@@ -91,11 +85,6 @@ export default memo(function Post ({ slug }) {
         <div className={styles.about}>
           <Gravatar className={styles.gravatar} />
           <ConversationPrompt tagNames={post.tags && post.tags.map(tag => tag.name)} />
-
-          <p>
-            <FontAwesomeIcon icon={faArrowRight} color="darkgreen" />{' '}
-            You can find out more about me on the <A href={aboutPagePath}>about page</A>.
-          </p>
         </div>
 
         <p className={styles.license}>
