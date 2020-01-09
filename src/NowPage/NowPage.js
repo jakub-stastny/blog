@@ -1,5 +1,5 @@
-import React from 'react'
-import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
+import React, { useContext } from 'react'
+import StateContext from '../state'
 import PostPage from '../PostPage/PostPage'
 
 /*
@@ -7,19 +7,12 @@ import PostPage from '../PostPage/PostPage'
   Inspired by nownownow.com.
 */
 
-const getLastUpdatePostSlug = (data) => (
-  (data && data.posts) ? data.posts[0].slug : ''
-)
-
 export default function NowPage () {
-  const [isLoading, data, error] = useFetchedData(
-    `https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags/now.json`, {}
-  )
+  const state = useContext(StateContext)
+  const lastStatusUpdate = state.posts.find(post => post.tags.map(tag => tag.name).includes('now'))
 
-  // FIXME: The code inside FetchedData looks wrong, why is it evaluated before we've got data?
+  // TODO: use suspense
   return (
-    <FetchedData isLoading={isLoading} error={error}>
-      { data && data.posts ? <PostPage match={{params: {slug: getLastUpdatePostSlug(data)}}} /> : <div /> }
-    </FetchedData>
+    <PostPage slug={lastStatusUpdate.slug} />
   )
 }
