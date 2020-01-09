@@ -1,8 +1,9 @@
-import React from 'react'
-import FetchedData, { useFetchedData } from '../FetchedData/FetchedData'
+import React, { useContext, useEffect } from 'react'
+import StateContext from '../state'
 import styles from '../HomePage/HomePage.module.css'
 import { assert } from '../utils'
 import Link from '../Link/Link'
+import Spinner from '../Spinner/Spinner'
 import { getTagPagePath } from '../routes'
 
 const TagPreview = ({ slug, name }) => (
@@ -24,13 +25,11 @@ const TagList = ({ tags }) => (
 )
 
 export default function TagsPage () {
-  const [isLoading, tags, error] = useFetchedData(
-    'https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags.json', []
-  )
+  const state = useContext(StateContext)
+
+  useEffect(() => { state.tagsFetched || state.helpers.fetchTags() })
 
   return (
-    <FetchedData isLoading={isLoading} error={error}>
-      <TagList tags={tags} />
-    </FetchedData>
+    state.tagsFetched ? <TagList tags={state.tags} /> : <Spinner title="the tags" />
   )
 }

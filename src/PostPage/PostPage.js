@@ -64,55 +64,53 @@ export default memo(function Post ({ slug }) {
   if (!post) return <Spinner title="the post" />
 
   return (
-    // <FetchedData isLoading={isLoading} error={error} errorReporter={errorComponent}>
-      <article>
-        <h1 className={styles.mainTitle}>{post.title}</h1>
-        <div className={styles.statusLine}>
-          <PostStatusLine date={post.date} tags={post.tags} />
+    <article>
+      <h1 className={styles.mainTitle}>{post.title}</h1>
+      <div className={styles.statusLine}>
+        <PostStatusLine date={post.date} tags={post.tags} />
+      </div>
+
+      {/* We wrap it in div, as the excerpt is already wrapped in <p> due to the markdown conversion. */}
+      <div className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
+
+      {post.body ?
+        <div className={styles.post} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} />
+          :
+        <Spinner title="the post" />
+      }
+
+      <footer className={styles.footer}>
+        <div className={styles.newsletter}>
+          <p>
+            Did you like the post? Sign up for my newsletter and I'll send you a <em>monthly</em> email with the most popular posts of the month.
+          </p>
+
+          <NewsletterSignUpForm />
         </div>
 
-        {/* We wrap it in div, as the excerpt is already wrapped in <p> due to the markdown conversion. */}
-        <div className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
+        <div className={styles.about}>
+          <Gravatar className={styles.gravatar} />
+          <ConversationPrompt tagNames={post.tags && post.tags.map(tag => tag.name)} />
 
-        {post.body ?
-          <div className={styles.post} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} />
-            :
-          <Spinner title="the post" />
-        }
-
-        <footer className={styles.footer}>
-          <div className={styles.newsletter}>
-            <p>
-              Did you like the post? Sign up for my newsletter and I'll send you a <em>monthly</em> email with the most popular posts of the month.
-            </p>
-
-            <NewsletterSignUpForm />
-          </div>
-
-          <div className={styles.about}>
-            <Gravatar className={styles.gravatar} />
-            <ConversationPrompt tagNames={post.tags && post.tags.map(tag => tag.name)} />
-
-            <p>
-              <FontAwesomeIcon icon={faArrowRight} color="darkgreen" />{' '}
-              You can find out more about me on the <A href={aboutPagePath}>about page</A>.
-            </p>
-          </div>
-
-          <p className={styles.discussion}>
-            At the moment I don't support discussions. If you have any comments, please contact me directly on <Email />.
+          <p>
+            <FontAwesomeIcon icon={faArrowRight} color="darkgreen" />{' '}
+            You can find out more about me on the <A href={aboutPagePath}>about page</A>.
           </p>
+        </div>
 
-          <p className={styles.license}>
-            This post has been <A href="/posts/releasing-copyright">uncopyrighted</A>. You can do anything you want with it.
-          </p>
+        <p className={styles.discussion}>
+          At the moment I don't support discussions. If you have any comments, please contact me directly on <Email />.
+        </p>
 
-          <p className={styles.license}>
-            It is also OSS and if you see any typos or information that you believe incorrect, you can just{' '}
-            <A href="/posts/how-to-submit-a-pull-request-to-my-posts">submit a pull request</A>.
-          </p>
-        </footer>
-      </article>
-    // </FetchedData>
+        <p className={styles.license}>
+          This post has been <A href="/posts/releasing-copyright">uncopyrighted</A>. You can do anything you want with it.
+        </p>
+
+        <p className={styles.license}>
+          It is also OSS and if you see any typos or information that you believe incorrect, you can just{' '}
+          <A href="/posts/how-to-submit-a-pull-request-to-my-posts">submit a pull request</A>.
+        </p>
+      </footer>
+    </article>
   )
 })
