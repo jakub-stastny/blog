@@ -20,8 +20,7 @@ export default memo(function AboutPage () {
         If you want to get in touch, please don't hesitate to drop me an email to <Email />.
       </p>
 
-      <Highlight>
-        <h2>What am I up to now?</h2>
+      <Highlight title="What I'm up to now?">
         <p>
           If you are curious about what I'm working on now, I regularly write a status update. Here's the last one:{' '}
           <A href={nowPagePath}>{lastStatusUpdate ? lastStatusUpdate.title : 'latest status update'}</A>.
