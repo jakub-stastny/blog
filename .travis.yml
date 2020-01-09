@@ -20,11 +20,6 @@ script:
   - yarn test src/*/*.test.js
   - yarn start & wait-on http://localhost:3000 && yarn cypress
 
-deploy:
-  provider: script
-  script: rake travis:deploy
-  branch: master
-
 notifications:
   email: no
 
