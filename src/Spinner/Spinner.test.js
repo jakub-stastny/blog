@@ -4,10 +4,15 @@ import Spinner from './Spinner'
 
 it('renders a spinner with a text saying it is loading', () => {
   const testRenderer = TestRenderer.create(<Spinner>Lorem ipsum</Spinner>)
-  const list = testRenderer.toJSON()
+  const div = testRenderer.toJSON()
+  expect(div.type).toEqual('div')
 
-  expect(list[0].type).toEqual('svg')
-  expect(list[0].props['data-icon']).toEqual('spinner')
-  expect(list[1]).toEqual(' ')
-  expect(list[2]).toEqual('Loading ...')
+  const list = div.children
+
+  const [ svg, _, span ] = list
+  expect(svg.type).toEqual('svg')
+  expect(svg.props['data-icon']).toEqual('spinner')
+
+  expect(span.type).toEqual('span')
+  expect(span.children[0]).toEqual('Loading ...')
 })

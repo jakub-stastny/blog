@@ -14,7 +14,7 @@ const Spinner = memo(({ title }) => (
   <div style={{marginTop: 10, marginBottom: 10}}>
     <FontAwesomeIcon icon={faSpinner} spin={true} />{' '}
     <span style={{color: 'slategrey'}}>
-      {['Loading', title, '...'].join(' ')}
+      {['Loading', title, '...'].filter(Boolean).join(' ')}
     </span>
   </div>
 ))
