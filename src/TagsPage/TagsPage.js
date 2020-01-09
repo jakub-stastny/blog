@@ -11,7 +11,7 @@ const TagPreview = ({ slug, name }) => (
 )
 
 const TagPreviewList = ({ tags }) => (
-  <ul>
+  <ul style={{paddingLeft: 0}}>
     {tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)}
   </ul>
 )
@@ -30,7 +30,14 @@ export default function TagsPage () {
   useEffect(() => { state.tagsFetched || state.helpers.fetchTags() })
   useTitle(state.tagsFetched ?  "Tags" : "Loading the tags")
 
-  return (
-    state.tagsFetched ? <TagList tags={state.tags} /> : <Spinner title="the tags" />
-  )
+  if (state.tagsFetched) {
+    return (
+      <>
+        <h1>Tags</h1>
+        <TagList tags={state.tags} />
+      </>
+    )
+  } else {
+    return <Spinner title="the tags" />
+  }
 }
