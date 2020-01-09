@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "11"
+  - "13"
 
 services:
   - docker
@@ -19,7 +19,6 @@ cache:
 script:
   - yarn test src/*/*.test.js
   - yarn start & wait-on http://localhost:3000 && yarn cypress
-  - rake travis:build
 
 deploy:
   provider: script
