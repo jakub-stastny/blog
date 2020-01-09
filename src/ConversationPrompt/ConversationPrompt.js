@@ -38,6 +38,7 @@ const prompts = {
     </p>
 
     <p>
+      {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
       I'm from Czech Republic&nbsp;🇨🇿 and after I have lived in various place&nbsp; 🇬🇧🇪🇸🇵🇱,  I finally found my home in sunny Mexico&nbsp;🇲🇽.
     </p>
   </>
