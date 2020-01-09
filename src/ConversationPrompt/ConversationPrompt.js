@@ -38,7 +38,7 @@ const prompts = {
     </p>
 
     <p>
-      I'm from Czech Republic 🇨🇿 and after I have lived in various places 🇬🇧🇪🇸🇵🇱,  I finally found my home in sunny Mexico 🇲🇽.
+      I'm from Czech Republic&nbsp;🇨🇿 and after I have lived in various place&nbsp; 🇬🇧🇪🇸🇵🇱,  I finally found my home in sunny Mexico&nbsp;🇲🇽.
     </p>
   </>
 }
