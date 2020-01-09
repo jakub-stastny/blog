@@ -11,6 +11,7 @@ export function StateContextProvider ({ children }) {
   const [ postPreviews, setPostPreviews ] = useState([])
   const [ fullPosts, setFullPosts] = useState({})
   const [ postsFetched, setPostsFetched ] = useState(false)
+  const [ lastStatusUpdate, setLastStatusUpdate ] = useState()
 
   const posts = postPreviews.map((preview) => fullPosts[preview.slug] || preview)
 
@@ -25,7 +26,7 @@ export function StateContextProvider ({ children }) {
   const helpers = {
     getTag: (slug) => tags.find((tag) => tag.slug === slug),
     getPost: (slug) => posts.find((post) => post.slug === slug),
-    fetchPost, fetchTag, fetchTags,
+    fetchPost, fetchTag, fetchTags, getLatestStatusUpdate
   }
 
 
@@ -55,10 +56,16 @@ export function StateContextProvider ({ children }) {
     const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags/${slug}.json`)
     const data = await response.json()
     setTagDetails(Object.assign({}, tagDetails, {[data.slug]: data}))
+    return data
+  }
+
+  async function getLatestStatusUpdate () {
+    const tag = await this.fetchTag('now')
+    setLastStatusUpdate(tag.posts[0])
   }
 
   return (
-    <StateContext.Provider value={{posts, postsFetched, tags, tagsFetched, helpers, currentPath: window.location.pathname}}>
+    <StateContext.Provider value={{posts, postsFetched, tags, tagsFetched, lastStatusUpdate, helpers, currentPath: window.location.pathname}}>
       {children}
     </StateContext.Provider>
   )

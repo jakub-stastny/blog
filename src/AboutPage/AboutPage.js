@@ -1,4 +1,4 @@
-import React, { useContext, memo } from 'react'
+import React, { useContext, useEffect, memo } from 'react'
 import { A, useTitle } from 'hookrouter'
 import Highlight from '../Highlight/Highlight'
 import StateContext from '../state'
@@ -15,7 +15,8 @@ export default memo(function AboutPage () {
   useTitle("About Jakub's blog")
 
   const state = useContext(StateContext)
-  const lastStatusUpdate = state.posts.find(post => post.tags.map(tag => tag.name).includes('now'))
+
+  useEffect(() => { state.lastStatusUpdate || state.helpers.getLatestStatusUpdate() })
 
   return (
     <>
@@ -27,7 +28,7 @@ export default memo(function AboutPage () {
       <Highlight title="What I'm up to now?">
         <p>
           If you are curious about what I'm working on now, I regularly write a status update. Here's the last one:{' '}
-          <LastStatusUpdateLink post={lastStatusUpdate} />.
+          <LastStatusUpdateLink post={state.lastStatusUpdate} />.
         </p>
       </Highlight>
     </>

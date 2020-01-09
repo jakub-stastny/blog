@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
+import { useTitle } from 'hookrouter'
 import StateContext from '../state'
 import PostPage from '../PostPage/PostPage'
 
@@ -8,11 +9,14 @@ import PostPage from '../PostPage/PostPage'
 */
 
 export default function NowPage () {
+  useTitle("Fetching the latest update ...")
+
   const state = useContext(StateContext)
-  const lastStatusUpdate = state.posts.find(post => post.tags.map(tag => tag.name).includes('now'))
+
+  useEffect(() => { state.lastStatusUpdate || state.helpers.getLatestStatusUpdate() })
 
   // TODO: use suspense
   return (
-    <PostPage slug={lastStatusUpdate.slug} />
+    state.lastStatusUpdate ? <PostPage slug={state.lastStatusUpdate.slug} /> : null
   )
 }
