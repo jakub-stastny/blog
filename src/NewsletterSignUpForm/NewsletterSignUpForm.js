@@ -16,7 +16,7 @@ const fields = [
 export default memo(() => (
   <>
     <AdBlockDetect>
-      <Highlight title="Ad blocker" style={{background: 'indianred', marginBottom: 15}}>
+      <Highlight title="Ad blocker" style={{background: 'mistyrose', marginBottom: 15}}>
         <p>
           Your ad blocker is enabled. This in some cases <em>might prevent submission of this form</em> (
           <a href="https://github.com/gndx/react-mailchimp-form/issues/11" target="_blank" rel="noopener noreferrer">gndx/react-mailchimp-form#11</a>

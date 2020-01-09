@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { useTitle } from 'hookrouter'
+import { A, useTitle } from 'hookrouter'
 import NewsletterSignUpForm from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import Email from '../Email/Email'
 
@@ -25,6 +25,15 @@ export default memo(function SubscribePage () {
       <h2>RSS feed</h2>
       <p>
         At the moment I don't have RSS feed(s). If you'd like to have it, please <Email subject="RSS on your blog">let me know</Email>.
+      </p>
+
+      <h2>Social media</h2>
+      <p>
+        At the moment I'm not on any social media. I made that decision to <A href="/posts/bye-bye-facebook">protect my sanity</A> and I'm not going to change my mind.
+      </p>
+
+      <p>
+        I believe in personal contact and longer form posts, which require some attention, and have a message that's worth the time – not mindless blabbering of how many pints one might have drunk in Old Ponny's last night.
       </p>
     </>
   )
