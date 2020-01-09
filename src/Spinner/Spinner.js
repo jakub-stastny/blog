@@ -11,10 +11,12 @@ export const SuspenseSpinner = memo(({ children }) => (
 ))
 
 const Spinner = memo(({ title }) => (
-  <>
+  <div style={{marginTop: 10, marginBottom: 10}}>
     <FontAwesomeIcon icon={faSpinner} spin={true} />{' '}
-    {['Loading', title, '...'].join(' ')}
-  </>
+    <span style={{color: 'slategrey'}}>
+      {['Loading', title, '...'].join(' ')}
+    </span>
+  </div>
 ))
 
 export default Spinner

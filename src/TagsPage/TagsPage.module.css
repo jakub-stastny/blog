@@ -1,0 +1,18 @@
+.tag {
+  display: inline;
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+.tag::before {
+  content: '#';
+}
+
+/* Copied from HomePage.module.css. */
+.empty {
+  font-size: 24px;
+  font-style: italic;
+  text-align: center;
+  color: grey;
+  margin-top: 70px;
+}

@@ -1,19 +1,19 @@
 import React, { useContext, useEffect } from 'react'
 import StateContext from '../state'
-import styles from '../HomePage/HomePage.module.css'
+import styles from './TagsPage.module.css'
 import { assert } from '../utils'
-import Link from '../Link/Link'
+import { A, useTitle } from 'hookrouter'
 import Spinner from '../Spinner/Spinner'
 import { getTagPagePath } from '../routes'
 
 const TagPreview = ({ slug, name }) => (
-  <ul>
-    <li><Link to={getTagPagePath(slug)}>{name}</Link></li>
-  </ul>
+  <li className={assert(styles.tag)}><A href={getTagPagePath(slug)}>{name}</A></li>
 )
 
 const TagPreviewList = ({ tags }) => (
-  tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)
+  <ul>
+    {tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)}
+  </ul>
 )
 
 const NoTagsPlaceholder = () => (
@@ -28,6 +28,7 @@ export default function TagsPage () {
   const state = useContext(StateContext)
 
   useEffect(() => { state.tagsFetched || state.helpers.fetchTags() })
+  useTitle(state.tagsFetched ?  "Tags" : "Loading the tags")
 
   return (
     state.tagsFetched ? <TagList tags={state.tags} /> : <Spinner title="the tags" />
