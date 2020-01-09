@@ -1,7 +1,7 @@
-/* TODO: tests. */
 import React, { useContext, memo } from 'react'
 import { useTitle } from 'hookrouter'
 import PostPreview from '../PostPreview/PostPreview'
+import Spinner from '../Spinner/Spinner'
 import StateContext from '../state'
 import styles from './HomePage.module.css'
 import { assert } from '../utils'
@@ -23,6 +23,5 @@ export default memo(function HomePage () {
 
   useTitle("Jakub's blog")
 
-  // TODO: Suspense
-  return state.postsFetched ? <PostList posts={state.posts} /> : null
+  return state.postsFetched ? <PostList posts={state.posts} /> : <Spinner title="the posts" />
 })
