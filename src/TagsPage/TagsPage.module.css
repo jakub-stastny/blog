@@ -2,10 +2,15 @@
   display: inline;
   margin-left: 5px;
   font-size: 18px;
+  line-height: 1.5em;
 }
 
 .tag::before {
   content: '#';
+}
+
+.tag:nth-child(odd) a {
+  color: red;
 }
 
 /* Copied from HomePage.module.css. */
