@@ -1,0 +1,15 @@
+/* If a link is selected, style it as normal text. */
+.selected {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+}
+
+.unhighlighted {
+  composes: selected;
+  cursor: pointer;
+}
+
+.unhighlighted:visited {
+  color: inherit;
+}
