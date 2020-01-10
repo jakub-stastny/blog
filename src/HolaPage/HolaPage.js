@@ -1,20 +1,30 @@
 import React, { memo } from 'react'
-import { A } from 'hookrouter'
+import { A, useTitle } from 'hookrouter'
 import Email from '../Email/Email'
 import { registerFont, FontAwesomeIcon } from '../FontAwesome/FontAwesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import Gravatar from '../Gravatar/Gravatar'
+import { assert } from '../utils'
+import styles from './HolaPage.module.css'
 
 registerFont(faArrowRight)
 
 export default memo(function HolaPage () {
+  useTitle("Hey there!")
+
   return (
     <>
       <h1>Hey there!</h1>
       <h2 style={{fontStyle: 'italic'}}>I see you came from the link on my business card. Welcome!</h2>
-      <p>
-        Since we met in person, I'm happy to give you my full contact details. But before I do that, I'd like to ask you a favour:
-      </p>
+      <div className={assert(styles.gravatarBox)}>
+        <Gravatar className={assert(styles.gravatar)} />
 
+        <p>
+          Since we met in person, I'm happy to give you my full contact details. But before I do that, I'd like to ask you a favour:
+        </p>
+      </div>
+
+      {/* TODO: Give it a warning icon and heading. */}
       <div style={{background: 'maroon', color: 'white', borderRadius: 15, padding: 10}}>
         <p>
           Please do not share this page with anyone and don't link to it from any web site.
@@ -44,6 +54,7 @@ export default memo(function HolaPage () {
         so these are the only means of contacting me.
       </p>
 
+      {/* TODO: Give it a heading and make it a box. */}
       <div style={{marginTop: 30, fontSize: 18}}>
         <FontAwesomeIcon icon={faArrowRight} color="darkgreen" />{' '}
         <A href="/">Check out my blog</A>
