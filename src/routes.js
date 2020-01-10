@@ -12,6 +12,7 @@ import SubscribePage from './SubscribePage/SubscribePage'
 /* Lazy-loading */
 const TagsPage = lazy(() => import(/* webpackChunkName: "TagsPage" */ './TagsPage/TagsPage'))
 const NowPage = lazy(() => import(/* webpackChunkName: "NowPage" */ './NowPage/NowPage'))
+const HolaPage = lazy(() => import(/* webpackChunkName: "HolaPage" */ './HolaPage/HolaPage'))
 
 /* Routes */
 export const homePagePath = '/'
@@ -22,6 +23,7 @@ export const aboutPagePath = '/about'
 export const subscribePagePath = '/subscribe'
 export const tagsPagePath = '/tags'
 export const nowPagePath = '/now'
+export const holaPagePath = '/hola'
 
 export default {
   [homePagePath]: () => <HomePage />,
@@ -31,4 +33,5 @@ export default {
   [subscribePagePath]: () => <SubscribePage />,
   [tagsPagePath]: () => <SuspenseSpinner><TagsPage /></SuspenseSpinner>,
   [nowPagePath]: () => <SuspenseSpinner><NowPage /></SuspenseSpinner>,
+  [holaPagePath]: () => <SuspenseSpinner><HolaPage /></SuspenseSpinner>,
 }
