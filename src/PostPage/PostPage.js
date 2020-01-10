@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useRef, memo } from 'react'
 import ReactDOM from 'react-dom'
 import StateContext from '../state'
-import { useTitle, A } from 'hookrouter'
+import { useTitle, A, navigate } from 'hookrouter'
 import AdBlockDetect from '../AdBlockDetect/AdBlockDetect'
 import NewsletterSignUpForm, { NewsletterSignUpLink } from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import HashTag from '../HashTag/HashTag'
@@ -41,6 +41,14 @@ export default memo(function Post ({ slug }) {
 
     Array.from(bodyElement.querySelectorAll('i.hashtag')).forEach((i) => {
       ReactDOM.render(<HashTag>{i.innerText}</HashTag>, i)
+    })
+
+    Array.from(bodyElement.querySelectorAll('a[href^="/"]')).forEach((a) => {
+      a.addEventListener('click', (event) => {
+        console.log(`~ Navigating to ${a.href}`)
+        navigate(a.href)
+        event.preventDefault()
+      })
     })
 
     Array.from(bodyElement.querySelectorAll(`img[src^="${slug}/"]`)).forEach((img) => {
