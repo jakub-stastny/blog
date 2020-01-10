@@ -12,6 +12,7 @@ import ConversationPrompt from '../ConversationPrompt/ConversationPrompt'
 import Spinner from '../Spinner/Spinner'
 import { Tooltip } from 'react-tippy'
 import { markdownToHTML } from '../utils'
+import { assert } from '../utils'
 
 import styles from './PostPage.module.css'
 import 'react-tippy/dist/tippy.css'
@@ -67,27 +68,27 @@ export default memo(function Post ({ slug }) {
 
   return (
     <article>
-      <h1 className={styles.mainTitle}>{post.title}</h1>
-      <div className={styles.statusLine}>
+      <h1 className={assert(styles.mainTitle)}>{post.title}</h1>
+      <div className={assert(styles.statusLine)}>
         <PostStatusLine date={post.date} tags={post.tags} />
       </div>
 
       {/* We wrap it in div, as the excerpt is already wrapped in <p> due to the markdown conversion. */}
-      <div className={styles.excerpt} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
+      <div className={assert(styles.excerpt)} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
 
       {post.body ?
-        <div className={styles.post} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} />
+        <div className={assert(styles.post)} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} />
           :
         <Spinner title="the post" />
       }
 
-      <footer className={styles.footer}>
-        <div className={styles.about}>
-          <Gravatar className={styles.gravatar} />
+      <footer className={assert(styles.footer)}>
+        <div className={assert(styles.about)}>
+          <Gravatar className={assert(styles.gravatar)} />
           <ConversationPrompt tagNames={post.tags && post.tags.map(tag => tag.name)} />
         </div>
 
-        <div className={styles.newsletter}>
+        <div className={assert(styles.newsletter)}>
           <AdBlockDetect>
             <p>
               Did you like the post? <NewsletterSignUpLink>Sign up</NewsletterSignUpLink> for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
@@ -103,11 +104,11 @@ export default memo(function Post ({ slug }) {
           </AdBlockDetect>
         </div>
 
-        <p className={styles.license}>
+        <p className={assert(styles.license)}>
           This post has been <A href="/posts/releasing-copyright">uncopyrighted</A>. You can do anything you want with it.
         </p>
 
-        <p className={styles.license}>
+        <p className={assert(styles.license)}>
           It is also OSS and if you see any typos or information that you believe incorrect, you can just{' '}
           <A href="/posts/how-to-submit-a-pull-request-to-my-posts">submit a pull request</A>.
         </p>

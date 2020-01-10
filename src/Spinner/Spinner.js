@@ -14,7 +14,7 @@ export const SuspenseSpinner = memo(({ children }) => (
 
 const ReloadLink = () => (
   <>
-    <em>Taking too long?</em> <a className={assert(styles.link)} href="">Click to reload</a>.
+    <em>Taking too long?</em> <a className={assert(styles.link)} href={window.location.href}>Click to reload</a>.
   </>
 )
 

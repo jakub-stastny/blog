@@ -1,21 +1,18 @@
 import React, { Component } from 'react'
 import { Online, Offline } from 'react-detect-offline'
-import { wrapper as wrapperClassName, offline as offlineClassName } from './Errors.module.css'
+import styles from './Errors.module.css'
 import { assert } from '../utils'
-
-assert(wrapperClassName, 'wrapperClassName is expected to be defined')
-assert(offlineClassName, 'offlineClassName is expected to be defined')
 
 /* TODO: This should be an error boundary. */
 export const FetchError = (error) => (
-  <div className={wrapperClassName}>
+  <div className={assert(styles.wrapper)}>
     <h1>Data cannot be fetched</h1>
     <Online>
       <a href={window.location.pathname}>Refresh the page</a>
     </Online>
 
     <Offline>
-      <div className={offlineClassName}>
+      <div className={assert(styles.offline)}>
         You are currently offline.
       </div>
     </Offline>
@@ -27,7 +24,7 @@ export const RoutingErrorPage = () => (
 )
 
 const ErrorScreen = () => (
-  <div className={wrapperClassName}>
+  <div className={assert(styles.wrapper)}>
     <h1>Something went wrong</h1>
   </div>
 )

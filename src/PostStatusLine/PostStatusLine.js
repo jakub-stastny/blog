@@ -1,10 +1,8 @@
 import React, { memo } from 'react'
 import TagList from '../TagList/TagList'
 import PublishedDate from '../PublishedDate/PublishedDate'
-import { line as lineClassName } from './PostStatusLine.module.css'
 import { assert } from '../utils'
-
-assert(lineClassName, 'lineClassName is expected to be defined')
+import styles from './PostStatusLine.module.css'
 
 const InlineTagList = ({ tags }) => (
   <>
@@ -17,7 +15,7 @@ const TagsPart = ({ tags }) => (
 )
 
 export default memo(({ date, tags = []}) => (
-  <div className={lineClassName}>
+  <div className={assert(styles.line)}>
     Published <PublishedDate date={date} />
     <TagsPart tags={tags} />.
   </div>

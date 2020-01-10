@@ -5,6 +5,7 @@ import StateContext from '../state'
 import { nowPagePath, getPostPagePath } from '../routes'
 import Email from '../Email/Email'
 
+import { assert } from '../utils'
 import styles from './AboutPage.module.css'
 
 const LastStatusUpdateLink = ({ post }) => (
@@ -20,7 +21,7 @@ export default memo(function AboutPage () {
 
   return (
     <>
-      <h1 className={styles.mainTitle}>Hi! My name is Jakub.</h1>
+      <h1 className={assert(styles.mainTitle)}>Hi! My name is Jakub.</h1>
       <p>
         If you want to get in touch, please don't hesitate to drop me an email to <Email />.
       </p>

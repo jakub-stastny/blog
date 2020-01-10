@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { assert } from '../utils'
 import { UnhighlightedLink } from '../Link/Link'
-import styles from '../Header/Header.module.css'
+import styles from './Header.module.css'
 
 export default memo(function Header () {
   return (

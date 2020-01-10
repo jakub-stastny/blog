@@ -1,15 +1,13 @@
 import React, { memo } from 'react'
-import { highlight as highlightClassName } from './Highlight.module.css'
 import { assert } from '../utils'
-
-assert(highlightClassName, 'highlightClassName is expected to be defined')
+import styles from './Highlight.module.css'
 
 const Highlight = ({ style, children }) => (
-  <div className={highlightClassName} style={style}>{children}</div>
+  <div className={assert(styles.highlight)} style={style}>{children}</div>
 )
 
 const HighlightWithTitle = ({ title, style, children }) => (
-  <div className={highlightClassName} style={style}>
+  <div className={assert(styles.highlight)} style={style}>
     <h3 style={{marginTop: 10, marginBottom: 0}}>{title}</h3>
     {children}
   </div>

@@ -4,12 +4,13 @@ import StateContext from '../state'
 import PublishedDate from '../PublishedDate/PublishedDate'
 import Spinner from '../Spinner/Spinner'
 import { getPostPagePath } from '../routes'
+import { assert } from '../utils'
 import styles from './TagPage.module.css'
 
 const PostPreview = ({ title, slug, date }) => (
   <li>
     <A href={getPostPagePath(slug)}>{title}</A>{' '}
-    <span className={styles.date}>
+    <span className={assert(styles.date)}>
       <PublishedDate date={date} />
     </span>
   </li>
@@ -24,7 +25,7 @@ const PostPreviewList = ({ posts = [] }) => (
 
 const TagList = ({ name, posts }) => (
   <>
-    <h1>Posts tagged <span className={styles.emphasis}>{name}</span></h1>
+    <h1>Posts tagged <span className={assert(styles.emphasis)}>{name}</span></h1>
     <PostPreviewList posts={posts} />
   </>
 )
