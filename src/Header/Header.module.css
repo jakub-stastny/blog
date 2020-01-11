@@ -9,3 +9,10 @@
 .header p {
   font-style: italic;
 }
+
+.lang {
+  font-size: 32px;
+  position: absolute;
+  right: 0px;
+  margin: 5px;
+}

@@ -11,7 +11,7 @@ export function LangContextProvider ({ children }) {
   const t = ([ enTranslation, esTranslation ]) => assert(lang === 'en' ? enTranslation : esTranslation)
 
   return (
-    <LangContext.Provider value={{lang, t}}>
+    <LangContext.Provider value={{lang, setLang, t}}>
       {children}
     </LangContext.Provider>
   )

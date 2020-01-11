@@ -11,8 +11,12 @@ const translations = {
   ]
 }
 
+const langs = {en: '🇬🇧', es: '🇲🇽'}
+
 export default memo(function Header () {
-  const { t, lang } = useContext(LangContext)
+  const { t, lang, setLang } = useContext(LangContext)
+
+  const switchLang = (lang === 'en') ? 'es' : 'en'
 
   return (
     <header className={assert(styles.header)}>
@@ -25,7 +29,13 @@ export default memo(function Header () {
       </p>
 
       <div style={{position: 'absolute', top: 0, right: 0, padding: 5}}>
-        <code>{lang}</code>
+        <div className={assert(styles.lang)}>
+          {/* This will need to happen for posts and tags. */}
+          {/* <NavLink to={page[switchLang].route} activeClassName={styles.switchLangLink}> */}
+          <span onClick={e => setLang(switchLang)}>
+            {langs[switchLang]}
+          </span>
+        </div>
       </div>
     </header>
   )
