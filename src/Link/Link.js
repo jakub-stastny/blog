@@ -1,5 +1,5 @@
 import React, { useContext, memo } from 'react'
-import StateContext from '../state'
+import StateContext from '../StateContext'
 import { A } from 'hookrouter'
 
 import { assert } from '../utils'

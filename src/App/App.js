@@ -10,7 +10,7 @@ import ErrorBoundary, { RoutingErrorPage } from '../Errors/Errors'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
-import { StateContextProvider } from '../state'
+import { StateContextProvider } from '../StateContext'
 import { LangContextProvider } from '../LangContext'
 
 import { assert } from '../utils'

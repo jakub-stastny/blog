@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, memo } from 'react'
 import { A, useTitle } from 'hookrouter'
 import Highlight from '../Highlight/Highlight'
-import StateContext from '../state'
+import StateContext from '../StateContext'
 import LangContext from '../LangContext'
 import { nowPagePath, getPostPagePath } from '../routes'
 import Email from '../Email/Email'

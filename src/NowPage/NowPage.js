@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { useTitle } from 'hookrouter'
-import StateContext from '../state'
+import StateContext from '../StateContext'
 import PostPage from '../PostPage/PostPage'
 import Spinner from '../Spinner/Spinner'
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext }  from 'react'
 import { useTitle, A } from 'hookrouter'
-import StateContext from '../state'
+import StateContext from '../StateContext'
 import PublishedDate from '../PublishedDate/PublishedDate'
 import Spinner from '../Spinner/Spinner'
 import { getPostPagePath } from '../routes'

@@ -2,7 +2,7 @@ import React, { useContext, memo } from 'react'
 import { useTitle } from 'hookrouter'
 import PostPreview from '../PostPreview/PostPreview'
 import Spinner from '../Spinner/Spinner'
-import StateContext from '../state'
+import StateContext from '../StateContext'
 import styles from './HomePage.module.css'
 import { assert } from '../utils'
 

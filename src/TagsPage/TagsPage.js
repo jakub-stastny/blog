@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import StateContext from '../state'
+import StateContext from '../StateContext'
 import styles from './TagsPage.module.css'
 import { assert } from '../utils'
 import { A, useTitle } from 'hookrouter'
