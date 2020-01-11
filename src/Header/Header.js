@@ -14,7 +14,11 @@ export default memo(function Header () {
       </h1>
 
       <p>
-        On programming, Ruby, React.js, languages and&nbsp;life.
+        {lang === 'en' ?
+          "On programming, Ruby, React.js, languages and&nbsp;life."
+            :
+          "Acerca de programación, Ruby, React.js, idiomas y la vida."
+        }
       </p>
 
       <div style={{position: 'absolute', top: 0, right: 0, padding: 5}}>

@@ -7,8 +7,10 @@ export function LangContextProvider ({ children }) {
 
   const [ lang, setLang ] = useState(defaultLanguage)
 
+  const t = (enTranslation, esTranslation) => lang === 'en' ? enTranslation : esTranslation
+
   return (
-    <LangContext.Provider value={{lang}}>
+    <LangContext.Provider value={{lang, t}}>
       {children}
     </LangContext.Provider>
   )
