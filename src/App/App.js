@@ -11,6 +11,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
 import { StateContextProvider } from '../state'
+import { LangContextProvider } from '../LangContext'
 
 import { assert } from '../utils'
 
@@ -29,22 +30,24 @@ export default function App () {
   })
 
   return (
-    <StateContextProvider>
-      <div className={assert(styles.content)}>
-        <ErrorBoundary>
-          <Header />
-        </ErrorBoundary>
-
-        <main className={assert(styles.mainColumn)}>
+    <LangContextProvider>
+      <StateContextProvider>
+        <div className={assert(styles.content)}>
           <ErrorBoundary>
-            {currentRoute || <RoutingErrorPage />}
+            <Header />
           </ErrorBoundary>
-        </main>
-      </div>
 
-      <ErrorBoundary>
-        <Footer />
-      </ErrorBoundary>
-    </StateContextProvider>
+          <main className={assert(styles.mainColumn)}>
+            <ErrorBoundary>
+              {currentRoute || <RoutingErrorPage />}
+            </ErrorBoundary>
+          </main>
+        </div>
+
+        <ErrorBoundary>
+          <Footer />
+        </ErrorBoundary>
+      </StateContextProvider>
+    </LangContextProvider>
   )
 }
