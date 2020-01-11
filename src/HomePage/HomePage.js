@@ -19,8 +19,23 @@ export default memo(function HomePage () {
 
   useTitle(t(translations.title))
 
+  const MissingTranslationsWarning = () => (
+    <div className={assert(styles.missingTranslationsBox)}>
+      <p>
+        Disculpa, pero en este momento las entradas no están traducidas a español.
+      </p>
+
+      <p>
+        Es posible que vaya a hacerlo, pero todavía no estoy decidido.
+      </p>
+    </div>
+  )
+
   const PostPreviewList = ({ posts }) => (
-    posts.map((post) => <PostPreview key={post.slug} {...post} />)
+    <>
+      {lang === 'es' && <MissingTranslationsWarning />}
+      {posts.map((post) => <PostPreview key={post.slug} {...post} />)}
+    </>
   )
 
   const NoPostsPlaceholder = () => (

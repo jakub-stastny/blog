@@ -1,3 +1,18 @@
+/* TODO: Extract warning box. */
+.missingTranslationsBox {
+  /* top right bottom left */
+  margin: 20px 20px 25px 0;
+  padding: 7px 15px 10px 15px;
+  background-color: lightcoral;
+  border-radius: 15px;
+  font-style: italic;
+  color: white;
+}
+
+.missingTranslationsBox p {
+  margin: 0;
+}
+
 .empty {
   font-size: 24px;
   font-style: italic;
