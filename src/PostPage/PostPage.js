@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useRef, memo } from 'react'
 import ReactDOM from 'react-dom'
 import StateContext from '../StateContext'
+import LangContext from '../LangContext'
 import { useTitle, A, navigate } from 'hookrouter'
 import AdBlockDetect from '../AdBlockDetect/AdBlockDetect'
 import NewsletterSignUpForm, { NewsletterSignUpLink } from '../NewsletterSignUpForm/NewsletterSignUpForm'
@@ -22,6 +23,7 @@ const TouchFriendlyAbbr = ({ text, tooltipText }) => (
 )
 
 export default memo(function Post ({ slug }) {
+  const lang = useContext(LangContext).lang
   const state = useContext(StateContext)
   const post = state.helpers.getPost(slug)
 

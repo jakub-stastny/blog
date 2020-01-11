@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+import { assert } from './utils'
 
 const LangContext = createContext()
 
@@ -7,7 +8,7 @@ export function LangContextProvider ({ children }) {
 
   const [ lang, setLang ] = useState(defaultLanguage)
 
-  const t = (enTranslation, esTranslation) => lang === 'en' ? enTranslation : esTranslation
+  const t = ([ enTranslation, esTranslation ]) => assert(lang === 'en' ? enTranslation : esTranslation)
 
   return (
     <LangContext.Provider value={{lang, t}}>
