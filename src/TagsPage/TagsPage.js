@@ -17,7 +17,7 @@ const translations = {
 }
 
 export default function TagsPage () {
-  const { lang, t } = useContext(LangContext)
+  const { t } = useContext(LangContext)
   const state = useContext(StateContext)
 
   useEffect(() => { state.tagsFetched || state.helpers.fetchTags() })

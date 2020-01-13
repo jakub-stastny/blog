@@ -1,4 +1,4 @@
-import React, { memo, useContext } from 'react'
+import React from 'react'
 import { A } from 'hookrouter'
 import NewsletterSignUpForm, { NewsletterSignUpLink } from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import Email from '../Email/Email'
