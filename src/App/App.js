@@ -3,7 +3,7 @@ import { useRoutes } from 'hookrouter'
 
 import styles from '../App/App.module.css'
 
-import routes from '../routes'
+import routes from '../router'
 
 import ErrorBoundary, { RoutingErrorPage } from '../Errors/Errors'
 

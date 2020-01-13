@@ -14,9 +14,8 @@ registerFont(faArrowRight)
 
 const translations = {
   about: [
-    /* FIXME: why is aboutPagePath undefined? */
-    <>You can find out more about me on the <A href={aboutPagePath || '/about'}>about page</A>.</>,
-    <>You can find out more about me on the <A href={aboutPagePath || '/about'}>about page</A>.</>,
+    <>You can find out more about me on the <A href={aboutPagePath}>about page</A>.</>,
+    <>Puedes encontrar más sobre mi en la página <A href={aboutPagePath}>sobre mi</A>.</>,
   ]
 }
 
