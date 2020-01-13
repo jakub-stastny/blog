@@ -1,10 +1,11 @@
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
+import { LangContextProvider } from '../LangContext'
 import Footer from './Footer'
 import { aboutPagePath, subscribePagePath, postsPagePath } from '../routes'
 
 it('renders footer with navigation links', () => {
-  const testRenderer = TestRenderer.create(<Footer />)
+  const testRenderer = TestRenderer.create(<LangContextProvider><Footer /></LangContextProvider>)
   const footer = testRenderer.toJSON()
 
   expect(footer.type).toEqual('footer')

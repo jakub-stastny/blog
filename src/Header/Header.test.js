@@ -1,10 +1,11 @@
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
+import { LangContextProvider } from '../LangContext'
 import Header from './Header'
 import { aboutPagePath, subscribePagePath, postsPagePath } from '../routes'
 
 it('renders the header', () => {
-  const testRenderer = TestRenderer.create(<Header />)
+  const testRenderer = TestRenderer.create(<LangContextProvider><Header /></LangContextProvider>)
   const header = testRenderer.toJSON()
 
   expect(header.type).toEqual('header')
