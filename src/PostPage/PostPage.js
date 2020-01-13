@@ -40,7 +40,7 @@ export default memo(function Post ({ slug }) {
     console.log('~ Processing post body.')
 
     Array.from(bodyElement.querySelectorAll('YouTube')).forEach((video) => {
-      ReactDOM.render(<YouTube src={video.src} />, video)
+      ReactDOM.render(<YouTube src={video.getAttribute('src')} />, video)
     })
 
     Array.from(bodyElement.querySelectorAll('abbr[title]')).forEach((abbr) => {
