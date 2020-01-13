@@ -6,7 +6,7 @@ import styles from './Header.module.css'
 
 const translations = {
   tagline: [
-    "On programming, Ruby, React.js, languages and&nbsp;life.",
+    <>On programming, Ruby, React.js, languages and&nbsp;life.</>,
     "Acerca de programación, Ruby, React.js, idiomas y la vida."
   ]
 }

@@ -6,6 +6,7 @@ import { useTitle, A, navigate } from 'hookrouter'
 import AdBlockDetect from '../AdBlockDetect/AdBlockDetect'
 import NewsletterSignUpForm, { NewsletterSignUpLink } from '../NewsletterSignUpForm/NewsletterSignUpForm'
 import HashTag from '../HashTag/HashTag'
+import YouTube from '../YouTube/YouTube'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 // import { FetchError } from '../Errors/Errors'
 import Gravatar from '../Gravatar/Gravatar'
@@ -37,6 +38,10 @@ export default memo(function Post ({ slug }) {
     if (!bodyElement) return
 
     console.log('~ Processing post body.')
+
+    Array.from(bodyElement.querySelectorAll('YouTube')).forEach((video) => {
+      ReactDOM.render(<YouTube src={video.src} />, video)
+    })
 
     Array.from(bodyElement.querySelectorAll('abbr[title]')).forEach((abbr) => {
       ReactDOM.render(<TouchFriendlyAbbr text={abbr.innerText} tooltipText={abbr.title} />, abbr)
