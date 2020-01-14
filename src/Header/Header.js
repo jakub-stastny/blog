@@ -3,6 +3,7 @@ import { assert } from '../utils'
 import { UnhighlightedLink } from '../Link/Link'
 import LangContext from '../LangContext'
 import styles from './Header.module.css'
+import { UK, MX } from '../flags'
 
 const translations = {
   tagline: [
@@ -11,7 +12,7 @@ const translations = {
   ]
 }
 
-const langs = {en: '🇬🇧', es: '🇲🇽'}
+const langs = {en: UK, es: MX}
 
 export default memo(function Header () {
   const { t, lang, setLang } = useContext(LangContext)

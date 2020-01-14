@@ -1,5 +1,6 @@
 import React from 'react'
 import HashTag from '../HashTag/HashTag'
+import { CZ, UK, ES, PL, MX } from '../flags'
 
 export default {
   spirituality: <>
@@ -30,8 +31,7 @@ export default {
     </p>
 
     <p>
-      {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
-      I'm from Czech Republic&nbsp;🇨🇿 and after I have lived in various place&nbsp; 🇬🇧🇪🇸🇵🇱,  I finally found my home in sunny Mexico&nbsp;🇲🇽.
+      I'm from Czech Republic&nbsp;{CZ} and after I have lived in various places&nbsp;{UK}{ES}{PL} I finally found my home in Sunny Mexico&nbsp;{MX}.
     </p>
   </>
 }
