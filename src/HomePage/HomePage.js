@@ -44,15 +44,16 @@ export default memo(function HomePage () {
   )
 
   function PostList ({ posts }) {
-    const perPage = 5
-    const [ displayedPosts, setDisplayedPosts ] = useState(posts.slice(0, perPage))
-    const [ position, setPosition ] = useState(perPage)
+    // TODO: use window.innerHeight to set.
+    // const perPage = 5
+    // const [ displayedPosts, setDisplayedPosts ] = useState(posts.slice(0, perPage))
+    // const [ position, setPosition ] = useState(perPage)
 
-    function showMorePosts () {
-      console.log(position)
-      setDisplayedPosts(displayedPosts.concat(posts.slice(position, position + perPage)))
-      setPosition(position + perPage)
-    }
+    // function showMorePosts () {
+    //   console.log(position)
+    //   setDisplayedPosts(displayedPosts.concat(posts.slice(position, position + perPage)))
+    //   setPosition(position + perPage)
+    // }
 
     if (!posts.length) return <NoPostsPlaceholder />
 
