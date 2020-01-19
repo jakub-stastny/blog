@@ -56,11 +56,17 @@ export default memo(function HomePage () {
 
     if (!posts.length) return <NoPostsPlaceholder />
 
-    return (
-      <InfiniteScroll dataLength={perPage} hasMore={true} loader={<>Loading ...</>} next={showMorePosts}>
-        <PostPreviewList posts={displayedPosts} />
-      </InfiniteScroll>
-    )
+    return <PostPreviewList posts={posts} />
+    // return (
+    //   <InfiniteScroll
+    //     dataLength={perPage}
+    //     hasMore={displayedPosts.length === posts.length}
+    //     loader={<>Loading ...</>}
+    //     next={showMorePosts}
+    //   >
+    //     <PostPreviewList posts={displayedPosts} />
+    //   </InfiniteScroll>
+    // )
   }
 
   return state.postsFetched ? <PostList posts={state.posts} /> : <Spinner title={t(translations.posts)} />
