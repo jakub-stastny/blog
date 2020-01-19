@@ -1,68 +1,26 @@
-import React, { useEffect, useContext, useRef, memo } from 'react'
-import ReactDOM from 'react-dom'
+import React, { useEffect, useContext, memo } from 'react'
 import StateContext from '../StateContext'
 // import LangContext from '../LangContext'
-import { useTitle, navigate } from 'hookrouter'
-import HashTag from '../HashTag/HashTag'
-import YouTube from '../YouTube/YouTube'
+import { useTitle } from 'hookrouter'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 // import { FetchError } from '../Errors/Errors'
 import Spinner from '../Spinner/Spinner'
-import { Tooltip } from 'react-tippy'
 import { markdownToHTML } from '../utils'
 import { assert } from '../utils'
+
+import PostPageBody from '../PostPageBody/PostPageBody'
 import PostPageFooter from '../PostPageFooter/PostPageFooter'
 
 import styles from './PostPage.module.css'
 import 'react-tippy/dist/tippy.css'
-
-const TouchFriendlyAbbr = ({ text, tooltipText }) => (
-  <Tooltip title={tooltipText} position="bottom" trigger="click">{text} <b style={{color: 'green'}}>(?)</b></Tooltip>
-)
 
 export default memo(function Post ({ slug }) {
   // const { t, lang } = useContext(LangContext)
   const state = useContext(StateContext)
   const post = state.helpers.getPost(slug)
 
-  const bodyRef = useRef(null)
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { (post && post.body) || state.helpers.fetchPost(slug) }, [])
-
-  useEffect(() => {
-    const bodyElement = bodyRef.current
-    if (!bodyElement) return
-
-    console.log('~ Processing post body.')
-
-    Array.from(bodyElement.querySelectorAll('YouTube')).forEach((video) => {
-      ReactDOM.render(<YouTube src={video.getAttribute('src')} />, video)
-    })
-
-    Array.from(bodyElement.querySelectorAll('abbr[title]')).forEach((abbr) => {
-      ReactDOM.render(<TouchFriendlyAbbr text={abbr.innerText} tooltipText={abbr.title} />, abbr)
-    })
-
-    Array.from(bodyElement.querySelectorAll('i.hashtag')).forEach((i) => {
-      ReactDOM.render(<HashTag>{i.innerText}</HashTag>, i)
-    })
-
-    Array.from(bodyElement.querySelectorAll('a[href^="/"]')).forEach((a) => {
-      a.addEventListener('click', (event) => {
-        console.log(`~ Navigating to ${a.href}`)
-        navigate(a.href)
-        event.preventDefault()
-      })
-    })
-
-    Array.from(bodyElement.querySelectorAll(`img[src^="${slug}/"]`)).forEach((img) => {
-      // img.src will print the whole URL, which is incorrect at this case, as it's assuming the frontend to be the root.
-      console.log(img, img.getAttribute('src'))
-      const path = img.getAttribute('src')
-      img.src = `https://raw.githubusercontent.com/botanicus/data.blog/master/output/${path}`
-    })
-  }, [post, slug])
 
   useTitle(post ? post.title : "Loading the post ...")
 
@@ -80,12 +38,7 @@ export default memo(function Post ({ slug }) {
       {/* We wrap it in div, as the excerpt is already wrapped in <p> due to the markdown conversion. */}
       <div className={assert(styles.excerpt)} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
 
-      {post.body ?
-        <div className={assert(styles.post)} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} />
-          :
-        <Spinner title="the post" />
-      }
-
+      <PostPageBody slug={slug} post={post} />
       <PostPageFooter post={post} />
     </article>
   )

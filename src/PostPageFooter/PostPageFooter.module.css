@@ -1,3 +1,9 @@
+@value default-border-radius: 15px;
+
+/* The border-radius shifts text in the excerpt and about the author to the right, let's fix it. */
+/* NOTE: I think this is the wrong way, just give it solid border of the same color that is fat enough. */
+@value border-radius-offset: 15px;
+
 .license {
   font-style: italic;
 }

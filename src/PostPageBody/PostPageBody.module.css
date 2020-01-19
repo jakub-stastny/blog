@@ -1,0 +1,64 @@
+@value default-border-radius: 15px;
+
+/* The border-radius shifts text in the excerpt and about the author to the right, let's fix it. */
+/* NOTE: I think this is the wrong way, just give it solid border of the same color that is fat enough. */
+@value border-radius-offset: 15px;
+
+.post {
+  margin-left: border-radius-offset;
+}
+
+.post h1, h2, h3, h4, h5, h6 {
+  color: darkred;
+}
+
+.post li {
+  margin: 5px 0;
+}
+
+.post ul {
+  list-style: none; /* Remove default bullets */
+  padding-left: 20px;
+}
+
+.post ul li::before {
+  content: "\2713";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: green; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+.post abbr {
+  text-decoration: none;
+  border-bottom: 2px dotted green;
+}
+/* Classes used within the markdown. */
+.post .hashtag {
+  color: gray;
+  text-decoration: underline;
+}
+
+.post img {
+  width: 100%;
+  display: block;
+  border: solid black 1px;
+}
+
+.post blockquote {
+  margin: inherit;
+  font-style: italic;
+}
+
+/* The override has to be below. */
+@media only screen and (min-width: 600px) {
+  .post img {
+    width: 75%;
+    margin: 50px auto;
+  }
+}
+
+/* .post .hashtag::before { */
+/*   content: "#"; */
+/* } */
