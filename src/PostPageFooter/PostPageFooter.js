@@ -10,22 +10,29 @@ import { assert } from '../utils'
 import styles from './PostPageFooter.module.css'
 import { getPostPagePath } from '../routes'
 
+import 'moment/locale/es'
+
 // TODO: Translate everything.
 const translations = {
   previousUpdates: ["Previous updates", "Actualizaciones anteriores"],
 }
 
 function PreviousNowPosts ({ posts, currentPostSlug }) {
-  const { t } = useContext(LangContext)
+  const { t, lang } = useContext(LangContext)
+
+  function titleCase (string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
 
   return (
     <>
       <h3>{t(translations.previousUpdates)}</h3>
       <ul>
+        {/* TODO: extract out as a helper fn to the state context. */}
         {posts.filter(post => post.tags.map(tag => tag.name).includes('now') && post.slug !== currentPostSlug).map(post => (
           <li key={post.slug}>
             <A href={getPostPagePath(post.slug)}>
-              <Moment date={post.date} format="MMMM YYYY" interval={0} />
+              <Moment date={post.date} filter={titleCase} format="MMMM YYYY" interval={0} locale={lang} />
             </A>
           </li>
         ))}
@@ -39,6 +46,7 @@ export default memo(function PostPageFooter ({ post, posts }) {
 
   return (
     <footer className={assert(styles.footer)}>
+      {/* TODO: extract out as a helper fn to the state context. */}
       {post.tags.map(tag => tag.name).includes('now') && <PreviousNowPosts posts={posts} currentPostSlug={post.slug} />}
 
       <div className={assert(styles.about)}>
