@@ -5,6 +5,7 @@ import Email from '../Email/Email'
 import ToggleHideContent from '../ToggleHideContent/ToggleHideContent'
 import AdBlockDetect from '../AdBlockDetect/AdBlockDetect'
 import Highlight from '../Highlight/Highlight'
+import OutboundLink from '../OutboundLink/OutboundLink'
 import { assert } from '../utils'
 import styles from './SubscribePage.module.css'
 
@@ -21,7 +22,7 @@ export default () => (
       <Highlight title="Ad blocker" style={{background: 'mistyrose', marginBottom: 15}}>
         <p>
           Your ad blocker is enabled. This in some cases <em>might prevent submission of this form</em> (
-          <a href="https://github.com/gndx/react-mailchimp-form/issues/11" target="_blank" rel="noopener noreferrer">gndx/react-mailchimp-form#11</a>
+          <OutboundLink to="https://github.com/gndx/react-mailchimp-form/issues/11">gndx/react-mailchimp-form#11</OutboundLink>
           ).
         </p>
 

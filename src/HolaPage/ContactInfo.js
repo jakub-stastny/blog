@@ -1,9 +1,10 @@
 import React from 'react'
 import Email from '../Email/Email'
+import OutboundLink from '../OutboundLink/OutboundLink'
 
 export default () => (
   <ul>
-    <li>Telegram <a href="https://t.me/jakubstastny">@jakubstastny</a></li>
+    <li>Telegram <OutboundLink to="https://t.me/jakubstastny">@jakubstastny</OutboundLink></li>
     <li>Email <Email personal /></li>
     <li>iMessage <Email personal /></li>
   </ul>

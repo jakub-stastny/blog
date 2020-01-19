@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import Mailchimp from 'react-mailchimp-form'
+import OutboundLink from '../OutboundLink/OutboundLink'
 import { mailchimpURL } from '../config'
 import { assert } from '../utils'
 import styles from './NewsletterSignUpForm.module.css'
@@ -18,7 +19,7 @@ const fields = [
 ]
 
 export const NewsletterSignUpLink = ({ children }) => (
-  <a href={mailchimpURL} target="_blank" rel="noopener noreferrer">{children}</a>
+  <OutboundLink to={mailchimpURL}>{children}</OutboundLink>
 )
 
 export default memo(() => (

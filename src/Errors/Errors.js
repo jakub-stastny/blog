@@ -1,27 +1,38 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
+import ReactGA from 'react-ga'
 import { Online, Offline } from 'react-detect-offline'
 import styles from './Errors.module.css'
 import { assert } from '../utils'
 
 /* TODO: This should be an error boundary. */
-export const FetchError = (error) => (
-  <div className={assert(styles.wrapper)}>
-    <h1>Data cannot be fetched</h1>
-    <Online>
-      <a href={window.location.pathname}>Refresh the page</a>
-    </Online>
+export function FetchError ({ error }) {
+  useEffect(() => {
+    ReactGA.exception({description: JSON.stringify(error), fatal: true})
+  }, [error])
 
-    <Offline>
-      <div className={assert(styles.offline)}>
-        You are currently offline.
-      </div>
-    </Offline>
-  </div>
-)
+  return (
+    <div className={assert(styles.wrapper)}>
+      <h1>Data cannot be fetched</h1>
+      <Online>
+        <a href={window.location.pathname}>Refresh the page</a>
+      </Online>
 
-export const RoutingErrorPage = () => (
-  <h1>No match for <code>{window.location.pathname}</code></h1>
-)
+      <Offline>
+        <div className={assert(styles.offline)}>
+          You are currently offline.
+        </div>
+      </Offline>
+    </div>
+  )
+}
+
+export function RoutingErrorPage () {
+  useEffect(() => {
+    ReactGA.exception({description: `Routing error: ${window.location.pathname}`, fatal: true})
+  }, [])
+
+  return <h1>No match for <code>{window.location.pathname}</code></h1>
+}
 
 const ErrorScreen = () => (
   <div className={assert(styles.wrapper)}>
@@ -34,7 +45,8 @@ export default class ErrorBoundary extends Component {
 
   componentDidCatch(error, info) {
     this.setState({hasError: true})
-    // logErrorToMyService(error, info)
+    ReactGA.exception({description: JSON.stringify(error, info)})
+    console.error(error, info)
   }
 
   render() {
