@@ -27,7 +27,7 @@ function PreviousNowPosts ({ posts, currentPostSlug }) {
   return (
     <>
       <h3>{t(translations.previousUpdates)}</h3>
-      <ul>
+      <ul className={styles.sentenceList}>
         {/* TODO: extract out as a helper fn to the state context. */}
         {posts.filter(post => post.tags.map(tag => tag.name).includes('now') && post.slug !== currentPostSlug).map(post => (
           <li key={post.slug}>
