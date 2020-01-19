@@ -1,4 +1,4 @@
-import React, { useContext, memo } from 'react'
+import React, { useContext, useState, memo } from 'react'
 import { useTitle } from 'hookrouter'
 import PostPreview from '../PostPreview/PostPreview'
 import Spinner from '../Spinner/Spinner'
@@ -6,6 +6,7 @@ import StateContext from '../StateContext'
 import LangContext from '../LangContext'
 import styles from './HomePage.module.css'
 import { assert } from '../utils'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 const translations = {
   title: ["Jakub's blog", "Blog de Jakub"],
@@ -42,9 +43,25 @@ export default memo(function HomePage () {
     <div className={assert(styles.empty)}>{t(translations.empty)}</div>
   )
 
-  const PostList = ({ posts }) => (
-    posts.length ? <PostPreviewList posts={posts} /> : <NoPostsPlaceholder />
-  )
+  function PostList ({ posts }) {
+    const perPage = 5
+    const [ displayedPosts, setDisplayedPosts ] = useState(posts.slice(0, perPage))
+    const [ position, setPosition ] = useState(perPage)
 
-  return state.postsFetched ? <PostList t={t} posts={state.posts} /> : <Spinner title={t(translations.posts)} />
+    function showMorePosts () {
+      console.log(position)
+      setDisplayedPosts(displayedPosts.concat(posts.slice(position, position + perPage)))
+      setPosition(position + perPage)
+    }
+
+    if (!posts.length) return <NoPostsPlaceholder />
+
+    return (
+      <InfiniteScroll dataLength={perPage} hasMore={true} loader={<>Loading ...</>} next={showMorePosts}>
+        <PostPreviewList posts={displayedPosts} />
+      </InfiniteScroll>
+    )
+  }
+
+  return state.postsFetched ? <PostList posts={state.posts} /> : <Spinner title={t(translations.posts)} />
 })

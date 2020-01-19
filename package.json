@@ -16,6 +16,7 @@
     "react-dom": "^16.12",
     "react-ga": "^2.7.0",
     "react-gravatar": "^2.6",
+    "react-infinite-scroll-component": "^5.0.4",
     "react-mailchimp-form": "^1.0",
     "react-moment": "^0.9",
     "react-obfuscate": "^3.6",
