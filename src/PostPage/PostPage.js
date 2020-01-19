@@ -38,8 +38,8 @@ export default memo(function Post ({ slug }) {
       {/* We wrap it in div, as the excerpt is already wrapped in <p> due to the markdown conversion. */}
       <div className={assert(styles.excerpt)} dangerouslySetInnerHTML={{__html: markdownToHTML(post.excerpt)}} />
 
-      <PostPageBody slug={slug} post={post} />
-      <PostPageFooter post={post} />
+      <PostPageBody post={post} />
+      <PostPageFooter post={post} posts={state.posts} />
     </article>
   )
 })
