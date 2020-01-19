@@ -31,7 +31,7 @@ export default {
     </p>
 
     <p>
-      I'm from Czech Republic&nbsp;{CZ} and after I have lived in various places&nbsp;{UK}{ES}{PL} I finally found my home in Sunny Mexico&nbsp;{MX}.
+      I'm from Czech Republic&nbsp;<CZ /> and after I have lived in various places&nbsp;<UK /><ES /><PL /> I finally found my home in Sunny Mexico&nbsp;<MX />.
     </p>
   </>
 }

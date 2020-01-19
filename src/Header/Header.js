@@ -18,6 +18,7 @@ export default memo(function Header () {
   const { t, lang, setLang } = useContext(LangContext)
 
   const switchLang = (lang === 'en') ? 'es' : 'en'
+  const FlagIcon = langs[switchLang]
 
   return (
     <header className={assert(styles.header)}>
@@ -34,7 +35,7 @@ export default memo(function Header () {
           {/* This will need to happen for posts and tags. */}
           {/* <NavLink to={page[switchLang].route} activeClassName={styles.switchLangLink}> */}
           <span onClick={e => setLang(switchLang)}>
-            {langs[switchLang]}
+            <FlagIcon />
           </span>
         </div>
       </div>

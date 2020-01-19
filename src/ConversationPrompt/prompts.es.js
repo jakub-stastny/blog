@@ -11,7 +11,7 @@ export default {
     </p>
 
     <p>
-      Soy de la República Checa&nbsp;{CZ} y después de había vivido en países distintos&nbsp;{UK}{ES}{PL}, finalmente he encontrado mi hogar en México&nbsp;{MX} soleado.
+      Soy de la República Checa&nbsp;<CZ /> y después de había vivido en países distintos&nbsp;<UK /><ES /><PL />, finalmente he encontrado mi hogar en México soleado&nbsp;<MX />.
     </p>
   </>
 }
