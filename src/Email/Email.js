@@ -3,5 +3,5 @@ import Obfuscate from 'react-obfuscate'
 import { contactEmail, personalContactEmail } from '../config'
 
 export default memo(({ personal, subject, children }) => (
-  <Obfuscate email={personal ? personalContactEmail : contactEmail} headers={{ subject }}>{children}</Obfuscate>
+  <Obfuscate email={personal ? personalContactEmail : contactEmail} headers={subject && {subject}}>{children}</Obfuscate>
 ))
