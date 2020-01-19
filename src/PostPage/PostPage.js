@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, memo } from 'react'
 import StateContext from '../StateContext'
-// import LangContext from '../LangContext'
+import LangContext from '../LangContext'
 import { useTitle } from 'hookrouter'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 // import { FetchError } from '../Errors/Errors'
@@ -14,19 +14,24 @@ import PostPageFooter from '../PostPageFooter/PostPageFooter'
 import styles from './PostPage.module.css'
 import 'react-tippy/dist/tippy.css'
 
+const translations = {
+  loading: ["Loading the post ...", "Descargando la entrada ..."],
+  spinner: ["the post", "la entrada"]
+}
+
 export default memo(function Post ({ slug }) {
-  // const { t, lang } = useContext(LangContext)
+  const { t } = useContext(LangContext)
   const state = useContext(StateContext)
   const post = state.helpers.getPost(slug)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { (post && post.body) || state.helpers.fetchPost(slug) }, [])
 
-  useTitle(post ? post.title : "Loading the post ...")
+  useTitle(post ? post.title : t(translations.loading))
 
   // const errorComponent = <FetchError error={error} />
 
-  if (!post) return <Spinner title="the post" />
+  if (!post) return <Spinner title={t(translations.spinner)} />
 
   return (
     <article>

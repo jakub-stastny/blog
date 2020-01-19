@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, memo } from 'react'
+import React, { useEffect, useContext, useRef, memo } from 'react'
 import ReactDOM from 'react-dom'
-// import LangContext from '../LangContext'
+import LangContext from '../LangContext'
 import { navigate } from 'hookrouter'
 import HashTag from '../HashTag/HashTag'
 import YouTube from '../YouTube/YouTube'
@@ -12,12 +12,16 @@ import { assert } from '../utils'
 import styles from './PostPageBody.module.css'
 import 'react-tippy/dist/tippy.css'
 
+const translations = {
+  spinner: ["the post", "la entrada"]
+}
+
 const TouchFriendlyAbbr = ({ text, tooltipText }) => (
   <Tooltip title={tooltipText} position="bottom" trigger="click">{text} <b style={{color: 'green'}}>(?)</b></Tooltip>
 )
 
 export default memo(function PostBody ({ post }) {
-  // const { t, lang } = useContext(LangContext)
+  const { t } = useContext(LangContext)
 
   const bodyRef = useRef(null)
 
@@ -61,7 +65,7 @@ export default memo(function PostBody ({ post }) {
     post && post.body ?
       <div className={assert(styles.post)} dangerouslySetInnerHTML={{ __html: markdownToHTML(post.body)}} ref={bodyRef} />
         :
-      <Spinner title="the post" />
+      <Spinner title={t(translations.spinner)} />
   )
 })
 
