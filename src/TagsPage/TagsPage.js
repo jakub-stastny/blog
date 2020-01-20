@@ -13,7 +13,14 @@ const translations = {
     initial: ["Loading the tags", "Descargando las etiquetas"],
     loaded: ["Tags", "Etiquetas"]
   },
-  tags: ["the tags", "las etiquetas"]
+  tags: ["the tags", "las etiquetas"],
+  others: ["Others", "El resto"]
+}
+
+const categories = {
+  IT: ["1Password", "Draft.js", "iPadOS", "Ruby on Rails", "blog engine", "iPad Pro"],
+  Life: ["email", "advertising", "capitalism", "consumerism", "depression", "ego", "ego death", "low-tech lifestyle"],
+  Finance: ["finance", "finance planning"]
 }
 
 export default function TagsPage () {
@@ -30,9 +37,19 @@ export default function TagsPage () {
   )
 
   const TagPreviewList = ({ tags }) => (
-    <ul style={{paddingLeft: 0}}>
-      {tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)}
-    </ul>
+    Object.entries(tags.reduce((categoriesWithTags, tag) => {
+      const category = [Object.entries(categories).find(([ category, list ]) => list.includes(tag.name)) || [t(translations.others), []]][0][0]
+      if (!categoriesWithTags[category]) categoriesWithTags[category] = []
+      categoriesWithTags[category].push(tag)
+      return categoriesWithTags
+    }, {})).map(([ category, tags ]) => (
+      <>
+        <h3>{category}</h3>
+        <ul style={{paddingLeft: 0}}>
+          {tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)}
+        </ul>
+      </>
+    ))
   )
 
   const NoTagsPlaceholder = () => (
