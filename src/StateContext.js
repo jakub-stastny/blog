@@ -9,6 +9,7 @@ const StateContext = createContext()
 */
 export function StateContextProvider ({ children }) {
   const { lang } = useContext(LangContext)
+  /* TODO: Refetch data if the lang was changed. Maybe from the header? */
 
   /* Posts */
   const [ postPreviews, setPostPreviews ] = useState([])
@@ -29,15 +30,16 @@ export function StateContextProvider ({ children }) {
   const helpers = {
     getTag: (slug) => tags.find((tag) => tag.slug === slug),
     getPost: (slug) => posts.find((post) => post.slug === slug),
-    fetchPost, fetchTag, fetchTags, getLatestStatusUpdate
+    fetchPost, fetchTag, fetchTags, getLatestStatusUpdate,
+    reset
   }
 
 
   useEffect(() => { fetchPosts() }, [])
 
   /* Index fetchers. */
-  async function fetchPosts () {
-    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts.${lang}.json`)
+  async function fetchPosts (locale = lang) {
+    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts.${locale}.json`)
     setPostPreviews(await response.json())
     setPostsFetched(true)
   }
@@ -65,6 +67,19 @@ export function StateContextProvider ({ children }) {
   async function getLatestStatusUpdate () {
     const tag = await this.fetchTag('now')
     setLastStatusUpdate(tag.posts[0])
+  }
+
+  function reset (lang) {
+    setPostPreviews([])
+    setFullPosts({})
+    setPostsFetched(false)
+    setLastStatusUpdate()
+
+    setTagList([])
+    setTagDetails({})
+    setTagsFetched(false)
+
+    if(lang) fetchPosts(lang)
   }
 
   return (
