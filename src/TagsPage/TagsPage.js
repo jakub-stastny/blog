@@ -23,8 +23,10 @@ export default function TagsPage () {
   useEffect(() => { state.tagsFetched || state.helpers.fetchTags() })
   useTitle(state.tagsFetched ?  t(translations.title.loaded) : t(translations.title.initial))
 
-  const TagPreview = ({ slug, name }) => (
-    <li className={assert(styles.tag)}><A href={getTagPagePath(slug)}>{name}</A></li>
+  const TagPreview = ({ slug, name, relevance }) => (
+    <li className={assert(styles.tag)} style={{fontSize: 12 + relevance}}>
+      <A href={getTagPagePath(slug)}>{name.replace(/ /g, '\u00a0')}</A>
+    </li>
   )
 
   const TagPreviewList = ({ tags }) => (
