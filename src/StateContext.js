@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect, useContext } from 'react'
+import LangContext from './LangContext'
 
 const StateContext = createContext()
 
@@ -7,6 +8,8 @@ const StateContext = createContext()
  * render cycle, gets called only with the last value.
 */
 export function StateContextProvider ({ children }) {
+  const { lang } = useContext(LangContext)
+
   /* Posts */
   const [ postPreviews, setPostPreviews ] = useState([])
   const [ fullPosts, setFullPosts] = useState({})
@@ -34,26 +37,26 @@ export function StateContextProvider ({ children }) {
 
   /* Index fetchers. */
   async function fetchPosts () {
-    const response = await fetch('https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts.json')
+    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts.${lang}.json`)
     setPostPreviews(await response.json())
     setPostsFetched(true)
   }
 
   async function fetchTags () {
-    const response = await fetch('https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags.json')
+    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags.${lang}.json`)
     setTagList(await response.json())
     setTagsFetched(true)
   }
 
   /* Show fetchers. */
   async function fetchPost (slug) {
-    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/${slug}/post.json`)
+    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts/${slug}/post.json`)
     const data = await response.json()
     setFullPosts(Object.assign({}, fullPosts, {[data.slug]: data}))
   }
 
   async function fetchTag (slug) {
-    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags/${slug}.json`)
+    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags/${lang}/${slug}.json`)
     const data = await response.json()
     setTagDetails(Object.assign({}, tagDetails, {[data.slug]: data}))
     return data
