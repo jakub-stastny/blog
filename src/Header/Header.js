@@ -31,6 +31,7 @@ export default memo(function Header () {
 
   function switchLang () {
     localStorage.setItem('lang', toLang)
+
     setLang(toLang)
 
     state.helpers.reset(toLang)
@@ -50,14 +51,14 @@ export default memo(function Header () {
       if (post && post.translations[toLang]) {
         navigate(routes[toLang].getPostPagePath(post.translations[toLang]))
       } else {
-        if (window.confirm(t(translations.alert))) {
-          navigate('/')
+        if (window.confirm(t(translations.alert)))
+          window.location = '/'
         }
       }
     // Tags.
     } else if (routes[lang].getTagPagePath(fromSlug) === window.location.pathname) {
       const toSlug = getTagTranslation(toLang, fromSlug)
-      navigate(toSlug ? routes[toLang].getTagPagePath(toSlug) : routes[toLang].tagsPagePath)
+      window.location = (toSlug ? routes[toLang].getTagPagePath(toSlug) : routes[toLang].tagsPagePath)
     }
   }
 

@@ -19,7 +19,7 @@ const fields = [
 ]
 
 export const NewsletterSignUpLink = ({ children }) => (
-  <OutboundLink to={mailchimpURL}>{children}</OutboundLink>
+  <OutboundLink eventLabel="newsletter-sign-up-link" to={mailchimpURL}>{children}</OutboundLink>
 )
 
 export default memo(() => (

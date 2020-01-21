@@ -22,7 +22,7 @@ export default () => (
       <Highlight title="Ad blocker" style={{background: 'mistyrose', marginBottom: 15}}>
         <p>
           Your ad blocker is enabled. This in some cases <em>might prevent submission of this form</em> (
-          <OutboundLink to="https://github.com/gndx/react-mailchimp-form/issues/11">gndx/react-mailchimp-form#11</OutboundLink>
+          <OutboundLink eventLabel="gh-mailchimp-issue" to="https://github.com/gndx/react-mailchimp-form/issues/11">gndx/react-mailchimp-form#11</OutboundLink>
           ).
         </p>
 

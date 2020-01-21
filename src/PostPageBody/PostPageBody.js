@@ -8,6 +8,7 @@ import Spinner from '../Spinner/Spinner'
 import { Tooltip } from 'react-tippy'
 import { markdownToHTML } from '../utils'
 import { assert } from '../utils'
+import ReactGA from 'react-ga'
 
 import styles from './PostPageBody.module.css'
 import 'react-tippy/dist/tippy.css'
@@ -48,6 +49,14 @@ export default memo(function PostBody ({ post }) {
         console.log(`~ Navigating to ${a.href}`)
         navigate(a.href)
         event.preventDefault()
+      })
+    })
+
+    Array.from(bodyElement.querySelectorAll('a[href^="http"]')).forEach((a) => {
+      a.target = '_blank'
+      a.addEventListener('click', (event) => {
+        ReactGA.outboundLink({label: `${post.slug}: ${a.href}`})
+        // event.preventDefault()
       })
     })
 
