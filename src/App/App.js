@@ -26,6 +26,7 @@ export default function App () {
     if (isProduction) ReactGA.initialize(googleAnalyticsTrackingId, {gaOptions: {siteSpeedSampleRate: 100}})
   }, [])
 
+  /* TODO: Extract this out as context. */
   useEffect(() => {
     const qs = queryString.parse(window.location.search)
 
@@ -34,7 +35,14 @@ export default function App () {
       localStorage.setItem('referrer', qs.from)
     }
 
-    if (isProduction) ReactGA.pageview(window.location.pathname)
+    // Allow for ?dev without value.
+    if ('dev' in qs) {
+      localStorage.setItem('dev', true)
+    }
+
+    if (isProduction && !localStorage.getItem('dev')) {
+      ReactGA.pageview(window.location.pathname)
+    }
   })
 
   return (

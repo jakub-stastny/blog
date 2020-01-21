@@ -16,3 +16,11 @@
   right: 0px;
   margin: 5px;
 }
+
+.indicator {
+  position: absolute;
+  top: 3px;
+  right: 50px;
+  margin: 5px;
+  color: grey;
+}

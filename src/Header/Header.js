@@ -1,4 +1,4 @@
-import React, { memo, useContext } from 'react'
+import React, { memo, useContext, useState } from 'react'
 import { navigate } from 'hookrouter'
 import { assert } from '../utils'
 import { UnhighlightedLink } from '../Link/Link'
@@ -8,23 +8,38 @@ import styles from './Header.module.css'
 import { UK, MX } from '../flags'
 import * as routes from '../routes'
 import getTagTranslation from '../tagTranslations'
+import Modal from 'react-modal'
+
+// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement(document.getElementById('root'))
 
 const translations = {
   tagline: [
     <>On programming, Ruby, React.js, languages and&nbsp;life.</>,
     "Acerca de programación, Ruby, React.js, idiomas y la vida."
   ],
+  // NOTE: These has to be in reverse.
   alert: [
-    "This post hasn't been translated to English yet.<br /> Press continue to go to the blog home page (in English) or press cancel to stay on this page (in the current language version).<br />",
-    "Esta entrada todavía no está traducida a Español.<br /> ..."
+    <>
+      Esta entrada todavía no está traducida a Español.<br /> ...
+    </>,
+    <>
+      This post hasn't been translated to English yet.<br /> Press continue to go to the blog home page (in English) or press cancel to stay on this page (in the current language version).<br />
+    </>,
   ]
 }
+
+const DevModeIndicator = ({ on }) => (
+  on && <div className={styles.indicator}>DEV</div>
+)
 
 const langs = {en: UK, es: MX}
 
 export default memo(function Header () {
   const { t, lang, setLang } = useContext(LangContext)
   const state = useContext(StateContext)
+
+  const [ modalIsOpen, setModalIsOpen ] = useState(false)
 
   const toLang = (lang === 'en') ? 'es' : 'en'
   const FlagIcon = langs[toLang]
@@ -51,9 +66,7 @@ export default memo(function Header () {
       if (post && post.translations[toLang]) {
         navigate(routes[toLang].getPostPagePath(post.translations[toLang]))
       } else {
-        if (window.confirm(t(translations.alert)))
-          window.location = '/'
-        }
+        setModalIsOpen(true)
       }
     // Tags.
     } else if (routes[lang].getTagPagePath(fromSlug) === window.location.pathname) {
@@ -63,24 +76,40 @@ export default memo(function Header () {
   }
 
   return (
-    <header className={assert(styles.header)}>
-      <h1>
-        <UnhighlightedLink to="/">Jakub Šťastný</UnhighlightedLink>
-      </h1>
+    <>
+      {/* The modal. */}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        contentLabel="Example Modal"
+      >
+        <h2>Test</h2>
+        {t(translations.alert)}
+        {/* TODO: close or link to /. */}
+      </Modal>
 
-      <p>
-        {t(translations.tagline)}
-      </p>
+      {/* The header. */}
+      <header className={assert(styles.header)}>
+        <h1>
+          <UnhighlightedLink to="/">Jakub Šťastný</UnhighlightedLink>
+        </h1>
 
-      <div style={{position: 'absolute', top: 0, right: 0, padding: 5}}>
-        <div className={assert(styles.lang)}>
-          {/* This will need to happen for posts and tags. */}
-          {/* <NavLink to={page[toLang].route} activeClassName={styles.toLangLink}> */}
-          <span onClick={switchLang}>
-            <FlagIcon />
-          </span>
+        <p>
+          {t(translations.tagline)}
+        </p>
+
+        <DevModeIndicator on={localStorage.getItem('dev')} />
+
+        <div style={{position: 'absolute', top: 0, right: 0, padding: 5}}>
+          <div className={assert(styles.lang)}>
+            {/* This will need to happen for posts and tags. */}
+            {/* <NavLink to={page[toLang].route} activeClassName={styles.toLangLink}> */}
+            <span onClick={switchLang}>
+              <FlagIcon />
+            </span>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   )
 })
