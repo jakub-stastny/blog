@@ -47,25 +47,3 @@
   margin-right: 10px;
   border-radius: default-border-radius;
 }
-
-.sentenceList {
-  padding: 0;
-  display: inline;
-  list-style: none;
-}
-
-.sentenceList li {
-  display: inline;
-}
-
-.sentenceList li:after {
-  content: ", ";
-}
-
-.sentenceList li:last-child:after {
-  content: ".";
-}
-
-.sentenceList li:nth-last-child(2):after {
-  content: " & ";
-}
