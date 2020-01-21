@@ -50,8 +50,8 @@ export function StateContextProvider ({ children }) {
   }
 
   /* Show fetchers. */
-  async function fetchPost (slug) {
-    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts/${slug}/post.json`)
+  async function fetchPost (slug, locale = lang) {
+    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts/${locale}/${slug}/post.json`)
     const data = await response.json()
     setFullPosts(Object.assign({}, fullPosts, {[data.slug]: data}))
   }

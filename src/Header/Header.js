@@ -1,10 +1,12 @@
 import React, { memo, useContext } from 'react'
+import { navigate } from 'hookrouter'
 import { assert } from '../utils'
 import { UnhighlightedLink } from '../Link/Link'
 import LangContext from '../LangContext'
 import StateContext from '../StateContext'
 import styles from './Header.module.css'
 import { UK, MX } from '../flags'
+import * as routes from '../routes'
 
 const translations = {
   tagline: [
@@ -29,21 +31,28 @@ export default memo(function Header () {
   function switchLang () {
     localStorage.setItem('lang', toLang)
     setLang(toLang)
+
     state.helpers.reset(toLang)
-    const chunks = window.location.pathname.split('/')
-    console.log('ch', chunks)
-    if (chunks[1] === 'posts' || chunks[1] === 'entradas' && chunks[2]) {
-      const replacePost = state.posts.find(post => post.slug === chunks[2])
-      console.log('rp', replacePost)
-      if (replacePost && replacePost.translations[toLang]) {
-        const translatedPostSlug = replacePost.translations[toLang]
-        window.location = (toLang === 'en') ? `/posts/${translatedPostSlug}` : `/entradas/${translatedPostSlug}`
-      } else {
-        if (window.confirm(t(translations.alert))) {
-          window.location = '/'
-        }
+
+    Object.entries(routes[lang]).forEach(([ routeName, routePath ]) => {
+      // Simple routes without :slug.
+      if (window.location.pathname === routePath) {
+        return navigate(routes[toLang][routeName])
+      // Posts.
+      } else if (routeName === 'getPostPage') {
+        const post = state.posts.find(post => post.slug === window.location.pathname.split('/').slice(-1)[0])
+        if (post.translations[toLang]) {
+          return navigate(routes[toLang][routeName](post.translations[toLang]))
+        } else {
+          if (window.confirm(t(translations.alert))) {
+            navigate('/')
+         }
+       }
+     } else if (routeName === 'getTagPage') {
+        // FIXME: tag translations.
+        return navigate(routes[toLang].tagsPage)
       }
-    }
+    })
   }
 
   return (

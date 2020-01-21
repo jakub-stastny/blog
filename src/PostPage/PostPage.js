@@ -28,15 +28,16 @@ export default memo(function Post ({ lang, slug }) {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { (post && post.body) || state.helpers.fetchPost(slug) }, [])
-  useEffect(() => {
-    console.log('P', post)
-    if (!post) return
-    if (post.lang !== lang) {
-      console.log(`SET LANG to ${post.lang}`)
-      setLang(post.lang)
-      state.helpers.reset(post.lang)
-    }
-  })
+
+  // TODO: show this as a hint, box with a flag.
+  // useEffect(() => {
+  //   if (!post) return
+  //   if (post.lang !== lang) {
+  //     console.log(`SET LANG to ${post.lang}`)
+  //     setLang(post.lang)
+  //     state.helpers.reset(post.lang)
+  //   }
+  // })
 
   useTitle(post ? post.title : t(translations.loading))
 

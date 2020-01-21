@@ -24,7 +24,7 @@ export const es = {
   getPostPagePath: (slug) => `/entradas/${assert(slug, 'Slug is required')}`,
   getTagPagePath: (slug) => `/etiquetas/${assert(slug, 'Slug is required')}`,
   aboutPagePath: '/sobre-mi',
-  subscribePagePath: '/subscribir',
+  subscribePagePath: '/subscribirse',
   tagsPagePath: '/etiquetas',
   nowPagePath: '/ahora',
   holaPagePath: '/hola'
