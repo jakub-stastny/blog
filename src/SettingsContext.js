@@ -3,30 +3,42 @@ import queryString from 'query-string'
 
 const SettingsContext = createContext()
 
+function parseBooleanFromLocalStorage (key, defaultValue) {
+  const value = localStorage.getItem(key)
+  const validValue = value && ['true', 'false'].includes(value)
+  return validValue ? JSON.parse(validValue) : defaultValue
+}
+
+function generateWritter (key, writterFn) {
+  return function (value) {
+    localStorage.setItem(key)
+    writterFn(value)
+  }
+}
+
 export function SettingsContextProvider ({ children }) {
-  const [ dev, _setDev ] = useState(localStorage.getItem('dev') ? JSON.parse(localStorage.getItem('dev')) : false)
+  const [ dev, _setDev ] = useState(parseBooleanFromLocalStorage('dev', false))
+  const [ dbg, _setDbg ] = useState(parseBooleanFromLocalStorage('dbg', false))
+
   const [ referrer, _setReferrer ] = useState(localStorage.getItem('referrer')) // TODO: validate options
 
-  function setDev (boolean) {
-    localStorage.setItem('dev', boolean)
-    _setDev(boolean)
-  }
-
-  function setReferrer (referrer) {
-    localStorage.setItem('referrer', referrer)
-    _setReferrer(referrer)
-  }
+  const setDbg = generateWritter('dbg', _setDbg)
+  const setDev = generateWritter('dev', _setDev)
+  const setReferrer = generateWritter('referrer', _setReferrer)
 
   useEffect(() => {
-    const qs = queryString.parse(window.location.search)
+    const qs = queryString.parse(window.location.search, {parseBooleans: true})
 
+    // ?from=mail
     qs.from && setReferrer(qs.from)
-    // Allow for ?dev without value.
-    ('dev' in qs) && setDev(true)
+
+    // ?dev={true,false}
+    [true, false].includes(qs.dev) && setDev(qs.dev)
+    [true, false].includes(qs.dbg) && setDev(qs.dbg)
   })
 
   return (
-    <SettingsContext.Provider value={{referrer, setReferrer, dev, setDev}}>
+    <SettingsContext.Provider value={{referrer, setReferrer, dev, setDev, dbg, setDbg}}>
       {children}
     </SettingsContext.Provider>
   )

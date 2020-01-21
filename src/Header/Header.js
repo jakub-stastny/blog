@@ -3,6 +3,7 @@ import { navigate } from 'hookrouter'
 import { assert } from '../utils'
 import { UnhighlightedLink } from '../Link/Link'
 import LangContext from '../LangContext'
+import SettingsContext from '../SettingsContext'
 import StateContext from '../StateContext'
 import styles from './Header.module.css'
 import { UK, MX } from '../flags'
@@ -29,8 +30,8 @@ const translations = {
   ]
 }
 
-const DevModeIndicator = ({ on }) => (
-  on && <div className={styles.indicator}>DEV</div>
+const DevModeIndicator = ({ settings }) => (
+  settings.dev && <div className={styles.indicator}>{JSON.stringify(settings)}</div>
 )
 
 const langs = {en: UK, es: MX}
@@ -38,6 +39,7 @@ const langs = {en: UK, es: MX}
 export default memo(function Header () {
   const { t, lang, setLang } = useContext(LangContext)
   const state = useContext(StateContext)
+  const settings = useContext(SettingsContext)
 
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
 
@@ -98,7 +100,7 @@ export default memo(function Header () {
           {t(translations.tagline)}
         </p>
 
-        <DevModeIndicator on={localStorage.getItem('dev')} />
+        <DevModeIndicator settings={settings} />
 
         <div style={{position: 'absolute', top: 0, right: 0, padding: 5}}>
           <div className={assert(styles.lang)}>

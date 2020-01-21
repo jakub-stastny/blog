@@ -5,11 +5,13 @@ import { isProduction, googleAnalyticsTrackingId } from '../config'
 
 export default function GoogleAnalyticsTracker () {
   const settings = useContext(SettingsContext)
-  console.log('settings', settings)
 
   useEffect(() => {
     if (isProduction && !settings.dev) {
-      ReactGA.initialize(googleAnalyticsTrackingId, {gaOptions: {siteSpeedSampleRate: 100}})
+      ReactGA.initialize(googleAnalyticsTrackingId, {
+        debug: settings.dbg,
+        gaOptions: {siteSpeedSampleRate: 100}
+      })
     }
   }, [])
 
