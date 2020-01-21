@@ -17,6 +17,10 @@ const translations = {
   previousUpdates: ["Previous updates", "Actualizaciones anteriores"],
 }
 
+const isTaggedWithNow = (nowTag, post) = (
+  post.tags.map(tag => tag.name).includes(nowTag)
+)
+
 function PreviousNowPosts ({ posts, currentPostSlug }) {
   const { t, lang, nowTag } = useContext(LangContext)
 
@@ -28,8 +32,7 @@ function PreviousNowPosts ({ posts, currentPostSlug }) {
     <>
       <h3>{t(translations.previousUpdates)}</h3>
       <ul className={styles.sentenceList}>
-        {/* TODO: extract out as a helper fn to the state context. */}
-        {posts.filter(post => post.tags.map(tag => tag.name).includes(nowTag) && post.slug !== currentPostSlug).map(post => (
+        {posts.filter(post => isTaggedWithNow(nowTag, post) && post.slug !== currentPostSlug).map(post => (
           <li key={post.slug}>
             <A href={getPostPagePath(post.slug)}>
               <Moment date={post.date} filter={titleCase} format="MMMM YYYY" interval={0} locale={lang} />
@@ -41,13 +44,53 @@ function PreviousNowPosts ({ posts, currentPostSlug }) {
   )
 }
 
+const translations = {
+  prompt: {
+    adBlock: [
+      <>
+        Did you like the post? <NewsletterSignUpLink>Sign up</NewsletterSignUpLink> for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
+      </>,
+      <>
+        ¿Te gustó la entrada? <NewsletterSignUpLink>Subscríbete</NewsletterSignUpLink> a mi boletín y te mando correo con las entradas más populares <em>trimestralmente</em>.
+      </>,
+    ],
+    noAdBlock: [
+      <>
+        Did you like the post? Sign up for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
+      </>,
+      <>
+        ¿Te gustó la entrada? Subscríbete a mi boletín y te mando correo con las entradas más populares <em>trimestralmente</em>.
+      </>,
+    ]
+  },
+  /* TODO: use routes helpers. */
+  license: [
+    <>
+      This post has been <A href="/posts/releasing-copyright">uncopyrighted</A>. You can do anything you want with it.
+    </>,
+    <>
+      Esta entrada está <A href="/entradas/liberando-el-copyright">libre de los derechos de autor</A>. Haz lo que quieres con el contenido.
+    </>
+  ],
+  oss: [
+    <>
+      It is also OSS and if you see any typos or information that you believe incorrect, you can just{' '}
+      <A href="/posts/how-to-submit-a-pull-request-to-my-posts">submit a pull request</A>.
+    </>,
+    <>
+      It is also OSS and if you see any typos or information that you believe incorrect, you can just{' '}
+      También es OSS y si ves unos errores, puedes{' '}
+      <A href="/posts/how-to-submit-a-pull-request-to-my-posts">mandar a PR</A>.
+    </>
+  ]
+}
+
 export default memo(function PostPageFooter ({ post, posts }) {
-  // const { t } = useContext(LangContext)
+  const { t, nowTag } = useContext(LangContext)
 
   return (
     <footer className={assert(styles.footer)}>
-      {/* TODO: extract out as a helper fn to the state context. */}
-      {post.tags.map(tag => tag.name).includes('now') && <PreviousNowPosts posts={posts} currentPostSlug={post.slug} />}
+      {isTaggedWithNow(nowTag, post) && <PreviousNowPosts posts={posts} currentPostSlug={post.slug} />}
 
       <div className={assert(styles.about)}>
         <Gravatar className={assert(styles.gravatar)} />
@@ -56,27 +99,22 @@ export default memo(function PostPageFooter ({ post, posts }) {
 
       <div className={assert(styles.newsletter)}>
         <AdBlockDetect>
-          <p>
-            Did you like the post? <NewsletterSignUpLink>Sign up</NewsletterSignUpLink> for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
-          </p>
+          <p>{t(translations.prompt.noAdBlock)}</p>
         </AdBlockDetect>
 
         <AdBlockDetect value={false}>
-          <p>
-            Did you like the post? Sign up for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
-          </p>
+          <p>{t(translations.prompt.adBlock)}</p>
 
           <NewsletterSignUpForm />
         </AdBlockDetect>
       </div>
 
       <p className={assert(styles.license)}>
-        This post has been <A href="/posts/releasing-copyright">uncopyrighted</A>. You can do anything you want with it.
+        {t(translations.license)}
       </p>
 
       <p className={assert(styles.license)}>
-        It is also OSS and if you see any typos or information that you believe incorrect, you can just{' '}
-        <A href="/posts/how-to-submit-a-pull-request-to-my-posts">submit a pull request</A>.
+        {t(translations.oss)}
       </p>
     </footer>
   )
