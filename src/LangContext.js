@@ -3,11 +3,11 @@ import { assert } from './utils'
 
 const LangContext = createContext()
 
-// TODO: Detect based on the route.
 export function LangContextProvider ({ children }) {
   const defaultLanguage = (navigator.language || '').match(/^es/) ? 'es' : 'en'
+  const setLanguage = localStorage.getItem('lang')
 
-  const [ lang, setLang ] = useState(defaultLanguage)
+  const [ lang, setLang ] = useState(setLanguage || defaultLanguage)
 
   const t = ([ enTranslation, esTranslation ]) => assert(lang === 'en' ? enTranslation : esTranslation)
 

@@ -27,7 +27,7 @@ export default memo(function Header () {
   const FlagIcon = langs[toLang]
 
   function switchLang () {
-    // TODO: save to localStorage.
+    localStorage.setItem('lang', toLang)
     setLang(toLang)
     state.helpers.reset(toLang)
     const chunks = window.location.pathname.split('/')
