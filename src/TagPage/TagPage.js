@@ -4,7 +4,7 @@ import StateContext from '../StateContext'
 import LangContext from '../LangContext'
 import PublishedDate from '../PublishedDate/PublishedDate'
 import Spinner from '../Spinner/Spinner'
-import { getPostPagePath } from '../routes'
+import * as routes from '../routes'
 import { assert } from '../utils'
 import styles from './TagPage.module.css'
 
@@ -17,10 +17,14 @@ const translations = {
   heading: ["Posts tagged", "Entradas etiquetadas"],
 }
 
-export default function Tag ({ slug }) {
+export default function Tag ({ lang, slug }) {
   const state = useContext(StateContext)
-  const { t } = useContext(LangContext)
+  const { t, setLang } = useContext(LangContext)
   const tag = state.helpers.getTag(slug)
+
+  const { getPostPagePath } = routes[lang]
+
+  setLang(lang)
 
   useTitle(tag ? t(translations.title.loaded) : t(translations.title.loading))
 

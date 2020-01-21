@@ -34,7 +34,6 @@ export function StateContextProvider ({ children }) {
     reset
   }
 
-
   useEffect(() => { fetchPosts() }, [])
 
   /* Index fetchers. */

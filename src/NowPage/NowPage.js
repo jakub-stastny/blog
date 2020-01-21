@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { useTitle } from 'hookrouter'
 import StateContext from '../StateContext'
+import LangContext from '../LangContext'
 import PostPage from '../PostPage/PostPage'
 import Spinner from '../Spinner/Spinner'
 
@@ -9,15 +10,24 @@ import Spinner from '../Spinner/Spinner'
   Inspired by nownownow.com.
 */
 
-export default function NowPage () {
+const translations = {
+  title: ["Fetching the latest update ...", "Descargando la última actualización"],
+  spinner: ["latest status update", "la última actualización"]
+}
+
+export default function NowPage ({ lang }) {
+  const { t, setLang } = useContext(LangContext)
+
+  setLang(lang)
+
   const state = useContext(StateContext)
   const lastStatusUpdate = state.lastStatusUpdate
 
   useEffect(() => { lastStatusUpdate || state.helpers.getLatestStatusUpdate() })
 
-  useTitle(lastStatusUpdate ? lastStatusUpdate.title : "Fetching the latest update ...")
+  useTitle(lastStatusUpdate ? lastStatusUpdate.title : t(translations.title))
 
   return (
-    state.lastStatusUpdate ? <PostPage slug={lastStatusUpdate.slug} /> : <Spinner title="latest status update" />
+    state.lastStatusUpdate ? <PostPage lang={lang} slug={lastStatusUpdate.slug} /> : <Spinner title={t(translations.spinner)} />
   )
 }

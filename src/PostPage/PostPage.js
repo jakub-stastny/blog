@@ -19,13 +19,24 @@ const translations = {
   spinner: ["the post", "la entrada"]
 }
 
-export default memo(function Post ({ slug }) {
-  const { t } = useContext(LangContext)
+export default memo(function Post ({ lang, slug }) {
+  const { t, setLang } = useContext(LangContext)
   const state = useContext(StateContext)
   const post = state.helpers.getPost(slug)
 
+  setLang(lang)
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { (post && post.body) || state.helpers.fetchPost(slug) }, [])
+  useEffect(() => {
+    console.log('P', post)
+    if (!post) return
+    if (post.lang !== lang) {
+      console.log(`SET LANG to ${post.lang}`)
+      setLang(post.lang)
+      state.helpers.reset(post.lang)
+    }
+  })
 
   useTitle(post ? post.title : t(translations.loading))
 

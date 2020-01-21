@@ -2,7 +2,7 @@ import React, { useContext, useEffect, memo } from 'react'
 import { A, useTitle } from 'hookrouter'
 import StateContext from '../StateContext'
 import LangContext from '../LangContext'
-import { nowPagePath, getPostPagePath } from '../routes'
+import * as routes from '../routes'
 
 import ContentEN from './content.en.js'
 import ContentES from './content.es.js'
@@ -12,9 +12,13 @@ const translations = {
   lastStatusUpdate: ["latest status update", "LATEST STATUS UPDATE"]
 }
 
-export default memo(function AboutPage () {
-  const { t, lang } = useContext(LangContext)
+export default memo(function AboutPage ({ lang }) {
+  const { t, setLang } = useContext(LangContext)
   const state = useContext(StateContext)
+
+  setLang(lang)
+
+  const { nowPagePath, getPostPagePath } = routes[lang]
 
   useTitle(t(translations.title))
 

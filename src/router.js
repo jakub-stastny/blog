@@ -15,12 +15,21 @@ const NowPage = lazy(() => import(/* webpackChunkName: "NowPage" */ './NowPage/N
 const HolaPage = lazy(() => import(/* webpackChunkName: "HolaPage" */ './HolaPage/HolaPage'))
 
 export default {
-  [routes.homePagePath]: () => <HomePage />,
-  [routes.getPostPagePath(':slug')]: ({ slug }) => <PostPage slug={slug} />,
-  [routes.getTagPagePath(':slug')]: ({ slug }) => <TagPage slug={slug} />,
-  [routes.aboutPagePath]: () => <AboutPage />,
-  [routes.subscribePagePath]: () => <SubscribePage />,
-  [routes.tagsPagePath]: () => <SuspenseSpinner><TagsPage /></SuspenseSpinner>,
-  [routes.nowPagePath]: () => <SuspenseSpinner><NowPage /></SuspenseSpinner>,
-  [routes.holaPagePath]: () => <SuspenseSpinner><HolaPage /></SuspenseSpinner>,
+  [routes.en.homePagePath]: () => <HomePage />,
+  [routes.en.getPostPagePath(':slug')]: ({ slug }) => <PostPage lang="en" slug={slug} />,
+  [routes.en.getTagPagePath(':slug')]: ({ slug }) => <TagPage lang="en" slug={slug} />,
+  [routes.en.aboutPagePath]: () => <AboutPage lang="en" />,
+  [routes.en.subscribePagePath]: () => <SubscribePage lang="en" />,
+  [routes.en.tagsPagePath]: () => <SuspenseSpinner><TagsPage lang="en" /></SuspenseSpinner>,
+  [routes.en.nowPagePath]: () => <SuspenseSpinner><NowPage lang="en" /></SuspenseSpinner>,
+  [routes.en.holaPagePath]: () => <SuspenseSpinner><HolaPage lang="en" /></SuspenseSpinner>,
+
+  [routes.es.homePagePath]: () => <HomePage />,
+  [routes.es.getPostPagePath(':slug')]: ({ slug }) => <PostPage lang="es" slug={slug} />,
+  [routes.es.getTagPagePath(':slug')]: ({ slug }) => <TagPage lang="es" slug={slug} />,
+  [routes.es.aboutPagePath]: () => <AboutPage lang="es" />,
+  [routes.es.subscribePagePath]: () => <SubscribePage lang="es" />,
+  [routes.es.tagsPagePath]: () => <SuspenseSpinner><TagsPage lang="es" /></SuspenseSpinner>,
+  [routes.es.nowPagePath]: () => <SuspenseSpinner><NowPage lang="es" /></SuspenseSpinner>,
+  [routes.es.holaPagePath]: () => <SuspenseSpinner><HolaPage lang="es" /></SuspenseSpinner>,
 }

@@ -10,6 +10,10 @@ const translations = {
   tagline: [
     <>On programming, Ruby, React.js, languages and&nbsp;life.</>,
     "Acerca de programación, Ruby, React.js, idiomas y la vida."
+  ],
+  alert: [
+    "This post hasn't been translated to English yet.<br /> Press continue to go to the blog home page (in English) or press cancel to stay on this page (in the current language version).<br />",
+    "Esta entrada todavía no está traducida a Español.<br /> ..."
   ]
 }
 
@@ -23,8 +27,23 @@ export default memo(function Header () {
   const FlagIcon = langs[toLang]
 
   function switchLang () {
+    // TODO: save to localStorage.
     setLang(toLang)
     state.helpers.reset(toLang)
+    const chunks = window.location.pathname.split('/')
+    console.log('ch', chunks)
+    if (chunks[1] === 'posts' || chunks[1] === 'entradas' && chunks[2]) {
+      const replacePost = state.posts.find(post => post.slug === chunks[2])
+      console.log('rp', replacePost)
+      if (replacePost && replacePost.translations[toLang]) {
+        const translatedPostSlug = replacePost.translations[toLang]
+        window.location = (toLang === 'en') ? `/posts/${translatedPostSlug}` : `/entradas/${translatedPostSlug}`
+      } else {
+        if (window.confirm(t(translations.alert))) {
+          window.location = '/'
+        }
+      }
+    }
   }
 
   return (

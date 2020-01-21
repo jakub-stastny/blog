@@ -10,8 +10,10 @@ const translations = {
   content: [<ContentEN />, <ContentES />]
 }
 
-export default memo(function SubscribePage () {
-  const { t } = useContext(LangContext)
+export default memo(function SubscribePage ({ lang }) {
+  const { t, setLang } = useContext(LangContext)
+
+  setLang(lang)
 
   useTitle(t(translations.title))
 

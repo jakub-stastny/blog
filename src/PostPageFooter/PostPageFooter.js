@@ -6,7 +6,6 @@ import NewsletterSignUpForm, { NewsletterSignUpLink } from '../NewsletterSignUpF
 import Gravatar from '../Gravatar/Gravatar'
 import PreviousNowPosts from '../PreviousNowPosts/PreviousNowPosts'
 import ConversationPrompt from '../ConversationPrompt/ConversationPrompt'
-import Moment from 'react-moment'
 import { assert } from '../utils'
 import styles from './PostPageFooter.module.css'
 import * as routes from '../routes'

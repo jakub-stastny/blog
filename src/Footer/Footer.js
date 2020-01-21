@@ -2,7 +2,7 @@ import React, { memo, useContext } from 'react'
 import LangContext from '../LangContext'
 import { assert } from '../utils'
 import Link from '../Link/Link'
-import { aboutPagePath, subscribePagePath, postsPagePath } from '../routes'
+import * as routes from '../routes'
 import styles from './Footer.module.css'
 
 const translations = {
@@ -12,7 +12,9 @@ const translations = {
 }
 
 export default memo(function Footer () {
-  const { t } = useContext(LangContext)
+  const { t, lang } = useContext(LangContext)
+
+  const { aboutPagePath, subscribePagePath, postsPagePath } = routes[lang]
 
   return (
     <footer className={assert(styles.main)}>

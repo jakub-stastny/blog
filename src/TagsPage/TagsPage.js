@@ -5,7 +5,7 @@ import styles from './TagsPage.module.css'
 import { assert } from '../utils'
 import { A, useTitle } from 'hookrouter'
 import Spinner from '../Spinner/Spinner'
-import { getTagPagePath } from '../routes'
+import * as routes from '../routes'
 
 const translations = {
   empty: ["There are no tags yet.", "Todavía no hay ningunas etiquetas."],
@@ -28,9 +28,14 @@ const categories = {
   finance: ["finance", "finance planning"],
 }
 
-export default function TagsPage () {
-  const { t } = useContext(LangContext)
+export default function TagsPage ({ lang }) {
+  const { t, setLang } = useContext(LangContext)
+
+  setLang(lang)
+
   const state = useContext(StateContext)
+
+  const { getTagPagePath } = routes[lang]
 
   useEffect(() => { state.tagsFetched || state.helpers.fetchTags() })
   useTitle(state.tagsFetched ?  t(translations.title.loaded) : t(translations.title.initial))

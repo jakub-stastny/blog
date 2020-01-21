@@ -3,6 +3,7 @@ import { assert } from './utils'
 
 const LangContext = createContext()
 
+// TODO: Detect based on the route.
 export function LangContextProvider ({ children }) {
   const defaultLanguage = (navigator.language || '').match(/^es/) ? 'es' : 'en'
 

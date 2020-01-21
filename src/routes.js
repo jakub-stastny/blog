@@ -6,12 +6,26 @@
 
 import { assert } from './utils'
 
-export const homePagePath = '/'
-export const postsPagePath = homePagePath
-export const getPostPagePath = (slug) => `/posts/${assert(slug, 'Slug is required')}`
-export const getTagPagePath = (slug) => `/tags/${assert(slug, 'Slug is required')}`
-export const aboutPagePath = '/about'
-export const subscribePagePath = '/subscribe'
-export const tagsPagePath = '/tags'
-export const nowPagePath = '/now'
-export const holaPagePath = '/hola'
+export const en = {
+  homePagePath: '/',
+  postsPagePath: '/',
+  getPostPagePath: (slug) => `/posts/${assert(slug, 'Slug is required')}`,
+  getTagPagePath: (slug) => `/tags/${assert(slug, 'Slug is required')}`,
+  aboutPagePath: '/about',
+  subscribePagePath: '/subscribe',
+  tagsPagePath: '/tags',
+  nowPagePath: '/now',
+  holaPagePath: '/hi'
+}
+
+export const es = {
+  homePagePath: '/',
+  postsPagePath: '/',
+  getPostPagePath: (slug) => `/entradas/${assert(slug, 'Slug is required')}`,
+  getTagPagePath: (slug) => `/etiquetas/${assert(slug, 'Slug is required')}`,
+  aboutPagePath: '/sobre-mi',
+  subscribePagePath: '/subscribir',
+  tagsPagePath: '/etiquetas',
+  nowPagePath: '/ahora',
+  holaPagePath: '/hola'
+}
