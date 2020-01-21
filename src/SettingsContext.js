@@ -34,7 +34,7 @@ export function SettingsContextProvider ({ children }) {
 
     // ?dev={true,false}
     [true, false].includes(qs.dev) && setDev(qs.dev)
-    [true, false].includes(qs.dbg) && setDev(qs.dbg)
+    [true, false].includes(qs.dbg) && setDbg(qs.dbg)
   })
 
   return (
