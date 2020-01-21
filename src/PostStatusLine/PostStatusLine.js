@@ -1,22 +1,32 @@
-import React, { memo } from 'react'
+import React, { memo, useContext } from 'react'
+import LangContext from '../LangContext'
 import TagList from '../TagList/TagList'
 import PublishedDate from '../PublishedDate/PublishedDate'
 import { assert } from '../utils'
 import styles from './PostStatusLine.module.css'
 
-const InlineTagList = ({ tags }) => (
-  <>
-    , tagged with <TagList tags={tags} />
-  </>
-)
+const translations = {
+  taggedWith: ["tagged with", "etiquetadas con"],
+  published: ["Published", "Publicada"]
+}
 
-const TagsPart = ({ tags }) => (
-  tags.length ? <InlineTagList tags={tags} /> : null
-)
+export default memo(function PostStatusLine ({ date, tags = [] }) {
+  const { t } = useContext(LangContext)
 
-export default memo(({ date, tags = []}) => (
-  <div className={assert(styles.line)}>
-    Published <PublishedDate date={date} />
-    <TagsPart tags={tags} />.
-  </div>
-))
+  const InlineTagList = ({ tags }) => (
+    <>
+      , {t(translations.taggedWith)} <TagList tags={tags} />
+    </>
+  )
+
+  const TagsPart = ({ tags }) => (
+    tags.length ? <InlineTagList tags={tags} /> : null
+  )
+
+  return (
+    <div className={assert(styles.line)}>
+      {t(translations.published)} <PublishedDate date={date} />
+      <TagsPart tags={tags} />.
+    </div>
+  )
+})
