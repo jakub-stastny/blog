@@ -3,22 +3,31 @@ import queryString from 'query-string'
 
 const SettingsContext = createContext()
 
+function parseBooleanNumberOrDefault (value, fn = (value) => value) {
+  if (['0', '1'].includes(value)) return fn(parseInt(value))
+}
+
 function parseBooleanFromLocalStorage (key, defaultValue) {
   const value = localStorage.getItem(key)
-  const validValue = value && ['true', 'false'].includes(value)
-  return validValue ? JSON.parse(validValue) : defaultValue
+  const parsedNumber = parseBooleanNumberOrDefault(value)
+  return parsedNumber === 1
 }
 
 function generateWritter (key, writterFn) {
   return function (value) {
-    localStorage.setItem(key)
-    writterFn(value)
+    if (value === '') {
+      localStorage.removeItem(key)
+      writterFn(null)
+    } else {
+      localStorage.setItem(key, value)
+      writterFn(value)
+    }
   }
 }
 
 export function SettingsContextProvider ({ children }) {
-  const [ dev, _setDev ] = useState(parseBooleanFromLocalStorage('dev', false))
-  const [ dbg, _setDbg ] = useState(parseBooleanFromLocalStorage('dbg', false))
+  const [ dev, _setDev ] = useState(parseBooleanFromLocalStorage('dev', 0))
+  const [ dbg, _setDbg ] = useState(parseBooleanFromLocalStorage('dbg', 0))
 
   const [ referrer, _setReferrer ] = useState(localStorage.getItem('referrer')) // TODO: validate options
 
@@ -27,18 +36,19 @@ export function SettingsContextProvider ({ children }) {
   const setReferrer = generateWritter('referrer', _setReferrer)
 
   useEffect(() => {
-    const qs = queryString.parse(window.location.search, {parseBooleans: true})
+    // NOTE: parseNumbers doesn't seem to be working
+    const qs = queryString.parse(window.location.search, {parseNumbers: true})
 
     // ?from=mail
-    qs.from && setReferrer(qs.from)
+    if (qs && Object.prototype.hasOwnProperty.call(qs, 'from')) setReferrer(qs.from)
 
     // ?dev={true,false}
-    [true, false].includes(qs.dev) && setDev(qs.dev)
-    [true, false].includes(qs.dbg) && setDbg(qs.dbg)
+    parseBooleanNumberOrDefault(qs.dev, setDev)
+    parseBooleanNumberOrDefault(qs.dbg, setDbg)
   })
 
   return (
-    <SettingsContext.Provider value={{referrer, setReferrer, dev, setDev, dbg, setDbg}}>
+    <SettingsContext.Provider value={{referrer, setReferrer, dev: (dev === 1), setDev, dbg: (dbg === 1), setDbg}}>
       {children}
     </SettingsContext.Provider>
   )

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import ReactGA from 'react-ga'
 import SettingsContext from '../SettingsContext'
 import { isProduction, googleAnalyticsTrackingId } from '../config'
