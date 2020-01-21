@@ -14,13 +14,18 @@ const translations = {
     loaded: ["Tags", "Etiquetas"]
   },
   tags: ["the tags", "las etiquetas"],
-  others: ["Others", "El resto"]
+  categories: {
+    it: ["IT", "TI"],
+    life: ["Life", "Vida"],
+    finance: ["Finance", "Dinero"],
+    others: ["Others", "El resto"],
+  }
 }
 
 const categories = {
-  IT: ["1Password", "Draft.js", "iPadOS", "Ruby on Rails", "blog engine", "iPad Pro"],
-  Life: ["email", "advertising", "capitalism", "consumerism", "depression", "ego", "ego death", "low-tech lifestyle"],
-  Finance: ["finance", "finance planning"]
+  it: ["1Password", "Draft.js", "iPadOS", "Ruby on Rails", "blog engine", "iPad Pro"],
+  life: ["email", "advertising", "capitalism", "consumerism", "depression", "ego", "ego death", "low-tech lifestyle"],
+  finance: ["finance", "finance planning"],
 }
 
 export default function TagsPage () {
@@ -38,17 +43,17 @@ export default function TagsPage () {
 
   const TagPreviewList = ({ tags }) => (
     Object.entries(tags.reduce((categoriesWithTags, tag) => {
-      const category = [Object.entries(categories).find(([ category, list ]) => list.includes(tag.name)) || [t(translations.others), []]][0][0]
+      const category = [Object.entries(categories).find(([ category, list ]) => list.includes(tag.name)) || [t(translations.categories.others), []]][0][0]
       if (!categoriesWithTags[category]) categoriesWithTags[category] = []
       categoriesWithTags[category].push(tag)
       return categoriesWithTags
-    }, {})).map(([ category, tags ]) => (
-      <>
-        <h3>{category}</h3>
+    }, {})).sort(([ nameA, tagsA ], [ nameB, tagsB ]) => nameA.localeCompare(nameB)).map(([ category, tags ]) => (
+      <span key={category}>
+        <h3>{translations.categories[category] ? t(translations.categories[category]) : t(translations.categories.others)}</h3>
         <ul style={{paddingLeft: 0}}>
           {tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)}
         </ul>
-      </>
+      </span>
     ))
   )
 
