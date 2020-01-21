@@ -7,6 +7,7 @@ import StateContext from '../StateContext'
 import styles from './Header.module.css'
 import { UK, MX } from '../flags'
 import * as routes from '../routes'
+import getTagTranslation from '../tagTranslations'
 
 const translations = {
   tagline: [
@@ -34,25 +35,30 @@ export default memo(function Header () {
 
     state.helpers.reset(toLang)
 
+    // Simple routes without :slug.
     Object.entries(routes[lang]).forEach(([ routeName, routePath ]) => {
-      // Simple routes without :slug.
       if (window.location.pathname === routePath) {
         return navigate(routes[toLang][routeName])
-      // Posts.
-      } else if (routeName === 'getPostPage') {
-        const post = state.posts.find(post => post.slug === window.location.pathname.split('/').slice(-1)[0])
-        if (post.translations[toLang]) {
-          return navigate(routes[toLang][routeName](post.translations[toLang]))
-        } else {
-          if (window.confirm(t(translations.alert))) {
-            navigate('/')
-         }
-       }
-     } else if (routeName === 'getTagPage') {
-        // FIXME: tag translations.
-        return navigate(routes[toLang].tagsPage)
       }
     })
+
+    const fromSlug = window.location.pathname.split('/').slice(-1)[0]
+
+    // Posts.
+    if (routes[lang].getPostPagePath(fromSlug) === window.location.pathname) {
+      const post = state.posts.find(post => post.slug === fromSlug)
+      if (post && post.translations[toLang]) {
+        navigate(routes[toLang].getPostPagePath(post.translations[toLang]))
+      } else {
+        if (window.confirm(t(translations.alert))) {
+          navigate('/')
+        }
+      }
+    // Tags.
+    } else if (routes[lang].getTagPagePath(fromSlug) === window.location.pathname) {
+      const toSlug = getTagTranslation(toLang, fromSlug)
+      navigate(toSlug ? routes[toLang].getTagPagePath(toSlug) : routes[toLang].tagsPagePath)
+    }
   }
 
   return (

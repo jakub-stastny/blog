@@ -9,7 +9,7 @@ import ContentES from './content.es.js'
 
 const translations = {
   title: ["About Jakub", "Acerca de Jakub"],
-  lastStatusUpdate: ["latest status update", "LATEST STATUS UPDATE"]
+  lastStatusUpdate: ["latest status update", "la última actualización"]
 }
 
 export default memo(function AboutPage ({ lang }) {
