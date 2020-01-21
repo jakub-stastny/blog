@@ -12,12 +12,7 @@ import { getPostPagePath } from '../routes'
 
 import 'moment/locale/es'
 
-// TODO: Translate everything.
-const translations = {
-  previousUpdates: ["Previous updates", "Actualizaciones anteriores"],
-}
-
-const isTaggedWithNow = (nowTag, post) = (
+const isTaggedWithNow = (nowTag, post) => (
   post.tags.map(tag => tag.name).includes(nowTag)
 )
 
@@ -45,6 +40,7 @@ function PreviousNowPosts ({ posts, currentPostSlug }) {
 }
 
 const translations = {
+  previousUpdates: ["Previous updates", "Actualizaciones anteriores"],
   prompt: {
     adBlock: [
       <>
