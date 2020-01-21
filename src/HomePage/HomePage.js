@@ -1,4 +1,4 @@
-import React, { useContext, useState, memo } from 'react'
+import React, { useContext, /*useState,*/ memo } from 'react'
 import { useTitle } from 'hookrouter'
 import PostPreview from '../PostPreview/PostPreview'
 import Spinner from '../Spinner/Spinner'
@@ -6,7 +6,7 @@ import StateContext from '../StateContext'
 import LangContext from '../LangContext'
 import styles from './HomePage.module.css'
 import { assert } from '../utils'
-import InfiniteScroll from 'react-infinite-scroll-component'
+// import InfiniteScroll from 'react-infinite-scroll-component'
 
 const translations = {
   title: ["Jakub's blog", "Blog de Jakub"],

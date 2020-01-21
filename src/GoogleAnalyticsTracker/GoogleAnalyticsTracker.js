@@ -4,19 +4,19 @@ import SettingsContext from '../SettingsContext'
 import { isProduction, googleAnalyticsTrackingId } from '../config'
 
 export default function GoogleAnalyticsTracker () {
-  const settings = useContext(SettingsContext)
+  const { dbg, dev } = useContext(SettingsContext)
 
   useEffect(() => {
-    if (isProduction && !settings.dev) {
+    if (isProduction && !dev) {
       ReactGA.initialize(googleAnalyticsTrackingId, {
-        debug: settings.dbg,
+        debug: dbg,
         gaOptions: {siteSpeedSampleRate: 100}
       })
     }
-  }, [])
+  }, [dbg, dev])
 
   useEffect(() => {
-    if (isProduction && !settings.dev) {
+    if (isProduction && !dev) {
       ReactGA.pageview(window.location.pathname)
     }
   })
