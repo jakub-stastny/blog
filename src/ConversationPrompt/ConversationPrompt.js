@@ -27,10 +27,10 @@ const findPrompt = (prompts, tagNames) => {
 }
 
 export default memo(function ConversationPrompt ({ tagNames = [] }) {
-  const { t, lang } = useContext(LangContext)
+  const { t, lang, nowTag } = useContext(LangContext)
   const prompts = (lang === 'en') ? promptsEN : promptsES
 
-  const prompt = tagNames.includes('now') ? prompts.default : (findPrompt(prompts, tagNames) || prompts.default)
+  const prompt = tagNames.includes(nowTag) ? prompts.default : (findPrompt(prompts, tagNames) || prompts.default)
 
   return (
     <div className={assert(styles.compact)}>

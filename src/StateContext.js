@@ -8,7 +8,7 @@ const StateContext = createContext()
  * render cycle, gets called only with the last value.
 */
 export function StateContextProvider ({ children }) {
-  const { lang } = useContext(LangContext)
+  const { lang, nowTag } = useContext(LangContext)
   /* TODO: Refetch data if the lang was changed. Maybe from the header? */
 
   /* Posts */
@@ -65,7 +65,7 @@ export function StateContextProvider ({ children }) {
   }
 
   async function getLatestStatusUpdate () {
-    const tag = await this.fetchTag('now')
+    const tag = await this.fetchTag(nowTag)
     setLastStatusUpdate(tag.posts[0])
   }
 

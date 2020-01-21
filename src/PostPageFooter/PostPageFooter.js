@@ -18,7 +18,7 @@ const translations = {
 }
 
 function PreviousNowPosts ({ posts, currentPostSlug }) {
-  const { t, lang } = useContext(LangContext)
+  const { t, lang, nowTag } = useContext(LangContext)
 
   function titleCase (string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
@@ -29,7 +29,7 @@ function PreviousNowPosts ({ posts, currentPostSlug }) {
       <h3>{t(translations.previousUpdates)}</h3>
       <ul className={styles.sentenceList}>
         {/* TODO: extract out as a helper fn to the state context. */}
-        {posts.filter(post => post.tags.map(tag => tag.name).includes('now') && post.slug !== currentPostSlug).map(post => (
+        {posts.filter(post => post.tags.map(tag => tag.name).includes(nowTag) && post.slug !== currentPostSlug).map(post => (
           <li key={post.slug}>
             <A href={getPostPagePath(post.slug)}>
               <Moment date={post.date} filter={titleCase} format="MMMM YYYY" interval={0} locale={lang} />
