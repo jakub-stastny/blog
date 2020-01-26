@@ -7,6 +7,7 @@ import Spinner from '../Spinner/Spinner'
 import * as routes from '../routes'
 import { assert } from '../utils'
 import styles from './TagPage.module.css'
+import descriptions from './descriptions.js'
 
 const translations = {
   title: {
@@ -50,6 +51,7 @@ export default function Tag ({ lang, slug }) {
   const TagList = ({ name, posts }) => (
     <>
       <h1>{t(translations.heading)} <span className={assert(styles.emphasis)}>{name}</span></h1>
+      {descriptions[name]}
       <PostPreviewList posts={posts} />
     </>
   )

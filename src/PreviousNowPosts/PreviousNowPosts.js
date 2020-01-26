@@ -7,6 +7,7 @@ import styles from './PreviousNowPosts.module.css'
 import * as routes from '../routes'
 
 import 'moment/locale/es'
+// import 'moment/locale/en'
 
 const translations = {
   previousUpdates: ["Previous updates", "Actualizaciones anteriores"],

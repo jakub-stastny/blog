@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import StateContext from '../StateContext'
 import LangContext from '../LangContext'
+import categories from './categories'
 import styles from './TagsPage.module.css'
 import { assert } from '../utils'
 import { A, useTitle } from 'hookrouter'
@@ -20,12 +21,6 @@ const translations = {
     finance: ["Finance", "Dinero"],
     others: ["Others", "El resto"],
   }
-}
-
-const categories = {
-  it: ["1Password", "Draft.js", "iPadOS", "Ruby on Rails", "blog engine", "iPad Pro"],
-  life: ["email", "advertising", "capitalism", "consumerism", "depression", "ego", "ego death", "low-tech lifestyle"],
-  finance: ["finance", "finance planning"],
 }
 
 export default function TagsPage ({ lang }) {

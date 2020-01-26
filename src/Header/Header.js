@@ -8,7 +8,7 @@ import StateContext from '../StateContext'
 import styles from './Header.module.css'
 import { UK, MX } from '../flags'
 import * as routes from '../routes'
-import getTagTranslation from '../tagTranslations'
+import getTagTranslation from '../TagsPage/translations'
 import Modal from 'react-modal'
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
