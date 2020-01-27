@@ -16,18 +16,24 @@ const translations = {
 }
 
 export default function NowPage ({ lang }) {
-  const { t, setLang } = useContext(LangContext)
-
-  setLang(lang)
+  const langSettings = useContext(LangContext)
+  const { t, setLang } = langSettings
 
   const state = useContext(StateContext)
   const lastStatusUpdate = state.lastStatusUpdate
 
-  useEffect(() => { lastStatusUpdate || state.helpers.getLatestStatusUpdate() })
+  useEffect(() => {
+    if (lang !== langSettings.lang) {
+      setLang(lang)
+      state.helpers.reset(lang)
+    } else {
+      lastStatusUpdate || state.helpers.getLatestStatusUpdate()
+    }
+  })
 
   useTitle(lastStatusUpdate ? lastStatusUpdate.title : t(translations.title))
 
   return (
-    state.lastStatusUpdate ? <PostPage lang={lang} slug={lastStatusUpdate.slug} /> : <Spinner title={t(translations.spinner)} />
+    lastStatusUpdate ? <PostPage lang={lang} slug={lastStatusUpdate.slug} /> : <Spinner title={t(translations.spinner)} />
   )
 }

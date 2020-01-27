@@ -9,7 +9,6 @@ const StateContext = createContext()
 */
 export function StateContextProvider ({ children }) {
   const { lang, nowTag } = useContext(LangContext)
-  /* TODO: Refetch data if the lang was changed. Maybe from the header? */
 
   /* Posts */
   const [ postPreviews, setPostPreviews ] = useState([])
