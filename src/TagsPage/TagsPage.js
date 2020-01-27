@@ -45,7 +45,7 @@ export default function TagsPage ({ lang }) {
   }, {})
 
   const TagPreviewList = ({ tags }) => (
-    <div className={assert(styles.cards)}>
+    <div style={{marginTop: 50}} className={assert(styles.cards)}>
       {Object.entries(categoryWithTags).sort(([ nameA, tagsA ], [ nameB, tagsB ]) => nameA.localeCompare(nameB)).map(([ categoryName, tags ]) => (
         <div key={categoryName} className={assert(styles.card)}>
           <h3 style={{margin: 0}}>{categoryName}</h3>
@@ -65,14 +65,5 @@ export default function TagsPage ({ lang }) {
     tags.length ? <TagPreviewList tags={tags} /> : <NoTagsPlaceholder />
   )
 
-  if (state.tagsFetched) {
-    return (
-      <>
-        <h1>{t(translations.title.loaded)}</h1>
-        <TagList tags={state.tags} />
-      </>
-    )
-  } else {
-    return <Spinner title={t(translations.tags)} />
-  }
+  return state.tagsFetched ? <TagList tags={state.tags} /> : <Spinner title={t(translations.tags)} />
 }
