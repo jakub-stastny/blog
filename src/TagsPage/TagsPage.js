@@ -45,14 +45,16 @@ export default function TagsPage ({ lang }) {
   }, {})
 
   const TagPreviewList = ({ tags }) => (
-    Object.entries(categoryWithTags).sort(([ nameA, tagsA ], [ nameB, tagsB ]) => nameA.localeCompare(nameB)).map(([ categoryName, tags ]) => (
-      <span key={categoryName}>
-        <h3 style={{margin: 0}}>{categoryName}</h3>
-        <ul style={{margin: 0, paddingLeft: 0}}>
-          {tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)}
-        </ul>
-      </span>
-    ))
+    <div className={assert(styles.cards)}>
+      {Object.entries(categoryWithTags).sort(([ nameA, tagsA ], [ nameB, tagsB ]) => nameA.localeCompare(nameB)).map(([ categoryName, tags ]) => (
+        <div key={categoryName} className={assert(styles.card)}>
+          <h3 style={{margin: 0}}>{categoryName}</h3>
+          <ul style={{margin: 0, paddingLeft: 0}}>
+            {tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)}
+          </ul>
+        </div>
+      ))}
+    </div>
   )
 
   const NoTagsPlaceholder = () => (
