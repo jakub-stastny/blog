@@ -35,8 +35,8 @@ export default function DevPage () {
   const state = useContext(StateContext)
   const { t } = useContext(LangContext)
 
-  const localStorageObject = Object.entries(localStorage).
-    reduce((buffer, [ key, value ]) => Object.assign(buffer, {[key]: value}), {})
+  const localStorageObject = Object.entries(localStorage)
+    .reduce((buffer, [ key, value ]) => Object.assign(buffer, {[key]: value}), {})
 
   const largeObjectKeys = ['posts', 'tags']
   const stateWithoutLargeObjects = Object.entries(state)
