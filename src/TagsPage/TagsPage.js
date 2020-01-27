@@ -49,7 +49,7 @@ export default function TagsPage ({ lang }) {
       {Object.entries(categoryWithTags).sort(([ nameA, tagsA ], [ nameB, tagsB ]) => nameA.localeCompare(nameB)).map(([ categoryName, tags ]) => (
         <div key={categoryName} className={assert(styles.card)}>
           <h3 style={{margin: 0}}>{categoryName}</h3>
-          <ul style={{margin: 0, paddingLeft: 0}}>
+          <ul style={{margin: 0, marginLeft: -5, paddingLeft: 0, paddingTop: 7}}>
             {tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)}
           </ul>
         </div>
