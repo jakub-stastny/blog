@@ -52,7 +52,7 @@ export default function Tag ({ lang, slug }) {
   const TagList = ({ name, posts }) => (
     <>
       <h1>{t(translations.heading)} <span className={assert(styles.emphasis)}>{name}</span></h1>
-      {descriptions[name]}
+      {descriptions[lang][name]}
       <PostPreviewList posts={posts} />
     </>
   )

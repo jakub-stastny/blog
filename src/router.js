@@ -18,7 +18,7 @@ const DevPage = lazy(() => import(/* webpackChunkName: "DevPage" */ './DevPage/D
 export default {
   [routes.en.homePagePath]: () => <HomePage />,
   [routes.en.getPostPagePath(':slug')]: ({ slug }) => <PostPage lang="en" slug={slug} />,
-  [routes.en.getTagPagePath(':slug')]: ({  slug }) => <TagPage lang="es" slug={slug} />,
+  [routes.en.getTagPagePath(':slug')]: ({  slug }) => <TagPage lang="en" slug={slug} />,
   [routes.en.aboutPagePath]: () => <AboutPage lang="en" />,
   [routes.en.subscribePagePath]: () => <SubscribePage lang="en" />,
   [routes.en.tagsPagePath]: () => <SuspenseSpinner><TagsPage lang="en" /></SuspenseSpinner>,

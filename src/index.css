@@ -25,4 +25,5 @@ a {
 
 ul {
   padding: 20px; /* Align with other elements. */
+  margin: 0;
 }
