@@ -1,5 +1,5 @@
 import React, { memo, useContext, useState } from 'react'
-import { navigate } from 'hookrouter'
+import { A, navigate } from 'hookrouter'
 import { assert } from '../utils'
 import { UnhighlightedLink } from '../Link/Link'
 import LangContext from '../LangContext'
@@ -30,10 +30,6 @@ const translations = {
   ]
 }
 
-const DevModeIndicator = ({ settings }) => (
-  settings.dev && <div className={styles.indicator}>{JSON.stringify(settings)}</div>
-)
-
 const langs = {en: UK, es: MX}
 
 export default memo(function Header () {
@@ -45,6 +41,10 @@ export default memo(function Header () {
 
   const toLang = (lang === 'en') ? 'es' : 'en'
   const FlagIcon = langs[toLang]
+
+  const DevModeIndicator = ({ settings }) => (
+    settings.dev && <div className={styles.indicator}><A href={routes[lang].devPagePath}>DEV</A></div>
+  )
 
   function switchLang () {
     localStorage.setItem('lang', toLang)

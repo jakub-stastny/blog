@@ -13,6 +13,7 @@ import SubscribePage from './SubscribePage/SubscribePage'
 const TagsPage = lazy(() => import(/* webpackChunkName: "TagsPage" */ './TagsPage/TagsPage'))
 const NowPage = lazy(() => import(/* webpackChunkName: "NowPage" */ './NowPage/NowPage'))
 const HolaPage = lazy(() => import(/* webpackChunkName: "HolaPage" */ './HolaPage/HolaPage'))
+const DevPage = lazy(() => import(/* webpackChunkName: "DevPage" */ './DevPage/DevPage'))
 
 export default {
   [routes.en.homePagePath]: () => <HomePage />,
@@ -23,6 +24,7 @@ export default {
   [routes.en.tagsPagePath]: () => <SuspenseSpinner><TagsPage lang="en" /></SuspenseSpinner>,
   [routes.en.nowPagePath]: () => <SuspenseSpinner><NowPage lang="en" /></SuspenseSpinner>,
   [routes.en.holaPagePath]: () => <SuspenseSpinner><HolaPage lang="en" /></SuspenseSpinner>,
+  [routes.en.devPagePath]: () => <SuspenseSpinner><DevPage lang="en" /></SuspenseSpinner>,
 
   [routes.es.homePagePath]: () => <HomePage />,
   [routes.es.getPostPagePath(':slug')]: ({ slug }) => <PostPage lang="es" slug={slug} />,
@@ -32,4 +34,5 @@ export default {
   [routes.es.tagsPagePath]: () => <SuspenseSpinner><TagsPage lang="es" /></SuspenseSpinner>,
   [routes.es.nowPagePath]: () => <SuspenseSpinner><NowPage lang="es" /></SuspenseSpinner>,
   [routes.es.holaPagePath]: () => <SuspenseSpinner><HolaPage lang="es" /></SuspenseSpinner>,
+  [routes.en.devPagePath]: () => <SuspenseSpinner><DevPage lang="en" /></SuspenseSpinner>,
 }
