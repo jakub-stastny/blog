@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import StateContext from '../StateContext'
 import LangContext from '../LangContext'
-import categories from './categories'
+import { findCategoryForTag, categoriesEN, categoriesES } from './categories'
 import styles from './TagsPage.module.css'
 import { assert } from '../utils'
 import { A, useTitle } from 'hookrouter'
@@ -15,12 +15,7 @@ const translations = {
     loaded: ["Tags", "Etiquetas"]
   },
   tags: ["the tags", "las etiquetas"],
-  categories: {
-    it: ["IT", "TI"],
-    life: ["Life", "Vida"],
-    finance: ["Finance", "Dinero"],
-    others: ["Others", "El resto"],
-  }
+  categories: [categoriesEN, categoriesES]
 }
 
 export default function TagsPage ({ lang }) {
@@ -43,7 +38,7 @@ export default function TagsPage ({ lang }) {
 
   const TagPreviewList = ({ tags }) => (
     Object.entries(tags.reduce((categoriesWithTags, tag) => {
-      const category = [Object.entries(categories).find(([ category, list ]) => list.includes(tag.name)) || [t(translations.categories.others), []]][0][0]
+      const category = findCategoryForTag(tag.name) || t(translations.categories.others)
       if (!categoriesWithTags[category]) categoriesWithTags[category] = []
       categoriesWithTags[category].push(tag)
       return categoriesWithTags
