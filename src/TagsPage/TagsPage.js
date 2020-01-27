@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import StateContext from '../StateContext'
 import LangContext from '../LangContext'
-import { findCategoryForTag, categoriesEN, categoriesES } from './categories'
+import { findCategoryForTag, categoriesEN, defaultCategoryEN, categoriesES, defaultCategoryES } from './categories'
 import styles from './TagsPage.module.css'
 import { assert } from '../utils'
 import { A, useTitle } from 'hookrouter'
@@ -15,7 +15,8 @@ const translations = {
     loaded: ["Tags", "Etiquetas"]
   },
   tags: ["the tags", "las etiquetas"],
-  categories: [categoriesEN, categoriesES]
+  categories: [categoriesEN, categoriesES],
+  others: [defaultCategoryEN, defaultCategoryES]
 }
 
 export default function TagsPage ({ lang }) {
@@ -36,16 +37,18 @@ export default function TagsPage ({ lang }) {
     </li>
   )
 
+  const categoryWithTags = state.tags.reduce((categoriesWithTags, tag) => {
+    const category = findCategoryForTag(lang, tag.name) || t(translations.others)
+    if (!categoriesWithTags[category.name]) categoriesWithTags[category.name] = []
+    categoriesWithTags[category.name].push(tag)
+    return categoriesWithTags
+  }, {})
+
   const TagPreviewList = ({ tags }) => (
-    Object.entries(tags.reduce((categoriesWithTags, tag) => {
-      const category = findCategoryForTag(tag.name) || t(translations.categories.others)
-      if (!categoriesWithTags[category]) categoriesWithTags[category] = []
-      categoriesWithTags[category].push(tag)
-      return categoriesWithTags
-    }, {})).sort(([ nameA, tagsA ], [ nameB, tagsB ]) => nameA.localeCompare(nameB)).map(([ category, tags ]) => (
-      <span key={category}>
-        <h3>{translations.categories[category] ? t(translations.categories[category]) : t(translations.categories.others)}</h3>
-        <ul style={{paddingLeft: 0}}>
+    Object.entries(categoryWithTags).sort(([ nameA, tagsA ], [ nameB, tagsB ]) => nameA.localeCompare(nameB)).map(([ categoryName, tags ]) => (
+      <span key={categoryName}>
+        <h3 style={{margin: 0}}>{categoryName}</h3>
+        <ul style={{margin: 0, paddingLeft: 0}}>
           {tags.sort((a, b) => a.slug.localeCompare(b.slug)).map((tag) => <TagPreview key={tag.slug} {...tag} />)}
         </ul>
       </span>

@@ -23,6 +23,7 @@ export function LangContextProvider ({ children }) {
 
   const t = ([ enTranslation, esTranslation ]) => assert(lang === 'en' ? enTranslation : esTranslation)
 
+  // TODO: use TagsPage/translations.
   const nowTag = t(['now', 'ahora'])
 
   return (

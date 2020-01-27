@@ -1,5 +1,5 @@
 import React, { useEffect, useContext }  from 'react'
-import { useTitle, A } from 'hookrouter'
+import { useTitle, A, navigate } from 'hookrouter'
 import StateContext from '../StateContext'
 import LangContext from '../LangContext'
 import PublishedDate from '../PublishedDate/PublishedDate'
@@ -8,6 +8,7 @@ import * as routes from '../routes'
 import { assert } from '../utils'
 import styles from './TagPage.module.css'
 import descriptions from './descriptions.js'
+import { findCategoryForTag } from '../TagsPage/categories'
 
 const translations = {
   title: {
@@ -23,7 +24,7 @@ export default function Tag ({ lang, slug }) {
   const { t, setLang } = useContext(LangContext)
   const tag = state.helpers.getTag(slug)
 
-  const { getPostPagePath } = routes[lang]
+  const { getPostPagePath, getTagPagePath } = routes[lang]
 
   setLang(lang)
 

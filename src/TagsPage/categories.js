@@ -1,13 +1,18 @@
 import slugify from '../utils/slugify'
-import categoriesEN from './categories.en'
-import categoriesES from './categories.es'
+import { assert } from '../utils'
+import categoriesEN, { defaultCategory as defaultCategoryEN } from './categories.en'
+import categoriesES, { defaultCategory as defaultCategoryES } from './categories.es'
 
-export { categoriesEN, categoriesES }
+export { categoriesEN, defaultCategoryEN, categoriesES, defaultCategoryES }
 
-export function findCategoryForTag (lang, tagName) {
-  const categories = (lang === 'en') ? categoriesEN : categoriesES
-  const categoryName = Object.entries(categories).find(([ category, list ]) => list.includes(tagName))[0][0]
-  return categoryName ? {name: categoryName, slug: slugify(categoryName)} : null
+export function isCategory (lang, slug) {
 }
 
-  // const category = [Object.entries(categories).find(([ category, list ]) => list.includes(tag.name)) || [t(translations.categories.others), []]][0][0]
+export function findCategoryForTag (lang, tagName) {
+  assert(lang, "lang is required")
+  assert(tagName, "tagName is required")
+
+  const categories = (lang === 'en') ? categoriesEN : categoriesES
+  const categoryName = Object.entries(categories).find(([ category, list ]) => list.includes(tagName))
+  return (categoryName && categoryName[0]) ? {name: categoryName[0], slug: slugify(categoryName[0])} : null
+}
