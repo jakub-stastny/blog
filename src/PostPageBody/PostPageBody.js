@@ -6,7 +6,7 @@ import HashTag from '../HashTag/HashTag'
 import YouTube from '../YouTube/YouTube'
 import Spinner from '../Spinner/Spinner'
 import { Tooltip } from 'react-tippy'
-import { markdownToHTML } from '../utils'
+import markdownToHTML from '../utils/markdown'
 import { assert } from '../utils'
 import ReactGA from 'react-ga'
 

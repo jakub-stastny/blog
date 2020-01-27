@@ -5,7 +5,7 @@ import { useTitle } from 'hookrouter'
 import PostStatusLine from '../PostStatusLine/PostStatusLine'
 // import { FetchError } from '../Errors/Errors'
 import Spinner from '../Spinner/Spinner'
-import { markdownToHTML } from '../utils'
+import markdownToHTML from '../utils/markdown'
 import { assert } from '../utils'
 
 import PostPageBody from '../PostPageBody/PostPageBody'
