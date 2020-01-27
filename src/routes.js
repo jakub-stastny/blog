@@ -5,7 +5,6 @@
 */
 
 import { assert } from './utils'
-import categories from './TagsPage/categories'
 
 export const en = {
   homePagePath: '/',
