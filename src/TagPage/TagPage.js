@@ -28,7 +28,7 @@ export default function Tag ({ lang, slug }) {
 
   setLang(lang)
 
-  useTitle(tag ? t(translations.title.loaded) : t(translations.title.loading))
+  useTitle(tag ? `${t(translations.title.loaded)} ${tag.name}` : t(translations.title.loading))
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { state.helpers.fetchTag(slug) }, [])

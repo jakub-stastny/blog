@@ -31,8 +31,8 @@ export default {
 
   es: {
     ahora: <>
-      The now page is <Derek>Derek Siver's idea</Derek> to respond the question <em>"what have you been up to lately?"</em>.
-      This is archive of all my past updates.
+      La página ahora es <Derek>idea de Derek Siver's</Derek> para responder la pregunta <em>"¿qué estaba haciendo recientemente?"</em>
+      Esto es al archivo de todas mis actualizaciones pasadas.
     </>
   }
 }
