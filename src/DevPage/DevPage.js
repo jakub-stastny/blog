@@ -10,6 +10,8 @@ import ToggleHideContent from '../ToggleHideContent/ToggleHideContent'
 import { enToEsTranslations } from '../TagsPage/translations'
 import { categoriesEN, categoriesES } from '../TagsPage/categories'
 
+const If = ({ condition, children }) => condition && children
+
 const SettingButton = ({ value, setter }) => (
   <>
   click to{' '}
@@ -78,14 +80,20 @@ export default function DevPage () {
       </ul>
 
       <h2>Tags</h2>
-      <h3>Missing translations</h3>
-      <Highlight object={missingTagTranslations} />
+      <If condition={missingTagTranslations[0]}>
+        <h3>Missing translations</h3>
+        <Highlight object={missingTagTranslations} />
+      </If>
 
-      <h3>Non-existent translations</h3>
-      <Highlight object={nonexistentTags} />
+      <If condition={nonexistentTags}>
+        <h3>Non-existent translations</h3>
+        <Highlight object={nonexistentTags} />
+      </If>
 
-      <h3>Tags without category</h3>
-      <Highlight object={tagsWithoutCategory} />
+      <If condition={tagsWithoutCategory}>
+        <h3>Tags without category</h3>
+        <Highlight object={tagsWithoutCategory} />
+      </If>
 
       <h2>State</h2>
       <h3>State (without <Join items={largeObjectKeys}>{(item) => <code>{item}</code>}</Join>)</h3>
