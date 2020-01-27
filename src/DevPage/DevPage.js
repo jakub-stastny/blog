@@ -8,8 +8,7 @@ import { zenburn } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import Join from '../Join/Join'
 import ToggleHideContent from '../ToggleHideContent/ToggleHideContent'
 import { enToEsTranslations } from '../TagsPage/translations'
-import categoriesEN from '../TagsPage/categories.en'
-import categoriesES from '../TagsPage/categories.es'
+import { categoriesEN, categoriesES } from '../TagsPage/categories'
 
 const SettingButton = ({ value, setter }) => (
   <>
