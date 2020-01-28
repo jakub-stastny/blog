@@ -46,6 +46,7 @@ export const categoryEntries = [
     new Tag("God", "Dios"),
     new Tag("healing", "sanación"),
     new Tag("meditation", "meditación"),
+    new Tag("brain synchronization", "sincronización de cerebro"),
     new Tag("duality", "dualidad"),
   ]),
 
