@@ -49,12 +49,26 @@
 .post blockquote {
   margin: inherit;
   font-style: italic;
-  background: lightgrey;
+  background: aliceblue;
   border-radius: 15px;
+  padding: 15px;
+  margin: 0;
 }
 
 .post blockquote cite {
-  color: red;
+  color: indigo;
+}
+
+.post blockquote p:not(:last-child):before {
+  content: '"';
+}
+
+.post blockquote p:not(:last-child):after {
+  content: '"';
+}
+
+.post blockquote cite::before {
+  content: "– ";
 }
 
 /* The override has to be below. */
