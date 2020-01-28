@@ -30,7 +30,7 @@ export default function Tag ({ lang, slug }) {
   useTitle(tag ? `${t(translations.title.loaded)} ${tag.name}` : t(translations.title.loading))
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => { state.helpers.fetchTag(slug) }, [])
+  useEffect(() => { state.helpers.fetchTag(slug, lang) }, [])
 
   const PostPreview = ({ title, slug, date }) => (
     <li>

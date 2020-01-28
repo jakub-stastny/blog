@@ -55,8 +55,8 @@ export function StateContextProvider ({ children }) {
     setFullPosts(Object.assign({}, fullPosts, {[data.slug]: data}))
   }
 
-  async function fetchTag (slug) {
-    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags/${lang}/${slug}.json`)
+  async function fetchTag (slug, locale = lang) {
+    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags/${locale}/${slug}.json`)
     const data = await response.json()
     setTagDetails(Object.assign({}, tagDetails, {[data.slug]: data}))
     return data

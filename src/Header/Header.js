@@ -8,7 +8,7 @@ import StateContext from '../StateContext'
 import styles from './Header.module.css'
 import { UK, MX } from '../flags'
 import * as routes from '../routes'
-import getTagTranslation from '../TagsPage/translations'
+import { tagEntries } from '../TagsPage/entries'
 import Modal from 'react-modal'
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
@@ -72,7 +72,8 @@ export default memo(function Header () {
       }
     // Tags.
     } else if (routes[lang].getTagPagePath(fromSlug) === window.location.pathname) {
-      const toSlug = getTagTranslation(toLang, fromSlug)
+      const tagEntry = tagEntries.find(tagEntry => tagEntry.slug(lang) === fromSlug)
+      const toSlug = tagEntry && tagEntry.slug(toLang)
       window.location = (toSlug ? routes[toLang].getTagPagePath(toSlug) : routes[toLang].tagsPagePath)
     }
   }

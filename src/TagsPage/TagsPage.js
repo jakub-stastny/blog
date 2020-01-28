@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import StateContext from '../StateContext'
 import LangContext from '../LangContext'
-import { findCategoryForTag, categoriesEN, defaultCategoryEN, categoriesES, defaultCategoryES } from './categories'
+import { findCategoryEntryForTagName, defaultCategoryEntry, categoryEntries } from './entries'
 import styles from './TagsPage.module.css'
 import { assert } from '../utils'
 import { A, useTitle } from 'hookrouter'
@@ -15,8 +15,6 @@ const translations = {
     loaded: ["Tags", "Etiquetas"]
   },
   tags: ["the tags", "las etiquetas"],
-  categories: [categoriesEN, categoriesES],
-  others: [defaultCategoryEN, defaultCategoryES]
 }
 
 export default function TagsPage ({ lang }) {
@@ -32,15 +30,17 @@ export default function TagsPage ({ lang }) {
   useTitle(state.tagsFetched ?  t(translations.title.loaded) : t(translations.title.initial))
 
   const TagPreview = ({ slug, name, relevance }) => (
-    <li className={assert(styles.tag)} style={{fontSize: 12 + relevance}}>
+    // Fails when on /tags, click on a tag, then go back.
+    // <li className={assert(styles.tag)} style={{fontSize: 12 + assert(relevance, name)}}>
+    <li className={assert(styles.tag)} style={{fontSize: 12 +relevance}}>
       <A href={getTagPagePath(slug)}>{name.replace(/ /g, '\u00a0')}</A>
     </li>
   )
 
   const categoryWithTags = state.tags.reduce((categoriesWithTags, tag) => {
-    const category = findCategoryForTag(lang, tag.name) || t(translations.others)
-    if (!categoriesWithTags[category.name]) categoriesWithTags[category.name] = []
-    categoriesWithTags[category.name].push(tag)
+    const category = findCategoryEntryForTagName(lang, tag.name) || defaultCategoryEntry
+    if (!categoriesWithTags[category.name(lang)]) categoriesWithTags[category.name(lang)] = []
+    categoriesWithTags[category.name(lang)].push(tag)
     return categoriesWithTags
   }, {})
 

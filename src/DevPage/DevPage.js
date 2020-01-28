@@ -7,8 +7,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { zenburn } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import Join from '../Join/Join'
 import ToggleHideContent from '../ToggleHideContent/ToggleHideContent'
-import { enToEsTranslations } from '../TagsPage/translations'
-import { categoriesEN, categoriesES } from '../TagsPage/categories'
+import { categoryEntries } from '../TagsPage/entries'
 
 const If = ({ condition, children }) => condition && children
 
@@ -43,9 +42,9 @@ export default function DevPage () {
   const stateWithoutLargeObjects = Object.entries(state)
     .reduce((buffer, [ key, value ]) => largeObjectKeys.includes(key) ? buffer : Object.assign(buffer, {[key]: value}), {})
 
-  const missingTagTranslations = state.tags.filter(tag => !enToEsTranslations[tag.slug]).map(tag => tag.name).sort()
-  const nonexistentTags = Object.keys(enToEsTranslations).filter(key => !state.tags.map(tag => tag.slug).includes(key))
-  const tagsWithoutCategory = state.tags.filter(tag => !Object.values(t([categoriesEN, categoriesES])).includes(tag.name)).map(tag => tag.name)
+  // const missingTagTranslations = state.tags.filter(tag => !enToEsTranslations[tag.slug]).map(tag => tag.name).sort()
+  // const nonexistentTags = Object.keys(enToEsTranslations).filter(key => !state.tags.map(tag => tag.slug).includes(key))
+  // const tagsWithoutCategory = state.tags.filter(tag => !Object.values(t([categoriesEN, categoriesES])).includes(tag.name)).map(tag => tag.name)
 
   useTitle("Dev info")
 
@@ -79,21 +78,21 @@ export default function DevPage () {
         <li>Key <Setting name="dbg" /> (<SettingButton value={settings.dbg} setter={settings.setDbg} />).</li>
       </ul>
 
-      <h2>Tags</h2>
-      <If condition={missingTagTranslations[0]}>
-        <h3>Missing translations</h3>
-        <Highlight object={missingTagTranslations} />
-      </If>
+      {/* <h2>Tags</h2> */}
+      {/* <If condition={missingTagTranslations[0]}> */}
+      {/*   <h3>Missing translations</h3> */}
+      {/*   <Highlight object={missingTagTranslations} /> */}
+      {/* </If> */}
 
-      <If condition={nonexistentTags}>
-        <h3>Non-existent translations</h3>
-        <Highlight object={nonexistentTags} />
-      </If>
+      {/* <If condition={nonexistentTags}> */}
+      {/*   <h3>Non-existent translations</h3> */}
+      {/*   <Highlight object={nonexistentTags} /> */}
+      {/* </If> */}
 
-      <If condition={tagsWithoutCategory}>
-        <h3>Tags without category</h3>
-        <Highlight object={tagsWithoutCategory} />
-      </If>
+      {/* <If condition={tagsWithoutCategory}> */}
+      {/*   <h3>Tags without category</h3> */}
+      {/*   <Highlight object={tagsWithoutCategory} /> */}
+      {/* </If> */}
 
       <h2>State</h2>
       <h3>State (without <Join items={largeObjectKeys}>{(item) => <code>{item}</code>}</Join>)</h3>
