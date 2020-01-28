@@ -40,7 +40,7 @@ const Highlight = ({ object }) => (
 export default function DevPage () {
   const settings = useContext(SettingsContext)
   const state = useContext(StateContext)
-  const { t, lang } = useContext(LangContext)
+  const { lang } = useContext(LangContext)
 
   const localStorageObject = Object.entries(localStorage)
     .reduce((buffer, [ key, value ]) => Object.assign(buffer, {[key]: value}), {})
