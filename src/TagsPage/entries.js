@@ -74,7 +74,7 @@ export const categoryEntries = [
 
   new Category("Languages", "Idiomas", [
     new Tag("language learning", "aprendiendo idiomas"),
-    new Tag("vocabulary inbox", "bandeja de la entrada de vocabulario"),
+    new Tag("vocabulary inbox", "bandeja de entrada de vocabulario"),
   ]),
 
   new Category("Systems", "Sistemas", [

@@ -49,6 +49,12 @@
 .post blockquote {
   margin: inherit;
   font-style: italic;
+  background: lightgrey;
+  border-radius: 15px;
+}
+
+.post blockquote cite {
+  color: red;
 }
 
 /* The override has to be below. */

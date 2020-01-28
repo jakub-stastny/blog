@@ -16,6 +16,7 @@ const translations = {
   },
   spinner: ["the tag data", "los datos de la etiqueta"],
   heading: ["Posts tagged", "Entradas etiquetadas"],
+  list: ["Show all tags", "Ver todas las etiquetas"]
 }
 
 export default function Tag ({ lang, slug }) {
@@ -23,7 +24,7 @@ export default function Tag ({ lang, slug }) {
   const { t, setLang } = useContext(LangContext)
   const tag = state.helpers.getTag(slug)
 
-  const { getPostPagePath } = routes[lang]
+  const { getPostPagePath, tagsPagePath } = routes[lang]
 
   setLang(lang)
 
@@ -53,6 +54,9 @@ export default function Tag ({ lang, slug }) {
       <h1>{t(translations.heading)} <span className={assert(styles.emphasis)}>{name}</span></h1>
       {descriptions[lang][name]}
       <PostPreviewList posts={posts} />
+      <div>
+        <A href={tagsPagePath}>{t(translations.list)}</A>
+      </div>
     </>
   )
 

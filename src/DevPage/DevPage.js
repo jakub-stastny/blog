@@ -1,15 +1,16 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, Suspense, lazy } from 'react'
 import { useTitle } from 'hookrouter'
 import StateContext from '../StateContext'
 import LangContext from '../LangContext'
 import SettingsContext from '../SettingsContext'
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { zenburn } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import Join from '../Join/Join'
 import ToggleHideContent from '../ToggleHideContent/ToggleHideContent'
-import { categoryEntries } from '../TagsPage/entries'
+import { tagEntries } from '../TagsPage/entries'
 
-const If = ({ condition, children }) => condition && children
+// TODO: I'm really confused about it, I cannot see this in yarn build output; I'm not sure if it helped at all.
+const SyntaxHighlighter = lazy(() => import(/* webpackChunkName: "SyntaxHighlighter" */ 'react-syntax-highlighter'))
+const hlStyles = lazy(() => import(/* webpackChunkName: "highlight-style" */ 'react-syntax-highlighter/dist/esm/styles/hljs'))
+const If = ({ condition, children }) => condition ? children : null
 
 const SettingButton = ({ value, setter }) => (
   <>
@@ -24,16 +25,22 @@ const Setting = ({ name }) => (
   <code><span style={{color: 'red'}}>{name}</span></code>
 )
 
+const CodeSection = ({ object }) => (
+  <pre><code>{JSON.stringify(object, null, 2)}</code></pre>
+)
+
 const Highlight = ({ object }) => (
-  <SyntaxHighlighter language="json" style={zenburn} customStyle={{padding: 20}}>
-    {JSON.stringify(object, null, 2)}
-  </SyntaxHighlighter>
+  <Suspense fallback={<CodeSection object={object} />}>
+    <SyntaxHighlighter language="json" style={hlStyles.zenburn} customStyle={{padding: 20}}>
+      {JSON.stringify(object, null, 2)}
+    </SyntaxHighlighter>
+  </Suspense>
 )
 
 export default function DevPage () {
   const settings = useContext(SettingsContext)
   const state = useContext(StateContext)
-  const { t } = useContext(LangContext)
+  const { t, lang } = useContext(LangContext)
 
   const localStorageObject = Object.entries(localStorage)
     .reduce((buffer, [ key, value ]) => Object.assign(buffer, {[key]: value}), {})
@@ -42,15 +49,13 @@ export default function DevPage () {
   const stateWithoutLargeObjects = Object.entries(state)
     .reduce((buffer, [ key, value ]) => largeObjectKeys.includes(key) ? buffer : Object.assign(buffer, {[key]: value}), {})
 
-  // const missingTagTranslations = state.tags.filter(tag => !enToEsTranslations[tag.slug]).map(tag => tag.name).sort()
-  // const nonexistentTags = Object.keys(enToEsTranslations).filter(key => !state.tags.map(tag => tag.slug).includes(key))
-  // const tagsWithoutCategory = state.tags.filter(tag => !Object.values(t([categoriesEN, categoriesES])).includes(tag.name)).map(tag => tag.name)
+  const missingTagEntries = state.tags.filter(tag => !tagEntries.find(tagEntry => tagEntry.name(lang) === tag.name))
 
   useTitle("Dev info")
 
   useEffect(() => {
     state.helpers.fetchTags()
-  })
+  }, [])
 
   return (
     <>
@@ -78,21 +83,17 @@ export default function DevPage () {
         <li>Key <Setting name="dbg" /> (<SettingButton value={settings.dbg} setter={settings.setDbg} />).</li>
       </ul>
 
-      {/* <h2>Tags</h2> */}
-      {/* <If condition={missingTagTranslations[0]}> */}
-      {/*   <h3>Missing translations</h3> */}
-      {/*   <Highlight object={missingTagTranslations} /> */}
-      {/* </If> */}
+      <h2>Tags</h2>
+      <If condition={!missingTagEntries[0]}>
+        <p style={{fontStyle: 'italic'}}>
+          There are currently no missing tags for language <code>{lang}</code>. Switch locale to make sure it's true also for the other language.
+        </p>
+      </If>
 
-      {/* <If condition={nonexistentTags}> */}
-      {/*   <h3>Non-existent translations</h3> */}
-      {/*   <Highlight object={nonexistentTags} /> */}
-      {/* </If> */}
-
-      {/* <If condition={tagsWithoutCategory}> */}
-      {/*   <h3>Tags without category</h3> */}
-      {/*   <Highlight object={tagsWithoutCategory} /> */}
-      {/* </If> */}
+      <If condition={missingTagEntries[0]}>
+        <h3>Missing tag entries</h3>
+        <Highlight object={missingTagEntries} />
+      </If>
 
       <h2>State</h2>
       <h3>State (without <Join items={largeObjectKeys}>{(item) => <code>{item}</code>}</Join>)</h3>

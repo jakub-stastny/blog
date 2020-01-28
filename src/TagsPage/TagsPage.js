@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import StateContext from '../StateContext'
 import LangContext from '../LangContext'
-import { findCategoryEntryForTagName, defaultCategoryEntry, categoryEntries } from './entries'
+import { findCategoryEntryForTagName, defaultCategoryEntry } from './entries'
 import styles from './TagsPage.module.css'
 import { assert } from '../utils'
 import { A, useTitle } from 'hookrouter'

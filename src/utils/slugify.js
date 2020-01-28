@@ -7,5 +7,5 @@
 // export default slugify
 
 export default function slugify (name) {
-  return name.toLocaleLowerCase().replace(' ', '-')
+  return name.toLocaleLowerCase().replace(/ /g, '-').replace(/ñ/g, 'n')
 }
