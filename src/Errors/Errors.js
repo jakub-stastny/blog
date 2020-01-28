@@ -3,6 +3,7 @@ import ReactGA from 'react-ga'
 import { Online, Offline } from 'react-detect-offline'
 import styles from './Errors.module.css'
 import { assert } from '../utils'
+import Email from '../Email/Email'
 
 /* TODO: This should be an error boundary. */
 export function FetchError ({ error }) {
@@ -37,6 +38,9 @@ export function RoutingErrorPage () {
 const ErrorScreen = () => (
   <div className={assert(styles.wrapper)}>
     <h1>Something went wrong</h1>
+    <p>
+      Please try to <a href={window.location.pathname}>refresh the page</a> and if it doesn't help, please <Email subject="Bug">let me know</Email> (attached screenshot would be greatly appreciated).
+    </p>
   </div>
 )
 
