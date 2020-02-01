@@ -23,7 +23,8 @@ export default memo(function HomePage () {
   const MissingTranslationsWarning = () => (
     <div className={assert(styles.missingTranslationsBox)}>
       <p>
-        Estoy traduciendo las entradas a español (fin de enero de 2020). Me va a tomar unas semanas hacerlo. Disculpa el desmadre.
+        Disculpa, pero todavía no he traducida todas las entradas a español. Ya hay algunas, pero necesito más tiempo (nada más estoy empezando ahora, fin de enero de 2020).
+        Si hablas inglés, te recomiendo cambiar el idioma (haz click a la banderita arriba). Si no, tienes que esperar unas (pocas) semanas. Disculpa el desmadre.
       </p>
     </div>
   )
