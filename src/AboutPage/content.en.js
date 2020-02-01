@@ -5,7 +5,7 @@ import Highlight from '../Highlight/Highlight'
 import { assert } from '../utils'
 import styles from './AboutPage.module.css'
 
-export default ({ lastStatusUpdateLink }) => (
+export default ({ lastStatusUpdateLink, children }) => (
   <>
     <h1 className={assert(styles.mainTitle)}>Hi! My name is Jakub.</h1>
     <p>
@@ -19,5 +19,7 @@ export default ({ lastStatusUpdateLink }) => (
         {lastStatusUpdateLink}.
       </p>
     </Highlight>
+
+    {children}
   </>
 )
