@@ -24,7 +24,7 @@ export default ({ lastStatusUpdateLink, myStoryPath }) => (
       <Gravatar className={assert(styles.gravatar)} />
 
       <p>
-        I'm from a small town in the middle of nowhere in Czech Republic <CZ /> now living in sunny Mexico ☀️<MX />.
+        Soy de un pueblo pequeño en el medio de la nada en la República Checa <CZ /> viviendo en México soleado ☀️<MX />
       </p>
 
       <p>
@@ -43,27 +43,27 @@ export default ({ lastStatusUpdateLink, myStoryPath }) => (
 
       {/* TODO: link vinculacion and spiritual awakening tag */}
       <p>
-        After my <A href={'X'}>spiritual awakening</A> I decided to concentrate my efforts on helping people
-        and providing them with spiritual guidance, after I found out (to my great surprise),
-        that I have many spiritual gifts such as being able to link with someone, and then
-        consequently feel if there's something going on with them, visions, insights into
-        people's souls and generally <em>"knowing things"</em>.
+        Después de mi <A href={'X'}>desperto espiritual</A>, decidí concentrar mis esfuerzos
+        a ayudar a la gente, prestando consejo espiritual, después de que me había dado cuenta
+        (a mi gran sorpresa) que tengo dones espirituales como saber vincularme con personas,
+        y por consiguiente sentir si algo está pasando a ellos, tener visiones, percepciones
+        dentro de los almas de la gente y generalmente <em>"saber cosas"</em>.
       </p>
 
       {/* TODO: myStoryPath */}
       <p>
-        Would you like to know more, here is <A href={'myStoryPath'}>my life story</A> packed for ready consumption, napkins included.
+        Si te interesa saber más, aquí es <A href={'myStoryPath'}>la historia de mi vida</A>
+        empacada para consumción rápida (sí, leva servilletas).
       </p>
 
       {/* TODO: link the tags that exist on the blog. */}
       <p>
-        Some of the things I enjoy: {hashtags.map(hashtag => <><HashTag>{hashtag}</HashTag> </>)}
+        Algunas cosas que me agradan: {hashtags.map(hashtag => <><HashTag>{hashtag}</HashTag> </>)}
       </p>
 
       <Highlight title="My contact">
         <p>
-          I'm friendly. Well, mostly. OK, sometimes. Anyway ... I don't bite. Well, usually.
-          So if you want to get in touch, please don't hesitate to drop me an email to <Email />.
+          Soy amigable. Bueno, generalmente. Bueno, a veces. O sea ... no muerdo. Normalmente.
           Si quieres contactarme, no dudes escribirme a <Email />.
         </p>
       </Highlight>
