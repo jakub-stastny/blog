@@ -4,10 +4,10 @@ import StateContext from '../StateContext'
 import LangContext from '../LangContext'
 import PublishedDate from '../PublishedDate/PublishedDate'
 import Spinner from '../Spinner/Spinner'
+import { findTagEntryForTagName } from '../TagsPage/entries'
 import * as routes from '../routes'
 import { assert } from '../utils'
 import styles from './TagPage.module.css'
-import descriptions from './descriptions.js'
 
 const translations = {
   title: {
@@ -52,7 +52,7 @@ export default function Tag ({ lang, slug }) {
   const TagList = ({ name, posts }) => (
     <>
       <h1>{t(translations.heading)} <span className={assert(styles.emphasis)}>{name}</span></h1>
-      {descriptions[lang][name]}
+      {findTagEntryForTagName(lang, name).description(lang)}
       <PostPreviewList posts={posts} />
       <div>
         <A href={tagsPagePath}>{t(translations.list)}</A>

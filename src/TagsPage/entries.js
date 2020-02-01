@@ -1,4 +1,6 @@
 import { Category, Tag } from './classes'
+import descs from './descriptions.js'
+import { assert } from '../utils'
 
 export const defaultCategoryEntry = new Category("Others", "El resto")
 
@@ -25,7 +27,7 @@ export const categoryEntries = [
     new Tag("mindfulness"),
     new Tag("new year's resolutions", "resoluciones de año nuevo"),
     new Tag("meaning", "propósito"),
-    new Tag("now", "ahora"),
+    new Tag("now", "ahora", assert(descs.now)),
     new Tag("goals", "metas"),
     new Tag("retreat", "retiro"),
     new Tag("social network", "red social"),
@@ -43,21 +45,21 @@ export const categoryEntries = [
     new Tag("spirituality", "espiritualidad"),
     new Tag("ego"),
     new Tag("ego death", "muerte del ego"),
-    new Tag("God", "Dios"),
-    new Tag("healing", "sanación"),
+    new Tag("God", "Dios", assert(descs.God)),
+    new Tag("healing", "sanación", assert(descs.healing)),
     new Tag("meditation", "meditación"),
     new Tag("brain synchronization", "sincronización de cerebro"),
     new Tag("duality", "dualidad"),
   ]),
 
   new Category("Activities", "Actividades", [
-    new Tag("diving", "buceo"),
+    new Tag("diving", "buceo", assert(descs.diving)),
     new Tag("deep diving", "buceo profundo"),
   ]),
 
   new Category("Health", "Salud", [
     new Tag("health", "salud"),
-    new Tag("TCM", "MTC"),
+    new Tag("TCM", "MTC", assert(descs.TCM)),
   ]),
 
   new Category("Share", "Compartir", [
@@ -100,4 +102,8 @@ export function findCategoryEntryForTagName (lang, tagName) {
   return categoryEntries.find(categoryEntry => (
     categoryEntry.tagEntries.map(tagEntry => tagEntry.name(lang)).includes(tagName)
   ))
+}
+
+export function findTagEntryForTagName (lang, tagName) {
+  return tagEntries.find(tagEntry => tagEntry.name(lang) === tagName)
 }

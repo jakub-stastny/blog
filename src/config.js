@@ -5,3 +5,4 @@ export const gravatarEmail = Buffer.from('amFrdWIuc3Rhc3RueS5wdCtibG9nQGdtYWlsLm
 export const mailchimpURL = 'https://botanicus.us3.list-manage.com/subscribe/post?u=3ab289fe1aba79ac1725973d1&amp;id=524bfa9e85'
 
 export const googleAnalyticsTrackingId = 'UA-138694948-1'
+// Add GH base name, the relative URLs should be the same anywhere then.

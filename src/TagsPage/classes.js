@@ -14,13 +14,18 @@ export class Category {
 }
 
 export class Tag {
-  constructor(enName, esName = enName) {
+  constructor(enName, esName = enName, descriptions) {
     this.enName = assert(enName)
     this.esName = esName
+    this.descriptions = descriptions
   }
 
   name(lang) {
     return (lang === 'en') ? this.enName : this.esName
+  }
+
+  description(lang) {
+    return this.descriptions[lang]
   }
 
   slug(lang) {
