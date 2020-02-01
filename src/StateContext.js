@@ -37,26 +37,26 @@ export function StateContextProvider ({ children }) {
 
   /* Index fetchers. */
   async function fetchPosts (locale = lang) {
-    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts.${locale}.json`)
+    const response = await fetch(`https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/posts.${locale}.json`)
     setPostPreviews(await response.json())
     setPostsFetched(true)
   }
 
   async function fetchTags () {
-    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags.${lang}.json`)
+    const response = await fetch(`https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/tags.${lang}.json`)
     setTagList(await response.json())
     setTagsFetched(true)
   }
 
   /* Show fetchers. */
   async function fetchPost (slug, locale = lang) {
-    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/posts/${locale}/${slug}/post.json`)
+    const response = await fetch(`https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/posts/${locale}/${slug}/post.json`)
     const data = await response.json()
     setFullPosts(Object.assign({}, fullPosts, {[data.slug]: data}))
   }
 
   async function fetchTag (slug, locale = lang) {
-    const response = await fetch(`https://raw.githubusercontent.com/botanicus/data.blog/master/output/tags/${locale}/${slug}.json`)
+    const response = await fetch(`https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/tags/${locale}/${slug}.json`)
     const data = await response.json()
     setTagDetails(Object.assign({}, tagDetails, {[data.slug]: data}))
     return data
