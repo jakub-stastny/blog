@@ -1,3 +1,14 @@
 .mainTitle {
   color: indigo;
 }
+
+/* Copied from HolaPage.module.css */
+.gravatarBox {
+  overflow: auto;
+  margin-bottom: 20px;
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}

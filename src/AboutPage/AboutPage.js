@@ -2,8 +2,6 @@ import React, { useContext, useEffect, memo } from 'react'
 import { A, useTitle } from 'hookrouter'
 import StateContext from '../StateContext'
 import LangContext from '../LangContext'
-import PostPageBody from '../PostPageBody/PostPageBody'
-import Spinner from '../Spinner/Spinner'
 import * as routes from '../routes'
 
 import ContentEN from './content.en.js'
@@ -46,8 +44,8 @@ export default memo(function AboutPage ({ lang }) {
   const Content = (lang === 'en') ? ContentEN : ContentES
 
   return (
-    <Content lastStatusUpdateLink={<LastStatusUpdateLink post={state.lastStatusUpdate} />}>
-      {myStory ? <PostPageBody post={myStory} /> : <Spinner title={t(translations.spinner)} />}
-    </Content>
+    <Content lastStatusUpdateLink={
+      <LastStatusUpdateLink post={state.lastStatusUpdate} myStoryPath={getPostPagePath(t(translations.myStorySlug))} />
+    } />
   )
 })
