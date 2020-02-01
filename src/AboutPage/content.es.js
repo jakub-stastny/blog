@@ -2,16 +2,13 @@ import React  from 'react'
 import { A } from 'hookrouter'
 import Email from '../Email/Email'
 import Highlight from '../Highlight/Highlight'
-import HashTag from '../HashTag/HashTag'
 import Gravatar from '../Gravatar/Gravatar'
 import { CZ, MX } from '../flags'
 
 import { assert } from '../utils'
 import styles from './AboutPage.module.css'
 
-const hashtags = ['baile', 'blues', 'jazz', 'buceo', 'terapia', 'naturaleza', 'espiritualidad']
-
-export default ({ lastStatusUpdateLink, myStoryPath }) => (
+export default ({ lastStatusUpdateLink, myStoryPath, HashTags }) => (
   <>
     <Highlight title="¿Qué hago estos días?" style={{marginTop: 20, background: 'whitesmoke'}}>
       <p>
@@ -50,15 +47,15 @@ export default ({ lastStatusUpdateLink, myStoryPath }) => (
         dentro de los almas de la gente y generalmente <em>"saber cosas"</em>.
       </p>
 
-      {/* TODO: myStoryPath */}
       <p>
-        Si te interesa saber más, aquí es <A href={'myStoryPath'}>la historia de mi vida</A>
-        empacada para consumción rápida (sí, leva servilletas).
+        Si te interesa saber más, aquí es <A href={myStoryPath}>la historia de mi vida</A>{' '}
+        empacada para consumción rápida (sí, lleva servilletas).
       </p>
 
-      {/* TODO: link the tags that exist on the blog. */}
       <p>
-        Algunas cosas que me agradan: {hashtags.map(hashtag => <><HashTag>{hashtag}</HashTag> </>)}
+        Algunas cosas que me agradan: <HashTags hashtags={
+          ['baile', 'blues', 'jazz', 'buceo', 'terapia', 'naturaleza', 'espiritualidad']
+        } />
       </p>
 
       <Highlight title="My contact">

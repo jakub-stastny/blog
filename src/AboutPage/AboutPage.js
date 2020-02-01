@@ -2,6 +2,7 @@ import React, { useContext, useEffect, memo } from 'react'
 import { A, useTitle } from 'hookrouter'
 import StateContext from '../StateContext'
 import LangContext from '../LangContext'
+import { PossiblyLinkedHashTag } from '../HashTag/HashTag'
 import * as routes from '../routes'
 
 import ContentEN from './content.en.js'
@@ -11,7 +12,7 @@ const translations = {
   title: ["About Jakub", "Acerca de Jakub"],
   lastStatusUpdate: ["latest status update", "la última actualización"],
   spinner: ["my life story", "la historia de mi vida"],
-  myStorySlug: ['my-life-story', 'historia-de-mi-vida']
+  myStorySlug: ['my-story', 'historia-de-mi-vida']
 }
 
 export default memo(function AboutPage ({ lang }) {
@@ -39,13 +40,21 @@ export default memo(function AboutPage ({ lang }) {
     post ? <A href={getPostPagePath(post.slug)}>{post.title}</A> : <A href={nowPagePath}>{t(translations.lastStatusUpdate)}</A>
   )
 
-  const myStory = state.helpers.getPost(t(translations.myStorySlug))
-
   const Content = (lang === 'en') ? ContentEN : ContentES
 
+  const HashTags = ({ hashtags }) => (
+    hashtags.map(hashtag => (
+      <span key={hashtag}>
+        <PossiblyLinkedHashTag lang={lang} hashtag={hashtag} />{' '}
+      </span>
+    ))
+  )
+
   return (
-    <Content lastStatusUpdateLink={
-      <LastStatusUpdateLink post={state.lastStatusUpdate} myStoryPath={getPostPagePath(t(translations.myStorySlug))} />
-    } />
+    <Content
+      lastStatusUpdateLink={<LastStatusUpdateLink post={state.lastStatusUpdate} />}
+      myStoryPath={getPostPagePath(t(translations.myStorySlug))}
+      HashTags={HashTags}
+   />
   )
 })
