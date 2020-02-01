@@ -17,10 +17,11 @@ function HashTag ({ link = false, slug, children }) {
   )
 }
 
+// TODO: With the tagEntry set the slug.
 export const PossiblyLinkedHashTag = memo(({ lang, hashtag }) => (
   <HashTag link={!!findTagEntryForTagName(lang, hashtag)}>
     {hashtag}
   </HashTag>
 ))
 
-export default HashTag
+export default memo(HashTag)

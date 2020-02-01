@@ -16,19 +16,16 @@ const translations = {
 }
 
 export default memo(function AboutPage ({ lang }) {
-  const { t, setLang } = useContext(LangContext)
+  const langSettings = useContext(LangContext)
+  const { t, setLang } = langSettings
   const state = useContext(StateContext)
 
-  setLang(lang)
-  // TODO: Use this instead: (from the nowpage)
-  // useEffect(() => {
-  //   if (lang !== langSettings.lang) {
-  //     setLang(lang)
-  //     state.helpers.reset(lang)
-  //   } else {
-  //     lastStatusUpdate || state.helpers.getLatestStatusUpdate()
-  //   }
-  // })
+  useEffect(() => {
+    if (lang !== langSettings.lang) {
+      setLang(lang)
+      state.helpers.reset(lang)
+    }
+  })
 
   const { nowPagePath, getPostPagePath } = routes[lang]
 
