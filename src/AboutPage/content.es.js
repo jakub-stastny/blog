@@ -12,7 +12,7 @@ export default ({ lastStatusUpdateLink, myStoryPath, HashTags }) => (
   <>
     <Highlight title="¿Qué hago estos días?" style={{marginTop: 20, background: 'whitesmoke'}}>
       <p>
-        Si te interesa a que me dedico estos días, aquí está {lastStatusUpdateLink}.
+        Si te interesa a que me dedico estos días, aquí está mi {lastStatusUpdateLink}.
       </p>
     </Highlight>
 
@@ -21,7 +21,7 @@ export default ({ lastStatusUpdateLink, myStoryPath, HashTags }) => (
       <Gravatar className={assert(styles.gravatar)} />
 
       <p>
-        Soy de un pueblo pequeño en el medio de la nada en la República Checa <CZ /> viviendo en México soleado ☀️<MX />
+        Soy de un pueblo pequeño en el medio de la nada en la República Checa <CZ />. Gracias a Dias ahora vivo en México soleado ☀️<MX />
       </p>
 
       <p>
@@ -40,7 +40,7 @@ export default ({ lastStatusUpdateLink, myStoryPath, HashTags }) => (
 
       {/* TODO: link vinculacion and spiritual awakening tag */}
       <p>
-        Después de mi <A href={'X'}>desperto espiritual</A>, decidí concentrar mis esfuerzos
+        Después de mi desperto espiritual, decidí concentrar mis esfuerzos
         a ayudar a la gente, prestando consejo espiritual, después de que me había dado cuenta
         (a mi gran sorpresa) que tengo dones espirituales como saber vincularme con personas,
         y por consiguiente sentir si algo está pasando a ellos, tener visiones, percepciones

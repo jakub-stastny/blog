@@ -40,7 +40,7 @@ export default ({ lastStatusUpdateLink, myStoryPath, HashTags }) => (
 
       {/* TODO: link vinculacion and spiritual awakening tag */}
       <p>
-        After my <A href={'X'}>spiritual awakening</A> I decided to concentrate my efforts on helping people
+        After my spiritual awakening I decided to concentrate my efforts on helping people
         and providing them with spiritual guidance, after I found out (to my great surprise),
         that I have many spiritual gifts such as being able to link with someone, and then
         consequently feel if there's something going on with them, visions, insights into

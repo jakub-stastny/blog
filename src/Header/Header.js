@@ -16,9 +16,10 @@ Modal.setAppElement(document.getElementById('root'))
 
 const translations = {
   tagline: [
-    <>On programming, Ruby, React.js, languages and&nbsp;life.</>,
-    "Acerca de programación, Ruby, React.js, idiomas y la vida."
+    <>About minimalism, spirituality and&nbsp;life.</>,
+    <>Acerca de minimalismo, espiritualidad y&nbsp;la&nbsp;vida.</>
   ],
+
   // NOTE: These has to be in reverse.
   alert: [
     <>
