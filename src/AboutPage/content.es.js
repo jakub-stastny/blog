@@ -25,17 +25,18 @@ export default ({ lastStatusUpdateLink, myStoryPath, HashTags }) => (
       </p>
 
       <p>
-        I spent my teens taking the piss out of my teachers, my 20s travelling and living
-        around the world (partly in normal housing, partly in my van) and learning anything from
-        weird languages, kung-fu to dancing and cooking yak meat.
+        Pasé mi adolescencia burlándome de mis maestros, mis años 20s viajando y viviendo alrededor
+        del mundo (en parte en alojamientos normales, en parte en mi furgoneta) y aprendiendo todo
+        de idiomas raro, kung-fu a baile y como cocinar la carne de yak.
       </p>
 
       <p>
-        I do things the way that's right <em>for me</em>. Ever since I was a child, I was trotting
-        my own path, ignoring the conventional advice and peer pressure. I proudly dropped out of
-        my secondary school and despite being told I'd end up <em>"washing dishes in MC Donald's"</em>,
-        I built a career in IT in under a year thanks to which I ended up travelling the world
-        as a digital nomad.
+        Hago cosas en la manera que me parece <em>correcta para mi</em>. Desde cuando era niño,
+        caminaba mi propio camio, ignorando el consejo convencional y la presión social.
+        Dejé los estudios de la secundaria porque me pareció pérdida de tiempo.
+        A pesar de que me decían que vaya a acabar lavando platos en MC Donald's,
+        creé una carera en TI en menos que un año, gracias a que podía viajar el mundo como
+        un nómada digital.
       </p>
 
       {/* TODO: link vinculacion and spiritual awakening tag */}

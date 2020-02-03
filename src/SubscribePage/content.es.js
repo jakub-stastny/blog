@@ -17,7 +17,7 @@ export default memo(function ContentES () {
 
       <h2>Boletín trimestral</h2>
       <p>
-        Esto es una seleccíón trimestral de las mejores entradas. <em>También a veces escribo cosas que no publico al blog.</em>
+        Esto es una selección trimestral de las mejores entradas. <em>También a veces escribo cosas que no publico al blog.</em>
       </p>
 
       <AdBlockDetect>

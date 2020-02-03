@@ -24,18 +24,18 @@ export default memo(function PostPageFooter ({ post, posts }) {
     prompt: {
       adBlock: [
         <>
-          Did you like the post? <NewsletterSignUpLink>Sign up</NewsletterSignUpLink> for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
-        </>,
-        <>
-          ¿Te gustó la entrada? <NewsletterSignUpLink>Subscríbete</NewsletterSignUpLink> a mi boletín y te mando correo con las entradas más populares <em>trimestralmente</em>.
-        </>,
-      ],
-      noAdBlock: [
-        <>
           Did you like the post? Sign up for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
         </>,
         <>
           ¿Te gustó la entrada? Subscríbete a mi boletín y te mando correo con las entradas más populares <em>trimestralmente</em>.
+        </>,
+      ],
+      noAdBlock: [
+        <>
+          Did you like the post? <NewsletterSignUpLink>Sign up</NewsletterSignUpLink> for my newsletter and I'll send you a <em>quarterly</em> email with the most popular posts.
+        </>,
+        <>
+          ¿Te gustó la entrada? <NewsletterSignUpLink>Subscríbete</NewsletterSignUpLink> a mi boletín y te mando correo con las entradas más populares <em>trimestralmente</em>.
         </>,
       ]
     },
@@ -53,8 +53,7 @@ export default memo(function PostPageFooter ({ post, posts }) {
         <A href={getPostPagePath('how-to-submit-a-pull-request-to-my-posts')}>submit a pull request</A>.
       </>,
       <>
-        It is also OSS and if you see any typos or information that you believe incorrect, you can just{' '}
-        También es OSS y si ves unos errores, puedes{' '}
+        También es código libre y si ves unos errores, puedes{' '}
         <A href={getPostPagePath('how-to-submit-a-pull-request-to-my-posts')}>mandar a PR</A>.
       </>
     ]

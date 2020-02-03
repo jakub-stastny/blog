@@ -25,7 +25,7 @@ export class Tag {
   }
 
   description(lang) {
-    return this.descriptions[lang]
+    return this.descriptions && this.descriptions[lang]
   }
 
   slug(lang) {
