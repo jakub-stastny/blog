@@ -59,7 +59,7 @@ export default ({ lastStatusUpdateLink, myStoryPath, HashTags }) => (
         } />
       </p>
 
-      <Highlight title="My contact">
+      <Highlight title="Mi contacto">
         <p>
           Soy amigable. Bueno, generalmente. Bueno, a veces. O sea ... no muerdo. Normalmente.
           Si quieres contactarme, no dudes escribirme a <Email />.
