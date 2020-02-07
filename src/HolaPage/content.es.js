@@ -1,13 +1,14 @@
 import React from 'react'
-import ContactInfo from './ContactInfo'
+import ContactInfo, { vCard } from './ContactInfo'
+import Card from './Card'
 import { assert } from '../utils'
 import styles from './HolaPage.module.css'
 import { registerFont, FontAwesomeIcon } from '../FontAwesome/FontAwesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faAddressCard } from '@fortawesome/free-solid-svg-icons'
 import Gravatar from '../Gravatar/Gravatar'
 import { A } from 'hookrouter'
 
-registerFont(faArrowRight)
+registerFont(faArrowRight, faAddressCard)
 
 export default () => (
   <>
@@ -24,7 +25,7 @@ export default () => (
     {/* TODO: Give it a warning icon and heading. */}
     <div style={{background: 'maroon', color: 'white', borderRadius: 15, padding: 10}}>
       <p>
-        Please do not share this page with anyone and don't link to it from any web site.
+        Por favor no compartes esta página con nadie. Nada más es para ti.
       </p>
 
       <p>
@@ -42,6 +43,17 @@ export default () => (
 
 
     <ContactInfo />
+
+    <Card block={(card) => {
+      card.title = "Guía espiritual"
+      card.note = [
+        "Mi iMessage es lo mismo como mi correo.",
+        "No tengo celular, WhatsApp, Facebook ni nada de los otros redes sociales.",
+        `Detalles en esta tarjeta pueden cambiar. Siempre puedes encontrar mi contacto actual en ${window.location.href}`
+      ].join("\n\n")
+    }}>
+      <FontAwesomeIcon icon={faAddressCard} /> Haz click para añadirme a tus contactos
+    </Card>
 
     <p style={{color: 'dimgrey', fontStyle: 'italic'}}>
       As I probably told you, I don't have WhatsApp, FB or even phone,

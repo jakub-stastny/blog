@@ -1,13 +1,14 @@
 import React from 'react'
-import ContactInfo from './ContactInfo'
+import ContactInfo, { vCard } from './ContactInfo'
+import Card from './Card'
 import { assert } from '../utils'
 import styles from './HolaPage.module.css'
 import { registerFont, FontAwesomeIcon } from '../FontAwesome/FontAwesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faAddressCard } from '@fortawesome/free-solid-svg-icons'
 import Gravatar from '../Gravatar/Gravatar'
 import { A } from 'hookrouter'
 
-registerFont(faArrowRight)
+registerFont(faArrowRight, faAddressCard)
 
 export default () => (
   <>
@@ -42,6 +43,17 @@ export default () => (
 
 
     <ContactInfo />
+
+    <Card block={(card) => {
+      card.title = "Spiritual guide"
+      card.note = [
+        "My iMessage is my email.",
+        "I don't have a phone WhatsApp, Facebook or any of the other social networks.",
+        `Details on this card can change. You can always find my up to date contact at ${window.location.href}`
+      ].join("\n\n")
+    }}>
+      <FontAwesomeIcon icon={faAddressCard} /> Click to add me to your contacts
+    </Card>
 
     <p style={{color: 'dimgrey', fontStyle: 'italic'}}>
       As I probably told you, I don't have WhatsApp, FB or even phone,
