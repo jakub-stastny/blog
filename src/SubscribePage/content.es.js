@@ -17,7 +17,8 @@ export default memo(function ContentES () {
 
       <h2>Boletín trimestral</h2>
       <p>
-        Esto es una selección trimestral de las mejores entradas. <em>También a veces escribo cosas que no publico al blog.</em>
+        Esto es una selección trimestral de las entradas más populares.
+        <em>También a veces escribo cosas que no publico al blog.</em>
       </p>
 
       <AdBlockDetect>
@@ -53,11 +54,11 @@ export default memo(function ContentES () {
 
             <h2>Redes sociales</h2>
             <p>
-              En este momento no tengo ningunas cuentas de redes sociales. Hice esta decisión para <A href={routes.getPostPagePath('adios-facebook')}>proteger mi salud mental</A> y no voy a cambiar mi opinión.
+              En este momento no tengo ningunas cuentas de redes sociales. Hice esta decisión para <A href={routes.getPostPagePath('adios-facebook')}>proteger mi salud mental</A> y no voy a cambiarla.
             </p>
 
             <p>
-              Creo en contacto personal y escrituras más largas, que requieren atención, y tienen una mensaje que vale la pena – no solo pláticas inútiles de con quien me puse pedo anoche y cuantas chelas tomamos.
+              Creo en contacto personal y escrituras más largas, que requieren atención, y tienen una mensaje que vale la pena – no solo pláticas inútiles de con quien me puse pedo anoche y cuantas chelas nos tomamos.
             </p>
           </div>
         </ToggleHideContent>

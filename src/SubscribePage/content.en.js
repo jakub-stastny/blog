@@ -17,7 +17,7 @@ export default memo(function ContentEN () {
 
       <h2>Quarterly newsletter</h2>
       <p>
-        This is a quarterly selection of the best posts. <em>I also occasionally write stuff that I don't post on the blog.</em>
+        This is a quarterly selection of the most popular posts. <em>I also occasionally write stuff that I don't post on the blog.</em>
       </p>
 
       <AdBlockDetect>
