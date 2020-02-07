@@ -7,6 +7,7 @@ import { registerFont, FontAwesomeIcon } from '../FontAwesome/FontAwesome'
 import { faArrowRight, faAddressCard } from '@fortawesome/free-solid-svg-icons'
 import Gravatar from '../Gravatar/Gravatar'
 import { A } from 'hookrouter'
+import { personalContactEmail, telegramUrl } from '../config'
 
 registerFont(faArrowRight, faAddressCard)
 
@@ -44,14 +45,24 @@ export default () => (
 
     <ContactInfo />
 
-    <Card block={(card) => {
-      card.title = "Guía espiritual"
-      card.note = [
-        "Mi iMessage es lo mismo como mi correo.",
-        "No tengo celular, WhatsApp, Facebook ni nada de los otros redes sociales.",
-        `Detalles en esta tarjeta pueden cambiar. Siempre puedes encontrar mi contacto actual en ${window.location.href}`
-      ].join("\n\n")
-    }}>
+    <Card
+      additionalLines={
+        (window.navigator.vendor.match(/Apple/) ? [ // Apple.
+          `item1.URL;type=pref:${window.location.protocol}//${window.location.host}`,
+          'item1.X-ABLabel:blog',
+          `item2.IMPP;X-SERVICE-TYPE=Telegram;type=pref:x-apple:${telegramUrl}`,
+          'item2.X-ABLabel:Telegram',
+          `item3.IMPP;X-SERVICE-TYPE=iMessage:x-apple:${personalContactEmail}`,
+          'item3.X-ABLabel:iMessage',
+        ] : [ // Non-Apple.
+          `URL;CHARSET=UTF-8:${window.location.protocol}//${window.location.host}`,
+          'URL;CHARSET=UTF-8:134.209.47.239',
+          'URL;type=WORK;CHARSET=UTF-8:https://t.me/jakubstastny'
+        ]).concat([ // All.
+          'TITLE;CHARSET=UTF-8:Guía espiritual',
+          `NOTE;CHARSET=UTF-8:Mi iMessage es lo mismo como mi correo.\n\nNo tengo celular\, WhatsApp\, Facebook ni nada de los otros redes sociales.\n\nDetalles en esta tarjeta pueden cambiar. Siempre puedes encontrar mi contacto actual en ${window.location.href}`
+      ])}
+    >
       <FontAwesomeIcon icon={faAddressCard} /> Haz click para añadirme a tus contactos
     </Card>
 

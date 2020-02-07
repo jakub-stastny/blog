@@ -1,5 +1,21 @@
 import React, { memo } from 'react'
-import { vCard } from './ContactInfo'
+import gravatar from 'gravatar'
+import { personalContactEmail, gravatarEmail } from '../config'
+
+const buildLines = (additionalLines = []) => (
+  [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'N:Šťastný;Jakub;;;',
+    'FN:Jakub Šťastný',      // FN;CHARSET=UTF-8:Jakub Šťastný
+    `EMAIL;type=INTERNET;type=HOME;type=pref:${personalContactEmail}`,
+    // PHOTO;TYPE=JPEG://http://www.gravatar.com/avatar/fe5c33f0ea51bb6b57e82eb42b115201
+    `PHOTO;TYPE=JPEG://${gravatar.url(gravatarEmail)}`,
+    `SOURCE;CHARSET=UTF-8:${window.location.href}`,
+    ...additionalLines,
+    'END:VCARD'
+  ]
+)
 
 // const Card = ({ vCard }) => (
 //   <>
@@ -12,11 +28,11 @@ import { vCard } from './ContactInfo'
 // )
 
 // Inspired by https://github.com/kennethjiang/js-file-download/blob/master/file-download.js
-export default memo(function Card({ block, children }) {
+export default memo(function Card({ block, additionalLines, children }) {
   const handleClick = () => {
-    block && block(vCard)
-
-    const blob = new Blob([new TextEncoder().encode(vCard.getFormattedString())], {type: 'text/vcard;charset=utf-8'})
+    const lines = buildLines(additionalLines)
+    console.log(lines)
+    const blob = new Blob([new TextEncoder().encode(lines.join("\n"))], {type: 'text/vcard;charset=utf-8'})
     const url = window.URL.createObjectURL(blob)
 
     const tempLink = document.createElement('a')
