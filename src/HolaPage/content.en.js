@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactInfo, { vCard } from './ContactInfo'
+import ContactInfo from './ContactInfo'
 import Card from './Card'
 import { assert } from '../utils'
 import styles from './HolaPage.module.css'
@@ -59,6 +59,7 @@ export default () => (
           'URL;type=WORK;CHARSET=UTF-8:https://t.me/jakubstastny'
         ]).concat([ // All.
           'TITLE;CHARSET=UTF-8:Spiritual guide',
+          // eslint-disable-next-line no-useless-escape
           `NOTE;CHARSET=UTF-8:My iMessage is my email.\n\nI don't have a phone\, WhatsApp\, Facebook or any of the other social networks.\n\nDetails on this card can change. You can always find my up-to-date contact at ${window.location.href}`
       ])}
     >

@@ -55,6 +55,7 @@ export default function DevPage () {
 
   useEffect(() => {
     state.helpers.fetchTags()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

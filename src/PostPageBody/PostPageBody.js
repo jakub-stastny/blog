@@ -14,7 +14,8 @@ import styles from './PostPageBody.module.css'
 import 'react-tippy/dist/tippy.css'
 
 const translations = {
-  spinner: ["the post", "la entrada"]
+  spinner: ["the post", "la entrada"],
+  essay: ["essay", "ensayo"]
 }
 
 const TouchFriendlyAbbr = ({ text, tooltipText }) => (
@@ -31,8 +32,6 @@ export default memo(function PostBody ({ post }) {
   useEffect(() => {
     const bodyElement = bodyRef.current
     if (!bodyElement) return
-
-    console.log('~ Processing post body.')
 
     Array.from(bodyElement.querySelectorAll('YouTube')).forEach((video) => {
       ReactDOM.render(<YouTube src={video.getAttribute('src')} />, video)
@@ -63,11 +62,14 @@ export default memo(function PostBody ({ post }) {
     })
 
     Array.from(bodyElement.querySelectorAll(`img[src^="${post.slug}/"]`)).forEach((img) => {
-      // img.src will print the whole URL, which is incorrect at this case, as it's assuming the frontend to be the root.
-      console.log(img, img.getAttribute('src'))
       const path = img.getAttribute('src')
       img.src = `https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/posts/${lang}/${path}`
+
+      if (post.tags.some(tag => tag.name === t(translations.essay))) {
+        img.className = assert(styles.essayPage)
+      }
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post])
 
   // const errorComponent = <FetchError error={error} />
@@ -79,4 +81,3 @@ export default memo(function PostBody ({ post }) {
       <Spinner title={t(translations.spinner)} />
   )
 })
-

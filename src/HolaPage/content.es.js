@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactInfo, { vCard } from './ContactInfo'
+import ContactInfo from './ContactInfo'
 import Card from './Card'
 import { assert } from '../utils'
 import styles from './HolaPage.module.css'
@@ -60,6 +60,7 @@ export default () => (
           'URL;type=WORK;CHARSET=UTF-8:https://t.me/jakubstastny'
         ]).concat([ // All.
           'TITLE;CHARSET=UTF-8:Guía espiritual',
+          // eslint-disable-next-line no-useless-escape
           `NOTE;CHARSET=UTF-8:Mi iMessage es lo mismo como mi correo.\n\nNo tengo celular\, WhatsApp\, Facebook ni nada de los otros redes sociales.\n\nDetalles en esta tarjeta pueden cambiar. Siempre puedes encontrar mi contacto actual en ${window.location.href}`
       ])}
     >

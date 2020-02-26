@@ -73,9 +73,14 @@
 
 /* The override has to be below. */
 @media only screen and (min-width: 600px) {
-  .post img {
+  .post img:not(.essayPage) {
     width: 75%;
     margin: 50px auto;
+  }
+
+  .post .essayPage {
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
 
