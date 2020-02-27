@@ -19,6 +19,8 @@
 .post ul {
   list-style: none; /* Remove default bullets */
   padding-left: 20px;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .post ul li::before {
