@@ -41,9 +41,9 @@ export default memo(function PostBody ({ post }) {
       ReactDOM.render(<TouchFriendlyAbbr text={abbr.innerText} tooltipText={abbr.title} />, abbr)
     })
 
-    Array.from(bodyElement.querySelectorAll('i.hashtag')).forEach((i) => {
-      ReactDOM.render(<HashTag>{i.innerText}</HashTag>, i)
-    })
+    // Array.from(bodyElement.querySelectorAll('i.hashtag')).forEach((i) => {
+    //   ReactDOM.render(<HashTag>{i.innerText}</HashTag>, i)
+    // })
 
     Array.from(bodyElement.querySelectorAll('a[href^="/"]')).forEach((a) => {
       a.addEventListener('click', (event) => {
@@ -67,6 +67,11 @@ export default memo(function PostBody ({ post }) {
 
       if (post.tags.some(tag => tag.name === t(translations.essay))) {
         img.className = assert(styles.essayPage)
+      } else {
+        const figure = document.createElement('figure')
+        figure.innerText = img.alt
+        // The nextSibling trick is a way to do insertAfter.
+        img.parentNode.insertBefore(figure, img.nextSibling)
       }
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
