@@ -20,7 +20,7 @@ export default memo(function PostStatusLine ({ date, tags = [] }) {
   )
 
   const TagsPart = ({ tags }) => (
-    tags.length && <InlineTagList tags={tags} />
+    tags.length ? <InlineTagList tags={tags} /> : null
   )
 
   return (
