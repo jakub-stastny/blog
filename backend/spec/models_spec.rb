@@ -4,14 +4,22 @@ models = import('../models.rb')
 
 describe '#save_subscription' do
   it "requires name to be present" do
-    expect { models.save_subscription(mail: "joe@doe.com") }.to raise_error(ArgumentError, /missing keyword: name/)
+    expect { models.save_subscription(mail: "joe@doe.com") }.to raise_error(ArgumentError, /missing.*name/)
   end
 
   it "requires mail to be present" do
-    expect { models.save_subscription(name: "Joe Doe") }.to raise_error(ArgumentError, /missing keyword: mail/)
+    expect { models.save_subscription(name: "Joe Doe") }.to raise_error(ArgumentError, /missing.*mail/)
   end
 
-  it "allows name and mail to be saved" do
-    models.save_subscription(name: "Joe Doe", mail: "joe@doe.com")
+  it "requires lang to be present" do
+    expect { models.save_subscription(name: "Joe Doe", mail: "joe@doe.com") }.to raise_error(ArgumentError, /missing.*lang/)
+  end
+
+  it "requires lang to be one of the allowed values" do
+    expect { models.save_subscription(name: "Joe Doe", mail: "joe@doe.com", lang: "pt") }.to raise_error(ArgumentError, /Valid lang values:/)
+  end
+
+  it "allows name, mail and langto be saved" do
+    models.save_subscription(name: "Joe Doe", mail: "joe@doe.com", lang: 'en')
   end
 end
