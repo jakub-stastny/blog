@@ -2,6 +2,7 @@ require 'import'
 require 'json'
 
 #models = import('./models.rb')
+ValidationError = import('./errors.rb').ValidationError
 
 def build_response(status, object)
   [status, {'Content-Type' => 'application/json'}, [object.to_json]]
@@ -28,7 +29,9 @@ run lambda { |env|
     end
 
     response || build_response(404, message: "not found")
+  rescue ValidationError => error
+    build_response(400, error)
   rescue => error
-    build_response(400, message: "#{error.class}: #{error.message}", backtrace: error.backtrace)
+    build_response(500, message: "#{error.class}: #{error.message}", backtrace: error.backtrace)
   end
 }
