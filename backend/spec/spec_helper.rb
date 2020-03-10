@@ -1,6 +1,5 @@
 require 'import'
 require 'rom'
-require 'pry'
 require 'rspec-sane-http'
 
 ROM.container(:yaml, '/tmp')

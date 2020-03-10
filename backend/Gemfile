@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'pry'
-
 gem 'rack'
 gem 'rom'
 gem 'rom-yaml'
