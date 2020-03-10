@@ -19,7 +19,7 @@ run lambda { |env|
       when '/subscribe'
         raw_data = env['rack.input'].read
         puts "New subscription: #{raw_data}"
-        data = JSON.parse(raw_data).reduce(Hash.new) { |buffer, (key, value)| buffer.merge(key.to_sym => value) }
+        data = JSON.parse(raw_data, symbolize_names: true)
         subscription = models.save_subscription(**data)
         puts "HTTP 201 #{subscription.to_json}"
         build_response(201, subscription)
