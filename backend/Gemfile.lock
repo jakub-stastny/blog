@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/botanicus/rspec-sane-http.git
-  revision: e6f56097cdbafde5ab1a67a66597d0bd4bf384cb
+  revision: bb1abb4ce525c6486a74b2e2f4cc356231c90439
   specs:
     rspec-sane-http (0.0.1)
       http (~> 3.3)

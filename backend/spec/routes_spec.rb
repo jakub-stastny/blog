@@ -1,21 +1,40 @@
 require File.expand_path('../spec_helper.rb', __FILE__)
 
-describe 'POST /test' do
-  # TODO
+shared_examples_for("an unsupported route") do
+  it "returns an unsupported route", data: '' do
+    expect(response.code).to eql(404)
+    expect(response_data).to eql(message: "not found")
+  end
 end
 
 describe 'POST /subscribe' do
-  # TODO
-end
+  context "invalid data" do
+    # TODO
+  end
 
-describe 'GET /test' do
-  # TODO
+  context "valid data" do
+    # TODO
+  end
 end
 
 describe 'GET /subscriptions' do
-  # TODO
+  context "inauthenticated request" do
+    # TODO
+  end
+
+  context "authenticated request" do
+    # TODO
+  end
 end
 
-describe 'PUT /test' do
-  # TODO: 404
+describe 'GET /test' do
+  it_behaves_like "an unsupported route"
+end
+
+describe 'POST /test', data: '' do
+  it_behaves_like "an unsupported route"
+end
+
+describe 'PUT /test', data: '' do
+  it_behaves_like "an unsupported route"
 end
