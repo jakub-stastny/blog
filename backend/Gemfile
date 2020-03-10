@@ -1,0 +1,13 @@
+source 'https://rubygems.org'
+
+gem 'pry'
+
+gem 'rack'
+gem 'rom'
+gem 'rom-yaml'
+gem 'commonjs_modules', github: 'botanicus/commonjs_modules'
+
+group(:spec) do
+  gem 'rspec'
+  gem 'rspec-sane-http', github: 'botanicus/rspec-sane-http'
+end
