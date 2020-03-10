@@ -9,11 +9,25 @@ end
 
 describe 'POST /subscribe' do
   context "invalid data" do
-    # TODO
+    let(:request_data) {{
+      name: "Joe Doe", lang: "en"
+    }}
+
+    it "returns HTTP 400 and the validation error" do
+      p response
+      expect(response.code).to eql(400)
+    end
   end
 
   context "valid data" do
-    # TODO
+    let(:request_data) {{
+      name: "Joe Doe", mail: "joe@doe.com", lang: "en"
+    }}
+
+    it "returns HTTP 400 and the validation error" do
+      p response
+      expect(response.code).to eql(201)
+    end
   end
 end
 

@@ -1,7 +1,8 @@
 require 'rom'
 
 ValidationError = import('./errors.rb').ValidationError
-config = import('./config.rb')
+
+CONFIG = import('./config.rb')
 
 class SubscriptionRepo < ROM::Relation[:yaml]
   schema do
@@ -12,8 +13,8 @@ class SubscriptionRepo < ROM::Relation[:yaml]
 end
 
 def exports.save_subscription(name:, mail:, lang:)
-  unless config.supported_languages.include?(lang)
-    raise ArgumentError, "Supported languages: #{config.supported_languages.inspect}"
+  unless CONFIG.supported_languages.include?(lang)
+    raise ValidationError.new(field: 'lang', error: 'unsupported')
   end
 
   unless mail.match(/^.+@.+\..+$/)
@@ -24,6 +25,7 @@ def exports.save_subscription(name:, mail:, lang:)
   SubscriptionRepo.changeset(:create, data).commit
 end
 
+# TODO: implement me.
 def exports.list_subscriptions
-  # TODO
+  raise NotImplementedError
 end

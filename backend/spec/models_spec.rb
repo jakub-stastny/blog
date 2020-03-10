@@ -23,3 +23,7 @@ describe '#save_subscription' do
     models.save_subscription(name: "Joe Doe", mail: "joe@doe.com", lang: 'en')
   end
 end
+
+describe '#list_subscriptions' do
+  # TODO
+end

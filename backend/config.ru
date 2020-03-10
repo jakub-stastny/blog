@@ -1,7 +1,10 @@
 require 'import'
+require 'rom'
 require 'json'
 
-#models = import('./models.rb')
+ROM.container(:yaml, File.expand_path('../data', __FILE__))
+
+models = import('./models.rb')
 ValidationError = import('./errors.rb').ValidationError
 
 def build_response(status, object)
@@ -18,20 +21,27 @@ run lambda { |env|
         puts "New subscription: #{raw_data}"
         data = JSON.parse(raw_data).reduce(Hash.new) { |buffer, (key, value)| buffer.merge(key.to_sym => value) }
         subscription = models.save_subscription(**data)
+        puts "HTTP 201 #{subscription.to_json}"
         build_response(201, subscription)
       end
     when 'GET'
       case env['PATH_INFO'].chomp('/')
       when '/subscriptions'
         # TODO: Auth.
-        build_response(200, models.list_subscriptions)
+        subscriptions = models.list_subscriptions
+        puts "HTTP 200 #{subscriptions.to_json}"
+        build_response(200, subscriptions)
       end
     end
 
-    response || build_response(404, message: "not found")
+    response || p(build_response(404, message: "not found"))
   rescue ValidationError => error
+    puts "HTTP 400 #{error.to_json}"
     build_response(400, error)
   rescue => error
+    puts "HTTP 500 #{error.inspect}"
     build_response(500, message: "#{error.class}: #{error.message}", backtrace: error.backtrace)
+  ensure
+    puts
   end
 }
