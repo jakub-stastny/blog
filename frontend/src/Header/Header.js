@@ -105,7 +105,7 @@ export default memo(function Header () {
         <DevModeIndicator settings={settings} />
 
         <div style={{position: 'absolute', top: 0, right: 0, padding: 5}}>
-          <div className={assert(styles.setLang)}>
+          <div className={assert(styles.lang)}>
             {/* This will need to happen for posts and tags. */}
             {/* <NavLink to={page[toLang].route} activeClassName={styles.toLangLink}> */}
             <span onClick={switchLang}>

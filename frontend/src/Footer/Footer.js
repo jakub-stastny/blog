@@ -12,9 +12,9 @@ const translations = {
 }
 
 export default memo(function Footer () {
-  const { t, lang } = useContext(LangContext)
+  const { t, setLang } = useContext(LangContext)
 
-  const { aboutPagePath, subscribePagePath, postsPagePath } = routes[lang]
+  const { aboutPagePath, subscribePagePath, postsPagePath } = routes[setLang]
 
   return (
     <footer className={assert(styles.main)}>
