@@ -26,7 +26,7 @@ export default function Tag ({ lang, slug }) {
 
   const { getPostPagePath, tagsPagePath } = routes[lang]
 
-  setLangFn(lang)
+  useEffect(() => { setLangFn(lang) })
 
   useTitle(tag ? `${t(translations.title.loaded)} ${tag.name}` : t(translations.title.loading))
 

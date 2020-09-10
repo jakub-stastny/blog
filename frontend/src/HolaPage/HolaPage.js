@@ -1,4 +1,4 @@
-import React, { memo, useContext } from 'react'
+import React, { memo, useContext, useEffect } from 'react'
 import LangContext from '../LangContext'
 import { useTitle } from 'hookrouter'
 
@@ -13,7 +13,7 @@ const translations = {
 export default memo(function HolaPage ({ lang }) {
   const { t, setLangFn } = useContext(LangContext)
 
-  setLangFn(lang)
+  useEffect(() => { setLangFn(lang) })
 
   useTitle(t(translations.title))
 

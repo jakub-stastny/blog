@@ -24,7 +24,7 @@ export default memo(function Post ({ lang, slug }) {
   const state = useContext(StateContext)
   const post = state.helpers.getPost(slug)
 
-  setLangFn(lang)
+  useEffect(() => { setLangFn(lang) })
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { (post && post.body) || state.helpers.fetchPost(slug, lang) }, [])

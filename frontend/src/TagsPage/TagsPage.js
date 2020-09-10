@@ -20,7 +20,7 @@ const translations = {
 export default function TagsPage ({ lang }) {
   const { t, setLangFn } = useContext(LangContext)
 
-  setLangFn(lang)
+  useEffect(() => { setLangFn(lang) })
 
   const state = useContext(StateContext)
 
