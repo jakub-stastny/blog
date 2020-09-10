@@ -6,9 +6,9 @@ import Moment from 'react-moment'
 const updateInterval = 30 * 1000
 
 export default memo(function PublishedDate ({ date }) {
-  const { lang } = useContext(LangContext)
+  const { setLang } = useContext(LangContext)
 
   return (
-    <Moment date={new Date(date)} fromNow interval={updateInterval} locale={lang} />
+    <Moment date={new Date(date)} fromNow interval={updateInterval} locale={setLang} />
   )
 })

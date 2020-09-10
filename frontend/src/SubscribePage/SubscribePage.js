@@ -11,9 +11,9 @@ const translations = {
 }
 
 export default memo(function SubscribePage ({ lang }) {
-  const { t, setLang } = useContext(LangContext)
+  const { t, setLangFn } = useContext(LangContext)
 
-  setLang(lang)
+  setLangFn(lang)
 
   useTitle(t(translations.title))
 

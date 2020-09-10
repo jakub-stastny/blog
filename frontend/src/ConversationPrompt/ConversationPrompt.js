@@ -20,12 +20,12 @@ const findPrompt = (prompts, tagNames) => {
 }
 
 export default memo(function ConversationPrompt ({ tagNames = [] }) {
-  const { t, lang, nowTag } = useContext(LangContext)
-  const prompts = (lang === 'en') ? promptsEN : promptsES
+  const { t, setLang, nowTag } = useContext(LangContext)
+  const prompts = (setLang === 'en') ? promptsEN : promptsES
 
   const prompt = tagNames.includes(nowTag) ? prompts.default : (findPrompt(prompts, tagNames) || prompts.default)
 
-  const { aboutPagePath } = routes[lang]
+  const { aboutPagePath } = routes[setLang]
 
   const translations = {
     about: [

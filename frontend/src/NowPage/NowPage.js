@@ -17,14 +17,14 @@ const translations = {
 
 export default function NowPage ({ lang }) {
   const langSettings = useContext(LangContext)
-  const { t, setLang } = langSettings
+  const { t, setLangFn } = langSettings
 
   const state = useContext(StateContext)
   const lastStatusUpdate = state.lastStatusUpdate
 
   useEffect(() => {
     if (lang !== langSettings.lang) {
-      setLang(lang)
+      setLangFn(lang)
       state.helpers.reset(lang)
     } else {
       lastStatusUpdate || state.helpers.getLatestStatusUpdate()

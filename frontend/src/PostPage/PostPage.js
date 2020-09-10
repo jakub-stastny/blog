@@ -20,11 +20,11 @@ const translations = {
 }
 
 export default memo(function Post ({ lang, slug }) {
-  const { t, setLang } = useContext(LangContext)
+  const { t, setLangFn } = useContext(LangContext)
   const state = useContext(StateContext)
   const post = state.helpers.getPost(slug)
 
-  setLang(lang)
+  setLangFn(lang)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { (post && post.body) || state.helpers.fetchPost(slug, lang) }, [])
@@ -34,7 +34,7 @@ export default memo(function Post ({ lang, slug }) {
   //   if (!post) return
   //   if (post.lang !== lang) {
   //     console.log(`SET LANG to ${post.lang}`)
-  //     setLang(post.lang)
+  //     setLangFn(post.lang)
   //     state.helpers.reset(post.lang)
   //   }
   // })

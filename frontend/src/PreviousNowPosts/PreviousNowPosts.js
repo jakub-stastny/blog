@@ -19,9 +19,9 @@ const isTaggedWithNow = (nowTag, post) => (
 )
 
 export default memo(function PreviousNowPosts ({ posts, currentPostSlug }) {
-  const { t, lang, nowTag } = useContext(LangContext)
+  const { t, setLang, nowTag } = useContext(LangContext)
 
-  const { getPostPagePath } = routes[lang]
+  const { getPostPagePath } = routes[setLang]
 
   function titleCase (string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
@@ -34,7 +34,7 @@ export default memo(function PreviousNowPosts ({ posts, currentPostSlug }) {
         {posts.filter(post => isTaggedWithNow(nowTag, post) && post.slug !== currentPostSlug).map(post => (
           <li key={post.slug}>
             <A href={getPostPagePath(post.slug)}>
-              <Moment date={post.date} filter={titleCase} format="MMMM YYYY" interval={0} locale={lang} />
+              <Moment date={post.date} filter={titleCase} format="MMMM YYYY" interval={0} locale={setLang} />
             </A>
           </li>
         ))}

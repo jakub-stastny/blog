@@ -21,12 +21,12 @@ const translations = {
 
 export default function Tag ({ lang, slug }) {
   const state = useContext(StateContext)
-  const { t, setLang } = useContext(LangContext)
+  const { t, setLangFn } = useContext(LangContext)
   const tag = state.helpers.getTag(slug)
 
   const { getPostPagePath, tagsPagePath } = routes[lang]
 
-  setLang(lang)
+  setLangFn(lang)
 
   useTitle(tag ? `${t(translations.title.loaded)} ${tag.name}` : t(translations.title.loading))
 

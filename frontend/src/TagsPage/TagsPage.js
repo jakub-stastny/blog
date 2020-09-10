@@ -18,9 +18,9 @@ const translations = {
 }
 
 export default function TagsPage ({ lang }) {
-  const { t, setLang } = useContext(LangContext)
+  const { t, setLangFn } = useContext(LangContext)
 
-  setLang(lang)
+  setLangFn(lang)
 
   const state = useContext(StateContext)
 

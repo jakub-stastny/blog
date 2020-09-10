@@ -31,7 +31,7 @@ const CodeSection = ({ object }) => (
 
 const Highlight = ({ object }) => (
   <Suspense fallback={<CodeSection object={object} />}>
-    <SyntaxHighlighter language="json" style={hlStyles.zenburn} customStyle={{padding: 20}}>
+    <SyntaxHighlighter setLanguage="json" style={hlStyles.zenburn} customStyle={{padding: 20}}>
       {JSON.stringify(object, null, 2)}
     </SyntaxHighlighter>
   </Suspense>
@@ -40,7 +40,7 @@ const Highlight = ({ object }) => (
 export default function DevPage () {
   const settings = useContext(SettingsContext)
   const state = useContext(StateContext)
-  const { lang } = useContext(LangContext)
+  const { setLang } = useContext(LangContext)
 
   const localStorageObject = Object.entries(localStorage)
     .reduce((buffer, [ key, value ]) => Object.assign(buffer, {[key]: value}), {})
@@ -49,7 +49,7 @@ export default function DevPage () {
   const stateWithoutLargeObjects = Object.entries(state)
     .reduce((buffer, [ key, value ]) => largeObjectKeys.includes(key) ? buffer : Object.assign(buffer, {[key]: value}), {})
 
-  const missingTagEntries = state.tags.filter(tag => !tagEntries.find(tagEntry => tagEntry.name(lang) === tag.name))
+  const missingTagEntries = state.tags.filter(tag => !tagEntries.find(tagEntry => tagEntry.name(setLang) === tag.name))
 
   useTitle("Dev info")
 
@@ -87,7 +87,7 @@ export default function DevPage () {
       <h2>Tags</h2>
       <If condition={!missingTagEntries[0]}>
         <p style={{fontStyle: 'italic'}}>
-          There are currently no missing tags for language <code>{lang}</code>. Switch locale to make sure it's true also for the other language.
+          There are currently no missing tags for language <code>{setLang}</code>. Switch locale to make sure it's true also for the other setLanguage.
         </p>
       </If>
 

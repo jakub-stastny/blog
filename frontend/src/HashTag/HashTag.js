@@ -7,8 +7,8 @@ import styles from './HashTag.module.css'
 import { assert } from '../utils'
 
 function HashTag ({ link = false, slug, children }) {
-  const { lang } = useContext(LangContext)
-  const { getTagPagePath } = routes[lang]
+  const { setLang } = useContext(LangContext)
+  const { getTagPagePath } = routes[setLang]
 
   return (
     <span className={assert(styles.hashtag)}>
@@ -18,8 +18,8 @@ function HashTag ({ link = false, slug, children }) {
 }
 
 // TODO: With the tagEntry set the slug.
-export const PossiblyLinkedHashTag = memo(({ lang, hashtag }) => (
-  <HashTag link={!!findTagEntryForTagName(lang, hashtag)}>
+export const PossiblyLinkedHashTag = memo(({ setLang, hashtag }) => (
+  <HashTag link={!!findTagEntryForTagName(setLang, hashtag)}>
     {hashtag}
   </HashTag>
 ))

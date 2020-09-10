@@ -17,12 +17,12 @@ const translations = {
 
 export default memo(function AboutPage ({ lang }) {
   const langSettings = useContext(LangContext)
-  const { t, setLang } = langSettings
+  const { t, setLangFn } = langSettings
   const state = useContext(StateContext)
 
   useEffect(() => {
     if (lang !== langSettings.lang) {
-      setLang(lang)
+      setLangFn(lang)
       state.helpers.reset(lang)
     }
   })

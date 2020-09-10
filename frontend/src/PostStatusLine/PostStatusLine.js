@@ -11,11 +11,11 @@ const translations = {
 }
 
 export default memo(function PostStatusLine ({ date, tags = [] }) {
-  const { t, lang } = useContext(LangContext)
+  const { t, setLang } = useContext(LangContext)
 
   const InlineTagList = ({ tags }) => (
     <>
-      , {t(translations.taggedWith)} <TagList lang={lang} tags={tags} />
+      , {t(translations.taggedWith)} <TagList setLang={setLang} tags={tags} />
     </>
   )
 

@@ -25,7 +25,7 @@ const TouchFriendlyAbbr = ({ text, tooltipText }) => (
 )
 
 export default memo(function PostBody ({ post }) {
-  const { t, lang } = useContext(LangContext)
+  const { t, setLang } = useContext(LangContext)
 
   const bodyRef = useRef(null)
 
@@ -63,7 +63,7 @@ export default memo(function PostBody ({ post }) {
 
     Array.from(bodyElement.querySelectorAll(`img[src^="${post.slug}/"]`)).forEach((img) => {
       const path = img.getAttribute('src')
-      img.src = `https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/posts/${lang}/${path}`
+      img.src = `https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/posts/${setLang}/${path}`
 
       if (post.tags.some(tag => tag.name === t(translations.essay))) {
         img.className = assert(styles.essayPage)

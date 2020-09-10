@@ -3,31 +3,33 @@ import { assert } from './utils'
 
 const LangContext = createContext()
 
-const validateLanguage = (lang) => (
+const validateLang = (lang) => (
   ['es', 'en'].includes(lang) && lang
 )
 
 export function LangContextProvider ({ children }) {
-  const browserOrDefaultLanguage = (navigator.language || '').match(/^es/) ? 'es' : 'en'
-  const setLanguage = localStorage.getItem('lang')
+  const browserOrDefaultLang = (navigator.setLang || '').match(/^es/) ? 'es' : 'en'
 
-  const [ lang, _setLang ] = useState(validateLanguage(setLanguage) || browserOrDefaultLanguage)
+  // This is set when we click the language flag.
+  const storedLang = localStorage.getItem('lang')
 
-  function setLang(toLang) {
-    if (validateLanguage(toLang)) {
-    _setLang(toLang)
+  const [ setLang, _setLangFn ] = useState(validateLang(storedLang) || browserOrDefaultLang)
+
+  function setLangFn(toLang) {
+    if (validateLang(toLang)) {
+      _setLangFn(toLang)
     } else {
       console.error(`Lang not supported: ${toLang}`)
     }
   }
 
-  const t = ([ enTranslation, esTranslation ]) => assert(lang === 'en' ? enTranslation : esTranslation)
+  const t = ([ enTranslation, esTranslation ]) => assert(setLang === 'en' ? enTranslation : esTranslation)
 
   // TODO: use TagsPage/translations.
   const nowTag = t(['now', 'ahora'])
 
   return (
-    <LangContext.Provider value={{lang, setLang, t, nowTag}}>
+    <LangContext.Provider value={{setLang, setLangFn, t, nowTag}}>
       {children}
     </LangContext.Provider>
   )

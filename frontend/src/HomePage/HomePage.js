@@ -15,7 +15,7 @@ const translations = {
 }
 
 export default memo(function HomePage () {
-  const { lang, t } = useContext(LangContext)
+  const { setLang, t } = useContext(LangContext)
   const state = useContext(StateContext)
 
   useTitle(t(translations.title))
@@ -31,7 +31,7 @@ export default memo(function HomePage () {
 
   const PostPreviewList = ({ posts }) => (
     <>
-      {lang === 'es' && <MissingTranslationsWarning />}
+      {setLang === 'es' && <MissingTranslationsWarning />}
       {posts.map((post) => <PostPreview key={post.slug} {...post} />)}
     </>
   )

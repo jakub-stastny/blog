@@ -26,36 +26,36 @@ const translations = {
       Esta entrada todavía no está traducida a Español.<br /> ...
     </>,
     <>
-      This post hasn't been translated to English yet.<br /> Press continue to go to the blog home page (in English) or press cancel to stay on this page (in the current language version).<br />
+      This post hasn't been translated to English yet.<br /> Press continue to go to the blog home page (in English) or press cancel to stay on this page (in the current setLanguage version).<br />
     </>,
   ]
 }
 
-const langs = {en: UK, es: MX}
+const setLangs = {en: UK, es: MX}
 
 export default memo(function Header () {
-  const { t, lang, setLang } = useContext(LangContext)
+  const { t, setLang, setLangFn } = useContext(LangContext)
   const state = useContext(StateContext)
   const settings = useContext(SettingsContext)
 
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
 
-  const toLang = (lang === 'en') ? 'es' : 'en'
-  const FlagIcon = langs[toLang]
+  const toLang = (setLang === 'en') ? 'es' : 'en'
+  const FlagIcon = setLangs[toLang]
 
   const DevModeIndicator = ({ settings }) => (
-    settings.dev && <div className={styles.indicator}><A href={routes[lang].devPagePath}>DEV</A></div>
+    settings.dev && <div className={styles.indicator}><A href={routes[setLang].devPagePath}>DEV</A></div>
   )
 
   function switchLang () {
-    localStorage.setItem('lang', toLang)
+    localStorage.setItem('setLang', toLang)
 
-    setLang(toLang)
+    setLangFn(toLang)
 
     state.helpers.reset(toLang)
 
     // Simple routes without :slug.
-    Object.entries(routes[lang]).forEach(([ routeName, routePath ]) => {
+    Object.entries(routes[setLang]).forEach(([ routeName, routePath ]) => {
       if (window.location.pathname === routePath) {
         return navigate(routes[toLang][routeName])
       }
@@ -64,7 +64,7 @@ export default memo(function Header () {
     const fromSlug = window.location.pathname.split('/').slice(-1)[0]
 
     // Posts.
-    if (routes[lang].getPostPagePath(fromSlug) === window.location.pathname) {
+    if (routes[setLang].getPostPagePath(fromSlug) === window.location.pathname) {
       const post = state.posts.find(post => post.slug === fromSlug)
       if (post && post.translations[toLang]) {
         navigate(routes[toLang].getPostPagePath(post.translations[toLang]))
@@ -72,8 +72,8 @@ export default memo(function Header () {
         setModalIsOpen(true)
       }
     // Tags.
-    } else if (routes[lang].getTagPagePath(fromSlug) === window.location.pathname) {
-      const tagEntry = tagEntries.find(tagEntry => tagEntry.slug(lang) === fromSlug)
+    } else if (routes[setLang].getTagPagePath(fromSlug) === window.location.pathname) {
+      const tagEntry = tagEntries.find(tagEntry => tagEntry.slug(setLang) === fromSlug)
       const toSlug = tagEntry && tagEntry.slug(toLang)
       window.location = (toSlug ? routes[toLang].getTagPagePath(toSlug) : routes[toLang].tagsPagePath)
     }
@@ -105,7 +105,7 @@ export default memo(function Header () {
         <DevModeIndicator settings={settings} />
 
         <div style={{position: 'absolute', top: 0, right: 0, padding: 5}}>
-          <div className={assert(styles.lang)}>
+          <div className={assert(styles.setLang)}>
             {/* This will need to happen for posts and tags. */}
             {/* <NavLink to={page[toLang].route} activeClassName={styles.toLangLink}> */}
             <span onClick={switchLang}>

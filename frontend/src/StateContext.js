@@ -8,7 +8,7 @@ const StateContext = createContext()
  * render cycle, gets called only with the last value.
 */
 export function StateContextProvider ({ children }) {
-  const { lang, nowTag } = useContext(LangContext)
+  const { setLang, nowTag } = useContext(LangContext)
 
   /* Posts */
   const [ postPreviews, setPostPreviews ] = useState([])
@@ -37,26 +37,26 @@ export function StateContextProvider ({ children }) {
   useEffect(() => { fetchPosts() }, [])
 
   /* Index fetchers. */
-  async function fetchPosts (locale = lang) {
+  async function fetchPosts (locale = setLang) {
     const response = await fetch(`https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/posts.${locale}.json`)
     setPostPreviews(await response.json())
     setPostsFetched(true)
   }
 
   async function fetchTags () {
-    const response = await fetch(`https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/tags.${lang}.json`)
+    const response = await fetch(`https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/tags.${setLang}.json`)
     setTagList(await response.json())
     setTagsFetched(true)
   }
 
   /* Show fetchers. */
-  async function fetchPost (slug, locale = lang) {
+  async function fetchPost (slug, locale = setLang) {
     const response = await fetch(`https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/posts/${locale}/${slug}/post.json`)
     const data = await response.json()
     setFullPosts(Object.assign({}, fullPosts, {[data.slug]: data}))
   }
 
-  async function fetchTag (slug, locale = lang) {
+  async function fetchTag (slug, locale = setLang) {
     const response = await fetch(`https://raw.githubusercontent.com/jakub-stastny/data.blog/master/output/tags/${locale}/${slug}.json`)
     const data = await response.json()
     setTagDetails(Object.assign({}, tagDetails, {[data.slug]: data}))
@@ -68,7 +68,7 @@ export function StateContextProvider ({ children }) {
     setLastStatusUpdate(tag.posts[0])
   }
 
-  function reset (lang) {
+  function reset (setLang) {
     setPostPreviews([])
     setFullPosts({})
     setPostsFetched(false)
@@ -78,7 +78,7 @@ export function StateContextProvider ({ children }) {
     setTagDetails({})
     setTagsFetched(false)
 
-    if(lang) fetchPosts(lang)
+    if(setLang) fetchPosts(setLang)
   }
 
   return (

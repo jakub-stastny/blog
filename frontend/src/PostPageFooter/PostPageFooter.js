@@ -16,9 +16,9 @@ const isTaggedWithNow = (nowTag, post) => (
 )
 
 export default memo(function PostPageFooter ({ post, posts }) {
-  const { t, lang, nowTag } = useContext(LangContext)
+  const { t, setLang, nowTag } = useContext(LangContext)
 
-  const { getPostPagePath } = routes[lang]
+  const { getPostPagePath } = routes[setLang]
 
   const translations = {
     prompt: {
