@@ -7,7 +7,7 @@ function convertToJSCase(string) {
 }
 
 function renderTemplate(string, context) {
-  return string.replace(/\{([a-zA-Z-]+)\}/g, (_, keyword) => (convertToJSCase(keyword) in context) ? context[convertToJSCase(keyword)] : console.error(`Unknown context var: ${keyword}`))
+  return string.replace(/[^$]?\{([a-zA-Z-]+)\}/g, (_, keyword) => (convertToJSCase(keyword) in context) ? context[convertToJSCase(keyword)] : console.error(`Unknown context var: ${keyword}`))
 }
 
 // Module scripts are executed asynchronously.
