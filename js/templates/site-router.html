@@ -1,7 +1,7 @@
 <script name="routing">
   import router from '/blog/js/router'
   
-  const pageComponent = router(location)
+  const pageComponent = router(location.pathname.split('/').filter(chunk => chunk.length))
   $('#router').innerHTML = pageComponent.render()
 </script>
 

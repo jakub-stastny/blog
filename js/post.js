@@ -56,7 +56,7 @@ class Post {
     this.content = new TYPES[this.type](data.content)
     this.tags = data.tags ? data.tags : this.content.tags
   }
-  
+
   render() {
     return `
       <h1>${this.title}</h1>
@@ -67,4 +67,11 @@ class Post {
 }
 
 class Posts {
+  constructor(data) {
+    this.posts = data.map(rawPost => new Post(rawPost))
+  }
+
+  render() {
+    return posts.map(post => `<h2>${post.title}</h2>`).join("\n")
+  }
 }
