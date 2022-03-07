@@ -66,6 +66,18 @@ class Post {
   }
 }
 
+class PostPage {
+  constructor() {
+    this.promise = fetch("/blog/data/posts.json")
+  }
+  
+  render() {
+    this.promise.then((res) => res.json().then((data) => {
+      console.log(data)
+    })
+  }
+}
+
 class Posts {
   constructor(data) {
     this.posts = data.map(rawPost => new Post(rawPost))
