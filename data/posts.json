@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Hello world",
+    "slug": "hello-world",
+    "publishedDate": 1646686098,
+    "type": "pages",
+    "excerpt": "...",
+    "content": [
+      {
+        "title": "Page I",
+        "slug": "page-1",
+        "image": "/data/22-03-07-hello-world/1.jpg"
+      }
+    ]
+  }
+]
