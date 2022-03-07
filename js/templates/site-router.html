@@ -2,6 +2,8 @@
   import router from '/blog/js/router'
   
   const pageComponent = router(location.pathname.split('/').filter(chunk => chunk.length))
+  
+  console.log(`Routing to the %c${pageComponent}%c component`, 'color:#87CEEB', 'color:#fff')
   $('#router').innerHTML = pageComponent.render()
 </script>
 
