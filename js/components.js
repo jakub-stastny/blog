@@ -31,7 +31,6 @@ function defineComponent(name, shouldRenderFn, templateRoot = '/blog/js/template
       constructor() {
         super()
 
-        console.log(`${name}: ${shouldRenderFn && !shouldRenderFn()}`)
         if (shouldRenderFn && !shouldRenderFn()) return
         console.log(`Rendering %c${name}`, 'color:#87CEEB')
 
