@@ -33,7 +33,7 @@ function defineComponent(name, shouldRenderFn, templateRoot = '/blog/js/template
 
         console.log(`${name}: ${shouldRenderFn && !shouldRenderFn()}`)
         if (shouldRenderFn && !shouldRenderFn()) return
-        console.log(`Rendering ${name}`)
+        console.log(`Rendering %c${name}`, 'color:#87CEEB')
 
         this.fetchTemplate().then((res) => res.text().then((text) => {
           const template = tag('template', {innerHTML: renderTemplate(text, context)})
