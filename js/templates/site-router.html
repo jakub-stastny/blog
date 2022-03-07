@@ -1,6 +1,7 @@
 <script name="routing">
   import router from '/blog/js/router'
   
+  console.log("ROUTING")
   console.log(router(location.pathname.split('/').filter(chunk => chunk.length)))
   const pageComponent = router(location.pathname.split('/').filter(chunk => chunk.length))[0]
   

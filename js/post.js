@@ -75,10 +75,12 @@ class PostPage {
     this.promise.then((res) => res.json().then((data) => {
       console.log(data)
     })
+    
+    return "PostPage"
   }
 }
 
-class Posts {
+class PostIndex {
   constructor(data) {
     this.posts = data.map(rawPost => new Post(rawPost))
   }
