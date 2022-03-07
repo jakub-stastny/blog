@@ -1,0 +1,8 @@
+<script name="routing">
+  import router from '/blog/js/router'
+  
+  const pageComponent = router(location)
+  $('#router').innerHTML = pageComponent.render()
+</script>
+
+<div id="router"></div>

@@ -74,3 +74,4 @@ function renderInProduction() {
 defineComponent('debug-info', renderInProduction, '/js/templates')
 defineComponent('site-footer', () => true, '/js/templates')
 defineComponent('site-header', () => true, '/js/templates')
+defineComponent('site-router')

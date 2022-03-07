@@ -65,3 +65,6 @@ class Post {
     `
   }
 }
+
+class Posts {
+}
