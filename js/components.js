@@ -13,6 +13,7 @@ function renderTemplate(string, context) {
 // Module scripts are executed asynchronously.
 function generateTagClone(varName, templateName, script) {
   const lines = [
+  "console.log('HERE', varName)",
     "import { _init } from '/js/component-helpers.js'",
     //"import { rewriteLinks } from '/js/propagate-qs.js'",
     `const customExports = _init(${varName}, '${templateName}', '${script.getAttribute('name')}')`,
@@ -42,7 +43,6 @@ function defineComponent(name, shouldRenderFn, templateRoot = '/blog/js/template
             appendChild(template.content.cloneNode(true))
 
           this.shadowRoot.querySelectorAll('script').forEach(script => {
-            console.log(script) ////
             const varName = `sr${Math.floor(Math.random() * 100000)}`
             window[varName] = this
             this.shadowRoot.appendChild(generateTagClone(varName, name, script))
