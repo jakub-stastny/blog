@@ -33,6 +33,6 @@ export default function router(locationChunks) {
       params
     }
   }, {})
-  
+
   return new matchedPageComponentClass(params)
 }

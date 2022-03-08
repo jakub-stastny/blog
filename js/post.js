@@ -7,7 +7,7 @@ class Page {
     this.image = data.image
     this.notes = data.notes
   }
-  
+
   render() {
     return `
       <img src="${this.image}" alt="${this.title}" />
@@ -24,7 +24,7 @@ class PageList {
   get tags() {
     return this.pages.map(page => page.tags).unique()
   }
-  
+
   render() {
     return page.map(page => page.render()).join("\n\n")
   }
@@ -66,26 +66,10 @@ class Post {
   }
 }
 
-class PostPage {
-  constructor() {
-    this.promise = fetch("/blog/data/posts.json")
-  }
-  
-  render() {
-    this.promise.then((res) => res.json().then((data) => {
-      console.log(data)
-    })
-    
-    return "PostPage"
-  }
+export function PostPage(data) {
+  return "PostPage"
 }
 
-class PostIndex {
-  constructor(data) {
-    this.posts = data.map(rawPost => new Post(rawPost))
-  }
-
-  render() {
-    return posts.map(post => `<h2>${post.title}</h2>`).join("\n")
-  }
+export function PostIndex(data) {
+  return "PostIndex" //posts.map(post => `<h2>${post.title}</h2>`).join("\n")
 }
