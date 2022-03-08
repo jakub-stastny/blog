@@ -24,7 +24,7 @@ function generateTagClone(varName, templateName, script) {
     //`rewriteLinks(${varName}.shadowRoot)`
     ]
 
-    console.log(lines) ////
+    console.log({var: `'${templateName}'`, lines}) ////
   return tag('script', {type: 'module', text: lines.join("\n")})
 }
 
@@ -34,6 +34,7 @@ function defineComponent(name, shouldRenderFn, templateRoot = '/blog/js/template
       constructor() {
         super()
 
+        if (shouldRenderFn && !shouldRenderFn()) console.log(`Not rendering %c${name}`, 'color:#87CEEB')
         if (shouldRenderFn && !shouldRenderFn()) return
         console.log(`Rendering %c${name}`, 'color:#87CEEB')
 
