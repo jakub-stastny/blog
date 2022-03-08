@@ -1,14 +1,14 @@
 import { PostPage, PostIndex } from '/blog/js/post.js'
 
-// const routes = {
-//   "/": PostIndex,
-//   "/posts/:slug": PostPage,
+const routes = {
+  "/": PostIndex,
+  "/posts/:slug": PostPage,
 
-//   "/tags": null,
-//   "/tags/:slug"
-// }
+  "/tags": null,
+  "/tags/:slug": null
+}
 
-export default { PostPage, PostIndex }
+export default { routes }
 
 // // [true, {slug: "hello-world"}]
 // function matchChunks(routeChunk, locationChunk) {
