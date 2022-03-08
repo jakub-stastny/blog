@@ -52,7 +52,7 @@ export class Post {
     this.slug = data.slug
     this.excerpt = data.excerpt
     this.publishedDate = new Date(data.publishedDate)
-    this.updatedDate = data.updatedDate ? new Date(data.updatedDate * 1000) : this.content.updatedDate
+    //this.updatedDate = data.updatedDate ? new Date(data.updatedDate * 1000) : this.content.updatedDate
     this.type = data.type
 
     // if (!TYPES[this.type]) {
