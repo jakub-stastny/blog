@@ -46,21 +46,21 @@ class Video {
 
 const TYPES = {pages: PageList, video: Video}
 
-class Post {
+export class Post {
   constructor(data) {
     this.title = data.title
     this.slug = data.slug
     this.excerpt = data.excerpt
     this.publishedDate = new Date(data.publishedDate)
-    this.updatedDate = data.updatedDate ? new Date(data.updatedDate) : this.content.updatedDate
+    this.updatedDate = data.updatedDate ? new Date(data.updatedDate * 1000) : this.content.updatedDate
     this.type = data.type
 
-    if (!TYPES[this.type]) {
-      console.error(`Unknown type of ${this.slug}: ${this.type}`)
-    }
+    // if (!TYPES[this.type]) {
+    //   console.error(`Unknown type of ${this.slug}: ${this.type}`)
+    // }
 
-    this.content = new TYPES[this.type](data.content)
-    this.tags = this.content.tags ? this.content.tags : data.tags
+    // this.content = new TYPES[this.type](data.content)
+    // this.tags = this.content.tags ? this.content.tags : data.tags
   }
 
   render() {
