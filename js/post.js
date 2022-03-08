@@ -59,7 +59,7 @@ export class Post {
     this.publishedDate = new Date(publishedDate * 1000)
 
     this.content = new TYPES[type](content)
-    this.updatedDate = this.content.updatedDate ? this.content.updatedDate : new Date(updatedDate * 1000)
+    this.updatedDate = updatedDate ? new Date(updatedDate * 1000) : this.content.updatedDate
     this.tags = this.content.tags ? this.content.tags : tags
   }
 
