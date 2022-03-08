@@ -9,10 +9,15 @@
 
   const promise = fetch("/blog/data/posts.json")
   console.log(promise)
+  const response = await promise
+  console.log(response)
+  console.log(response.json())
+  const data = await response.json()
+  console.log(data)
 
   // Top-level await?
-  promise.then((res) => console.log(res))
-  promise.then((res) => console.log(res.json()))
+  // promise.then((res) => console.log(res))
+  // promise.then((res) => console.log(res.json()))
   //res.json().then((data) => {
     //console.log(data)
     //$('#router').innerHTML = pageComponent.render(data)
