@@ -17,10 +17,14 @@ function generateTagClone(varName, templateName, script) {
     //"import { rewriteLinks } from '/js/propagate-qs.js'",
     `const customExports = _init(${varName}, '${templateName}', '${script.getAttribute('name')}')`,
     "Object.entries(customExports).map(([ fnName, fn ]) => window[fnName] = fn)", // I think this will rewrite the one on window, we need local scope, maybe using eval.
+    "try {",
     script.text.
       replace(/customElement/g, varName).
       replace(/shadowRoot/g, `${varName}.shadowRoot`),
     //`rewriteLinks(${varName}.shadowRoot)`
+    "} catch (error) {",
+    "  console.error('Top-level error', error)",
+    "}"
     ]
 
   return tag('script', {type: 'module', text: lines.join("\n")})
