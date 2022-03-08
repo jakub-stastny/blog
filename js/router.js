@@ -18,13 +18,14 @@ function matchChunks(routeChunk, locationChunk) {
 }
 
 export default function router(locationChunks) {
-  return "x"
-  // const [ matchedRoute, matchedPageComponentClass ] = Object.entries(routes).find([ route, component ] => {
-  //   routeChunks = route.split('/').filter(chunk => chunk.length)
-  //   if (routeChunks.length === locationChunks.length) {
-  //     routeChunks.every((routeChunk, index) => matchChunks(routeChunk, locationChunks[index]))
-  //   }
-  // })
+  const result = Object.entries(routes).find([ route, component ] => {
+    // routeChunks = route.split('/').filter(chunk => chunk.length)
+    // if (routeChunks.length === locationChunks.length) {
+    //   routeChunks.every((routeChunk, index) => matchChunks(routeChunk, locationChunks[index]))
+    // }
+  })
+
+  // const [ matchedRoute, matchedPageComponentClass ] = result
 
   // const params = matchedRoute.split('/').reduce((params, routeChunk) => {
   //   let result = matchChunks(routeChunk, locationChunks[index])
