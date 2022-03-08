@@ -20,6 +20,7 @@
   console.log(data[0])
   
   const posts = data.map(rawPost => new Post(rawPost))
+  window.p = posts[0]
   console.log(posts[0])
 
   const pageComponent = PostIndex ///
