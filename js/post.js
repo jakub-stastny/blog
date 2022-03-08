@@ -1,48 +1,48 @@
-// class Page {
-//   constructor(data) {
-//     this.title = data.title
-//     this.slug = data.slug
-//     this.updatedDate = data.updatedDate
-//     this.tags = data.tags
-//     this.image = data.image
-//     this.notes = data.notes
-//   }
+class Page {
+  constructor(data) {
+    this.title = data.title
+    this.slug = data.slug
+    this.updatedDate = data.updatedDate
+    this.tags = data.tags
+    this.image = data.image
+    this.notes = data.notes
+  }
 
-//   render() {
-//     return `
-//       <img src="${this.image}" alt="${this.title}" />
-//       ${this.notes.map((note, index) => `[${index + 1}] ${note}`).join("\n")}
-//     `
-//   }
-// }
+  render() {
+    return `
+      <img src="${this.image}" alt="${this.title}" />
+      ${this.notes.map((note, index) => `[${index + 1}] ${note}`).join("\n")}
+    `
+  }
+}
 
-// class PageList {
-//   constructor(data) {
-//     this.pages = data.map(rawPage => new Page(rawPage))
-//   }
+class PageList {
+  constructor(data) {
+    this.pages = data.map(rawPage => new Page(rawPage))
+  }
 
-//   get tags() {
-//     return this.pages.map(page => page.tags).unique()
-//   }
+  get tags() {
+    return this.pages.map(page => page.tags).unique()
+  }
 
-//   render() {
-//     return page.map(page => page.render()).join("\n\n")
-//   }
-// }
+  render() {
+    return page.map(page => page.render()).join("\n\n")
+  }
+}
 
-// class Video {
-//   constructor({ source, link }) {
-//     this.source = source
-//     this.link = link
-//   }
+class Video {
+  constructor({ source, link }) {
+    this.source = source
+    this.link = link
+  }
 
-//   // TODO: Embed video based on its type (most of which will be "youtube")
-//   render() {
-//     return `
-//       Video
-//     `
-//   }
-// }
+  // TODO: Embed video based on its type (most of which will be "youtube")
+  render() {
+    return `
+      Video
+    `
+  }
+}
 
 // TYPES = {pages: PageList, video: Video}
 
