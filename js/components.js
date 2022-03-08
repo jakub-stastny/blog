@@ -46,7 +46,6 @@ function defineComponent(name, shouldRenderFn, templateRoot = '/blog/js/template
           this.shadowRoot.querySelectorAll('script').forEach(script => {
             const varName = `sr${Math.floor(Math.random() * 100000)}`
             window[varName] = this
-            console.log(generateTagClone(varName, name, script)) ///
             this.shadowRoot.appendChild(generateTagClone(varName, name, script))
           })
         }))
