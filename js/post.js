@@ -54,7 +54,12 @@ class Post {
     // this.publishedDate = new Date(data.publishedDate)
     // this.updatedDate = data.updatedDate ? new Date(data.updatedDate) : this.content.updatedDate
     this.type = data.type
-    // this.content = new TYPES[this.type](data.content)
+
+    if (!TYPES[this.type]) {
+      console.error(`Unknown type of ${this.slug}: ${this.type}`)
+    }
+
+    this.content = new TYPES[this.type](data.content)
     // this.tags = data.tags ? data.tags : this.content.tags
   }
 
@@ -62,7 +67,7 @@ class Post {
     return `
       <h1>${this.title}</h1>
       <p class="excerpt">${this.excerpt}</p>
-      ${"this.content.render()"}
+      ${this.content.render()}
     `
   }
 }
