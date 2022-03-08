@@ -17,10 +17,10 @@
 
   console.log(response)
   const data = await response.json()
-  console.log(data)
+  console.log(data[0])
   
   const posts = data.map(rawPost => new Post(rawPost))
-  console.log(posts)
+  console.log(posts[0])
 
   //$('#router').innerHTML = pageComponent.render(data)
 </script>
