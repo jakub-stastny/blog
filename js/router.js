@@ -1,7 +1,7 @@
-//import { PostPage, PostIndex } from '/blog/js/post.js'
-import * as post from '/blog/js/post.js'
+import { PostPage, PostIndex } from '/blog/js/post.js'
+//import * as post from '/blog/js/post.js'
 
-export default post
+export default { PostPage, PostIndex }
 // routes = {
 //   "/": PostIndex,
 //   "/posts/:slug": PostPage,
