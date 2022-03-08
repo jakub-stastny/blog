@@ -25,7 +25,9 @@ export default function router(locationChunks) {
   //   }
   // })
 
-  // const [ matchedRoute, matchedPageComponentClass ] = result
+  const result = [ "/", PostIndex ]
+  const patams = {}
+  const [ matchedRoute, matchedPageComponentClass ] = result
 
   // const params = matchedRoute.split('/').reduce((params, routeChunk) => {
   //   let result = matchChunks(routeChunk, locationChunks[index])
@@ -36,5 +38,5 @@ export default function router(locationChunks) {
   //   }
   // }, {})
 
-  // return new matchedPageComponentClass(params)
+  return new matchedPageComponentClass(params)
 }
