@@ -1,7 +1,7 @@
 <script name="routing">
   import router from '/blog/js/router.js'
 
-  console.log("ROUTING", router)
+  console.log(router)
   // console.log(router(location.pathname.split('/').filter(chunk => chunk.length)))
   // const pageComponent = router(location.pathname.split('/').filter(chunk => chunk.length))[0]
 
@@ -9,18 +9,10 @@
 
   // const promise = fetch("/blog/data/posts.json")
 
-  // promise.then((res) => res.json().then((data) => {
-  //   console.log(data)
-  //   $('#router').innerHTML = pageComponent.render(data)
-  // })
-</script>
-
-<script name="test">
-  console.log("Pretest")
-  import context from '/js/context.js'
-  //import router from '/blog/js/router.js'
-
-  console.log("Test", context)
+  promise.then((res) => res.json().then((data) => {
+    console.log(data)
+    //$('#router').innerHTML = pageComponent.render(data)
+  })
 </script>
 
 <div id="router">Loading ...</div>
