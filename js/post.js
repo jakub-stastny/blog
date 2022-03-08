@@ -47,7 +47,7 @@ class Video {
 const TYPES = {pages: PageList, video: Video}
 
 export class Post {
-  constructor({ title, slug, excerpt, type, content, publishedDate, updatedDate, tags }) {
+  constructor({ title, slug, excerpt, type, content, publishedDate, updatedDate, tags = [] }) {
     if (!TYPES[type]) {
       console.error(`Unknown type of ${slug}: ${type}`)
     }
