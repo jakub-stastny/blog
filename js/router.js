@@ -8,7 +8,7 @@ const routes = {
   "/tags/:slug"
 }
 
-export default {routes}
+export default { PostPage, PostIndex }
 
 // // [true, {slug: "hello-world"}]
 // function matchChunks(routeChunk, locationChunk) {
