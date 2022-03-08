@@ -44,27 +44,27 @@ class Video {
   }
 }
 
-TYPES = {pages: PageList, video: Video}
+// const TYPES = {pages: PageList, video: Video}
 
 class Post {
   constructor(data) {
     this.title = data.title
-    this.slug = data.slug
-    this.excerpt = data.excerpt
-    this.publishedDate = new Date(data.publishedDate)
-    this.updatedDate = data.updatedDate ? new Date(data.updatedDate) : this.content.updatedDate
-    this.type = data.type
-    this.content = new TYPES[this.type](data.content)
-    this.tags = data.tags ? data.tags : this.content.tags
+    // this.slug = data.slug
+    // this.excerpt = data.excerpt
+    // this.publishedDate = new Date(data.publishedDate)
+    // this.updatedDate = data.updatedDate ? new Date(data.updatedDate) : this.content.updatedDate
+    // this.type = data.type
+    // this.content = new TYPES[this.type](data.content)
+    // this.tags = data.tags ? data.tags : this.content.tags
   }
 
-  render() {
-    return `
-      <h1>${this.title}</h1>
-      <p class="excerpt">${this.excerpt}</p>
-      ${this.content.render()}
-    `
-  }
+  // render() {
+  //   return `
+  //     <h1>${this.title}</h1>
+  //     <p class="excerpt">${this.excerpt}</p>
+  //     ${this.content.render()}
+  //   `
+  // }
 }
 
 export function PostPage(data) {
