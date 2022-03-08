@@ -1,7 +1,7 @@
 <script name="routing">
-  import router from '/blog/js/router.js'
+  //import router from '/blog/js/router.js'
+  //console.log(router)
 
-  console.log(router)
   // console.log(router(location.pathname.split('/').filter(chunk => chunk.length)))
   // const pageComponent = router(location.pathname.split('/').filter(chunk => chunk.length))[0]
 
@@ -11,10 +11,11 @@
   console.log(promise)
 
   // Top-level await?
-  promise.then((res) => res.json().then((data) => {
-    console.log(data)
+  promise.then((res) => console.log(res))
+  //res.json().then((data) => {
+    //console.log(data)
     //$('#router').innerHTML = pageComponent.render(data)
-  })
+  //})
 </script>
 
 <div id="router">Loading ...</div>
