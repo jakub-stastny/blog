@@ -13,7 +13,6 @@ function renderTemplate(string, context) {
 // Module scripts are executed asynchronously.
 function generateTagClone(varName, templateName, script) {
   const lines = [
-  `console.log('Exec: ${templateName}')`,
     "import { _init } from '/js/component-helpers.js'",
     //"import { rewriteLinks } from '/js/propagate-qs.js'",
     `const customExports = _init(${varName}, '${templateName}', '${script.getAttribute('name')}')`,
@@ -24,7 +23,6 @@ function generateTagClone(varName, templateName, script) {
     //`rewriteLinks(${varName}.shadowRoot)`
     ]
 
-    console.log(`Tag ${templateName}`) ////
   return tag('script', {type: 'module', text: lines.join("\n")})
 }
 
