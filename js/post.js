@@ -2,7 +2,7 @@ class Page {
   constructor({ title, slug, updatedDate, image, tags = [], notes = [] }) {
     this.title = title
     this.slug = slug
-    this.updatedDate = updatedDate && new Date(updatedDate * 1000)
+    this.updatedDate = updatedDate ? new Date(updatedDate * 1000) : null
     this.tags = tags
     this.image = image
     this.notes = notes
