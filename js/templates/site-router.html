@@ -1,6 +1,6 @@
 <script name="routing">
   import router from '/blog/js/router.js'
-  import { Post } from '/blog/js/post.js'
+  import { Post, PostIndex } from '/blog/js/post.js'
 
   console.log(router)
 
@@ -22,7 +22,8 @@
   const posts = data.map(rawPost => new Post(rawPost))
   console.log(posts[0])
 
-  //$('#router').innerHTML = pageComponent.render(data)
+  const pageComponent = PostIndex ///
+  $('#router').innerHTML = pageComponent(posts)
 </script>
 
 <div id="router">Loading ...</div>
