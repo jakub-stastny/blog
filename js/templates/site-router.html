@@ -23,7 +23,8 @@
   console.log(posts[0])
 
   const pageComponent = PostIndex ///
-  $('#router').innerHTML = pageComponent(posts)
+  const params = {}
+  $('#router').innerHTML = pageComponent(posts, params)
 </script>
 
 <div id="router">Loading ...</div>

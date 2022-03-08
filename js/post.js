@@ -72,10 +72,10 @@ export class Post {
   }
 }
 
-export function PostPage(data) {
+export function PostPage(posts, params) {
   return "PostPage"
 }
 
-export function PostIndex(data) {
+export function PostIndex(posts, params) {
   return "PostIndex" //posts.map(post => `<h2>${post.title}</h2>`).join("\n")
 }
