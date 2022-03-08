@@ -1,11 +1,11 @@
 class Page {
-  constructor(data) {
-    this.title = data.title
-    this.slug = data.slug
-    this.updatedDate = data.updatedDate
-    this.tags = data.tags
-    this.image = data.image
-    this.notes = data.notes
+  constructor({ title, slug, updatedDate, image, tags = [], notes = [] }) {
+    this.title = title
+    this.slug = slug
+    this.updatedDate = updatedDate && new Date(updatedDate * 1000)
+    this.tags = tags
+    this.image = image
+    this.notes = notes
   }
 
   render() {
