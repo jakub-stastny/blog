@@ -1,24 +1,23 @@
 import { PostPage, PostIndex } from '/blog/js/post.js'
-//import * as post from '/blog/js/post.js'
 
-export default { PostPage, PostIndex }
-// routes = {
-//   "/": PostIndex,
-//   "/posts/:slug": PostPage,
+const routes = {
+  "/": PostIndex,
+  "/posts/:slug": PostPage,
 
-//   "/tags": null,
-//   "/tags/:slug"
-// }
+  "/tags": null,
+  "/tags/:slug"
+}
 
-// // [true, {slug: "hello-world"}]
-// function matchChunks(routeChunk, locationChunk) {
-//   if ((routeChunk.match(/^:(.+)$/) && locationChunk)) {
-//     return {[RegExp.lastMatch]: locationChunk}
-//   } else {
-//     return routeChunk === locationChunk
-//   }
-// }
+// [true, {slug: "hello-world"}]
+function matchChunks(routeChunk, locationChunk) {
+  if ((routeChunk.match(/^:(.+)$/) && locationChunk)) {
+    return {[RegExp.lastMatch]: locationChunk}
+  } else {
+    return routeChunk === locationChunk
+  }
+}
 
+export default routes
 // export default function router(locationChunks) {
 //   const [ matchedRoute, matchedPageComponentClass ] = Object.entries(routes).find([ route, component ] => {
 //     routeChunks = route.split('/').filter(chunk => chunk.length)
