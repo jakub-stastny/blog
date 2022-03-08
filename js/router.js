@@ -8,16 +8,17 @@ const routes = {
   "/tags/:slug"
 }
 
-// [true, {slug: "hello-world"}]
-function matchChunks(routeChunk, locationChunk) {
-  if ((routeChunk.match(/^:(.+)$/) && locationChunk)) {
-    return {[RegExp.lastMatch]: locationChunk}
-  } else {
-    return routeChunk === locationChunk
-  }
-}
+export default {routes}
 
-export default routes
+// // [true, {slug: "hello-world"}]
+// function matchChunks(routeChunk, locationChunk) {
+//   if ((routeChunk.match(/^:(.+)$/) && locationChunk)) {
+//     return {[RegExp.lastMatch]: locationChunk}
+//   } else {
+//     return routeChunk === locationChunk
+//   }
+// }
+
 // export default function router(locationChunks) {
 //   const [ matchedRoute, matchedPageComponentClass ] = Object.entries(routes).find([ route, component ] => {
 //     routeChunks = route.split('/').filter(chunk => chunk.length)
