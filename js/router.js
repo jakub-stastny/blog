@@ -26,7 +26,6 @@ export default function router(locationChunks) {
   // })
 
   const result = [ "/", PostIndex ]
-  const params = {}
   const [ matchedRoute, matchedPageComponentClass ] = result
 
   const params = matchedRoute.split('/').reduce((params, routeChunk) => {
