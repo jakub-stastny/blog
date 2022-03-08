@@ -1,5 +1,7 @@
 <script name="routing">
   import router from '/blog/js/router.js'
+  import { Post } from '/blog/js/post.js'
+
   console.log(router)
 
   console.log(location.pathname.split('/').filter(chunk => chunk.length).slice(1))
@@ -16,6 +18,9 @@
   console.log(response)
   const data = await response.json()
   console.log(data)
+  
+  const posts = data.map(rawPost => new Post(rawPost))
+  console.log(posts)
 
   //$('#router').innerHTML = pageComponent.render(data)
 </script>
