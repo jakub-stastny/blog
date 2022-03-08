@@ -51,8 +51,8 @@ class Post {
     this.title = data.title
     this.slug = data.slug
     this.excerpt = data.excerpt
-    // this.publishedDate = new Date(data.publishedDate)
-    // this.updatedDate = data.updatedDate ? new Date(data.updatedDate) : this.content.updatedDate
+    this.publishedDate = new Date(data.publishedDate)
+    this.updatedDate = data.updatedDate ? new Date(data.updatedDate) : this.content.updatedDate
     this.type = data.type
 
     if (!TYPES[this.type]) {
@@ -60,7 +60,7 @@ class Post {
     }
 
     this.content = new TYPES[this.type](data.content)
-    // this.tags = data.tags ? data.tags : this.content.tags
+    this.tags = this.content.tags ? this.content.tags : data.tags
   }
 
   render() {
