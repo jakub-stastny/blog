@@ -44,7 +44,7 @@ class Video {
   }
 }
 
-// const TYPES = {pages: PageList, video: Video}
+const TYPES = {pages: PageList, video: Video}
 
 class Post {
   constructor(data) {
