@@ -29,13 +29,12 @@ export default function router(locationChunks) {
   const [ matchedRoute, matchedPageComponentClass ] = result
 
   const params = matchedRoute.split('/').reduce((params, routeChunk) => {
-    return params
-    // let result = matchChunks(routeChunk, locationChunks[index])
-    // if (typeof result === 'object') {
-    //   return Object.assign({}, params, result)
-    // } else {
-    //   return params
-    // }
+    let result = matchChunks(routeChunk, locationChunks[index])
+    if (typeof result === 'object') {
+      return Object.assign({}, params, result)
+    } else {
+      return params
+    }
   }, {})
 
   return new matchedPageComponentClass(params)
