@@ -77,5 +77,5 @@ export function PostPage(posts, params) {
 }
 
 export function PostIndex(posts, params) {
-  return "PostIndex" //posts.map(post => `<h2>${post.title}</h2>`).join("\n")
+  return posts.map(post => `<h2>${post.title}</h2>`).join("\n")
 }
