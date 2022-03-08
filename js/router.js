@@ -28,6 +28,7 @@ export default function router(locationChunks) {
   const result = [ "/", PostIndex ]
   const [ matchedRoute, matchedPageComponentClass ] = result
 
+  let index = 0 ///
   const params = matchedRoute.split('/').reduce((params, routeChunk) => {
     let result = matchChunks(routeChunk, locationChunks[index])
     if (typeof result === 'object') {
