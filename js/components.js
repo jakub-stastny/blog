@@ -14,14 +14,16 @@ function renderTemplate(string, context) {
 function generateTagClone(varName, templateName, script) {
   const lines = [
     "import { _init } from '/js/component-helpers.js'",
-    "import { rewriteLinks } from '/js/propagate-qs.js'",
+    //"import { rewriteLinks } from '/js/propagate-qs.js'",
     `const customExports = _init(${varName}, '${templateName}', '${script.getAttribute('name')}')`,
     "Object.entries(customExports).map(([ fnName, fn ]) => window[fnName] = fn)", // I think this will rewrite the one on window, we need local scope, maybe using eval.
     script.text.
       replace(/customElement/g, varName).
       replace(/shadowRoot/g, `${varName}.shadowRoot`),
-    `rewriteLinks(${varName}.shadowRoot)`]
+    //`rewriteLinks(${varName}.shadowRoot)`
+    ]
 
+    console.log(lines) ////
   return tag('script', {type: 'module', text: lines.join("\n")})
 }
 
@@ -40,6 +42,7 @@ function defineComponent(name, shouldRenderFn, templateRoot = '/blog/js/template
             appendChild(template.content.cloneNode(true))
 
           this.shadowRoot.querySelectorAll('script').forEach(script => {
+            console.log(script) ////
             const varName = `sr${Math.floor(Math.random() * 100000)}`
             window[varName] = this
             this.shadowRoot.appendChild(generateTagClone(varName, name, script))

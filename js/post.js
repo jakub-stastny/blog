@@ -39,6 +39,7 @@ class Video {
   // TODO: Embed video based on its type (most of which will be "youtube")
   render() {
     return `
+      Video
     `
   }
 }

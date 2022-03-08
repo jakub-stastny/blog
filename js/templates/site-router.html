@@ -2,17 +2,17 @@
   import router from '/blog/js/router'
 
   console.log("ROUTING")
-  console.log(router(location.pathname.split('/').filter(chunk => chunk.length)))
-  const pageComponent = router(location.pathname.split('/').filter(chunk => chunk.length))[0]
+  // console.log(router(location.pathname.split('/').filter(chunk => chunk.length)))
+  // const pageComponent = router(location.pathname.split('/').filter(chunk => chunk.length))[0]
 
-  console.log(`Routing to the %c${pageComponent}%c component`, 'color:#87CEEB', 'color:#fff')
+  // console.log(`Routing to the %c${pageComponent}%c component`, 'color:#87CEEB', 'color:#fff')
 
-  const promise = fetch("/blog/data/posts.json")
+  // const promise = fetch("/blog/data/posts.json")
 
-  promise.then((res) => res.json().then((data) => {
-    console.log(data)
-    $('#router').innerHTML = pageComponent.render(data)
-  })
+  // promise.then((res) => res.json().then((data) => {
+  //   console.log(data)
+  //   $('#router').innerHTML = pageComponent.render(data)
+  // })
 </script>
 
 <div id="router">Loading ...</div>
