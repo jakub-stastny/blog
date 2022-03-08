@@ -28,7 +28,7 @@ export default function router(locationChunks) {
   const result = [ "/", PostIndex ]
   const [ matchedRoute, matchedPageComponentClass ] = result
 
-  let index = 0 ///
+  let index = 0 // FIXME
   const params = matchedRoute.split('/').reduce((params, routeChunk) => {
     let result = matchChunks(routeChunk, locationChunks[index])
     if (typeof result === 'object') {
